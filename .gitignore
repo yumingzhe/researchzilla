@@ -2,6 +2,7 @@
 *.iml
 .idea/
 classes/
+*/target/
 
 # Package Files #
 *.jar
