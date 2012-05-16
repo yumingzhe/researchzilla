@@ -14,6 +14,12 @@
     <artifactId>researchzilla-service</artifactId>
     <version>0.0</version>
 
-
-    
+    <!--module dependency-->
+    <dependencies>
+        <dependency>
+            <groupId>cn.edu.sdust</groupId>
+            <artifactId>researchzilla-dao</artifactId>
+            <version>0.0</version>
+        </dependency>
+    </dependencies>
 </project>
