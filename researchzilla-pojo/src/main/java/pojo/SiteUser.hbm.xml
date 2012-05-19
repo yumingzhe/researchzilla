@@ -1,0 +1,14 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.SiteUser" table="researchzilla_siteusers">
+        <id name="uid" column="uid" type="java.lang.Integer">
+            <generator class="increment"/>
+        </id>
+        <property name="active" column="active" type="boolean"/>
+        <property name="banned" column="banned" type="boolean"/>
+        <property name="email" column="email" type="java.lang.String" length="50"/>
+        <property name="instituteId" column="instituteId" type="long"/>
+    </class>
+</hibernate-mapping>
