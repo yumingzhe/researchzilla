@@ -7,13 +7,22 @@ public class SiteUser {
     private boolean active;
     private boolean banned;
     private String email;
-    private long instituteId;
+    private String instituteId;
+    private UserEntity userEntity;
 
-    public long getInstituteId() {
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    public String getInstituteId() {
         return instituteId;
     }
 
-    public void setInstituteId(long instituteId) {
+    public void setInstituteId(String instituteId) {
         this.instituteId = instituteId;
     }
 

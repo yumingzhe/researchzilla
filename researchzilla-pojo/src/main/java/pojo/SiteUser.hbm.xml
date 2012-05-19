@@ -9,6 +9,7 @@
         <property name="active" column="active" type="boolean"/>
         <property name="banned" column="banned" type="boolean"/>
         <property name="email" column="email" type="java.lang.String" length="50"/>
-        <property name="instituteId" column="instituteId" type="long"/>
+        <property name="instituteId" column="instituteId" type="java.lang.String"/>
+        <one-to-one name="userEntity" class="pojo.UserEntity" cascade="all"/>
     </class>
 </hibernate-mapping>

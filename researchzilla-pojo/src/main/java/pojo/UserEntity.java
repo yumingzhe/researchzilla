@@ -1,10 +1,11 @@
 package pojo;
 
 import java.io.File;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class UserEntity {
+public class UserEntity implements Serializable {
     private int uid;
     private File portrait;
     private String realName;
@@ -20,6 +21,15 @@ public class UserEntity {
     private String description;
     private long lastActionId;
     private int groupId;
+    private SiteUser siteUser;
+
+    public SiteUser getSiteUser() {
+        return siteUser;
+    }
+
+    public void setSiteUser(SiteUser siteUser) {
+        this.siteUser = siteUser;
+    }
 
     public String getCountry() {
         return country;

@@ -5,7 +5,7 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="user" value="root"/>
         <property name="password" value=""/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost/test"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost/researchzilla"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="initialPoolSize" value="2"/>
         <property name="minPoolSize" value="2"/>
