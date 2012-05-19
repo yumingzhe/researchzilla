@@ -1,0 +1,13 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.Register" table="researchzilla_register">
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="increment"/>
+        </id>
+        <property name="registerTime" column="registerTime" type="timestamp" not-null="true"/>
+        <property name="registerSequence" column="registerSequence" type="java.lang.String"/>
+        <many-to-one name="siteUser" class="pojo.SiteUser" column="uid" unique="true"/>
+    </class>
+</hibernate-mapping>

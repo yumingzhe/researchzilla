@@ -11,8 +11,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import pojo.Register;
 import pojo.SiteUser;
 import pojo.UserEntity;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * This class is used for inserting data
@@ -22,7 +26,7 @@ public class InsertData {
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
-        SiteUser siteUser = new SiteUser();
+        /*SiteUser siteUser = new SiteUser();
         siteUser.setUsername("ymz");
 
         siteUser.setEmail("ymz@live.cn");
@@ -39,10 +43,23 @@ public class InsertData {
         siteUser.setUserEntity(userEntity);
         userEntity.setSiteUser(siteUser);
 
-        session.save(siteUser);
+        session.save(siteUser);*/
+
+        SiteUser user = new SiteUser();
+        user.setUsername("zhangsan");
+        user.setActive(true);
+        user.setBanned(false);
+        user.setInstituteId("200801051631");
+        user.setEmail("zhangsan@live.cn");
+
+        Register register = new Register();
+        register.setRegisterSequence("this is register sequence");
+        register.setRegisterTime(new Timestamp(new Date().getTime()));
+
+        user.setRegister(register);
+        register.setSiteUser(user);
+        session.save(user);
         transaction.commit();
         session.close();
-
-
     }
 }
