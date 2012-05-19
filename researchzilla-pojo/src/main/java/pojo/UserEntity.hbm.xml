@@ -10,7 +10,6 @@
             </generator>
         </id>
 
-
         <property name="age" column="age" type="int"/>
         <property name="birthday" column="birthday" type="java.util.Date"/>
         <property name="country" column="country" type="java.lang.String" length="15"/>
@@ -25,6 +24,6 @@
         <property name="groupId" column="groupId" type="int"/>
         <property name="userType" column="userType" type="int"/>
         <property name="lastActionId" column="lastActionId" type="long"/>
-        <!--<many-to-one name="siteUser" class="pojo.SiteUser" foreign-key="uid" unique="true"/>-->
+        <one-to-one name="siteUser" class="pojo.SiteUser" cascade="all"/>
     </class>
 </hibernate-mapping>
