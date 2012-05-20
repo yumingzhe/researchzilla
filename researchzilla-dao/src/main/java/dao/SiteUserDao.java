@@ -12,4 +12,6 @@ import pojo.SiteUser;
 public interface SiteUserDao {
     public SiteUser getSiteUserByInstituteId(String instituteId);
 
+    public SiteUser getSiteUserByEmail(String email);
+
 }
