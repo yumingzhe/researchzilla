@@ -1,5 +1,6 @@
 package service.impl;
 
+import dao.SiteUserDao;
 import pojo.SiteUser;
 import service.SiteUserService;
 
@@ -9,13 +10,17 @@ import service.SiteUserService;
  * Time: 8:16 PM
  */
 public class SiteUserServiceImpl implements SiteUserService {
+    private SiteUserDao siteUserDao;
+
+
+
     @Override
     public SiteUser getSiteUserByEmail(String email) {
-        return null;
+        return siteUserDao.getSiteUserByEmail(email);
     }
 
     @Override
     public SiteUser getSiteUserByInstituteId(String instituteId) {
-        return null;
+        return siteUserDao.getSiteUserByInstituteId(instituteId);
     }
 }
