@@ -1,4 +1,4 @@
-researchzilla
+Researchzilla
 =============
 
 project for research or education institutions
