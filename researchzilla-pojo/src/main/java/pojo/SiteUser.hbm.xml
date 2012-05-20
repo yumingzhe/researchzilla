@@ -6,6 +6,9 @@
         <id name="uid" column="uid" type="java.lang.Integer">
             <generator class="increment"/>
         </id>
+        <property name="username" column="username" type="java.lang.String" length="20"/>
+        <property name="password" column="password" type="java.lang.String" length="32"/>
+        <property name="salt" column="salt" type="java.lang.String" length="8"/>
         <property name="active" column="active" type="boolean"/>
         <property name="banned" column="banned" type="boolean"/>
         <property name="email" column="email" type="java.lang.String" length="50"/>

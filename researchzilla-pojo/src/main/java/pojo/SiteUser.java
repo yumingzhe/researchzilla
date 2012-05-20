@@ -4,36 +4,13 @@ public class SiteUser {
     private Integer uid;
     private String username;
     private String password;
+    private String salt;
     private Boolean active;
     private Boolean banned;
     private String email;
     private String instituteId;
     private UserEntity userEntity;
     private Register register;
-
-    public Register getRegister() {
-        return register;
-    }
-
-    public void setRegister(Register register) {
-        this.register = register;
-    }
-
-    public UserEntity getUserEntity() {
-        return userEntity;
-    }
-
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
-    }
-
-    public String getInstituteId() {
-        return instituteId;
-    }
-
-    public void setInstituteId(String instituteId) {
-        this.instituteId = instituteId;
-    }
 
     public Integer getUid() {
         return uid;
@@ -59,19 +36,27 @@ public class SiteUser {
         this.password = password;
     }
 
-    public boolean isActive() {
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
-    public boolean isBanned() {
+    public Boolean getBanned() {
         return banned;
     }
 
-    public void setBanned(boolean banned) {
+    public void setBanned(Boolean banned) {
         this.banned = banned;
     }
 
@@ -81,5 +66,29 @@ public class SiteUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getInstituteId() {
+        return instituteId;
+    }
+
+    public void setInstituteId(String instituteId) {
+        this.instituteId = instituteId;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    public Register getRegister() {
+        return register;
+    }
+
+    public void setRegister(Register register) {
+        this.register = register;
     }
 }
