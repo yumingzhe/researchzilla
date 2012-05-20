@@ -10,6 +10,9 @@
         <property name="connection.password"/>
         <property name="show_sql">true</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
-        <mapping resource="pojo/Student.hbm.xml"/>
+        <!--<mapping resource="pojo/Student.hbm.xml"/>-->
+        <mapping resource="pojo/SiteUser.hbm.xml"/>
+        <mapping resource="pojo/UserEntity.hbm.xml"/>
+        <mapping resource="pojo/Register.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -4,16 +4,34 @@ public class SiteUser {
     private Integer uid;
     private String username;
     private String password;
-    private boolean active;
-    private boolean banned;
+    private Boolean active;
+    private Boolean banned;
     private String email;
-    private long instituteId;
+    private String instituteId;
+    private UserEntity userEntity;
+    private Register register;
 
-    public long getInstituteId() {
+    public Register getRegister() {
+        return register;
+    }
+
+    public void setRegister(Register register) {
+        this.register = register;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    public String getInstituteId() {
         return instituteId;
     }
 
-    public void setInstituteId(long instituteId) {
+    public void setInstituteId(String instituteId) {
         this.instituteId = instituteId;
     }
 

@@ -5,8 +5,11 @@
     <class name="pojo.UserEntity" table="researchzilla_userentity">
 
         <id name="uid" column="uid" type="int">
-            <generator class="foreign"/>
+            <generator class="foreign">
+                <param name="property">siteUser</param>
+            </generator>
         </id>
+
         <property name="age" column="age" type="int"/>
         <property name="birthday" column="birthday" type="java.util.Date"/>
         <property name="country" column="country" type="java.lang.String" length="15"/>
@@ -17,9 +20,10 @@
         <property name="personalWebsite" column="personalWebsite" length="50" type="java.lang.String"/>
         <property name="mobilePhone" column="mobilePhone" type="long"/>
         <property name="qq" column="qq" type="long"/>
-        <property name="registerDate" column="registerDate" type="timestamp" not-null="true"/>
+        <property name="registerDate" column="registerDate" type="timestamp"/>
         <property name="groupId" column="groupId" type="int"/>
         <property name="userType" column="userType" type="int"/>
         <property name="lastActionId" column="lastActionId" type="long"/>
+        <one-to-one name="siteUser" class="pojo.SiteUser" cascade="all"/>
     </class>
 </hibernate-mapping>
