@@ -1,0 +1,17 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.Picturenews" table="picturenews">
+        <id name="id" column="id" type="int">
+            <generator class="increment"/>
+        </id>
+        <property name="type" column="type" type="string" length="20" not-null="true"/>
+        <property name="author" column="author" type="string" length="20" not-null="true"/>
+        <property name="publisher" column="publisher" type="string" length="20" not-null="true" />
+        <property name="topic" column="topic" type="string" length="50" not-null="true"/>
+        <property name="picture" column="picture" type="string" length="100" not-null="true"/>
+        <property name="content" column="content" type="string" length="2000" not-null="true"/>
+        <property name="publishtime" column="publishtime" type="timestamp" not-null="true"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.Subject" table="subject">
+        <id name="id" column="id" type="int">
+            <generator class="increment"/>
+        </id>
+        <property name="subjecttopic" column="subject" type="string" length="50" not-null="true"/>
+        <property name="researchdirection" column="researchdirection" type="string" length="100" not-null="true"/>
+        <property name="researchmember" column="researchmember" type="string" length="100" not-null="true" />
+        <property name="starttime" column="starttime" type="timestamp"  not-null="true"/>
+        <property name="prograss" column="prograss" type="double"  not-null="true"/>
+    </class>
+</hibernate-mapping>

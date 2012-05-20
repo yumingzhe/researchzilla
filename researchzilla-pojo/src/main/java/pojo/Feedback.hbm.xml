@@ -1,0 +1,13 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.Feedback" table="feedback">
+        <id name="id" column="id" type="int">
+            <generator class="increment"/>
+        </id>
+        <property name="feedbacktopic" column="feedbacktopic" type="string" length="50" not-null="true"/>
+        <property name="feedbackcontent" column="feedbackcontent" type="string" length="500" not-null="true"/>
+        <property name="publishtime" column="publishtime" type="timestamp"  not-null="true" />
+    </class>
+</hibernate-mapping>

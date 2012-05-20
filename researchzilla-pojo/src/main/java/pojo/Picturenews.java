@@ -1,22 +1,21 @@
 package pojo;
 
-import java.io.File;
 import java.sql.Timestamp;
 
 /**
  * User:wangyan
  * Date: 12-5-19
- * Time: 上午9:37
+ * Time: 上午9:44
  */
-public class Message {
+public class Picturenews {
     private int id;
     private String type;
     private String author;
     private String publisher;
     private String topic;
+    private String picture;
     private String content;
     private Timestamp publishtime;
-    private File accesory;
 
     public int getId() {
         return id;
@@ -58,6 +57,14 @@ public class Message {
         this.topic = topic;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public String getContent() {
         return content;
     }
@@ -73,13 +80,4 @@ public class Message {
     public void setPublishtime(Timestamp publishtime) {
         this.publishtime = publishtime;
     }
-
-    public File getAccesory() {
-        return accesory;
-    }
-
-    public void setAccesory(File accesory) {
-        this.accesory = accesory;
-    }
-
 }
