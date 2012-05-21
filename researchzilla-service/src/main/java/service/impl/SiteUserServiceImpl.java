@@ -13,7 +13,6 @@ public class SiteUserServiceImpl implements SiteUserService {
     private SiteUserDao siteUserDao;
 
 
-
     @Override
     public SiteUser getSiteUserByEmail(String email) {
         return siteUserDao.getSiteUserByEmail(email);
@@ -22,5 +21,10 @@ public class SiteUserServiceImpl implements SiteUserService {
     @Override
     public SiteUser getSiteUserByInstituteId(String instituteId) {
         return siteUserDao.getSiteUserByInstituteId(instituteId);
+    }
+
+    @Override
+    public void saveSiteUser(SiteUser siteUser) {
+        siteUserDao.saveSiteUser(siteUser);
     }
 }

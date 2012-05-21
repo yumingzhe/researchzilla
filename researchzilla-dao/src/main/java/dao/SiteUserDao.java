@@ -14,4 +14,6 @@ public interface SiteUserDao {
 
     public SiteUser getSiteUserByEmail(String email);
 
+    public void saveSiteUser(SiteUser siteUser);
+
 }

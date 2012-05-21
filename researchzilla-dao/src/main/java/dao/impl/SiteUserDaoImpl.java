@@ -52,4 +52,9 @@ public class SiteUserDaoImpl implements SiteUserDao {
             }
         }).get(0);
     }
+
+    @Override
+    public void saveSiteUser(SiteUser siteUser) {
+        this.getTemplate().saveOrUpdate(siteUser);
+    }
 }

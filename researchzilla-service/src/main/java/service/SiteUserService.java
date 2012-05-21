@@ -11,4 +11,7 @@ public interface SiteUserService {
     public SiteUser getSiteUserByEmail(String email);
 
     public SiteUser getSiteUserByInstituteId(String instituteId);
+
+    public void saveSiteUser(SiteUser siteUser);
 }
+
