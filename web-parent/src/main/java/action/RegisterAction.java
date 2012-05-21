@@ -145,7 +145,7 @@ public class RegisterAction extends ActionSupport {
                             "\n" +
                             "如果你在" + ttl + "小时内没有通过验证，你的账号将被删除。\n" +
                             "\n";
-                    EmailUtil.sendEmail("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "YMZ7565092", "admin@researchzilla", "researchzilla 网站用户注册验证‏", msg, this.email);
+                    EmailUtil.sendEmail("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "123456", "admin@researchzilla", "researchzilla 网站用户注册验证‏", msg, this.email);
                     return SUCCESS;
                 }
                 //user has registered, but has not activated his account
