@@ -10,6 +10,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import pojo.SiteUser;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -20,9 +21,17 @@ public class SiteUserDaoImpl implements SiteUserDao {
     private HibernateTemplate template;
     private SessionFactory factory;
 
+    public SessionFactory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(SessionFactory factory) {
+        this.factory = factory;
+    }
+
     public HibernateTemplate getTemplate() {
         if (template == null) {
-            template = new HibernateTemplate(factory);
+            template = new HibernateTemplate(this.factory);
         }
         return template;
     }
@@ -33,28 +42,34 @@ public class SiteUserDaoImpl implements SiteUserDao {
 
     @Override
     public SiteUser getSiteUserByInstituteId(final String instituteId) {
-        return (SiteUser) this.getTemplate().executeFind(new HibernateCallback<Object>() {
+        List siteUser = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from SiteUser as s where s.instituteId= :instituteId").setString("instituteId", instituteId);
                 return query.list();
             }
-        }).get(0);
+        });
+        if (siteUser.size() == 0)
+            return null;
+        return (SiteUser) siteUser.get(0);
     }
 
     @Override
     public SiteUser getSiteUserByEmail(final String email) {
-        return (SiteUser) this.getTemplate().executeFind(new HibernateCallback<Object>() {
+        List siteUser = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from SiteUser as s where s.email= :email").setString("email", email);
                 return query.list();
             }
-        }).get(0);
+        });
+        if (siteUser.size() == 0)
+            return null;
+        return (SiteUser) siteUser.get(0);
     }
 
     @Override
     public void saveSiteUser(SiteUser siteUser) {
-        this.getTemplate().saveOrUpdate(siteUser);
+        this.getTemplate().save(siteUser);
     }
 }

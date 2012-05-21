@@ -12,6 +12,13 @@ import service.SiteUserService;
 public class SiteUserServiceImpl implements SiteUserService {
     private SiteUserDao siteUserDao;
 
+    public SiteUserDao getSiteUserDao() {
+        return siteUserDao;
+    }
+
+    public void setSiteUserDao(SiteUserDao siteUserDao) {
+        this.siteUserDao = siteUserDao;
+    }
 
     @Override
     public SiteUser getSiteUserByEmail(String email) {
