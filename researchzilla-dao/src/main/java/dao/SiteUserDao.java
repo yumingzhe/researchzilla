@@ -2,6 +2,8 @@ package dao;
 
 import pojo.SiteUser;
 
+import java.io.Serializable;
+
 /**
  * User: yumingzhe
  * Date: 5/19/12
@@ -14,6 +16,6 @@ public interface SiteUserDao {
 
     public SiteUser getSiteUserByEmail(String email);
 
-    public void saveSiteUser(SiteUser siteUser);
+    public Serializable saveSiteUser(SiteUser siteUser);
 
 }

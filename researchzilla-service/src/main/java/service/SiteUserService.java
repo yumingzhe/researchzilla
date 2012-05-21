@@ -2,6 +2,8 @@ package service;
 
 import pojo.SiteUser;
 
+import java.io.Serializable;
+
 /**
  * User: yumingzhe
  * Date: 5/20/12
@@ -12,6 +14,6 @@ public interface SiteUserService {
 
     public SiteUser getSiteUserByInstituteId(String instituteId);
 
-    public void saveSiteUser(SiteUser siteUser);
+    public Serializable saveSiteUser(SiteUser siteUser);
 }
 

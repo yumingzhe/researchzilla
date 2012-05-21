@@ -1,6 +1,7 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.commons.mail.EmailException;
 import org.apache.struts2.ServletActionContext;
 import pojo.Register;
 import pojo.SiteUser;
@@ -9,6 +10,7 @@ import util.EmailUtil;
 import util.MD5Util;
 import util.captcha.reCaptcha.ValidatereCaptchaUtil;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -146,6 +148,7 @@ public class RegisterAction extends ActionSupport {
                     EmailUtil.sendEmail("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "YMZ7565092", "admin@researchzilla", "researchzilla 网站用户注册验证‏", msg, this.email);
                     return SUCCESS;
                 }
+                //user has registered, but has not activated his account
                 return "resource";
             } else {
                 this.addActionError("You have registered an account with this email");
@@ -158,7 +161,7 @@ public class RegisterAction extends ActionSupport {
             return INPUT;
         }
         Boolean enableEmailActivate = (Boolean) ServletActionContext.getContext().getApplication().get("enableEmailActivate");
-        if (enableEmailActivate == null)//by default, after registeration user must
+        if (enableEmailActivate == null)//by default, after registeration user must activate their account by email
             enableEmailActivate = true;
 
         SiteUser siteUser = new SiteUser();
@@ -177,8 +180,14 @@ public class RegisterAction extends ActionSupport {
             siteUser.setRegister(register);
             register.setSiteUser(siteUser);
         }
-        siteUserService.saveSiteUser(siteUser);
-        EmailUtil.sendActivateEmailString("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "YMZ7565092", "admin@researchzilla", "researchzilla 网站用户注册验证", email, ServletActionContext.getRequest().getRemoteAddr(), 24);
+        Serializable id = siteUserService.saveSiteUser(siteUser);
+        try {
+            EmailUtil.sendActivateEmailString("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "YMZ7565092", username, "admin@researchzilla",
+                    "researchzilla 网站用户注册验证", email, ServletActionContext.getRequest().getRemoteAddr(), id, secret, 24);
+        } catch (EmailException e) {
+            this.addActionError("Send activate email exception, please contact administrator to activate your account");
+            return ERROR;
+        }
         return SUCCESS;
     }
 }

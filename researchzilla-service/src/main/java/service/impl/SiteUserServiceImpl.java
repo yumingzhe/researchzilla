@@ -4,6 +4,8 @@ import dao.SiteUserDao;
 import pojo.SiteUser;
 import service.SiteUserService;
 
+import java.io.Serializable;
+
 /**
  * User: yumingzhe
  * Date: 5/20/12
@@ -31,7 +33,7 @@ public class SiteUserServiceImpl implements SiteUserService {
     }
 
     @Override
-    public void saveSiteUser(SiteUser siteUser) {
-        siteUserDao.saveSiteUser(siteUser);
+    public Serializable saveSiteUser(SiteUser siteUser) {
+        return siteUserDao.saveSiteUser(siteUser);
     }
 }

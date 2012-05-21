@@ -9,6 +9,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import pojo.SiteUser;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -69,7 +70,7 @@ public class SiteUserDaoImpl implements SiteUserDao {
     }
 
     @Override
-    public void saveSiteUser(SiteUser siteUser) {
-        this.getTemplate().save(siteUser);
+    public Serializable saveSiteUser(SiteUser siteUser) {
+        return this.getTemplate().save(siteUser);
     }
 }
