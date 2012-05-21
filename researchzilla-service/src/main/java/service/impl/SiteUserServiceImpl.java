@@ -33,6 +33,16 @@ public class SiteUserServiceImpl implements SiteUserService {
     }
 
     @Override
+    public SiteUser getSiteUserByUID(int uid) {
+        return siteUserDao.getSiteUserByUID(uid);
+    }
+
+    @Override
+    public void updateSiteUser(SiteUser siteUser) {
+        siteUserDao.updateSiteUser(siteUser);
+    }
+
+    @Override
     public Serializable saveSiteUser(SiteUser siteUser) {
         return siteUserDao.saveSiteUser(siteUser);
     }

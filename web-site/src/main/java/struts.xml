@@ -13,5 +13,10 @@
             <result name="error">/index.jsp</result>
         </action>
 
+        <action name="accountconfirmAction" class="accountConfirm">
+            <result name="input">/error.jsp</result>
+            <result name="success">/success.jsp</result>
+        </action>
+
     </package>
 </struts>

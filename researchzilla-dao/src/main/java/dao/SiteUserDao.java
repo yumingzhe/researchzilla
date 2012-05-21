@@ -18,4 +18,8 @@ public interface SiteUserDao {
 
     public Serializable saveSiteUser(SiteUser siteUser);
 
+    public void updateSiteUser(SiteUser siteUser);
+
+    public SiteUser getSiteUserByUID(int uid);
+
 }
