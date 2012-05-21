@@ -6,6 +6,11 @@
 
 <struts>
     <package name="pkg" extends="struts-default">
+        <action name="registerAction" class="registerAction">
+            <result name="success">/welcome.jsp</result>
+            <result name="input">/index.jsp</result>
+            <result name="resource">/resource.jsp</result>
+        </action>
 
     </package>
 </struts>
