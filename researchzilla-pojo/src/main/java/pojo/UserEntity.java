@@ -20,8 +20,18 @@ public class UserEntity implements Serializable {
     private long mobilePhone;
     private String description;
     private long lastActionId;
+    private long prev_lastActionId;
+
     private int groupId;
     private SiteUser siteUser;
+
+    public long getPrev_lastActionId() {
+        return prev_lastActionId;
+    }
+
+    public void setPrev_lastActionId(long prev_lastActionId) {
+        this.prev_lastActionId = prev_lastActionId;
+    }
 
     public SiteUser getSiteUser() {
         return siteUser;
