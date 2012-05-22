@@ -73,4 +73,23 @@ public class SiteUserDaoImpl implements SiteUserDao {
     public Serializable saveSiteUser(SiteUser siteUser) {
         return this.getTemplate().save(siteUser);
     }
+
+    @Override
+    public void updateSiteUser(SiteUser siteUser) {
+        this.getTemplate().saveOrUpdate(siteUser);
+    }
+
+    @Override
+    public SiteUser getSiteUserByUID(final int uid) {
+        List siteUser = this.getTemplate().executeFind(new HibernateCallback() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from SiteUser as s where s.uid= :uid").setInteger("uid", uid);
+                return query.list();
+            }
+        });
+        if (siteUser.size() == 0)
+            return null;
+        return (SiteUser) siteUser.get(0);
+    }
 }

@@ -91,4 +91,9 @@ public class SiteUser {
     public void setRegister(Register register) {
         this.register = register;
     }
+
+    @Override
+    public String toString() {
+        return this.username + " " + this.email + " " + this.password + " " + this.register.getSiteUser().getUid() + " " + this.register.getRegisterTime();
+    }
 }

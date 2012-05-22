@@ -21,5 +21,9 @@
             <result name="input">/login.jsp</result>
         </action>
 
+        <action name="accountconfirmAction" class="accountConfirmAction">
+            <result name="input">/error.jsp</result>
+            <result name="success">/success.jsp</result>
+        </action>
     </package>
 </struts>

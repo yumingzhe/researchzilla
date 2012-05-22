@@ -4,18 +4,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="user" value="root"/>
-        <property name="password" value="123456"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost/test"/>
+        <property name="password" value=""/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost/researchzilla"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="initialPoolSize" value="2"/>
         <property name="minPoolSize" value="2"/>
-        <property name="maxPoolSize" value="2"/>
+        <property name="maxPoolSize" value="5"/>
     </bean>
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
        <!--<property name="mappingResources">
             <list>
-                <value></value>
+                <value>pojo/SiteUser.hbm.xml</value>
+                <value>pojo/Register.hbm.xml</value>
+                <value>pojo/UserEntity.hbm.xml</value>
             </list>
         </property>  -->
         <property name="hibernateProperties">
@@ -25,4 +27,41 @@
             </props>
         </property>
     </bean>
+
+    <!--SiteUser Bean group-->
+    <bean id="siteUserDao" class="dao.impl.SiteUserDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="siteUserService" class="service.impl.SiteUserServiceImpl">
+        <property name="siteUserDao" ref="siteUserDao"/>
+    </bean>
+    <bean id="registerAction" class="action.RegisterAction">
+        <property name="siteUserService" ref="siteUserService"/>
+    </bean>
+
+
+    <!--Register Bean group-->
+    <bean id="registerDao" class="dao.impl.RegisterDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="registerService" class="service.impl.RegisterServiceImpl">
+        <property name="registerDao" ref="registerDao"/>
+    </bean>
+
+    <bean id="accountConfirmAction" class="action.AccountConfirm">
+        <property name="siteUserService" ref="siteUserService"/>
+        <property name="registerService" ref="registerService"/>
+    </bean>
+
+
+    <bean id="letterEntityDao" class="dao.impl.LetterEntityDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="letterEntityService" class="service.impl.LetterEntityServiceImpl">
+        <property name="letterEntityDao" ref="letterEntityDao"/>
+    </bean>
+    <bean id="sendSiteLetterAction" class="action.SendSiteLetterAction">
+        <property name="letterEntityService" ref="letterEntityService"/>
+    </bean>
+
 </beans>

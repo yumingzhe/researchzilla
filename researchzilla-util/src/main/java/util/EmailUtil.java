@@ -20,7 +20,7 @@ public class EmailUtil {
 
         emailAgent.setHostName(smtp);
         emailAgent.setSmtpPort(port);
-        emailAgent.setAuthentication("yumingzhe.pt@gmail.com", "YMZ7565092");
+        emailAgent.setAuthentication("yumingzhe.pt@gmail.com", "123456");
         emailAgent.setSSL(true);
         try {
             emailAgent.setFrom(from);

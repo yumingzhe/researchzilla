@@ -7,48 +7,45 @@ import java.sql.Timestamp;
  * Date: 5/20/12
  * Time: 11:06 AM
  */
+
+/**
+ * Class SiteLetter is used for user to query their letter
+ */
 public class SiteLetter {
+    private int id;
+    private int receiverId;
+    private boolean read;
+    private LetterEntity letterEntity;
 
+    public LetterEntity getLetterEntity() {
+        return letterEntity;
+    }
 
-    public class Message {
-        private Integer messageId;
-        private Integer senderId;
-        private Integer receiverId;
-        private String title;
-        private String content;
-        private Timestamp sendTime;
-        private Boolean read;
+    public void setLetterEntity(LetterEntity letterEntity) {
+        this.letterEntity = letterEntity;
+    }
 
-        public Integer getMessageId() {
-            return messageId;
-        }
+    public int getId() {
+        return id;
+    }
 
-        public void setMessageId(Integer messageId) {
-            this.messageId = messageId;
-        }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-        public Integer getSenderId() {
-            return senderId;
-        }
+    public int getReceiverId() {
+        return receiverId;
+    }
 
-        public void setSenderId(Integer senderId) {
-            this.senderId = senderId;
-        }
+    public void setReceiverId(int receiverId) {
+        this.receiverId = receiverId;
+    }
 
-        public Integer getReceiverId() {
-            return receiverId;
-        }
+    public boolean isRead() {
+        return read;
+    }
 
-        public void setReceiverId(Integer receiverId) {
-            this.receiverId = receiverId;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
+    public void setRead(boolean read) {
+        this.read = read;
     }
 }

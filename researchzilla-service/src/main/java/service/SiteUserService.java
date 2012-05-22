@@ -14,6 +14,10 @@ public interface SiteUserService {
 
     public SiteUser getSiteUserByInstituteId(String instituteId);
 
+    public SiteUser getSiteUserByUID(int uid);
+
+    public void updateSiteUser(SiteUser siteUser);
+
     public Serializable saveSiteUser(SiteUser siteUser);
 }
 
