@@ -19,7 +19,7 @@
     <style type="text/css">
         <!--
         .STYLE2 {
-            font-size: 24px;
+            font-size: 36px;
             font-weight: bold;
         }
         -->
@@ -28,10 +28,10 @@
 </head>
 <body>
 <div id="container_1">
+    <div id="header_2">
+        <div align="center" class="STYLE2">登录窗口</div>
+    </div>
     <div id="mainContent_2">
-        <p align="center" class="STYLE2">登录窗口</p>
-        <p align="center" class="STYLE2">
-        </p>
         <div align="center">
             <form action="LoginAction" method="post" name="loginform" class="STYLE1" id="loginform">
                 <table width="304" height="92" border="2" align="center">
