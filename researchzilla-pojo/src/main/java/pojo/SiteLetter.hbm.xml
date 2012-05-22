@@ -1,0 +1,13 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.SiteLetter" table="researchzilla_siteletter">
+        <id name="id" type="int" column="id">
+            <generator class="increment"/>
+        </id>
+        <property name="read" type="java.lang.Boolean" column="hasread"/>
+        <property name="receiverId" type="int" column="receiverId"/>
+        <many-to-one name="letterEntity" class="pojo.LetterEntity" column="letterId"/>
+    </class>
+</hibernate-mapping>

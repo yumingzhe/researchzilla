@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.LetterEntity" table="researchzilla_letterentity">
+        <id name="id" column="id" type="int">
+            <generator class="increment"/>
+        </id>
+        <property name="title" column="title" type="java.lang.String" length="20" not-null="true"/>
+        <property name="content" column="content" type="java.lang.String" length="100" not-null="true"/>
+        <property name="sendTime" column="sendTime" type="timestamp" not-null="true"/>
+        <property name="senderId" column="senderId" type="int" not-null="true"/>
+        <set name="siteLetters" cascade="all" inverse="true" table="researchzilla_siteletter">
+            <key column="letterId" not-null="true"></key>
+            <one-to-many class="pojo.SiteLetter"/>
+        </set>
+    </class>
+</hibernate-mapping>
