@@ -8,6 +8,6 @@
         </id>
         <property name="registerTime" column="registerTime" type="timestamp" not-null="true"/>
         <property name="registerSequence" column="registerSequence" type="java.lang.String"/>
-        <many-to-one name="siteUser" class="pojo.SiteUser" column="uid" unique="true"/>
+        <many-to-one name="siteUser" class="pojo.SiteUser" column="uid" unique="true" lazy="false"/>
     </class>
 </hibernate-mapping>

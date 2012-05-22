@@ -74,7 +74,7 @@ public class RegisterDaoImpl implements RegisterDao {
         List<Register> registers = (ArrayList<Register>) this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from Register as r where r.uid= :uid").setInteger("uid", uid);
+                Query query = session.createQuery("from Register as r where r.siteUser.uid= :uid").setInteger("uid", uid);
                 return (ArrayList<Register>) query.list();
             }
         });

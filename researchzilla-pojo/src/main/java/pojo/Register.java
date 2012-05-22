@@ -48,4 +48,9 @@ public class Register {
     public void setRegisterSequence(String registerSequence) {
         this.registerSequence = registerSequence;
     }
+
+    @Override
+    public String toString() {
+        return this.getSiteUser().getUid().toString();
+    }
 }
