@@ -1,0 +1,80 @@
+
+body { font-family:Verdana; font-size:14px; margin:0;}
+
+#container {margin:0 auto; width:85%;}
+#header { height:200px; background:#9c6; margin-bottom:5px;}
+#mainContent { height:570px; margin-bottom:5px;}
+#sidebar { margin:0px 0px 0px 0px;float:left; width:280px;height:570px;background:#cf9;}
+#sidebar1{ float:left; width:280px; height:220px; background:#cf9;}
+#sidebar2{ float:left; width:280px; height:130px; background:#cf9;}
+#sidebar3{ margin:0px 0px 0px 0px;float:right; width:315px; height:570px; background:#cf9;}
+#content { margin:0 283px !important; margin:0 283px;height:570px; background:#ffa;}
+#content1 { width:335px;height:285px; background:#ffa;}
+#content2{ width:320px;height:285px; background:#cf9;}
+#footer { height:60px; background:#9c6;}
+
+
+#container_1 {margin:0 auto; width:900px;}
+#header_1 { height:200px; background:#6cf; margin-bottom:5px;}
+#mainContent_1 { height:500px; margin-bottom:5px;}
+#sidebar_1 { float:left; width:245px; height:500px; background:#9ff;}
+#content_1 { float:right; width:645px; height:500px; background:#cff;}
+#bar{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
+#footer_1 { height:60px; background:#6cf;}
+
+#mainContent_2 { height:500px; background:#cff; margin-bottom:5px;}
+
+#header_2 { height:80px; background:#6cf; margin-bottom:5px;}
+#menu_2 { border: 1px solid #CCC; height:26px; background: #eee;}
+#menu_2 ul { list-style: none; margin: 0px; padding: 0px; }
+#menu_2 ul li { float:left; padding: 0px 8px; height: 26px; line-height: 26px; }
+a { color: #000; text-decoration: none; }
+a:hover { color: #F00; }
+#nav {
+  line-height: 24px;  list-style-type: none; background:#666;
+}
+#nav a {
+ display: block; width: 100px; text-align:center;
+}
+#nav a:link  {
+ color:#666; text-decoration:none;
+}
+#nav a:visited  {
+ color:#666;text-decoration:none;
+}
+#nav a:hover  {
+ color:#FFF;text-decoration:none;font-weight:bold;
+}
+#nav li {
+ float: left; width: 100px; background:#CCC;
+}
+#nav li a:hover{
+ background:#999;
+}
+#nav li ul {
+ line-height: 27px;  list-style-type: none;text-align:left;
+ left: -999em; width: 120px; position: absolute; 
+}
+#nav li ul li{
+ float: left; width: 120px;
+ background: #F6F6F6; 
+}
+#nav li ul a{
+ display: block; width: 120px;w\idth: 96px;text-align:left;padding-left:24px;
+}
+#nav li ul a:link  {
+ color:#666; text-decoration:none;
+}
+#nav li ul a:visited  {
+ color:#666;text-decoration:none;
+}
+#nav li ul a:hover  {
+ color:#F3F3F3;text-decoration:none;font-weight:normal;
+ background:#C00;
+}
+#nav li:hover ul {
+ left: auto;
+}
+#nav li.sfhover ul {
+ left: auto;
+}

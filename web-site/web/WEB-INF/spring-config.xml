@@ -13,11 +13,11 @@
     </bean>
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mappingResources">
+       <!--<property name="mappingResources">
             <list>
                 <value></value>
             </list>
-        </property>
+        </property>  -->
         <property name="hibernateProperties">
             <props>
                 <prop key="show_sql">true</prop>
