@@ -6,11 +6,19 @@
 
 <struts>
     <package name="pkg" extends="struts-default">
-        <action name="registerAction" class="registerAction">
-            <result name="success">/welcome.jsp</result>
-            <result name="input">/index.jsp</result>
-            <result name="resource">/resource.jsp</result>
-            <result name="error">/index.jsp</result>
+        <action name="RegisterAction" class="action.RegisterAction">
+            <result name="success">/homepageone.jsp</result>
+            <result name="input">/register.jsp</result>
+          <!--  <result name="resource">/resource.jsp</result>
+            <result name="error">/login.jsp</result> -->
+        </action>
+        <action name="LoginAction" class="action.LoginAction">
+            <result name="success">/homepageone.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+        <action name="ForgetPasswordAction" class="action.ForgetPasswordAction">
+            <result name="success">/change.jsp</result>
+            <result name="input">/login.jsp</result>
         </action>
 
         <action name="accountconfirmAction" class="accountConfirmAction">
