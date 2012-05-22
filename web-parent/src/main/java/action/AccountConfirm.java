@@ -19,7 +19,7 @@ import java.util.Date;
  */
 
 public class AccountConfirm extends ActionSupport {
-    private int uid;
+    private String uid;
     private String secret;
     private SiteUserService siteUserService;
     private RegisterService registerService;
@@ -40,11 +40,11 @@ public class AccountConfirm extends ActionSupport {
         this.siteUserService = siteUserService;
     }
 
-    public int getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
@@ -58,13 +58,14 @@ public class AccountConfirm extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        SiteUser siteUser = siteUserService.getSiteUserByUID(uid);
+        System.out.println("uid:" + uid + "  secret:" + " " + secret);
+        SiteUser siteUser = siteUserService.getSiteUserByUID(Integer.parseInt(uid));
         if (siteUser == null) {
             this.addActionError("We can not activate your account because of the wrong activate link");
             return INPUT;
         }
         if (siteUser.getActive()) {
-            this.addActionError("The user whose uid is " + uid + " has been activated");
+            this.addActionError("The user whose uid is " + uid + " has been activated before");
             return INPUT;
         }
         Register register = registerService.getRegisterBySequence(secret);
@@ -72,8 +73,8 @@ public class AccountConfirm extends ActionSupport {
             this.addActionError("The activate link is invalid");
             return INPUT;
         }
-        if (!register.getUid().equals(this.uid)) {
-            this.addActionError("The activate link is unmatch with the user, we can not activate you");
+        if (!register.getSiteUser().getUid().toString().equals(uid)) {
+            this.addActionError("The activate link is unmatched with the user, we can not activate you");
             return INPUT;
         }
         String registerEmailTTL = (String) ServletActionContext.getServletContext().getAttribute("registerEmailTTL");
@@ -88,7 +89,7 @@ public class AccountConfirm extends ActionSupport {
         }
         siteUser.setActive(true);
         siteUserService.updateSiteUser(siteUser);
-        registerService.deleteAllRegistersByUID(siteUser.getUid());
+        //registerService.deleteAllRegistersByUID(siteUser.getUid());
         return SUCCESS;
     }
 }
