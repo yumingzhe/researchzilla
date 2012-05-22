@@ -58,7 +58,6 @@ public class AccountConfirm extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        System.out.println("uid:" + uid + "  secret:" + " " + secret);
         SiteUser siteUser = siteUserService.getSiteUserByUID(Integer.parseInt(uid));
         if (siteUser == null) {
             this.addActionError("We can not activate your account because of the wrong activate link");
