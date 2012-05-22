@@ -1,14 +1,12 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesHandlerImpl;
 import org.apache.struts2.ServletActionContext;
 import pojo.Register;
 import pojo.SiteUser;
 import service.RegisterService;
 import service.SiteUserService;
 
-import javax.servlet.Servlet;
 import java.sql.Timestamp;
 import java.util.Date;
 
