@@ -23,6 +23,9 @@ public class FeedbackDaoImpl implements FeedbackDao {
     private SessionFactory factory;
 
     public HibernateTemplate getTemplate() {
+        if (template == null) {
+            template = new HibernateTemplate(this.factory);
+        }
         return template;
     }
 
