@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.Activity" table="researchzilla_activity">
+        <id name="id" column="id" type="int">
+            <generator class="increment"/>
+        </id>
+        <property name="activityType" column="activityType" type="java.lang.String" length="10"/>
+        <property name="activityOccurTime" column="activityTime" type="timestamp"/>
+        <property name="objectType" column="objectType" type="java.lang.String"/>
+        <property name="subjectId" column="subjectId" type="int"/>
+        <many-to-one name="siteUser" column="subjectId" class="pojo.SiteUser"/>
+    </class>
+</hibernate-mapping>
