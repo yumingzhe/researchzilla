@@ -1,12 +1,10 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.commons.mail.Email;
 import pojo.Register;
 import pojo.SiteUser;
 import service.RegisterService;
 import service.SiteUserService;
-import sun.security.provider.MD5;
 import util.EmailUtil;
 import util.MD5Util;
 
@@ -18,8 +16,25 @@ import util.MD5Util;
 public class ResetPasswordAction extends ActionSupport {
     private String id;
     private String secret;
+    private String instituteId;
     private RegisterService registerService;
     private SiteUserService siteUserService;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getInstituteId() {
+        return instituteId;
+    }
+
+    public void setInstituteId(String instituteId) {
+        this.instituteId = instituteId;
+    }
 
     public SiteUserService getSiteUserService() {
         return siteUserService;
@@ -66,12 +81,13 @@ public class ResetPasswordAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         Register register = registerService.getRegisterBySequence(this.secret);
-        if (register.getSiteUser().getUid() == Integer.parseInt(this.id)) {
-            SiteUser siteUser = siteUserService.getSiteUserByUID(Integer.parseInt(this.id));
+        if (register.getId() == Integer.parseInt(this.id)) {
+            SiteUser siteUser = siteUserService.getSiteUserByInstituteId(this.instituteId);
             String newpassword = MD5Util.generateArbitraryString(8);
             siteUser.setPassword(MD5Util.hashString(newpassword + siteUser.getSalt()));
-            siteUserService.saveSiteUser(siteUser);
-            EmailUtil.sendNewPasswordEmail("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "YMZ7565092", siteUser.getUsername(), newpassword, "researchzilla", "新密码", siteUser.getEmail());
+            siteUserService.updateSiteUser(siteUser);
+            EmailUtil.sendNewPasswordEmail("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "YMZ7565092", siteUser.getUsername(), newpassword, "admin@researchzilla", "新密码", siteUser.getEmail());
+            this.addActionMessage("Your new account information has been sent to your email!");
             return SUCCESS;
         }
         return ERROR;

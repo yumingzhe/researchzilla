@@ -4,33 +4,29 @@
   Time: 上午8:47
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title></title>
-    <style type="text/css">
-<!--
-.STYLE1 {
-	font-size: 24px;
-	font-weight: bold;
-}
--->
-    </style>
+    <title>Researchzilla ForgetPassword</title>
 </head>
 <body>
-<form action="ForgetPasswordAction"  method="post">
-    <table width="317" height="259" border="0" align="center" bordercolor="#0099FF">
+<s:actionerror/>
+<s:actionmessage/>
+<s:fielderror/>
+<form action="forgetpasswordAction.action" method="post">
+    <table width="317" height="259" border="0" bordercolor="#0099FF">
         <tr>
-            <td height="52" nowrap="nowrap"><span class="STYLE1">要查找密码请输入用户名:</span></td>
+            <td height="52" nowrap="nowrap">请输入邮件地址:</td>
         </tr>
         <tr>
-            <td height="52" nowrap="nowrap"><span class="STYLE1">用户名</span>
-          <input name="username" type="text" class="STYLE1" id="username" />          </td>
+            <td height="52" nowrap="nowrap">email
+                <input name="email" type="text"/>
+            </td>
         </tr>
         <tr>
             <td height="45">
-                <div align="center">
-                  <input name="submit" type="submit" class="STYLE1"  id="submit" value="提交" />
-                </div></td>
+                <input name="submit" type="submit" id="submit" value="提交"/>
+            </td>
         </tr>
   </table>
 </form>

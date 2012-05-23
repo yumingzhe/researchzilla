@@ -1,6 +1,5 @@
 package util;
 
-import com.sun.xml.internal.ws.addressing.model.ActionNotSupportedException;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
@@ -42,7 +41,7 @@ public class EmailUtil {
                 "如果你没有发过该请求，请忽视本邮件。输入你邮箱地址者的IP地址为" + remoteAddress + "。请勿回复本邮件。\n" +
                 "\n" +
                 "如果你的确发过该请求，请点击以下链接来通过验证： \n" +
-                " http://localhost:8080/confirm?uid=" + id.toString() + "&secret=" + secret + " \n" +
+                " http://localhost:8080/accountconfirmAction?uid=" + id.toString() + "&secret=" + secret + " \n" +
                 "\n" +
                 "在通过验证后，你就可以使用新账号了。\n" +
                 "\n" +
@@ -64,11 +63,11 @@ public class EmailUtil {
     }
 
     public static void sendPasswordRestEmail(String smtp, int port, String username, String password, String registerName,
-                                             String sender, String subject, String receiver, Serializable id, String secret) {
+                                             String sender, String subject, String receiver, Serializable id, String instituteId, String secret) {
 
         String msg = "你好，‘" + registerName + "‘, 请点击下面的链接重新设置你在researchzilla的密码，如果无法点击，请完整的复制下面的网址到浏览器地址栏打开该网址：\n" +
                 "\n" +
-                "        http://localhost:8080/forgetpasswordAction?id=" + id + "&secret=" + secret + "\n" +
+                "        http://localhost:8080/resetpasswordAction?id=" + id + "&instituteId=" + instituteId + "&secret=" + secret + "\n" +
                 "\n" +
                 "        如果你没有要求过重设密码，请直接忽略这个邮件即可。\n" +
                 "\n";
@@ -93,7 +92,8 @@ public class EmailUtil {
 
     public static void sendNewPasswordEmail(String smtp, int port, String username, String password, String registerName, String newPassword,
                                             String sender, String subject, String receiver) {
-        String msg = " 用户名:" + registerName + "\n 密码: " + newPassword;
+        String msg = " 用户名:" + registerName + "\n 密码: " + newPassword +
+                "\n" + "登录后请尽快更改密码！";
         Email emailAgent = new SimpleEmail();
 
         emailAgent.setHostName(smtp);

@@ -63,7 +63,7 @@
         <property name="registerService" ref="registerService"/>
     </bean>
 
-
+    <!--LetterEntity Bean group-->
     <bean id="letterEntityDao" class="dao.impl.LetterEntityDaoImpl">
         <property name="factory" ref="sessionFactory"/>
     </bean>
@@ -124,4 +124,13 @@
     </bean>
 
 
+    <bean id="forgetpasswordAction" class="action.ForgetPasswordAction">
+        <property name="registerService" ref="registerService"/>
+        <property name="siteUserService" ref="siteUserService"/>
+    </bean>
+
+    <bean id="resetpasswordAction" class="action.ResetPasswordAction">
+        <property name="registerService" ref="registerService"/>
+        <property name="siteUserService" ref="siteUserService"/>
+    </bean>
 </beans>
