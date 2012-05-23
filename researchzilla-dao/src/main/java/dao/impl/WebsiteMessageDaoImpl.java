@@ -22,6 +22,9 @@ public class WebsiteMessageDaoImpl implements WebsiteMessageDao {
     private SessionFactory factory;
 
     public HibernateTemplate getTemplate() {
+        if (template == null) {
+            template = new HibernateTemplate(this.factory);
+        }
         return template;
     }
 

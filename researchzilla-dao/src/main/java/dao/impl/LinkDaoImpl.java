@@ -23,6 +23,9 @@ public class LinkDaoImpl implements LinkDao {
     private SessionFactory factory;
 
     public HibernateTemplate getTemplate() {
+        if (template == null) {
+            template = new HibernateTemplate(this.factory);
+        }
         return template;
     }
 
