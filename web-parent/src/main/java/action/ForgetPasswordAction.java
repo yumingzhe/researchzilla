@@ -69,10 +69,9 @@ public class ForgetPasswordAction extends ActionSupport {
         register.setRegisterTime(new Timestamp(new Date().getTime()));
         String secret = MD5Util.generateArbitraryString(32);
         register.setRegisterSequence(secret);
-        register.setUid(siteUser.getUid());
         Serializable id = registerService.saveRegister(register);
 
-        EmailUtil.sendPasswordRestEmail("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "YMZ7565092", siteUser.getUsername(), "researchzilla", "重置密码", this.email, id, secret);
+        EmailUtil.sendPasswordRestEmail("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "YMZ7565092", siteUser.getUsername(), "admin@researchzilla", "重置密码", this.email, id, siteUser.getInstituteId().toString(), secret);
         return SUCCESS;
     }
 }

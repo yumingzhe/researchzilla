@@ -14,6 +14,6 @@
         <property name="email" column="email" type="java.lang.String" length="50"/>
         <property name="instituteId" column="instituteId" type="java.lang.String"/>
         <one-to-one name="userEntity" class="pojo.UserEntity" cascade="all"/>
-        <one-to-one name="register" class="pojo.Register" lazy="false"/>
+        <one-to-one name="register" class="pojo.Register" lazy="false" cascade="all"/>
     </class>
 </hibernate-mapping>
