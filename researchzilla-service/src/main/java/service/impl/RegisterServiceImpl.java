@@ -4,6 +4,7 @@ import dao.RegisterDao;
 import pojo.Register;
 import service.RegisterService;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -35,5 +36,10 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public void deleteAllRegistersByUID(int uid) {
         this.registerDao.deleteAllRegisterByUID(uid);
+    }
+
+    @Override
+    public Serializable saveRegister(Register register) {
+        return registerDao.saveRegister(register);
     }
 }

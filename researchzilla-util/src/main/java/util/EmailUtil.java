@@ -61,6 +61,54 @@ public class EmailUtil {
         emailAgent.setMsg(msg);
         emailAgent.addTo(receiver);
         emailAgent.send();
+    }
 
+    public static void sendPasswordRestEmail(String smtp, int port, String username, String password, String registerName,
+                                             String sender, String subject, String receiver, Serializable id, String secret) {
+
+        String msg = "你好，‘" + registerName + "‘, 请点击下面的链接重新设置你在researchzilla的密码，如果无法点击，请完整的复制下面的网址到浏览器地址栏打开该网址：\n" +
+                "\n" +
+                "        http://localhost:8080/forgetpasswordAction?id=" + id + "&secret=" + secret + "\n" +
+                "\n" +
+                "        如果你没有要求过重设密码，请直接忽略这个邮件即可。\n" +
+                "\n";
+
+        Email emailAgent = new SimpleEmail();
+
+        emailAgent.setHostName(smtp);
+        emailAgent.setSmtpPort(port);
+        emailAgent.setAuthentication(username, password);
+        emailAgent.setSSL(true);
+        try {
+            emailAgent.setFrom(sender);
+            emailAgent.setSubject(subject);
+            emailAgent.setCharset("utf8");
+            emailAgent.setMsg(msg);
+            emailAgent.addTo(receiver);
+            emailAgent.send();
+        } catch (EmailException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void sendNewPasswordEmail(String smtp, int port, String username, String password, String registerName, String newPassword,
+                                            String sender, String subject, String receiver) {
+        String msg = " 用户名:" + registerName + "\n 密码: " + newPassword;
+        Email emailAgent = new SimpleEmail();
+
+        emailAgent.setHostName(smtp);
+        emailAgent.setSmtpPort(port);
+        emailAgent.setAuthentication(username, password);
+        emailAgent.setSSL(true);
+        try {
+            emailAgent.setFrom(sender);
+            emailAgent.setSubject(subject);
+            emailAgent.setCharset("utf8");
+            emailAgent.setMsg(msg);
+            emailAgent.addTo(receiver);
+            emailAgent.send();
+        } catch (EmailException e) {
+            e.printStackTrace();
+        }
     }
 }
