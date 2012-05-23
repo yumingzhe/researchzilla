@@ -1,5 +1,7 @@
 package pojo;
 
+import java.util.Set;
+
 public class SiteUser {
     private Integer uid;
     private String username;
@@ -11,6 +13,15 @@ public class SiteUser {
     private String instituteId;
     private UserEntity userEntity;
     private Register register;
+    private Set<Activity> activities;
+
+    public Set<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Set<Activity> activities) {
+        this.activities = activities;
+    }
 
     public Integer getUid() {
         return uid;
