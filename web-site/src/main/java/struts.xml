@@ -14,7 +14,7 @@
             <!--  <result name="resource">/resource.jsp</result>
           <result name="error">/login.jsp</result> -->
         </action>
-        <action name="LoginAction" class="action.LoginAction">
+        <action name="LoginAction" class="loginAction">
             <result name="success">/homepageone.jsp</result>
             <result name="input">/login.jsp</result>
         </action>

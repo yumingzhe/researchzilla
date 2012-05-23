@@ -4,6 +4,7 @@
   Time: 下午3:12
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
@@ -25,6 +26,9 @@
     </style>
 </head>
 <body>
+<s:actionerror/>
+<s:fielderror/>
+<s:actionmessage/>
 <div id="container_1">
     <div id="header_2">
         <div align="center" class="STYLE1">用户注册界面</div>

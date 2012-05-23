@@ -18,6 +18,12 @@
                 <value>pojo/SiteUser.hbm.xml</value>
                 <value>pojo/Register.hbm.xml</value>
                 <value>pojo/UserEntity.hbm.xml</value>
+                <value>pojo/Message.hbm.xml</value>
+                <value>pojo/PictureNews.hbm.xml</value>
+                <value>pojo/Subject.hbm.xml</value>
+                <value>pojo/WebsiteMessage.hbm.xml</value>
+                <value>pojo/Link.hbm.xml</value>
+                <value>pojo/Feedback.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -36,6 +42,10 @@
         <property name="siteUserDao" ref="siteUserDao"/>
     </bean>
     <bean id="registerAction" class="action.RegisterAction">
+        <property name="siteUserService" ref="siteUserService"/>
+    </bean>
+
+    <bean id="loginAction" class="action.LoginAction">
         <property name="siteUserService" ref="siteUserService"/>
     </bean>
 
@@ -63,5 +73,55 @@
     <bean id="sendSiteLetterAction" class="action.SendSiteLetterAction">
         <property name="letterEntityService" ref="letterEntityService"/>
     </bean>
+
+    <!--Message Bean group-->
+    <bean id="MessageDao" class="dao.impl.MessageDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="MessageService" class="service.impl.MessageServiceImpl">
+        <property name="MessageDao" ref="MessageDao"/>
+    </bean>
+
+    <!--PictureNews Bean group-->
+    <bean id="PictureNewsDao" class="dao.impl.PictureNewsDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="PictureNewsService" class="service.impl.PictureNewsServiceImpl">
+        <property name="PictureNewsDao" ref="PictureNewsDao"/>
+    </bean>
+
+    <!--Subject Bean group-->
+    <bean id="SubjectDao" class="dao.impl.SubjectDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="SubjectService" class="service.impl.SubjectServiceImpl">
+        <property name="SubjectDao" ref="SubjectDao"/>
+    </bean>
+
+    <!--Link Bean group-->
+    <bean id="LinkDao" class="dao.impl.LinkDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="LinkService" class="service.impl.LinkServiceImpl">
+        <property name="LinkDao" ref="LinkDao"/>
+    </bean>
+
+    <!--Feedback Bean group-->
+    <bean id="FeedbackDao" class="dao.impl.FeedbackDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="FeedbackService" class="service.impl.FeedbackServiceImpl">
+        <property name="FeedbackDao" ref="FeedbackDao"/>
+    </bean>
+
+
+    <!--WebsiteMessage Bean group-->
+    <bean id="WebsiteMessageDao" class="dao.impl.WebsiteMessageDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="WebsiteMessageService" class="service.impl.WebsiteMessageServiceImpl">
+        <property name="WebsiteMessageDao" ref="WebsiteMessageDao"/>
+    </bean>
+
 
 </beans>

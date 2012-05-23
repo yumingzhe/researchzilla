@@ -5,7 +5,7 @@ package pojo;
  * Date: 12-5-19
  * Time: 上午10:31
  */
-public class Websitemessage {
+public class WebsiteMessage {
     private int id;
     private String websitename;
     private String background;
