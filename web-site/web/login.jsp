@@ -19,7 +19,7 @@
     <style type="text/css">
         <!--
         .STYLE2 {
-            font-size: 24px;
+            font-size: 36px;
             font-weight: bold;
         }
         -->
@@ -27,11 +27,12 @@
     <link href="layout.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<s:actionerror/>
 <div id="container_1">
+    <div id="header_2">
+        <div align="center" class="STYLE2">登录窗口</div>
+    </div>
     <div id="mainContent_2">
-        <p align="center" class="STYLE2">登录窗口</p>
-        <p align="center" class="STYLE2">
-        </p>
         <div align="center">
             <form action="LoginAction" method="post" name="loginform" class="STYLE1" id="loginform">
                 <table width="304" height="92" border="2" align="center">
@@ -51,9 +52,11 @@
                 <table width="303" height="95" border="0">
                     <tr>
                         <td width="147" height="39"><label>
-                            <input name="submit" type="submit" class="STYLE1" id="submit" value="登录" />
+                            <div align="center">
+                              <input name="submit" type="submit" class="STYLE1" id="submit" value="登录" />
+                                </div>
                         </label></td>
-                        <td width="146"><label>
+                      <td width="146"><label>
                             <input name="reset" type="reset" class="STYLE1" id="reset" value="重置" />
                         </label>
                         </td>

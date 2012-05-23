@@ -34,6 +34,7 @@ public class ForgetPasswordAction extends ActionSupport {
         this.siteUserService = siteUserService;
     }
 
+
     public String getEmail() {
         return email;
     }

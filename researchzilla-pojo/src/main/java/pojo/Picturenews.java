@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Date: 12-5-19
  * Time: 上午9:44
  */
-public class Picturenews {
+public class PictureNews {
     private int id;
     private String type;
     private String author;

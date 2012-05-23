@@ -28,7 +28,7 @@
                 <input name="submit" type="submit" id="submit" value="提交"/>
             </td>
         </tr>
-    </table>
+  </table>
 </form>
 </body>
 </html>
