@@ -9,6 +9,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import pojo.Register;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,5 +82,10 @@ public class RegisterDaoImpl implements RegisterDao {
         for (Register register : registers) {
             this.getTemplate().delete(register);
         }
+    }
+
+    @Override
+    public Serializable saveRegister(Register register) {
+        return this.getTemplate().save(register);
     }
 }

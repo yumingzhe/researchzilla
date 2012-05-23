@@ -2,6 +2,7 @@ package service;
 
 import pojo.Register;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,4 +16,6 @@ public interface RegisterService {
     public List<Register> getAllRegister();
 
     public void deleteAllRegistersByUID(int uid);
+
+    public Serializable saveRegister(Register register);
 }

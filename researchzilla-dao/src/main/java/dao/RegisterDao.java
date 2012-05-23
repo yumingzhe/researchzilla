@@ -2,6 +2,7 @@ package dao;
 
 import pojo.Register;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,4 +16,6 @@ public interface RegisterDao {
     public Register getRegisterBySequence(String sequence);
 
     public void deleteAllRegisterByUID(int uid);
+
+    public Serializable saveRegister(Register register);
 }
