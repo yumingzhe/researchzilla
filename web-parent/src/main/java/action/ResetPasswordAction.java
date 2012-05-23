@@ -16,7 +16,7 @@ import util.MD5Util;
  * Time: 10:50 AM
  */
 public class ResetPasswordAction extends ActionSupport {
-    private String uid;
+    private String id;
     private String secret;
     private RegisterService registerService;
     private SiteUserService siteUserService;
@@ -38,11 +38,11 @@ public class ResetPasswordAction extends ActionSupport {
     }
 
     public String getUid() {
-        return uid;
+        return id;
     }
 
     public void setUid(String uid) {
-        this.uid = uid;
+        this.id = uid;
     }
 
     public String getSecret() {
@@ -55,7 +55,7 @@ public class ResetPasswordAction extends ActionSupport {
 
     @Override
     public void validate() {
-        if (this.uid == null) {
+        if (this.id == null) {
             this.addActionError("Your email validation link is invalid");
         }
         if (this.secret == null) {
@@ -66,12 +66,12 @@ public class ResetPasswordAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         Register register = registerService.getRegisterBySequence(this.secret);
-        if (register.getSiteUser().getUid() == Integer.parseInt(this.uid)) {
-            SiteUser siteUser = siteUserService.getSiteUserByUID(Integer.parseInt(this.uid));
+        if (register.getSiteUser().getUid() == Integer.parseInt(this.id)) {
+            SiteUser siteUser = siteUserService.getSiteUserByUID(Integer.parseInt(this.id));
             String newpassword = MD5Util.generateArbitraryString(8);
             siteUser.setPassword(MD5Util.hashString(newpassword + siteUser.getSalt()));
             siteUserService.saveSiteUser(siteUser);
-//            EmailUtil.sendNewPasswordEmail();
+            EmailUtil.sendNewPasswordEmail("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "YMZ7565092", siteUser.getUsername(), newpassword, "researchzilla", "新密码", siteUser.getEmail());
             return SUCCESS;
         }
         return ERROR;
