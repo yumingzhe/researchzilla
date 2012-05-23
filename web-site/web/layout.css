@@ -1,16 +1,76 @@
 body { font-family:Verdana; font-size:14px; margin:0;}
 
-#container {margin:0 auto; width:85%;}
+#container {
+    width:80%;
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: 10%;
+}
 #header { height:200px; background:#9c6; margin-bottom:5px;}
 #mainContent { height:570px; margin-bottom:5px;}
 #sidebar { margin:0px 0px 0px 0px;float:left; width:280px;height:570px;background:#cf9;}
-#sidebar1{ float:left; width:280px; height:220px; background:#cf9;}
-#newsidebar{ float:left; width:280px; height:220px; background:#cf9;}
-#sidebar2{ float:left; width:280px; height:130px; background:#cf9;}
-#sidebar3{ margin:0px 0px 0px 0px;float:right; width:315px; height:570px; background:#cf9;}
-#content { margin:0 283px !important; margin:0 283px;height:570px; background:#ffa;}
-#content1 { width:335px;height:285px; background:#ffa;}
-#content2{ width:320px;height:285px; background:#cf9;}
+#sidebar1{
+    float:left;
+    width:280px;
+    height:218px;
+    background:#cf9;
+    border: thin solid #99FF99;
+}
+#sidebar2{
+    float:left;
+    width:280px;
+    height:218px;
+    background:#cf9;
+    border: thin solid #99FF99;
+}
+#sidebar3{
+    float:left;
+    width:280px;
+    height:128px;
+    background:#cf9;
+    border: thin solid #99FF99;
+}
+#sidebar4{
+    margin:0px 0px 0px 0px;
+    float:right;
+    width:328px;
+    height:570px;
+    background:#cf9;
+    border: thin solid #99FF99;
+}
+#content {
+    height:570px;
+    background:#ffa;
+    margin-top: 0;
+    margin-right: 333px;
+    margin-bottom: 0;
+    margin-left: 283px;
+}
+#content1 {
+    width:347px;
+    height:283px;
+    background:#ffa;
+    border: thin solid #99FF99;
+}
+#content2 {
+    width:347px;
+    height:283px;
+    background:#ffa;
+    border: thin solid #99FF99;
+}
+#content3{
+    width:328px;
+    height:283px;
+    background:#cf9;
+    border: thin solid #99FF99;
+}
+#content4{
+    width:328px;
+    height:283px;
+    background:#cf9;
+    border: thin solid #99FF99;
+}
 #footer { height:60px; background:#9c6;}
 
 

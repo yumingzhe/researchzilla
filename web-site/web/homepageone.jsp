@@ -37,15 +37,15 @@
                     <p align="center">2012年5月20日</p>
                     <p align="center">星期日</p>
                     <p align="center">&nbsp;</p>
-                    <p align="center">&nbsp;</p>
-                    <p align="center"><a href="../../megan/登录.jpg">登录</a> <a href="../../megan/header.png">注册</a></p></td>
+                    <p align="center"><%=session.getAttribute("username")%> 欢迎您登录本网站！</p>
+                    <p align="center"><a href="login.jsp">登录</a> <a href="register.jsp">注册</a></p></td>
             </tr>
         </table>
     </div>
     <div id="mainContent">
         <div id="sidebar">
             <div id="sidebar1">
-                <form action="" method="post" name="form1" class="STYLE1" id="form1">
+                <form action="LoginAction" method="post" name="form1" class="STYLE1" id="form1">
                     <p class="STYLE3">登录窗口</p>
                     <table width="278" height="74" border="0">
                         <tr>
@@ -76,22 +76,22 @@
                     </table>
                 </form>
             </div>
-            <div class="STYLE1" id="sidebar1">网址导航</div>
-            <div class="STYLE1" id="sidebar2">网站访问统计</div>
+            <div class="STYLE1" id="sidebar2">网址导航</div>
+            <div class="STYLE1" id="sidebar3">网站访问统计</div>
         </div>
-        <div id="sidebar3">
-            <div class="STYLE1" id="content2">最新公告</div>
-            <div class="STYLE1" id="content2">成果聚焦</div>
+        <div id="sidebar4">
+            <div class="STYLE1" id="content3">最新公告</div>
+            <div class="STYLE1" id="content4">成果聚焦</div>
         </div>
         <div id="content">
             <div class="STYLE1" id="content1"></div>
-            <div class="STYLE1" id="content1">新闻快讯</div>
+            <div class="STYLE1" id="content2">新闻快讯</div>
         </div>
     </div>
     <div id="footer">
         <div align="center">
             <p>维护邮箱：wangyan_megan@yeah.net</p>
-            <p>用户反馈</p>
+            <p><a href="feedback.jsp">用户反馈</a> </p>
         </div>
     </div>
 </div>
