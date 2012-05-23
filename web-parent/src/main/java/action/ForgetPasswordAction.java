@@ -1,26 +1,37 @@
 package action;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.commons.mail.SimpleEmail;
-import org.hibernate.Query;
-import org.hibernate.Session;
+import pojo.Register;
 import pojo.SiteUser;
-import util.HibernateUtil;
+import service.RegisterService;
+import service.SiteUserService;
+import util.EmailUtil;
+import util.MD5Util;
 
-import java.util.Iterator;
-import java.util.List;
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
 
-public class ForgetPasswordAction extends ActionSupport{
-    private String username;
+public class ForgetPasswordAction extends ActionSupport {
     private String email;
 
-    public String getUsername() {
-        return username;
+    private SiteUserService siteUserService;
+    private RegisterService registerService;
+
+    public RegisterService getRegisterService() {
+        return registerService;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRegisterService(RegisterService registerService) {
+        this.registerService = registerService;
+    }
+
+    public SiteUserService getSiteUserService() {
+        return siteUserService;
+    }
+
+    public void setSiteUserService(SiteUserService siteUserService) {
+        this.siteUserService = siteUserService;
     }
 
     public String getEmail() {
@@ -30,39 +41,38 @@ public class ForgetPasswordAction extends ActionSupport{
     public void setEmail(String email) {
         this.email = email;
     }
-    public String execute() throws Exception{
-        Session session = HibernateUtil.getSession();
-        session.beginTransaction();
-        String sql = "from SiteUser u where u.username=?";
-        Query query = session.createQuery(sql);
-        query.setString(0, this.username);
-        List list = query.list();
-        Iterator iterator = list.iterator();
-        SiteUser person = (SiteUser) iterator.next();
-        session.getTransaction().commit();
 
-        if(person!=null){
-            SimpleEmail email = new SimpleEmail();
-            //设置发送主机的服务器地址
-            email.setHostName("smtp.qq.com");
-            //设置收件人邮箱
-            email.addTo(person.getEmail(),person.getUsername());
-            //发件人邮箱
-            email.setFrom("940851386@qq.com", "wangyan");
-            //如果要求身份验证，设置用户名、密码，分别为发件人在邮件服务器上注册的用户名和密码
-            email.setAuthentication("940851386", "13156264244MEGAN");
-            //设置邮件的主题
-            email.setSubject("欢迎使用找回密码功能！如果该操作不是您执行的请忽略本邮件！");
-            //邮件正文消息
-            email.setMsg("Your password is  "+person.getPassword());
-            email.send();
-            System.out.println("The SimpleEmail send sucessful!!!");
-            return  SUCCESS;
-        } else{
-            ActionContext ctx = ActionContext.getContext();
-            ctx.getSession().put("indicate", "未查找到该用户！");
+
+    @Override
+    public void validate() {
+        if (this.email == null) {
+            this.addFieldError("email", "You must enter a valid email");
+        } else if (!this.email.contains("@")) {
+            this.addFieldError("email", "Your email is invalid, we can not send you reset password email");
+        }
+    }
+
+    public String execute() throws Exception {
+        SiteUser siteUser = siteUserService.getSiteUserByEmail(this.email);
+        if (siteUser == null)
+            return SUCCESS;
+        if (!siteUser.getActive()) { //If user has not been activated, we don't allow reset password
+            this.addActionError("Your account has not been activated, please activate it first");
+            return INPUT;
+        }
+        if (siteUser.getBanned()) {
+            this.addActionError("Your account has been banned, we will not reset your password");
             return INPUT;
         }
 
+        Register register = new Register();
+        register.setRegisterTime(new Timestamp(new Date().getTime()));
+        String secret = MD5Util.generateArbitraryString(32);
+        register.setRegisterSequence(secret);
+        register.setUid(siteUser.getUid());
+        Serializable id = registerService.saveRegister(register);
+
+        EmailUtil.sendPasswordRestEmail("smtp.gmail.com", 465, "yumingzhe.pt@gmail.com", "YMZ7565092", siteUser.getUsername(), "researchzilla", "重置密码", this.email, id, secret);
+        return SUCCESS;
     }
 }
