@@ -14,6 +14,15 @@ public class SiteUser {
     private UserEntity userEntity;
     private Register register;
     private Set<Activity> activities;
+    private Set<Blog> blogs;
+
+    public Set<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(Set<Blog> blogs) {
+        this.blogs = blogs;
+    }
 
     public Set<Activity> getActivities() {
         return activities;

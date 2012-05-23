@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 public class Blog {
     private Integer id;
     private Integer posterId;
+    private Integer groupId;
     private String title;
     private String description;
     private String content;
@@ -18,6 +19,23 @@ public class Blog {
     private String tag;
     private String access;
     private Boolean comment;
+    private SiteUser siteUser;
+
+    public SiteUser getSiteUser() {
+        return siteUser;
+    }
+
+    public void setSiteUser(SiteUser siteUser) {
+        this.siteUser = siteUser;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
 
     public Integer getId() {
         return id;

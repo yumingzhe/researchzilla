@@ -11,6 +11,8 @@
         <property name="show_sql">true</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <mapping resource="pojo/SiteUser.hbm.xml"/>
+        <mapping resource="pojo/Blog.hbm.xml"/>
+        <mapping resource="pojo/Activity.hbm.xml"/>
         <mapping resource="pojo/UserEntity.hbm.xml"/>
         <mapping resource="pojo/Register.hbm.xml"/>
         <mapping resource="pojo/SiteLetter.hbm.xml"/>

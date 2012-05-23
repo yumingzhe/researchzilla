@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.Blog" table="researchzilla_blogs">
+        <id name="id" type="int" column="id">
+            <generator class="increment"/>
+        </id>
+        <property name="title" column="title" type="java.lang.String" length="50"/>
+        <property name="content" column="content" type="java.lang.String" length="300"/>
+        <property name="tag" column="tag" type="java.lang.String" length="10"/>
+        <property name="groupId" column="groupId" type="int"/>
+        <property name="access" column="access" type="java.lang.String" length="10"/>
+        <property name="description" column="description" type="java.lang.String" length="30"/>
+        <property name="postDate" column="postTime" type="timestamp"/>
+        <many-to-one name="posterId" column="posterId" class="pojo.SiteUser"/>
+    </class>
+
+</hibernate-mapping>

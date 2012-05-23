@@ -18,7 +18,12 @@
 
         <set name="activities" table="researchzilla_activities" inverse="true" cascade="save-update">
             <key column="objectId"></key>
-            <one-to-many class="pojo.SiteUser"/>
+            <one-to-many class="pojo.Activity"/>
+        </set>
+
+        <set name="blogs" table="researchzilla_blogs" cascade="save-update">
+            <key column="posterId"></key>
+            <one-to-many class="pojo.Blog"/>
         </set>
     </class>
 </hibernate-mapping>
