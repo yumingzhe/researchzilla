@@ -1,5 +1,6 @@
 package pojo;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -8,9 +9,8 @@ import java.sql.Timestamp;
  * Time: 9:36 PM
  */
 
-public class Blog {
+public class Blog implements Serializable {
     private Integer id;
-    private Integer posterId;
     private Integer groupId;
     private String title;
     private String description;
@@ -29,14 +29,6 @@ public class Blog {
         this.siteUser = siteUser;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -45,13 +37,12 @@ public class Blog {
         this.id = id;
     }
 
-
-    public Integer getPosterId() {
-        return posterId;
+    public Integer getGroupId() {
+        return groupId;
     }
 
-    public void setPosterId(Integer posterId) {
-        this.posterId = posterId;
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
     }
 
     public String getTitle() {
@@ -109,4 +100,6 @@ public class Blog {
     public void setComment(Boolean comment) {
         this.comment = comment;
     }
+
+
 }

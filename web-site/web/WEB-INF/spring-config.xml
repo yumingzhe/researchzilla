@@ -137,4 +137,28 @@
         <property name="registerService" ref="registerService"/>
         <property name="siteUserService" ref="siteUserService"/>
     </bean>
+
+    <!--Blog Bean Group-->
+    <bean id="blogDao" class="dao.impl.BlogDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="blogService" class="service.impl.BlogServiceImpl">
+        <property name="blogDao" ref="blogDao"/>
+    </bean>
+
+    <!--Activity Bean Group-->
+    <bean id="activityDao" class="dao.impl.ActivityDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="activityService" class="service.impl.ActivityServiceImpl">
+        <property name="activityDao" ref="activityDao"/>
+    </bean>
+
+    <bean id="postblogAction" class="action.PostBlogAction">
+        <property name="activityService" ref="activityService"/>
+        <property name="blogService" ref="blogService"/>
+        <property name="siteUserService" ref="siteUserService"/>
+    </bean>
+
+
 </beans>

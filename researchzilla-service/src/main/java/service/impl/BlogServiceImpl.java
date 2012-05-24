@@ -14,6 +14,14 @@ import java.io.Serializable;
 public class BlogServiceImpl implements BlogService {
     private BlogDao blogDao;
 
+    public BlogDao getBlogDao() {
+        return blogDao;
+    }
+
+    public void setBlogDao(BlogDao blogDao) {
+        this.blogDao = blogDao;
+    }
+
     @Override
     public Serializable saveBlog(Blog blog) {
         return blogDao.saveBlog(blog);

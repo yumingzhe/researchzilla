@@ -38,5 +38,10 @@
             <result name="success">/homepageone.jsp</result>
             <result name="input">/feedback.jsp</result>
         </action>
+
+        <action name="postblogAction" class="postblogAction">
+            <result name="success">/blogsuccess.jsp</result>
+            <result name="input">/blogfail.jsp</result>
+        </action>
     </package>
 </struts>

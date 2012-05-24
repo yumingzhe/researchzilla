@@ -1,8 +1,9 @@
 package pojo;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public class SiteUser {
+public class SiteUser implements Serializable {
     private Integer uid;
     private String username;
     private String password;

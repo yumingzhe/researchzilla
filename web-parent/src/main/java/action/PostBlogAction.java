@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import pojo.Activity;
 import pojo.Blog;
 import pojo.SiteUser;
+import service.ActivityService;
 import service.BlogService;
 import service.SiteUserService;
 
@@ -24,9 +25,18 @@ public class PostBlogAction extends ActionSupport {
     private String access;
     private Boolean comment;
     private Timestamp postDate;
-    private int posterId;
+    private String posterId;
     private SiteUserService siteUserService;
     private BlogService blogService;
+    private ActivityService activityService;
+
+    public ActivityService getActivityService() {
+        return activityService;
+    }
+
+    public void setActivityService(ActivityService activityService) {
+        this.activityService = activityService;
+    }
 
     public BlogService getBlogService() {
         return blogService;
@@ -36,11 +46,11 @@ public class PostBlogAction extends ActionSupport {
         this.blogService = blogService;
     }
 
-    public int getPosterId() {
+    public String getPosterId() {
         return posterId;
     }
 
-    public void setPosterId(int posterId) {
+    public void setPosterId(String posterId) {
         this.posterId = posterId;
     }
 
@@ -119,6 +129,13 @@ public class PostBlogAction extends ActionSupport {
         if (this.description == null) {
             this.addFieldError("description", "Description can not be empty");
         }
+        if (this.comment == null) {
+            this.comment = true;
+        }
+        if (this.posterId == null) {
+            this.posterId = "1";
+        }
+
     }
 
     @Override
@@ -127,13 +144,16 @@ public class PostBlogAction extends ActionSupport {
         blog.setTitle(this.title);
         blog.setContent(this.content);
         blog.setDescription(this.description);
+        blog.setTag(this.tag);
         blog.setComment(this.comment);
         blog.setAccess(this.access);
         blog.setPostDate(new Timestamp(new Date().getTime()));
-        SiteUser siteUser = siteUserService.getSiteUserByUID(posterId);
-        siteUser.getBlogs().add(blog);
+
+        SiteUser siteUser = siteUserService.getSiteUserByUID(Integer.parseInt(posterId));
+
         blog.setSiteUser(siteUser);
-        Serializable id = blogService.saveBlog(blog);
+        siteUser.getBlogs().add(blog);
+        Serializable id = blogService.saveBlog(blog);//save blog
 
         Activity activity = new Activity();
         activity.setObjectType("blog");
@@ -141,6 +161,7 @@ public class PostBlogAction extends ActionSupport {
         activity.setActivityOccurTime(new Timestamp(new Date().getTime()));
         activity.setObjectId(Integer.parseInt(id.toString()));
         activity.setSiteUser(siteUser);
+        activityService.saveActivity(activity);//save user recently activity
         return SUCCESS;
     }
 }
