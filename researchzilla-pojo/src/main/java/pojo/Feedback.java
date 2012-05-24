@@ -11,6 +11,7 @@ public class Feedback {
     private int id;
     private String feedbacktopic;
     private String feedbackcontent;
+    private String feedbackauthor;
     private Timestamp publishtime;
 
     public int getId() {
@@ -39,6 +40,14 @@ public class Feedback {
 
     public Timestamp getPublishtime() {
         return publishtime;
+    }
+
+    public String getFeedbackauthor() {
+        return feedbackauthor;
+    }
+
+    public void setFeedbackauthor(String feedbackauthor) {
+        this.feedbackauthor = feedbackauthor;
     }
 
     public void setPublishtime(Timestamp publishtime) {

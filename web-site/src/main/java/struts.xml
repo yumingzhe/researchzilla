@@ -33,5 +33,10 @@
             <result name="success">/login.jsp</result>
             <result name="input">/forgetpassword.jsp</result>
         </action>
+
+        <action name="FeedbackAction" class="feedbackAction">
+            <result name="success">/homepageone.jsp</result>
+            <result name="input">/feedback.jsp</result>
+        </action>
     </package>
 </struts>
