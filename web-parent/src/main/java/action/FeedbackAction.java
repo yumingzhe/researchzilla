@@ -60,7 +60,7 @@ public class FeedbackAction extends ActionSupport{
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
 
-        Feedback feedback = null;
+        Feedback feedback = new Feedback();
         feedback.setFeedbacktopic(this.title);
         feedback.setFeedbackcontent(this.content);
         feedback.setPublishtime(new Timestamp(new Date().getTime()));

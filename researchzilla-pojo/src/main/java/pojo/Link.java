@@ -9,7 +9,6 @@ public class Link {
     private int id;
     private String websitename;
     private String websiteurl;
-    private int visits;
 
     public int getId() {
         return id;
@@ -35,11 +34,4 @@ public class Link {
         this.websiteurl = websiteurl;
     }
 
-    public int getVisits() {
-        return visits;
-    }
-
-    public void setVisits(int visits) {
-        this.visits = visits;
-    }
 }

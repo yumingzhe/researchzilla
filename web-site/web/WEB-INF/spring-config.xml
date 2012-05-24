@@ -84,6 +84,19 @@
         <property name="messageDao" ref="messageDao"/>
     </bean>
 
+    <bean id="getInternalNoticeAction" class="action.GetInternalNoticeAction">
+        <property name="messageService" ref="messageService"/>
+    </bean>
+
+    <bean id="getPublicNoticeAction" class="action.GetPublicNoticeAction">
+        <property name="messageService" ref="messageService"/>
+    </bean>
+
+    <bean id="getNewsAction" class="action.GetNewsAction">
+        <property name="messageService" ref="messageService"/>
+    </bean>
+
+
     <!--PictureNews Bean group-->
     <bean id="pictureNewsDao" class="dao.impl.PictureNewsDaoImpl">
         <property name="factory" ref="sessionFactory"/>
@@ -106,6 +119,9 @@
     </bean>
     <bean id="linkService" class="service.impl.LinkServiceImpl">
         <property name="linkDao" ref="linkDao"/>
+    </bean>
+    <bean id="getLinkAction" class="action.GetLinkAction">
+        <property name="linkService" ref="linkService"/>
     </bean>
 
     <!--Feedback Bean group-->

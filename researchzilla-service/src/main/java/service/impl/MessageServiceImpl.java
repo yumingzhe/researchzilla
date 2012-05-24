@@ -35,11 +35,39 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public void deleteMessageById(int id) {
-       this.deleteMessageById(id);
+       this.messageDao.deleteMessageById(id);
     }
 
     @Override
-    public List<Message> getAllMessage() {
-        return this.messageDao.getAllMessage();
+    public List<Message> getAllInternalNotice() {
+        return this.messageDao.getAllInternalNotice();
     }
+
+    @Override
+    public List<Message> getAllPublicNotice() {
+        return this.messageDao.getAllPublicNotice();
+    }
+
+
+    @Override
+    public List<Message> getAllNews() {
+        return this.messageDao.getAllNews();
+    }
+
+    @Override
+    public List<Message> getSomeInternalNotice() {
+        return this.messageDao.getSomeInternalNotice();
+    }
+
+    @Override
+    public List<Message> getSomePublicNotice() {
+        return this.messageDao.getSomePublicNotice();
+    }
+
+    @Override
+    public List<Message> getSomeNews() {
+        return this.messageDao.getSomeNews();
+    }
+
+
 }

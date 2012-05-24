@@ -40,6 +40,11 @@ public class PictureNewsServiceImpl implements PictureNewsService {
 
     @Override
     public List<PictureNews> getAllPictureNews() {
-        return this.pictureNewsDao.getAllMessage();
+        return this.pictureNewsDao.getAllPictureNews();
+    }
+
+    @Override
+    public List<PictureNews> getAllAccomplishment() {
+        return this.pictureNewsDao.getAllAccomplishment();
     }
 }

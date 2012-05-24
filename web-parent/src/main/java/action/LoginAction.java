@@ -8,6 +8,7 @@ import util.MD5Util;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  * User: wangyan
@@ -57,8 +58,8 @@ public class LoginAction extends ActionSupport {
         SiteUser userone = siteUserService.getSiteUserByInstituteId(this.username);
         SiteUser usertwo = siteUserService.getSiteUserByEmail(this.username);
         if (userone != null) {
-            Boolean active=userone.getActive();
-            if(active==false){
+            Boolean active = userone.getActive();
+            if (active == false) {
                 Boolean banned = userone.getBanned();
                 if (banned == false) {
                     String passwordstring = MD5Util.hashString(this.password + userone.getSalt());
@@ -69,9 +70,9 @@ public class LoginAction extends ActionSupport {
                     }
                 }
             }
-        }else if(usertwo!=null){
-            Boolean active=usertwo.getActive();
-            if(active==false){
+        } else if (usertwo != null) {
+            Boolean active = usertwo.getActive();
+            if (active == false) {
                 Boolean banned = usertwo.getBanned();
                 if (banned == false) {
                     String passwordstring = MD5Util.hashString(this.password + usertwo.getSalt());

@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import pojo.Message;
 import pojo.Register;
 import pojo.SiteUser;
 import pojo.UserEntity;
@@ -43,13 +44,13 @@ public class InsertData {
         siteUser.setUserEntity(userEntity);
         userEntity.setSiteUser(siteUser);
 
-        session.save(siteUser);*/
+        session.save(siteUser);
 
-        SiteUser user = new SiteUser();
+        SiteUser user=new SiteUser();
         user.setUsername("zhangsan");
         user.setActive(true);
         user.setBanned(false);
-        user.setInstituteId("200801051631");
+        user.setInstituteId("123");
         user.setEmail("zhangsan@live.cn");
 
         Register register = new Register();
@@ -60,6 +61,16 @@ public class InsertData {
         register.setSiteUser(user);
         session.save(user);
         transaction.commit();
+        session.close(); */
+        Message message = new Message();
+        message.setType("announcement");
+        message.setAuthor("zhangsan");
+        message.setPublisher("wangyan");
+        message.setTopic("announcement");
+        message.setContent("wuyanzu will come here");
+        message.setPublishtime(new Timestamp(new Date().getTime()));
+        session.save(message);
+        transaction.commit();
         session.close();
-    }
-}
+            }
+        }
