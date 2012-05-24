@@ -9,6 +9,7 @@
         <property name="activityType" column="activityType" type="java.lang.String" length="10"/>
         <property name="activityOccurTime" column="activityTime" type="timestamp"/>
         <property name="objectType" column="objectType" type="java.lang.String"/>
+        <property name="objectId" column="objectId" type="int"/>
         <many-to-one name="siteUser" column="subjectId" class="pojo.SiteUser"/>
     </class>
 </hibernate-mapping>
