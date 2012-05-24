@@ -1,5 +1,6 @@
-package dao;
+package dao.impl;
 
+import dao.BlogDao;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import pojo.Blog;
