@@ -11,6 +11,5 @@
 <center>
     you have failed to post a blog
 </center>
-
 </body>
 </html>

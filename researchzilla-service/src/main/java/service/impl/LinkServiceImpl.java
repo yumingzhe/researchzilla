@@ -25,21 +25,21 @@ public class LinkServiceImpl implements LinkService {
 
     @Override
     public Serializable saveLink(Link link) {
-        return this.getLinkDao().saveLink(link);
+        return this.linkDao.saveLink(link);
     }
 
     @Override
     public void updateLink(Link link) {
-        this.getLinkDao().updateLink(link);
+        this.linkDao.updateLink(link);
     }
 
     @Override
     public void deleteLinkById(int id) {
-        this.getLinkDao().deleteLinkById(id);
+        this.linkDao.deleteLinkById(id);
     }
 
     @Override
     public List<Link> getAllLink() {
-        return this.getLinkDao().getAllLink();
+        return this.linkDao.getAllLink();
     }
 }

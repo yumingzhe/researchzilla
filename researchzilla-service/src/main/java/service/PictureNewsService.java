@@ -19,4 +19,6 @@ public interface PictureNewsService {
 
     public List<PictureNews> getAllPictureNews();
 
+    public List<PictureNews> getAllAccomplishment();
+
 }

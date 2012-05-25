@@ -64,14 +64,77 @@ public class MessageDaoImpl implements MessageDao {
     }
 
     @Override
-    public List<Message> getAllMessage() {
-        List mesages = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+    public List<Message> getAllInternalNotice() {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from Message ");
+                Query query = session.createQuery("from Message as m where m.type= :type").setString("type","internalnotice");
                 return query.list();
             }
         });
-        return mesages;
+        return notices;
+    }
+
+    @Override
+    public List<Message> getAllPublicNotice() {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type").setString("type","publicnotice");
+                return query.list();
+            }
+        });
+        return notices;
+    }
+
+    @Override
+    public List<Message> getAllNews() {
+        List announcements = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type").setString("type","news");
+                return query.list();
+            }
+        });
+        return announcements;
+    }
+
+    @Override
+    public List<Message> getSomeInternalNotice() {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type order by id desc").setString("type","internalnotice");
+                query.setMaxResults(7);
+                return query.list();
+            }
+        });
+        return notices;
+    }
+
+    @Override
+    public List<Message> getSomePublicNotice() {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type order by id desc").setString("type","publicnotice");
+                query.setMaxResults(7);
+                return query.list();
+            }
+        });
+        return notices;
+    }
+
+    @Override
+    public List<Message> getSomeNews() {
+        List announcements = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type order by id desc ").setString("type","news");
+                query.setMaxResults(7);
+                return query.list();
+            }
+        });
+        return announcements;
     }
 }

@@ -39,9 +39,28 @@
             <result name="input">/feedback.jsp</result>
         </action>
 
+        <action name="GetInternalNoticeAction" class="getInternalNoticeAction">
+            <result name="success">GetPublicNoticeAction.action</result>
+        </action>
+        <action name="GetPublicNoticeAction" class="getPublicNoticeAction">
+            <result name="success">GetNewsAction.action</result>
+        </action>
+
+        <action name="GetNewsAction" class="getNewsAction">
+            <result name="success">GetLinkAction.action</result>
+        </action>
+
+        <action name="GetLinkAction" class="getLinkAction">
+            <result name="success">GetVisitsAction.action</result>
+        </action>
+
         <action name="postblogAction" class="postblogAction">
             <result name="success">/blogsuccess.jsp</result>
             <result name="input">/blogfail.jsp</result>
+        </action>
+
+        <action name="GetVisitsAction" class="getVisitsAction">
+            <result name="success">/homepageone.jsp</result>
         </action>
     </package>
 </struts>

@@ -85,7 +85,12 @@ body { font-family:Verdana; font-size:14px; margin:0;}
 #mainContent_1 { height:500px; margin-bottom:5px;}
 #sidebar_1 { float:left; width:245px; height:500px; background:#9ff;}
 #content_1 { float:right; width:645px; height:500px; background:#cff;}
-#bar{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
+#content_2 { float:right; width:640px; height:500px; background:#cff;}
+#bar1{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
+#bar2{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
+#bar3{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
+#bar4{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
+#bar5{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
 #footer_1 { height:60px; background:#6cf;}
 
 #mainContent_2 { height:500px; background:#cff; margin-bottom:5px;}
@@ -100,7 +105,7 @@ a:hover { color: #F00; }
   line-height: 24px;  list-style-type: none; background:#666;
 }
 #nav a {
- display: block; width: 100px; text-align:center;
+ display: block; width: 120px; text-align:center;
 }
 #nav a:link  {
  color:#666; text-decoration:none;
@@ -112,7 +117,7 @@ a:hover { color: #F00; }
  color:#FFF;text-decoration:none;font-weight:bold;
 }
 #nav li {
- float: left; width: 100px; background:#CCC;
+ float: left; width: 120px; background:#CCC;
 }
 #nav li a:hover{
  background:#999;
@@ -122,7 +127,7 @@ a:hover { color: #F00; }
  left: -999em; width: 120px; position: absolute; 
 }
 #nav li ul li{
- float: left; width: 120px;
+ float: left; width: 100px;
  background: #F6F6F6; 
 }
 #nav li ul a{

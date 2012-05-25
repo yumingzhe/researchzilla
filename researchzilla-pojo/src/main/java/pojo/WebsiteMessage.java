@@ -11,6 +11,7 @@ public class WebsiteMessage {
     private String background;
     private String defaultlanguage;
     private String maintenanceaddress;
+    private int visits;
 
     public int getId() {
         return id;
@@ -50,5 +51,13 @@ public class WebsiteMessage {
 
     public void setMaintenanceaddress(String maintenanceaddress) {
         this.maintenanceaddress = maintenanceaddress;
+    }
+
+    public int getVisits() {
+        return visits;
+    }
+
+    public void setVisits(int visits) {
+        this.visits = visits;
     }
 }

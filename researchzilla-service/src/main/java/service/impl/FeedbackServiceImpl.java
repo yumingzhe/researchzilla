@@ -25,11 +25,11 @@ public class FeedbackServiceImpl  implements FeedbackService{
 
     @Override
     public Serializable saveFeedback(Feedback feedback) {
-        return this.getFeedbackDao().saveFeedback(feedback);
+        return feedbackDao.saveFeedback(feedback);
     }
 
     @Override
     public List<Feedback> getAllFeedback() {
-        return this.getFeedbackDao().getAllFeedback();
+        return feedbackDao.getAllFeedback();
     }
 }

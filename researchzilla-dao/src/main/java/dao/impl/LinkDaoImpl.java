@@ -69,6 +69,7 @@ public class LinkDaoImpl implements LinkDao {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Link ");
+                query.setMaxResults(5);
                 return query.list();
             }
         });

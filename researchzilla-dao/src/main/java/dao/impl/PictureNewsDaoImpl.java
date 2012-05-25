@@ -64,14 +64,28 @@ public class PictureNewsDaoImpl implements PictureNewsDao {
     }
 
     @Override
-    public List<PictureNews> getAllMessage() {
+    public List<PictureNews> getAllPictureNews() {
         List picturenewses = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from PictureNews ");
+                Query query = session.createQuery("from PictureNews as p where p.type= :type order by id desc").setString("type","picturenews");
                 return query.list();
             }
         });
         return picturenewses;
     }
+
+    @Override
+    public List<PictureNews> getAllAccomplishment() {
+        List accomplishments = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from PictureNews as p where p.type= :type order by id desc").setString("type","accomplishment");
+                return query.list();
+            }
+        });
+        return accomplishments;
+    }
+
+
 }

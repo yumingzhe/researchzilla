@@ -25,21 +25,21 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Serializable saveSubject(Subject subject) {
-        return this.subjectDao.saveSubject(subject);
+        return subjectDao.saveSubject(subject);
     }
 
     @Override
     public void updateSubject(Subject subject) {
-        this.subjectDao.updateSubject(subject);
+        subjectDao.updateSubject(subject);
     }
 
     @Override
     public void deleteSubjectById(int id) {
-        this.subjectDao.deleteSubjectById(id);
+        subjectDao.deleteSubjectById(id);
     }
 
     @Override
     public List<Subject> getAllSubject() {
-        return this.subjectDao.getAllSubject();
+        return subjectDao.getAllSubject();
     }
 }

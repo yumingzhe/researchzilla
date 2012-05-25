@@ -8,6 +8,5 @@
         </id>
         <property name="websitename" column="websitename" type="string" length="50" not-null="true"/>
         <property name="websiteurl" column="websiteurl" type="string" length="100" not-null="true"/>
-        <property name="visits" column="visits" type="int"  not-null="true" />
     </class>
 </hibernate-mapping>

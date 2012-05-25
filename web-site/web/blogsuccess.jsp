@@ -7,6 +7,5 @@
 <center>
     you have post a blog
 </center>
-
 </body>
 </html>

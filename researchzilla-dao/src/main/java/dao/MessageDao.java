@@ -17,5 +17,15 @@ public interface MessageDao {
 
     public void deleteMessageById(int id);
 
-    public List<Message> getAllMessage();
+    public List<Message> getAllInternalNotice();
+
+    public List<Message> getAllPublicNotice();
+
+    public List<Message> getAllNews();
+
+    public List<Message> getSomeInternalNotice();
+
+    public List<Message> getSomePublicNotice();
+
+    public List<Message> getSomeNews();
 }

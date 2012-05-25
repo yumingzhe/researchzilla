@@ -7,15 +7,14 @@ package sql;
  */
 
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import pojo.Activity;
-import pojo.Blog;
+import pojo.*;
 
-import java.util.List;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * This class is used for inserting data
@@ -28,14 +27,36 @@ public class InsertData {
 
         Activity activity = (Activity) session.get(Activity.class, 3);
 
-        String type = activity.getObjectType();
-        Blog blog = null;
-        if (type.equals("blog")) {
-            Query query = session.createQuery("from Blog as b where b.id= :id").setInteger("id", activity.getObjectId());
-            List<Blog> blogs = query.list();
-            blog = blogs.get(0);
-        }
-        System.out.println(blog.getTitle());
+        UserEntity userEntity = new UserEntity();
+        userEntity.setAge(20);
+        userEntity.setCountry("china");
+        userEntity.setGender('m');
+
+        SiteUser user = new SiteUser();
+        user.setUsername("zhangsan");
+        user.setActive(true);
+        user.setBanned(false);
+        user.setInstituteId("123");
+        user.setEmail("zhangsan@live.cn");
+
+        Register register = new Register();
+        register.setRegisterSequence("this is register sequence");
+        register.setRegisterTime(new Timestamp(new Date().getTime()));
+
+        user.setRegister(register);
+        register.setSiteUser(user);
+        session.save(user);
+
+        transaction.commit();
+        session.close();
+        Message message = new Message();
+        message.setType("announcement");
+        message.setAuthor("zhangsan");
+        message.setPublisher("wangyan");
+        message.setTopic("announcement");
+        message.setContent("wuyanzu will come here");
+        message.setPublishtime(new Timestamp(new Date().getTime()));
+        session.save(message);
         transaction.commit();
         session.close();
     }

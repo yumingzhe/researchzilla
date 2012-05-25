@@ -17,6 +17,8 @@ public interface PictureNewsDao {
 
     public void deletePictureNewsById(int id);
 
-    public List<PictureNews> getAllMessage();
+    public List<PictureNews> getAllPictureNews();
+
+    public List<PictureNews> getAllAccomplishment();
 
 }
