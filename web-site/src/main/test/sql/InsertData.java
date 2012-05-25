@@ -7,16 +7,15 @@ package sql;
  */
 
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import pojo.Register;
-import pojo.SiteUser;
-import pojo.UserEntity;
+import pojo.Activity;
+import pojo.Blog;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.util.List;
 
 /**
  * This class is used for inserting data
@@ -26,39 +25,17 @@ public class InsertData {
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
-        /*SiteUser siteUser = new SiteUser();
-        siteUser.setUsername("ymz");
 
-        siteUser.setEmail("ymz@live.cn");
-        siteUser.setActive(true);
-        siteUser.setBanned(false);
-        siteUser.setInstituteId("08010516318");
+        Activity activity = (Activity) session.get(Activity.class, 3);
 
-        UserEntity userEntity = new UserEntity();
-        userEntity.setAge(20);
-        userEntity.setCountry("china");
-        userEntity.setGender('m');
-
-
-        siteUser.setUserEntity(userEntity);
-        userEntity.setSiteUser(siteUser);
-
-        session.save(siteUser);*/
-
-        SiteUser user = new SiteUser();
-        user.setUsername("zhangsan");
-        user.setActive(true);
-        user.setBanned(false);
-        user.setInstituteId("200801051631");
-        user.setEmail("zhangsan@live.cn");
-
-        Register register = new Register();
-        register.setRegisterSequence("this is register sequence");
-        register.setRegisterTime(new Timestamp(new Date().getTime()));
-
-        user.setRegister(register);
-        register.setSiteUser(user);
-        session.save(user);
+        String type = activity.getObjectType();
+        Blog blog = null;
+        if (type.equals("blog")) {
+            Query query = session.createQuery("from Blog as b where b.id= :id").setInteger("id", activity.getObjectId());
+            List<Blog> blogs = query.list();
+            blog = blogs.get(0);
+        }
+        System.out.println(blog.getTitle());
         transaction.commit();
         session.close();
     }
