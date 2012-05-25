@@ -20,6 +20,15 @@ public class Blog implements Serializable {
     private String access;
     private Boolean comment;
     private SiteUser siteUser;
+    private Activity activity;
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
 
     public SiteUser getSiteUser() {
         return siteUser;

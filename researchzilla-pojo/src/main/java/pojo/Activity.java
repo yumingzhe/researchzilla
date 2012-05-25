@@ -9,12 +9,18 @@ import java.sql.Timestamp;
  */
 public class Activity {
     private int id;
-    private String activityType;
     private Timestamp activityOccurTime;
-    private int subjectId;
-    private int objectId;
-    private String objectType;
     private SiteUser siteUser;
+    private Blog blog;
+
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
+    }
 
     public SiteUser getSiteUser() {
         return siteUser;
@@ -32,43 +38,11 @@ public class Activity {
         this.id = id;
     }
 
-    public String getActivityType() {
-        return activityType;
-    }
-
-    public void setActivityType(String activityType) {
-        this.activityType = activityType;
-    }
-
     public Timestamp getActivityOccurTime() {
         return activityOccurTime;
     }
 
     public void setActivityOccurTime(Timestamp activityOccurTime) {
         this.activityOccurTime = activityOccurTime;
-    }
-
-    public int getSubjectId() {
-        return subjectId;
-    }
-
-    public void setSubjectId(int subjectId) {
-        this.subjectId = subjectId;
-    }
-
-    public int getObjectId() {
-        return objectId;
-    }
-
-    public void setObjectId(int objectId) {
-        this.objectId = objectId;
-    }
-
-    public String getObjectType() {
-        return objectType;
-    }
-
-    public void setObjectType(String objectType) {
-        this.objectType = objectType;
     }
 }

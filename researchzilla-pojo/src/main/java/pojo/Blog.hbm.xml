@@ -15,5 +15,6 @@
         <property name="postDate" column="postTime" type="timestamp"/>
         <property name="comment" column="comment" type="java.lang.Boolean"/>
         <many-to-one name="siteUser" column="posterId" class="pojo.SiteUser"/>
+        <one-to-one name="activity" class="pojo.Activity" cascade="all"/>
     </class>
 </hibernate-mapping>
