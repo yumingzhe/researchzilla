@@ -31,6 +31,7 @@ public class GetPublicNoticeAction extends ActionSupport {
 
         List list=messageService.getSomePublicNotice();
         session.setAttribute("publicnotices",list);
+
         return SUCCESS;
     }
 }

@@ -142,6 +142,9 @@
     <bean id="websiteMessageService" class="service.impl.WebsiteMessageServiceImpl">
         <property name="websiteMessageDao" ref="websiteMessageDao"/>
     </bean>
+    <bean id="getVisitsAction" class="action.GetVisitsAction">
+        <property name="websiteMessageService" ref="websiteMessageService"/>
+    </bean>
 
 
     <bean id="forgetpasswordAction" class="action.ForgetPasswordAction">

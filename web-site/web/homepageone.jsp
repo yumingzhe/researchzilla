@@ -1,4 +1,6 @@
 <%@ page import="pojo.SiteUser" %>
+<%@ page import="pojo.Message" %>
+<%@ page import="java.util.List" %>
 <%--
   User: wangyan
   Date: 12-5-22
@@ -45,7 +47,7 @@
                     <p align="center">星期日</p>
 
                     <p align="center">&nbsp;</p>
-                    <%if (((SiteUser) session.getAttribute("user")).getUsername() != null) {%>
+                    <%if (( session.getAttribute("user")) != null){%>
                     <p align="center"><%=((SiteUser) session.getAttribute("user")).getUsername()%> 欢迎您登录本网站！</p>
                     <%} else {%>
                     <p align="center"><a href="login.jsp">登录</a> <a href="register.jsp">注册</a></p></td>
@@ -56,7 +58,7 @@
     </div>
     <div id="mainContent">
         <div id="sidebar">
-            <%if (((SiteUser) session.getAttribute("user")).getUsername() == null) {%>
+            <%if (( session.getAttribute("user"))== null) {%>
             <div id="sidebar1">
                 <form action="LoginAction" method="post" name="form1" class="STYLE1" id="form1">
                     <p class="STYLE3">登录窗口</p>
@@ -95,18 +97,41 @@
                 </form>
             </div>
             <%} else {%>
-            <div class="STYLE1" id="sidebar1">内部通知</div>
+            <div class="STYLE3" id="sidebar1"><a href="#">内部通知</a>
+                <table width="278" height="190" border="2">
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
             <%}%>
-            <div class="STYLE1" id="sidebar2">网址导航</div>
-            <div class="STYLE1" id="sidebar3">网站访问统计</div>
+            <div class="STYLE3" id="sidebar2">网址导航</div>
+            <div class="STYLE3" id="sidebar3">网站访问统计
+                <p align="center">本网站总访问量</p>
+            </div>
         </div>
         <div id="sidebar4">
-            <div class="STYLE1" id="content3">最新公告</div>
-            <div class="STYLE1" id="content4">成果聚焦</div>
+            <div class="STYLE3" id="content3"><a href="#">最新公告</a>
+                <table width="306" height="255" border="2">
+                    <%List<Message> list = (List<Message>) session.getAttribute("publicnotices");
+                        for(int i=0;i<list.size();i++){
+                    %>
+                    <tr>
+                        <td>
+                            <%= list.get(0).getType()%>
+                        </td>
+                        <td>
+                            <%= list.get(0).getTopic()%>
+                        </td>
+                    </tr>
+                    <%}%>
+                </table>
+            </div>
+            <div class="STYLE3" id="content4"><a href="#">成果聚焦</a></div>
         </div>
         <div id="content">
-            <div class="STYLE1" id="content1">图片新闻</div>
-            <div class="STYLE1" id="content2">新闻快讯</div>
+            <div class="STYLE3" id="content1"><a href="#">图片新闻</a></div>
+            <div class="STYLE3" id="content2"><a href="#">新闻快讯</a></div>
         </div>
     </div>
     <div id="footer">

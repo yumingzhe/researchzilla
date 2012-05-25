@@ -45,7 +45,7 @@ public class LoginAction extends ActionSupport {
     }
 
     public void validate() {
-        if (this.username == null)
+       if (this.username == null)
             this.addFieldError(username, "you must enter username");
         if (this.password == null)
             this.addFieldError(password, "you must set a password");

@@ -25,26 +25,26 @@ public class PictureNewsServiceImpl implements PictureNewsService {
 
     @Override
     public Serializable savePictureNews(PictureNews pictureNews) {
-        return this.pictureNewsDao.savePictureNews(pictureNews);
+        return pictureNewsDao.savePictureNews(pictureNews);
     }
 
     @Override
     public void updatePictureNews(PictureNews pictureNews) {
-        this.pictureNewsDao.updatePictureNews(pictureNews);
+        pictureNewsDao.updatePictureNews(pictureNews);
     }
 
     @Override
     public void deletePictureNews(int id) {
-       this.pictureNewsDao.deletePictureNewsById(id);
+       pictureNewsDao.deletePictureNewsById(id);
     }
 
     @Override
     public List<PictureNews> getAllPictureNews() {
-        return this.pictureNewsDao.getAllPictureNews();
+        return pictureNewsDao.getAllPictureNews();
     }
 
     @Override
     public List<PictureNews> getAllAccomplishment() {
-        return this.pictureNewsDao.getAllAccomplishment();
+        return pictureNewsDao.getAllAccomplishment();
     }
 }

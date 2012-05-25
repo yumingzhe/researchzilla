@@ -22,11 +22,11 @@ public class WebsiteMessageServiceImpl implements WebsiteMessageService {
 
     @Override
     public void updateWebsiteMessage(WebsiteMessage websiteMessage) {
-        this.getWebsiteMessageDao().updateWebsiteMessage(websiteMessage);
+        websiteMessageDao.updateWebsiteMessage(websiteMessage);
     }
 
     @Override
     public WebsiteMessage getWebsiteMessage() {
-        return this.getWebsiteMessageDao().getWebsiteMessage();
+        return websiteMessageDao.getWebsiteMessage();
     }
 }

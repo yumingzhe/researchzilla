@@ -25,48 +25,48 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Serializable saveMessage(Message message) {
-        return this.messageDao.saveMessage(message);
+        return messageDao.saveMessage(message);
     }
 
     @Override
     public void updateMessage(Message message) {
-        this.messageDao.updateMessage(message);
+        messageDao.updateMessage(message);
     }
 
     @Override
     public void deleteMessageById(int id) {
-       this.messageDao.deleteMessageById(id);
+       messageDao.deleteMessageById(id);
     }
 
     @Override
     public List<Message> getAllInternalNotice() {
-        return this.messageDao.getAllInternalNotice();
+        return messageDao.getAllInternalNotice();
     }
 
     @Override
     public List<Message> getAllPublicNotice() {
-        return this.messageDao.getAllPublicNotice();
+        return messageDao.getAllPublicNotice();
     }
 
 
     @Override
     public List<Message> getAllNews() {
-        return this.messageDao.getAllNews();
+        return messageDao.getAllNews();
     }
 
     @Override
     public List<Message> getSomeInternalNotice() {
-        return this.messageDao.getSomeInternalNotice();
+        return messageDao.getSomeInternalNotice();
     }
 
     @Override
     public List<Message> getSomePublicNotice() {
-        return this.messageDao.getSomePublicNotice();
+        return messageDao.getSomePublicNotice();
     }
 
     @Override
     public List<Message> getSomeNews() {
-        return this.messageDao.getSomeNews();
+        return messageDao.getSomeNews();
     }
 
 
