@@ -12,7 +12,15 @@ public class Activity {
     private Timestamp activityOccurTime;
     private SiteUser siteUser;
     private Blog blog;
+    private CommentEntity commentEntity;
 
+    public CommentEntity getCommentEntity() {
+        return commentEntity;
+    }
+
+    public void setCommentEntity(CommentEntity commentEntity) {
+        this.commentEntity = commentEntity;
+    }
 
     public Blog getBlog() {
         return blog;

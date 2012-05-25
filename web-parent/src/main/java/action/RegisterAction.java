@@ -10,6 +10,7 @@ import util.EmailUtil;
 import util.MD5Util;
 import util.captcha.reCaptcha.ValidatereCaptchaUtil;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
