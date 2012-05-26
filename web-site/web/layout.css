@@ -86,66 +86,66 @@ body { font-family:Verdana; font-size:14px; margin:0;}
 #sidebar_1 { float:left; width:245px; height:500px; background:#9ff;}
 #content_1 { float:right; width:645px; height:500px; background:#cff;}
 #content_2 { float:right; width:640px; height:500px; background:#cff;}
-#bar1{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
-#bar2{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
-#bar3{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
-#bar4{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
-#bar5{margin:5px 5px 5px 5px; width:240px; height:50px; background:#6cf;}
+#bar1{margin:5px 5px 5px 5px; width:240px; height:50px; }
+#bar2{margin:5px 5px 5px 5px; width:240px; height:50px; }
+#bar3{margin:5px 5px 5px 5px; width:240px; height:50px; }
+#bar4{margin:5px 5px 5px 5px; width:240px; height:50px; }
+#bar5{margin:5px 5px 5px 5px; width:240px; height:50px; }
 #footer_1 { height:60px; background:#6cf;}
 
 #mainContent_2 { height:500px; background:#cff; margin-bottom:5px;}
 
 #header_2 { height:80px; background:#6cf; margin-bottom:5px;}
-#menu_2 { border: 1px solid #CCC; height:26px; background: #eee;}
-#menu_2 ul { list-style: none; margin: 0px; padding: 0px; }
-#menu_2 ul li { float:left; padding: 0px 8px; height: 26px; line-height: 26px; }
+#menu { border: 1px solid #CCC; height:26px; background: #eee;}
+#menu ul { list-style: none; margin: 0px; padding: 0px; }
+#menu ul li { float:left; padding: 0px 8px; height: 26px; line-height: 26px; }
 a { color: #000; text-decoration: none; }
 a:hover { color: #F00; }
 #nav {
-  line-height: 24px;  list-style-type: none; background:#666;
+    line-height: 24px;  list-style-type: none; background:#666;
 }
 #nav a {
- display: block; width: 120px; text-align:center;
+    display: block; width: 120px; text-align:center;
 }
 #nav a:link  {
- color:#666; text-decoration:none;
+    color:#666; text-decoration:none;
 }
 #nav a:visited  {
- color:#666;text-decoration:none;
+    color:#666;text-decoration:none;
 }
 #nav a:hover  {
- color:#FFF;text-decoration:none;font-weight:bold;
+    color:#FFF;text-decoration:none;font-weight:bold;
 }
 #nav li {
- float: left; width: 120px; background:#CCC;
+    float: left; width: 120px; background:#CCC;
 }
 #nav li a:hover{
- background:#999;
+    background:#999;
 }
 #nav li ul {
- line-height: 27px;  list-style-type: none;text-align:left;
- left: -999em; width: 120px; position: absolute; 
+    line-height: 27px;  list-style-type: none;text-align:left;
+    left: -999em; width: 120px; position: absolute;
 }
 #nav li ul li{
- float: left; width: 100px;
- background: #F6F6F6; 
+    float: left; width: 120px;
+    background: #F6F6F6;
 }
 #nav li ul a{
- display: block; width: 120px;w\idth: 96px;text-align:left;padding-left:24px;
+    display: block; width: 120px;width: 96px;text-align:left;padding-left:24px;
 }
 #nav li ul a:link  {
- color:#666; text-decoration:none;
+    color:#666; text-decoration:none;
 }
 #nav li ul a:visited  {
- color:#666;text-decoration:none;
+    color:#666;text-decoration:none;
 }
 #nav li ul a:hover  {
- color:#F3F3F3;text-decoration:none;font-weight:normal;
- background:#C00;
+    color:#F3F3F3;text-decoration:none;font-weight:normal;
+    background:#C00;
 }
 #nav li:hover ul {
- left: auto;
+    left: auto;
 }
 #nav li.sfhover ul {
- left: auto;
+    left: auto;
 }

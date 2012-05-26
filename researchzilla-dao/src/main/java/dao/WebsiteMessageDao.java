@@ -11,5 +11,7 @@ public interface WebsiteMessageDao {
 
     public void updateWebsiteMessage(WebsiteMessage websiteMessage);
 
+    public void updateWebsiteVisits(int count);
+
     public WebsiteMessage getWebsiteMessage();
 }

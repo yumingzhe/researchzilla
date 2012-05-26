@@ -1,17 +1,20 @@
 <%@ page import="pojo.SiteUser" %>
 <%--
   User: wangyan
-  Date: 12-5-24
-  Time: 下午3:29
+  Date: 12-5-25
+  Time: 下午8:30
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <title>网站首页2</title>
+    <title>详细内容显示界面</title>
     <style type="text/css">
         <!--
-        .STYLE1 {font-size: 24px}
+        .STYLE1 {
+            font-size: 18px;
+            font-weight: bold;
+        }
         -->
     </style>
     <link href="layout.css" rel="stylesheet" type="text/css" />
@@ -26,23 +29,25 @@
                     <p align="center">2012年5月20日</p>
                     <p align="center">星期日</p>
                     <p align="center">&nbsp;</p>
-                    <%if(( session.getAttribute("user"))!=null){%>
+                        <%if(( session.getAttribute("user"))!=null){%>
                     <p align="center"><%=((SiteUser) session.getAttribute("user")).getUsername()%> 欢迎您登录本网站！</p>
-                    <%}%>
+                        <%}%>
             </tr>
         </table>
     </div>
-    <div id="mainContent_1">
-        <div id="sidebar_1">
-            <div id="left">
-                <div id="bar1" align="center" class="STYLE1">内部通知</div>
-                <div id="bar2" align="center" class="STYLE1">最新公告</div>
-                <div id="bar3" align="center" class="STYLE1">图片新闻</div>
-                <div id="bar4" align="center" class="STYLE1">新闻快讯</div>
-                <div id="bar5" align="center" class="STYLE1">成果聚焦</div>
-            </div>
-        </div>
-        <div class="STYLE1" id="content_2">详细内容分条显示框</div>
+    <div id="mainContent_2">
+        <p>&nbsp;</p>
+        <table width="396" height="30" border="0" align="center" class="STYLE1">
+            <tr>
+                <td class="STYLE1">&nbsp;</td>
+            </tr>
+        </table>
+        、
+        <table width="745" height="463" border="0" align="center">
+            <tr>
+                <td height="459">&nbsp;</td>
+            </tr>
+        </table>
     </div>
     <div id="footer_1">
         <div align="center">

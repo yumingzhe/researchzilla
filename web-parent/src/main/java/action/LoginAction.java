@@ -4,11 +4,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import pojo.SiteUser;
 import service.SiteUserService;
+import service.WebsiteMessageService;
 import util.MD5Util;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 
 /**
  * User: wangyan
@@ -19,6 +20,7 @@ public class LoginAction extends ActionSupport {
     private String username;
     private String password;
     private SiteUserService siteUserService;
+    private WebsiteMessageService websiteMessageService;
 
     public String getUsername() {
         return username;
@@ -44,6 +46,14 @@ public class LoginAction extends ActionSupport {
         this.siteUserService = siteUserService;
     }
 
+    public WebsiteMessageService getWebsiteMessageService() {
+        return websiteMessageService;
+    }
+
+    public void setWebsiteMessageService(WebsiteMessageService websiteMessageService) {
+        this.websiteMessageService = websiteMessageService;
+    }
+
     public void validate() {
        if (this.username == null)
             this.addFieldError(username, "you must enter username");
@@ -54,6 +64,17 @@ public class LoginAction extends ActionSupport {
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession actionSession = request.getSession();
+       /* ServletContext application = (ServletContext) ServletActionContext.getContext().getApplication();
+
+        int count=0;
+        if(application.getAttribute("count")==null) {
+            application.setAttribute("count",1);
+        }else{
+            count=(Integer)application.getAttribute("count");
+            count++;
+            application.setAttribute("count",count);
+        }
+        websiteMessageService.updateWebsiteVisits(count); */
 
         SiteUser userone = siteUserService.getSiteUserByInstituteId(this.username);
         SiteUser usertwo = siteUserService.getSiteUserByEmail(this.username);

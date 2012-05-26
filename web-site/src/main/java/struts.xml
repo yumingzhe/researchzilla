@@ -40,18 +40,19 @@
         </action>
 
         <action name="GetInternalNoticeAction" class="getInternalNoticeAction">
-            <result name="success">GetPublicNoticeAction.action</result>
+            <result name="success" type="redirectAction">GetPublicNoticeAction</result>
+            <result name="aquire">homepagetwo.jsp</result>
         </action>
         <action name="GetPublicNoticeAction" class="getPublicNoticeAction">
-            <result name="success">GetNewsAction.action</result>
+            <result name="success" type="redirectAction">GetNewsAction</result>
         </action>
 
         <action name="GetNewsAction" class="getNewsAction">
-            <result name="success">GetLinkAction.action</result>
+            <result name="success" type="redirectAction">GetLinkAction</result>
         </action>
 
         <action name="GetLinkAction" class="getLinkAction">
-            <result name="success">GetVisitsAction.action</result>
+            <result name="success" type="redirectAction">GetVisitsAction</result>
         </action>
 
         <action name="postblogAction" class="postblogAction">
@@ -60,7 +61,15 @@
         </action>
 
         <action name="GetVisitsAction" class="getVisitsAction">
+            <result name="success" type="redirectAction">GetMaintenanceAddressAction</result>
+        </action>
+
+        <action name="GetMaintenanceAddressAction" class="getMaintenanceAddressAction">
             <result name="success">/homepageone.jsp</result>
+        </action>
+
+        <action name="GetWebsiteTitleAction" class="getWebsiteTitleAction">
+            <result name="success" type="redirectAction">GetInternalNoticeAction</result>
         </action>
     </package>
 </struts>

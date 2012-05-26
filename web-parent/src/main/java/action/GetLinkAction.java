@@ -30,7 +30,7 @@ public class GetLinkAction extends ActionSupport {
         HttpSession session = request.getSession();
 
         List list=linkService.getAllLink();
-        session.setAttribute("news",list);
+        session.setAttribute("links",list);
         return SUCCESS;
     }
 }

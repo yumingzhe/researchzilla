@@ -26,6 +26,11 @@ public class WebsiteMessageServiceImpl implements WebsiteMessageService {
     }
 
     @Override
+    public void updateWebsiteVisits(int count) {
+        websiteMessageDao.updateWebsiteVisits(count);
+    }
+
+    @Override
     public WebsiteMessage getWebsiteMessage() {
         return websiteMessageDao.getWebsiteMessage();
     }
