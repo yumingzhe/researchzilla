@@ -11,9 +11,9 @@ import javax.servlet.http.HttpSession;
 /**
  * User: wangyan
  * Date: 12-5-25
- * Time: 上午9:27
+ * Time: 下午8:43
  */
-public class GetVisitsAction extends ActionSupport {
+public class GetWebsiteTitleAction extends ActionSupport{
     private WebsiteMessageService websiteMessageService;
 
     public WebsiteMessageService getWebsiteMessageService() {
@@ -29,11 +29,11 @@ public class GetVisitsAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
 
-        WebsiteMessage  websiteMessage=websiteMessageService.getWebsiteMessage();
+        WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
 
-        int visits=websiteMessage.getVisits(0);
+        String websitename=websiteMessage.getWebsitename();
 
-        session.setAttribute("visits",visits);
+        session.setAttribute("websitename",websitename);
 
         return SUCCESS;
     }

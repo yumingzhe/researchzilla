@@ -24,7 +24,7 @@
     <div id="header_2">
         <div align="center" class="STYLE1">后台管理</div>
     </div>
-    <div id="menu_2">
+    <div id="menu">
         <ul id="nav">
             <li><a href="#" class="STYLE2">用户信息管理</a>
                 <ul>

@@ -1,4 +1,3 @@
-<%@ page import="org.apache.struts2.ServletActionContext" %>
 <%--
   User: wangyan
   Date: 12-5-24
@@ -12,7 +11,7 @@
 <body>
 <%
 
-    response.sendRedirect("http://localhost:8080/GetInternalNoticeAction");
+    response.sendRedirect("http://localhost:8080/GetWebsiteTitleAction");
 %>
 </body>
 </html>

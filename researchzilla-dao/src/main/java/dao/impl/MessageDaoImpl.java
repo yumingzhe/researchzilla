@@ -105,7 +105,7 @@ public class MessageDaoImpl implements MessageDao {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Message as m where m.type= :type order by id desc").setString("type","internalnotice");
-                query.setMaxResults(7);
+                query.setMaxResults(5);
                 return query.list();
             }
         });
@@ -118,7 +118,7 @@ public class MessageDaoImpl implements MessageDao {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Message as m where m.type= :type order by id desc").setString("type","publicnotice");
-                query.setMaxResults(7);
+                query.setMaxResults(5);
                 return query.list();
             }
         });
@@ -131,10 +131,61 @@ public class MessageDaoImpl implements MessageDao {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Message as m where m.type= :type order by id desc ").setString("type","news");
-                query.setMaxResults(7);
+                query.setMaxResults(5);
                 return query.list();
             }
         });
         return announcements;
+    }
+
+    @Override
+    public Message getOneInternalNotice(final String name) {
+        List internalnotices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type and m.topic= :topic");
+                query.setString("type","internalnotice");
+                query.setString("topic",name);
+                return query.list();
+            }
+        });
+        if(internalnotices==null)
+            return  null;
+        Message internalnotice= (Message) internalnotices.get(0);
+        return internalnotice;
+    }
+
+    @Override
+    public Message getOnePublicNotice(final String name) {
+        List publicnotices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type and m.topic= :topic");
+                query.setString("type","publicnotice");
+                query.setString("topic",name);
+                return query.list();
+            }
+        });
+        if(publicnotices==null)
+            return  null;
+        Message publicnotice= (Message) publicnotices.get(0);
+        return publicnotice;
+    }
+
+    @Override
+    public Message getOneNews(final String name) {
+        List newses = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type and m.topic= :topic");
+                query.setString("type","news");
+                query.setString("topic",name);
+                return query.list();
+            }
+        });
+        if(newses==null)
+            return  null;
+        Message news= (Message) newses.get(0);
+        return news;
     }
 }

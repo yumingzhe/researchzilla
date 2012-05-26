@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**.
- * User: wangyan
- * Date: 12-5-24
- * Time: 下午9:45
+/**
+ * Created with IntelliJ IDEA.
+ * User: Administrator
+ * Date: 12-5-25
+ * Time: 下午8:53
+ * To change this template use File | Settings | File Templates.
  */
-public class GetNewsAction extends ActionSupport {
+public class GetAllInternalNoticeAction extends ActionSupport {
     private MessageService messageService;
 
     public MessageService getMessageService() {
@@ -24,13 +26,13 @@ public class GetNewsAction extends ActionSupport {
         this.messageService = messageService;
     }
 
-    @Override
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
 
-        List list=messageService.getSomeNews();
-        session.setAttribute("news",list);
+        List list=messageService.getAllInternalNotice();
+        session.setAttribute("allinternalnotices",list);
+
 
         return SUCCESS;
     }

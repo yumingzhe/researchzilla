@@ -145,6 +145,12 @@
     <bean id="getVisitsAction" class="action.GetVisitsAction">
         <property name="websiteMessageService" ref="websiteMessageService"/>
     </bean>
+    <bean id="getMaintenanceAddressAction" class="action.GetMaintenanceAddressAction">
+        <property name="websiteMessageService" ref="websiteMessageService"/>
+    </bean>
+    <bean id="getWebsiteTitleAction" class="action.GetWebsiteTitleAction">
+        <property name="websiteMessageService" ref="websiteMessageService"/>
+    </bean>
 
 
     <bean id="forgetpasswordAction" class="action.ForgetPasswordAction">

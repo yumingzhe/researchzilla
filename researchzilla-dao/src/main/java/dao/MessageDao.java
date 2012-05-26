@@ -28,4 +28,10 @@ public interface MessageDao {
     public List<Message> getSomePublicNotice();
 
     public List<Message> getSomeNews();
+
+    public Message getOneInternalNotice(String name);
+
+    public Message getOnePublicNotice(String name);
+
+    public Message getOneNews(String name);
 }

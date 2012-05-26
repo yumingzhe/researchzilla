@@ -10,6 +10,8 @@ import pojo.WebsiteMessage;
 public interface WebsiteMessageService {
     public void updateWebsiteMessage(WebsiteMessage websiteMessage);
 
+    public void updateWebsiteVisits(int count);
+
     public WebsiteMessage getWebsiteMessage();
 
 }

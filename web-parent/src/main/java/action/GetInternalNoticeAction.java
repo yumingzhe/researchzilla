@@ -29,9 +29,25 @@ public class GetInternalNoticeAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
 
-        List  list=messageService.getSomeInternalNotice();
-        session.setAttribute("internalnotices",list);
+        List list = messageService.getSomeInternalNotice();
+        session.setAttribute("internalnotices", list);
 
         return SUCCESS;
+    }
+
+    public String getAllResult() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        List list = messageService.getAllInternalNotice();
+        session.setAttribute("allinternalnotices", list);
+        return "aquire";
+    }
+
+    public String getOneResult() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        List list = messageService.getAllInternalNotice();
+        session.setAttribute("allinternalnotices", list);
+        return "aquire";
     }
 }
