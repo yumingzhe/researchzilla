@@ -25,38 +25,50 @@ public class InsertData {
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Activity activity = (Activity) session.get(Activity.class, 3);
+        /* SiteUser siteUser = (SiteUser) session.get(SiteUser.class, 1);
+        Blog blog = new Blog();
+        blog.setTitle("test ");
+        blog.setContent("this is first blog");
+        blog.setSiteUser(siteUser);
 
-        UserEntity userEntity = new UserEntity();
-        userEntity.setAge(20);
-        userEntity.setCountry("china");
-        userEntity.setGender('m');
+        Activity activity = new Activity();
+        activity.setSiteUser(siteUser);
+        activity.setActivityOccurTime(new Timestamp(new Date().getTime()));
+        activity.setBlog(blog);
 
-        SiteUser user = new SiteUser();
-        user.setUsername("zhangsan");
-        user.setActive(true);
-        user.setBanned(false);
-        user.setInstituteId("123");
-        user.setEmail("zhangsan@live.cn");
+        blog.setActivity(activity);
+        session.save(blog);*/
 
-        Register register = new Register();
-        register.setRegisterSequence("this is register sequence");
-        register.setRegisterTime(new Timestamp(new Date().getTime()));
+/*
+        SiteUser siteUser = (SiteUser) session.get(SiteUser.class, 1);
+        Blog blog = (Blog) session.get(Blog.class, 1);
 
-        user.setRegister(register);
-        register.setSiteUser(user);
-        session.save(user);
+        CommentEntity commentEntity = new CommentEntity();
+        commentEntity.setBlog(blog);
+        commentEntity.setSiteUser(siteUser);
 
-        transaction.commit();
-        session.close();
-        Message message = new Message();
-        message.setType("announcement");
-        message.setAuthor("zhangsan");
-        message.setPublisher("wangyan");
-        message.setTopic("announcement");
-        message.setContent("wuyanzu will come here");
-        message.setPublishtime(new Timestamp(new Date().getTime()));
-        session.save(message);
+        Activity activity = new Activity();
+        activity.setActivityOccurTime(new Timestamp(new Date().getTime()));
+        activity.setSiteUser(siteUser);
+        activity.setCommentEntity(commentEntity);
+
+        commentEntity.setActivity(activity);
+
+        session.save(commentEntity);*/
+
+
+        Activity activity = (Activity) session.get(Activity.class, 2);
+        CommentEntity commentEntity = activity.getCommentEntity();
+        if (commentEntity != null) {
+            Blog blog = commentEntity.getBlog();
+            if (blog != null) {
+                System.out.println("blog title: " + blog.getTitle() + " blog content: " + blog.getContent());
+            }
+        } else {
+            System.out.print("i am here");
+        }
+
+
         transaction.commit();
         session.close();
     }

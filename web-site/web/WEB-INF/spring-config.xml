@@ -5,7 +5,7 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="user" value="root"/>
         <property name="password" value=""/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost/test"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost/researchzilla"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="initialPoolSize" value="2"/>
         <property name="minPoolSize" value="2"/>
@@ -26,12 +26,13 @@
                 <value>pojo/WebsiteMessage.hbm.xml</value>
                 <value>pojo/Link.hbm.xml</value>
                 <value>pojo/Feedback.hbm.xml</value>
+                <value>pojo/CommentEntity.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
-                <prop key="show_sql">true</prop>
-                <prop key="dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
             </props>
         </property>
     </bean>
