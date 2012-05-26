@@ -140,6 +140,8 @@ public class PostBlogAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
+        SiteUser siteUser = siteUserService.getSiteUserByUID(Integer.parseInt(posterId));
+
         Blog blog = new Blog();
         blog.setTitle(this.title);
         blog.setContent(this.content);
@@ -148,20 +150,15 @@ public class PostBlogAction extends ActionSupport {
         blog.setComment(this.comment);
         blog.setAccess(this.access);
         blog.setPostDate(new Timestamp(new Date().getTime()));
-
-        SiteUser siteUser = siteUserService.getSiteUserByUID(Integer.parseInt(posterId));
-
         blog.setSiteUser(siteUser);
-        siteUser.getBlogs().add(blog);
-        Serializable id = blogService.saveBlog(blog);//save blog
 
         Activity activity = new Activity();
-        activity.setObjectType("blog");
-        activity.setActivityType("post");
         activity.setActivityOccurTime(new Timestamp(new Date().getTime()));
-        activity.setObjectId(Integer.parseInt(id.toString()));
         activity.setSiteUser(siteUser);
-        activityService.saveActivity(activity);//save user recently activity
+        activity.setBlog(blog);
+        blog.setActivity(activity);
+
+        blogService.saveBlog(blog);//this will add blog and activity record into Table 'researchzilla_blog' and 'reaserchzilla_activity'
         return SUCCESS;
     }
 }

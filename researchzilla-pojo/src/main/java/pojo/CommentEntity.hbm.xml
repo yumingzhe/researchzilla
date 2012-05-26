@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.CommentEntity" table="researchzilla_comment">
+        <id name="id" column="id" type="int">
+            <generator class="increment"/>
+        </id>
+        <property name="content" column="content" type="java.lang.String" length="50"/>
+        <property name="postTime" column="postTime" type="timestamp"/>
+        <many-to-one name="siteUser" column="posterId" class="pojo.SiteUser"/>
+        <many-to-one name="blog" class="pojo.Blog" column="blogId"/>
+        <one-to-one name="activity" class="pojo.Activity" cascade="all"/>
+    </class>
+</hibernate-mapping>

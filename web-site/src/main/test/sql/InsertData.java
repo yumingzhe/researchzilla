@@ -28,26 +28,15 @@ public class InsertData {
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
-        /*SiteUser siteUser = new SiteUser();
-        siteUser.setUsername("ymz");
 
-        siteUser.setEmail("ymz@live.cn");
-        siteUser.setActive(true);
-        siteUser.setBanned(false);
-        siteUser.setInstituteId("08010516318");
+        Activity activity = (Activity) session.get(Activity.class, 3);
 
         UserEntity userEntity = new UserEntity();
         userEntity.setAge(20);
         userEntity.setCountry("china");
         userEntity.setGender('m');
 
-
-        siteUser.setUserEntity(userEntity);
-        userEntity.setSiteUser(siteUser);
-
-        session.save(siteUser);
-
-        SiteUser user=new SiteUser();
+        SiteUser user = new SiteUser();
         user.setUsername("zhangsan");
         user.setActive(true);
         user.setBanned(false);
@@ -61,6 +50,7 @@ public class InsertData {
         user.setRegister(register);
         register.setSiteUser(user);
         session.save(user);
+
         transaction.commit();
         session.close();
         Message message = new Message();
@@ -73,7 +63,7 @@ public class InsertData {
         session.save(message);
         transaction.commit();
         session.close();
-        WebsiteMessage message = new WebsiteMessage();
+       /* WebsiteMessage message = new WebsiteMessage();
         message.setWebsitename("山东科技大学");
         message.setBackground("111111111111111");
         message.setMaintenanceaddress("wangyan_megan@yeah.net");
@@ -81,7 +71,7 @@ public class InsertData {
         message.setVisits(0);
         session.save(message);
         transaction.commit();
-        session.close(); */
+        session.close();*/
         Link link = new Link();
         link.setWebsitename("人人网");
         link.setWebsiteurl("http://www.renren.com/");
@@ -90,4 +80,4 @@ public class InsertData {
         session.close();
 
     }
-        }
+}
