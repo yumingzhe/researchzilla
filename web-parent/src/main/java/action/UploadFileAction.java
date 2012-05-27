@@ -18,8 +18,8 @@ import java.util.List;
 public class UploadFileAction extends ActionSupport {
     private int groupId;
     private File file;
-    private String fileName;
-    private String fileType;
+    private String fileFileName;
+    private String fileContentType;
     private String description;
     private Timestamp uploadTime;
     private String tag;
@@ -50,20 +50,20 @@ public class UploadFileAction extends ActionSupport {
         this.groupId = groupId;
     }
 
-    public String getFileName() {
-        return fileName;
+    public String getFileFileName() {
+        return fileFileName;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFileFileName(String fileFileName) {
+        this.fileFileName = fileFileName;
     }
 
-    public String getFileType() {
-        return fileType;
+    public String getFileContentType() {
+        return fileContentType;
     }
 
-    public void setFileType(String fileType) {
-        this.fileType = fileType;
+    public void setFileContentType(String fileContentType) {
+        this.fileContentType = fileContentType;
     }
 
     public String getDescription() {
@@ -100,41 +100,38 @@ public class UploadFileAction extends ActionSupport {
 
     @Override
     public void validate() {
-
         if (this.file.canExecute()) {
             this.addFieldError("file", "Execute File is not allowed to upload to this site");
         }
-
         String size = (String) ServletActionContext.getContext().getApplication().get("filesize");
         if (size == null) {//by default, site will allow user to upload at most 5M file.
             size = "5";
         }
         int allowedFileSize = Integer.parseInt(size);
-        if (this.file.length() > allowedFileSize) {
+        if (this.file.length() > allowedFileSize * 1024 * 1024) {
             this.addFieldError("file", "You can not allowed to upload more than" + allowedFileSize + "M file to this site");
         }
-
         List<String> types = (List<String>) ServletActionContext.getContext().getApplication().get("allowedFileType");
         if (types == null) {
             types = new ArrayList<String>();
-            types.add("doc");
+            types.add("application/msword");//.doc
             types.add("xml");
             types.add("ppt");
-            types.add("txt");
-            types.add("rar");
-            types.add("zip");
+            types.add("text/plain");//.txt
+            types.add("application/x-rar");//.rar
+            types.add("application/zip");//.zip
             types.add("png");
             types.add("jpeg");
         }
         boolean allowUpload = false;
         for (String allowedFileType : types) {
-            if (allowedFileType.equals(fileType)) {
+            if (allowedFileType.equals(fileContentType)) {
                 allowUpload = true;
                 break;
             }
         }
         if (!allowUpload) {
-            this.addFieldError("file", "You are not allowed to upload " + fileType + " type file to this site");
+            this.addFieldError("file", "You are not allowed to upload " + fileContentType + " type file to this site");
         }
     }
 
@@ -144,7 +141,7 @@ public class UploadFileAction extends ActionSupport {
         fileEntity.setAccess(access);
         fileEntity.setTag(tag);
         fileEntity.setDescription(description);
-        fileEntity.setFileName(fileName);
+        fileEntity.setFileName(fileFileName);
         fileEntity.setUploadTime(new Timestamp(new Date().getTime()));
         fileEntity.setFile(file);
         fileService.saveFile(fileEntity);
