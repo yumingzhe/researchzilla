@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.File" table="researchzilla_file">
+        <id name="id" column="id" type="int">
+            <generator class="increment"/>
+        </id>
+        <property name="groupId" type="java.lang.Integer" column="groupId"/>
+        <property name="fileName" column="fileName" type="java.lang.String"/>
+        <property name="fileType" column="fileType" type="java.lang.String"/>
+        <property name="fileIconId" column="fileIconId" type="int"/>
+        <property name="description" column="description" type="java.lang.String"/>
+        <property name="uploadTime" column="uploadTime" type="timestamp"/>
+        <many-to-one name="siteUser" column="ownerId" class="pojo.SiteUser"/>
+        <property name="tag" column="tag" type="java.lang.String"/>
+        <property name="access" column="access" type="java.lang.String"/>
+        <set name="commentEntities" table="researchzilla_comment">
+            <key column="fileId"></key>
+            <one-to-many class="pojo.CommentEntity"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,6 +1,7 @@
 package pojo;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 /**
  * User: yumingzhe
@@ -8,23 +9,49 @@ import java.sql.Timestamp;
  * Time: 9:47 PM
  */
 public class File {
-    private Integer fileId;
+    private Integer id;
     private Integer groupId;
     private String fileName;
     private String fileType;
-    private File fileIconId;
+    private java.io.File file;
+    private Integer fileIconId;
     private String description;
     private Timestamp uploadTime;
-    private Integer uploaderId;
+    private SiteUser siteUser;
     private String tag;
     private String access;
+    private Set<CommentEntity> commentEntities;
 
-    public Integer getFileId() {
-        return fileId;
+    public java.io.File getFile() {
+        return file;
     }
 
-    public void setFileId(Integer fileId) {
-        this.fileId = fileId;
+    public void setFile(java.io.File file) {
+        this.file = file;
+    }
+
+    public Set<CommentEntity> getCommentEntities() {
+        return commentEntities;
+    }
+
+    public void setCommentEntities(Set<CommentEntity> commentEntities) {
+        this.commentEntities = commentEntities;
+    }
+
+    public Integer getFileIconId() {
+        return fileIconId;
+    }
+
+    public void setFileIconId(Integer fileIconId) {
+        this.fileIconId = fileIconId;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getGroupId() {
@@ -51,14 +78,6 @@ public class File {
         this.fileType = fileType;
     }
 
-    public File getFileIconId() {
-        return fileIconId;
-    }
-
-    public void setFileIconId(File fileIconId) {
-        this.fileIconId = fileIconId;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -75,12 +94,12 @@ public class File {
         this.uploadTime = uploadTime;
     }
 
-    public Integer getUploaderId() {
-        return uploaderId;
+    public SiteUser getSiteUser() {
+        return siteUser;
     }
 
-    public void setUploaderId(Integer uploaderId) {
-        this.uploaderId = uploaderId;
+    public void setSiteUser(SiteUser siteUser) {
+        this.siteUser = siteUser;
     }
 
     public String getTag() {
