@@ -11,4 +11,6 @@ import java.io.Serializable;
  */
 public interface BlogService {
     public Serializable saveBlog(Blog blog);
+
+    public Blog getBlogById(int id);
 }

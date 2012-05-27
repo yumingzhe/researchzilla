@@ -11,5 +11,6 @@
         <many-to-one name="siteUser" column="posterId" class="pojo.SiteUser"/>
         <many-to-one name="blog" class="pojo.Blog" column="blogId"/>
         <one-to-one name="activity" class="pojo.Activity" cascade="all"/>
+        <many-to-one name="file" class="pojo.File" column="fileId"/>
     </class>
 </hibernate-mapping>

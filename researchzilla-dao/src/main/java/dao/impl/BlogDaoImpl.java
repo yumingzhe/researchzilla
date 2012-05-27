@@ -1,11 +1,17 @@
 package dao.impl;
 
 import dao.BlogDao;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import pojo.Blog;
 
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -38,5 +44,16 @@ public class BlogDaoImpl implements BlogDao {
     @Override
     public Serializable saveBlog(Blog blog) {
         return this.getTemplate().save(blog);
+    }
+
+    @Override
+    public Blog getBlogById(final int id) {
+        return (Blog) this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Blog as b where b.id= :id").setInteger("id", id);
+                return query.list();
+            }
+        }).get(0);
     }
 }

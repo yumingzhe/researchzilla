@@ -26,4 +26,9 @@ public class BlogServiceImpl implements BlogService {
     public Serializable saveBlog(Blog blog) {
         return blogDao.saveBlog(blog);
     }
+
+    @Override
+    public Blog getBlogById(int id) {
+        return blogDao.getBlogById(id);
+    }
 }

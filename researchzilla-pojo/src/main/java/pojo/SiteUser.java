@@ -16,6 +16,15 @@ public class SiteUser implements Serializable {
     private Register register;
     private Set<Activity> activities;
     private Set<Blog> blogs;
+    private Set<File> files;
+
+    public Set<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(Set<File> files) {
+        this.files = files;
+    }
 
     public Set<Blog> getBlogs() {
         return blogs;

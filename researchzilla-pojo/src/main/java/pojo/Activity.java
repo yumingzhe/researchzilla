@@ -12,7 +12,16 @@ public class Activity {
     private Timestamp activityOccurTime;
     private SiteUser siteUser;
     private Blog blog;
+    private File file;
     private CommentEntity commentEntity;
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
 
     public CommentEntity getCommentEntity() {
         return commentEntity;

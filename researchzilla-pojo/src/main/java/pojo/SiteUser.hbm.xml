@@ -23,5 +23,9 @@
             <key column="posterId"/>
             <one-to-many class="pojo.Blog"/>
         </set>
+        <set name="files" table="researchzilla_file">
+            <key column="ownerId"></key>
+            <one-to-many class="pojo.File"/>
+        </set>
     </class>
 </hibernate-mapping>

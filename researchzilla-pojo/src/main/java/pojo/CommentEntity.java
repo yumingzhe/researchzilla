@@ -11,10 +11,18 @@ public class CommentEntity {
     private Integer id;
     private Timestamp postTime;
     private String content;
-    private Integer fileId;
+    private File file;
     private Blog blog;
     private Activity activity;
     private SiteUser siteUser;
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
 
     public SiteUser getSiteUser() {
         return siteUser;
@@ -62,13 +70,5 @@ public class CommentEntity {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Integer getFileId() {
-        return fileId;
-    }
-
-    public void setFileId(Integer fileId) {
-        this.fileId = fileId;
     }
 }
