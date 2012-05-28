@@ -83,5 +83,11 @@
             <result name="success">/managepage.jsp</result>
             <result name="acquirewebsitemessage">/managepage.jsp</result>
         </action>
+
+        <action name="BasicMessageChangeAction" class="basicMessageChangeAction">
+            <result name="success">/managepage.jsp</result>
+            <result name="acquirewebsitemessage">/basicmessagechange.jsp</result>
+            <result name="input">/basicmessagechange.jsp</result>
+        </action>
     </package>
 </struts>
