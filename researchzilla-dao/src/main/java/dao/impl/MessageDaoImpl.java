@@ -139,13 +139,13 @@ public class MessageDaoImpl implements MessageDao {
     }
 
     @Override
-    public Message getOneInternalNotice(final String name) {
+    public Message getOneInternalNoticeByID(final int id) {
         List internalnotices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from Message as m where m.type= :type and m.topic= :topic");
+                Query query = session.createQuery("from Message as m where m.type= :type and m.id= :id");
                 query.setString("type","internalnotice");
-                query.setString("topic",name);
+                query.setInteger("id",id);
                 return query.list();
             }
         });
@@ -156,13 +156,13 @@ public class MessageDaoImpl implements MessageDao {
     }
 
     @Override
-    public Message getOnePublicNotice(final String name) {
+    public Message getOnePublicNoticeByID(final int id) {
         List publicnotices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from Message as m where m.type= :type and m.topic= :topic");
+                Query query = session.createQuery("from Message as m where m.type= :type and m.id= :id");
                 query.setString("type","publicnotice");
-                query.setString("topic",name);
+                query.setInteger("id",id);
                 return query.list();
             }
         });
@@ -173,13 +173,13 @@ public class MessageDaoImpl implements MessageDao {
     }
 
     @Override
-    public Message getOneNews(final String name) {
+    public Message getOneNewsByID(final int id) {
         List newses = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from Message as m where m.type= :type and m.topic= :topic");
+                Query query = session.createQuery("from Message as m where m.type= :type and m.id= :id");
                 query.setString("type","news");
-                query.setString("topic",name);
+                query.setInteger("id",id);
                 return query.list();
             }
         });

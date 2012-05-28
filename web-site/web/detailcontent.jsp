@@ -1,4 +1,5 @@
 <%@ page import="pojo.SiteUser" %>
+<%@ page import="pojo.Message" %>
 <%--
   User: wangyan
   Date: 12-5-25
@@ -39,14 +40,55 @@
         <p>&nbsp;</p>
         <table width="396" height="30" border="0" align="center" class="STYLE1">
             <tr>
-                <td class="STYLE1">&nbsp;</td>
+                <%if(request.getAttribute("oneinternalnotice")!=null){%>
+                <td class="STYLE1"><%=((Message)request.getAttribute("oneinternalnotice")).getTopic()%></td>
+                <%}else if(request.getAttribute("onepublicnotice")!=null){%>
+                <td class="STYLE1"><%=((Message)request.getAttribute("onepublicnotice")).getTopic()%></td>
+                <%}else{%>
+                <td class="STYLE1"><%=((Message)request.getAttribute("onenews")).getTopic()%></td>
+                <%}%>
             </tr>
         </table>
-        、
+
         <table width="745" height="463" border="0" align="center">
+            <%if(request.getAttribute("oneinternalnotice")!=null){%>
             <tr>
-                <td height="459">&nbsp;</td>
+                <td >作者：<%=((Message)request.getAttribute("oneinternalnotice")).getAuthor()%></td>
+                <td >发布者：<%=((Message)request.getAttribute("oneinternalnotice")).getPublisher()%></td>
+                <td >发布时间：<%=((Message)request.getAttribute("oneinternalnotice")).getPublishtime()%></td>
             </tr>
+            <tr>
+                <td><%=((Message)request.getAttribute("oneinternalnotice")).getContent()%></td>
+            </tr>
+            <tr>
+                <td><%=((Message)request.getAttribute("oneinternalnotice")).getAccesory()%></td>
+            </tr>
+            <td class="STYLE1"><%=((Message)request.getAttribute("oneinternalnotice")).getTopic()%></td>
+            <%}else if(request.getAttribute("onepublicnotice")!=null){%>
+            <tr>
+                <td >作者：<%=((Message)request.getAttribute("onepublicnotice")).getAuthor()%></td>
+                <td >发布者：<%=((Message)request.getAttribute("onepublicnotice")).getPublisher()%></td>
+                <td >发布时间：<%=((Message)request.getAttribute("onepublicnotice")).getPublishtime()%></td>
+            </tr>
+            <tr>
+                <td><%=((Message)request.getAttribute("onepublicnotice")).getContent()%></td>
+            </tr>
+            <tr>
+                <td><%=((Message)request.getAttribute("onepublicnotice")).getAccesory()%></td>
+            </tr>
+            <%}else{%>
+            <tr>
+                <td >作者：<%=((Message)request.getAttribute("onenews")).getAuthor()%></td>
+                <td >发布者：<%=((Message)request.getAttribute("onenews")).getPublisher()%></td>
+                <td >发布时间：<%=((Message)request.getAttribute("onenews")).getPublishtime()%></td>
+            </tr>
+            <tr>
+                <td><%=((Message)request.getAttribute("onenews")).getContent()%></td>
+            </tr>
+            <tr>
+                <td><%=((Message)request.getAttribute("onenews")).getAccesory()%></td>
+            </tr>
+            <%}%>
         </table>
     </div>
     <div id="footer_1">

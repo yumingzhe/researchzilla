@@ -41,14 +41,19 @@
 
         <action name="GetInternalNoticeAction" class="getInternalNoticeAction">
             <result name="success" type="redirectAction">GetPublicNoticeAction</result>
-            <result name="aquire">homepagetwo.jsp</result>
+            <result name="aquireall">homepagetwo.jsp</result>
+            <result name="aquireone">detailcontent.jsp</result>
         </action>
         <action name="GetPublicNoticeAction" class="getPublicNoticeAction">
             <result name="success" type="redirectAction">GetNewsAction</result>
+            <result name="acquireall" >/homepagetwo.jsp</result>
+            <result name="acquireone">/detailcontent.jsp</result>
         </action>
 
         <action name="GetNewsAction" class="getNewsAction">
             <result name="success" type="redirectAction">GetLinkAction</result>
+            <result name="acquireall" >/homepagetwo.jsp</result>
+            <result name="acquireone">/detailcontent.jsp</result>
         </action>
 
         <action name="GetLinkAction" class="getLinkAction">

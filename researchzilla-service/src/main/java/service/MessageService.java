@@ -29,10 +29,10 @@ public interface MessageService {
 
     public List<Message> getSomeNews();
 
-    public Message getOneInternalNotice(String name);
+    public Message getOneInternalNoticeByID(int id);
 
-    public Message getOnePublicNotice(String name);
+    public Message getOnePublicNoticeByID(int id);
 
-    public Message getOneNews(String name);
+    public Message getOneNewsByID(int id);
 
 }
