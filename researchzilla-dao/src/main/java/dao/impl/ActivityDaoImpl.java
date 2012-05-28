@@ -1,11 +1,17 @@
 package dao.impl;
 
 import dao.ActivityDao;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import pojo.Activity;
 
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -38,5 +44,16 @@ public class ActivityDaoImpl implements ActivityDao {
     @Override
     public Serializable saveActivity(Activity activity) {
         return this.getTemplate().save(activity);
+    }
+
+    @Override
+    public List<Activity> getAllActivitiesByUID(final int uid) {
+        return this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Activity as a where a.siteUser.id= :uid").setInteger("uid", uid);
+                return query.list();
+            }
+        });
     }
 }

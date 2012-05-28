@@ -13,7 +13,17 @@ public class Activity {
     private SiteUser siteUser;
     private Blog blog;
     private File file;
+    private String action;
     private CommentEntity commentEntity;
+
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
 
     public File getFile() {
         return file;

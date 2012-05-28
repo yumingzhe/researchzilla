@@ -5,6 +5,7 @@ import pojo.Activity;
 import service.ActivityService;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -25,5 +26,10 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public Serializable saveActivity(Activity activity) {
         return activityDao.saveActivity(activity);
+    }
+
+    @Override
+    public List<Activity> getAllActivitiesByUID(int uid) {
+        return activityDao.getAllActivitiesByUID(uid);
     }
 }

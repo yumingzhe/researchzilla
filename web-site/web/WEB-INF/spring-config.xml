@@ -68,6 +68,11 @@
         <property name="registerService" ref="registerService"/>
     </bean>
 
+    <bean id="getUserAllActivitiesAction" class="action.GetUserAllActivitiesAction">
+        <property name="activityService" ref="activityService"/>
+        <property name="siteUserService" ref="siteUserService"/>
+    </bean>
+
     <!--LetterEntity Bean group-->
     <bean id="letterEntityDao" class="dao.impl.LetterEntityDaoImpl">
         <property name="factory" ref="sessionFactory"/>
