@@ -24,6 +24,10 @@
             <result name="success">/success.jsp</result>
         </action>
 
+        <action name="getUserAllActivitiesAction" class="getUserAllActivitiesAction">
+            <result name="success">/showactivity.jsp</result>
+        </action>
+
         <action name="forgetpasswordAction" class="forgetpasswordAction">
             <result name="success">/change.jsp</result>
             <result name="input">/login.jsp</result>
@@ -51,13 +55,13 @@
         </action>
         <action name="GetPublicNoticeAction" class="getPublicNoticeAction">
             <result name="success" type="redirectAction">GetNewsAction</result>
-            <result name="acquireall" >/homepagetwo.jsp</result>
+            <result name="acquireall">/homepagetwo.jsp</result>
             <result name="acquireone">/detailcontent.jsp</result>
         </action>
 
         <action name="GetNewsAction" class="getNewsAction">
             <result name="success" type="redirectAction">GetLinkAction</result>
-            <result name="acquireall" >/homepagetwo.jsp</result>
+            <result name="acquireall">/homepagetwo.jsp</result>
             <result name="acquireone">/detailcontent.jsp</result>
         </action>
 

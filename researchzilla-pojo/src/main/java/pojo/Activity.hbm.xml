@@ -7,8 +7,9 @@
             <generator class="increment"/>
         </id>
         <property name="activityOccurTime" column="activityTime" type="timestamp"/>
-        <many-to-one name="siteUser" column="personId" class="pojo.SiteUser"/>
-        <many-to-one name="blog" column="blogId" class="pojo.Blog" unique="true"/>
+        <property name="action" column="action" type="java.lang.String" length="50"/>
+        <many-to-one name="siteUser" column="personId" class="pojo.SiteUser" lazy="false"/>
+        <many-to-one name="blog" column="blogId" class="pojo.Blog" unique="true" lazy="false"/>
         <many-to-one name="commentEntity" class="pojo.CommentEntity" column="commentId" unique="true"/>
         <many-to-one name="file" class="pojo.File" column="fileId" unique="true"/>
     </class>

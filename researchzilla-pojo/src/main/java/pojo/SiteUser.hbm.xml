@@ -15,7 +15,7 @@
         <property name="instituteId" column="instituteId" type="java.lang.String"/>
         <one-to-one name="userEntity" class="pojo.UserEntity" cascade="all"/>
         <one-to-one name="register" class="pojo.Register" lazy="false" cascade="all"/>
-        <set name="activities" table="researchzilla_activity" inverse="false" cascade="all" lazy="true">
+        <set name="activities" table="researchzilla_activity" inverse="false" cascade="all" lazy="false">
             <key column="personId"/>
             <one-to-many class="pojo.Activity"/>
         </set>
