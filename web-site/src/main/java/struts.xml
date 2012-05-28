@@ -35,8 +35,7 @@
         </action>
 
         <action name="uploadfileAction" class="uploadfileAction">
-            <result name="success">/uploadsuccess.jsp</result>
-            <result name="input">/uploadfile.jsp</result>
+
         </action>
 
         <action name="FeedbackAction" class="feedbackAction">
