@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.Group" table="researchzilla_group">
+        <id name="groupId" column="id" type="int">
+            <generator class="native"/>
+        </id>
+        <property name="description" column="description" type="java.lang.String" length="100"/>
+        <property name="access" column="access" type="java.lang.String"/>
+        <property name="groupName" column="groupName" type="java.lang.String"/>
+        <set name="members" table="researchzilla_group_member" cascade="all">
+            <key column="groupId"/>
+            <one-to-many class="pojo.SiteUser"/>
+        </set>
+         <join optional="true" inverse="true" table="researchzilla_siteuser_group">
+            <key column="groupId"/>
+            <many-to-one name="groupOwner" column="siteuserId" class="pojo.SiteUser"/>
+        </join>
+    </class>
+</hibernate-mapping>
