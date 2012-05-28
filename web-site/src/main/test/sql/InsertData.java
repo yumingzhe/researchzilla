@@ -70,12 +70,12 @@ public class InsertData {
             }
         } else {
             System.out.print("i am here");
-        }   */
+        } */
 
 
         Message message = new Message();
-        message.setType("publicnotice");
-        message.setAuthor("王五");
+        message.setType("news");
+        message.setAuthor("李四");
         message.setPublisher("王艳");
         message.setTopic("news");
         message.setContent("wuyanzu will come here");
@@ -85,7 +85,7 @@ public class InsertData {
         session.close();
         /*WebsiteMessage message = new WebsiteMessage();
         message.setWebsitename("山东科技大学");
-        message.setBackground("111111111111111");
+        message.setBackground(null);
         message.setMaintenanceaddress("wangyan_megan@yeah.net");
         message.setDefaultlanguage("chinese");
         message.setVisits(0);
@@ -94,8 +94,8 @@ public class InsertData {
         session.close();
         Link link = new Link();
 
-        link.setWebsitename("淘宝网");
-        link.setWebsiteurl("http://www.taobao.com/");
+        link.setWebsitename("百度");
+        link.setWebsiteurl("http://www.baidu.com/");
         session.save(link);
         transaction.commit();
         session.close();*/

@@ -1,6 +1,7 @@
 package pojo;
 
 import java.sql.Timestamp;
+import java.io.File;
 
 /**
  * User:wangyan

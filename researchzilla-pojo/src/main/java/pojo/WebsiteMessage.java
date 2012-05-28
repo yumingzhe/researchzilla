@@ -1,5 +1,5 @@
 package pojo;
-
+import java.io.File;
 /**
  * User:wangyan
  * Date: 12-5-19
@@ -8,7 +8,7 @@ package pojo;
 public class WebsiteMessage {
     private int id;
     private String websitename;
-    private String background;
+    private File background;
     private String defaultlanguage;
     private String maintenanceaddress;
     private int visits;
@@ -33,11 +33,11 @@ public class WebsiteMessage {
         this.websitename = websitename;
     }
 
-    public String getBackground() {
+    public File getBackground() {
         return background;
     }
 
-    public void setBackground(String background) {
+    public void setBackground(File background) {
         this.background = background;
     }
 

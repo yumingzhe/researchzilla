@@ -12,5 +12,7 @@ import java.util.List;
 public interface FeedbackDao {
     public Serializable saveFeedback(Feedback feedback);
 
-     public List<Feedback> getAllFeedback();
+    public List<Feedback> getAllFeedback();
+
+    public Feedback getOneFeedbackByID(int id);
 }

@@ -37,6 +37,8 @@
         <action name="FeedbackAction" class="feedbackAction">
             <result name="success">/homepageone.jsp</result>
             <result name="input">/feedback.jsp</result>
+            <result name="acquireall">/feedbackshow.jsp</result>
+            <result name="acquireone">/feedbackdetail.jsp</result>
         </action>
 
         <action name="GetInternalNoticeAction" class="getInternalNoticeAction">
@@ -75,6 +77,11 @@
 
         <action name="GetWebsiteTitleAction" class="getWebsiteTitleAction">
             <result name="success" type="redirectAction">GetInternalNoticeAction</result>
+        </action>
+
+        <action name="BasicDesignAction" class="basicDesignAction">
+            <result name="success">/managepage.jsp</result>
+            <result name="acquirewebsitemessage">/managepage.jsp</result>
         </action>
     </package>
 </struts>

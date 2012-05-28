@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: wangyan
@@ -19,6 +20,7 @@ public class FeedbackAction extends ActionSupport{
     private String title;
     private String content;
 
+    private String feedbackid;
     private FeedbackService feedbackService;
 
     public String getTitle() {
@@ -55,6 +57,14 @@ public class FeedbackAction extends ActionSupport{
         }
     }
 
+    public String getFeedbackid() {
+        return feedbackid;
+    }
+
+    public void setFeedbackid(String feedbackid) {
+        this.feedbackid = feedbackid;
+    }
+
     @Override
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -68,5 +78,25 @@ public class FeedbackAction extends ActionSupport{
 
         feedbackService.saveFeedback(feedback);
         return SUCCESS;
+    }
+    public String getAllFeedback() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        List list = feedbackService.getAllFeedback();
+        session.setAttribute("feedbacks", list);
+
+        return "acquireall";
+    }
+
+    public String getOneFeedback() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        int id=Integer.parseInt(feedbackid);
+        Feedback feedback = feedbackService.getOneFeedbackByID(id);
+        session.setAttribute("onefeedback", feedback);
+
+        return "acquireone";
     }
 }

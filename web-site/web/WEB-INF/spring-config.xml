@@ -153,6 +153,9 @@
     <bean id="getWebsiteTitleAction" class="action.GetWebsiteTitleAction">
         <property name="websiteMessageService" ref="websiteMessageService"/>
     </bean>
+    <bean id="basicDesignAction" class="action.BasicDesignAction">
+        <property name="websiteMessageService" ref="websiteMessageService"/>
+    </bean>
 
 
     <bean id="forgetpasswordAction" class="action.ForgetPasswordAction">

@@ -7,7 +7,7 @@
             <generator class="increment"/>
         </id>
         <property name="websitename" column="websitename" type="string" length="50" not-null="true"/>
-        <property name="background" column="background" type="string" length="100" not-null="true"/>
+        <property name="background" column="background" type="blob"  />
         <property name="defaultlanguage" column="defaultlanguage" type="string" length="50"  not-null="true" />
         <property name="maintenanceaddress" column="maintenanceaddress" type="string" length="50" not-null="true"/>
         <property name="visits" column="visits" type="int" not-null="true"/>

@@ -149,6 +149,4 @@ a:hover { color: #F00; }
 #nav li.sfhover ul {
     left: auto;
 }
-#nav li ul.current ul { display:block;}
-#nav li ul:hover ul { display:block;}
 
