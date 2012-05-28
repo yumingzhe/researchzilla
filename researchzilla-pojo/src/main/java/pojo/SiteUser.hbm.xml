@@ -4,7 +4,7 @@
 <hibernate-mapping>
     <class name="pojo.SiteUser" table="researchzilla_siteusers">
         <id name="uid" column="uid" type="java.lang.Integer">
-            <generator class="increment"/>
+            <generator class="native"/>
         </id>
         <property name="username" column="username" type="java.lang.String" length="20"/>
         <property name="password" column="password" type="java.lang.String" length="32"/>
@@ -24,8 +24,17 @@
             <one-to-many class="pojo.Blog"/>
         </set>
         <set name="files" table="researchzilla_file">
-            <key column="ownerId"></key>
+            <key column="ownerId"/>
             <one-to-many class="pojo.File"/>
         </set>
+        <set name="groups" cascade="all" table="researchzilla_siteuser_group">
+            <key column="siteuserId"/>
+            <many-to-many class="pojo.Group" column="groupId" unique="true"/>
+        </set>
+        <!-- <join table="researchzilla_group_member">
+            <key column="memberId"/>
+            <many-to-one name="group" column="groupId" unique="true" not-null="false" class="pojo.Group"/>
+        </join>-->
+        <many-to-one name="group" class="pojo.Group" column="groupId"/>
     </class>
 </hibernate-mapping>
