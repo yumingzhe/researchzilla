@@ -34,6 +34,11 @@
             <result name="input">/forgetpassword.jsp</result>
         </action>
 
+        <action name="uploadfileAction" class="uploadfileAction">
+            <result name="success">/uploadsuccess.jsp</result>
+            <result name="input">/uploadfile.jsp</result>
+        </action>
+
         <action name="FeedbackAction" class="feedbackAction">
             <result name="success">/homepageone.jsp</result>
             <result name="input">/feedback.jsp</result>
@@ -71,5 +76,6 @@
         <action name="GetWebsiteTitleAction" class="getWebsiteTitleAction">
             <result name="success" type="redirectAction">GetInternalNoticeAction</result>
         </action>
+
     </package>
 </struts>
