@@ -16,6 +16,7 @@
         <property name="mappingResources">
             <list>
                 <value>pojo/SiteUser.hbm.xml</value>
+                <value>pojo/Group.hbm.xml</value>
                 <value>pojo/Blog.hbm.xml</value>
                 <value>pojo/Activity.hbm.xml</value>
                 <value>pojo/Register.hbm.xml</value>
@@ -193,5 +194,16 @@
         <property name="siteUserService" ref="siteUserService"/>
     </bean>
 
+
+    <!--File Bean Group-->
+    <bean id="fileDao" class="dao.impl.FileDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="fileService" class="service.impl.FileServiceImpl">
+        <property name="fileDao" ref="fileDao"/>
+    </bean>
+    <bean id="uploadfileAction" class="action.UploadFileAction">
+        <property name="fileService" ref="fileService"/>
+    </bean>
 
 </beans>

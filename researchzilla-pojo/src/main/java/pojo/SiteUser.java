@@ -17,6 +17,24 @@ public class SiteUser implements Serializable {
     private Set<Activity> activities;
     private Set<Blog> blogs;
     private Set<File> files;
+    private Set<Group> groups;
+    private Group group;
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public Set<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
+    }
 
     public Set<File> getFiles() {
         return files;

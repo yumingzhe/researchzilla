@@ -1,5 +1,7 @@
 package pojo;
 
+import java.util.Set;
+
 /**
  * User: yumingzhe
  * Date: 5/19/12
@@ -11,6 +13,24 @@ public class Group {
     private String description;
     private String tag;
     private String access;
+    private SiteUser groupOwner;
+    private Set<SiteUser> members;
+
+    public Set<SiteUser> getMembers() {
+        return members;
+    }
+
+    public void setMembers(Set<SiteUser> members) {
+        this.members = members;
+    }
+
+    public SiteUser getGroupOwner() {
+        return groupOwner;
+    }
+
+    public void setGroupOwner(SiteUser groupOwner) {
+        this.groupOwner = groupOwner;
+    }
 
     public Integer getGroupId() {
         return groupId;
