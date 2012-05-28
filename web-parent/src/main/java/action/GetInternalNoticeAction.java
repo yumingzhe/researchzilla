@@ -2,6 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import pojo.Message;
 import service.MessageService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,16 @@ import java.util.List;
  * Time: 下午4:13
  */
 public class GetInternalNoticeAction extends ActionSupport {
+    private String internalnoticeid;
     private MessageService messageService;
+
+    public String getInternalnoticeid() {
+        return internalnoticeid;
+    }
+
+    public void setInternalnoticeid(String internalnoticeid) {
+        this.internalnoticeid = internalnoticeid;
+    }
 
     public MessageService getMessageService() {
         return messageService;
@@ -37,17 +47,17 @@ public class GetInternalNoticeAction extends ActionSupport {
 
     public String getAllResult() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
         List list = messageService.getAllInternalNotice();
-        session.setAttribute("allinternalnotices", list);
-        return "aquire";
+        request.setAttribute("allinternalnotices", list);
+        return "aquireall";
     }
 
     public String getOneResult() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        List list = messageService.getAllInternalNotice();
-        session.setAttribute("allinternalnotices", list);
-        return "aquire";
+
+        int id=Integer.parseInt(internalnoticeid);
+        Message internalnotice = messageService.getOneInternalNoticeByID(id);
+        request.setAttribute("oneinternalnotice", internalnotice);
+        return "aquireone";
     }
 }

@@ -13,7 +13,7 @@ public class PictureNews {
     private String author;
     private String publisher;
     private String topic;
-    private String picture;
+    private File picture;
     private String content;
     private Timestamp publishtime;
 
@@ -57,11 +57,11 @@ public class PictureNews {
         this.topic = topic;
     }
 
-    public String getPicture() {
+    public File getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(File picture) {
         this.picture = picture;
     }
 

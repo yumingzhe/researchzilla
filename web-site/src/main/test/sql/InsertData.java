@@ -70,20 +70,20 @@ public class InsertData {
             }
         } else {
             System.out.print("i am here");
-        }
-*/
+        }   */
+
 
         Message message = new Message();
-        message.setType("news");
-        message.setAuthor("zhangsan");
-        message.setPublisher("wangyan");
+        message.setType("publicnotice");
+        message.setAuthor("王五");
+        message.setPublisher("王艳");
         message.setTopic("news");
         message.setContent("wuyanzu will come here");
         message.setPublishtime(new Timestamp(new Date().getTime()));
         session.save(message);
         transaction.commit();
         session.close();
-       /* WebsiteMessage message = new WebsiteMessage();
+        /*WebsiteMessage message = new WebsiteMessage();
         message.setWebsitename("山东科技大学");
         message.setBackground("111111111111111");
         message.setMaintenanceaddress("wangyan_megan@yeah.net");
@@ -91,13 +91,14 @@ public class InsertData {
         message.setVisits(0);
         session.save(message);
         transaction.commit();
-        session.close();*/
+        session.close();
         Link link = new Link();
-        link.setWebsitename("人人网");
-        link.setWebsiteurl("http://www.renren.com/");
+
+        link.setWebsitename("淘宝网");
+        link.setWebsiteurl("http://www.taobao.com/");
         session.save(link);
         transaction.commit();
-        session.close();
+        session.close();*/
 
     }
 }

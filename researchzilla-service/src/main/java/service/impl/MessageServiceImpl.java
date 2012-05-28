@@ -70,18 +70,18 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Message getOneInternalNotice(String name) {
-        return messageDao.getOneInternalNotice(name);
+    public Message getOneInternalNoticeByID(int id) {
+        return messageDao.getOneInternalNoticeByID(id);
     }
 
     @Override
-    public Message getOnePublicNotice(String name) {
-        return messageDao.getOnePublicNotice(name);
+    public Message getOnePublicNoticeByID(int id) {
+        return messageDao.getOnePublicNoticeByID(id);
     }
 
     @Override
-    public Message getOneNews(String name) {
-        return messageDao.getOneNews(name);
+    public Message getOneNewsByID(int id) {
+        return messageDao.getOneNewsByID(id);
     }
 
 
