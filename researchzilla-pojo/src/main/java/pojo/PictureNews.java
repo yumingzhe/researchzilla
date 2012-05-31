@@ -15,6 +15,7 @@ public class PictureNews {
     private String publisher;
     private String topic;
     private File picture;
+    private String path;
     private String content;
     private Timestamp publishtime;
 
@@ -64,6 +65,14 @@ public class PictureNews {
 
     public void setPicture(File picture) {
         this.picture = picture;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getContent() {

@@ -1,6 +1,7 @@
 <%@ page import="pojo.SiteUser" %>
 <%@ page import="java.util.List" %>
-<%@ page import="pojo.Feedback" %>
+<%@ page import="pojo.Message" %>
+<%@ page import="pojo.PictureNews" %>
 <%--
   User: wangyan
   Date: 12-5-30
@@ -10,7 +11,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <title>用户反馈信息显示页面</title>
+    <title>全部图片信息显示页面</title>
     <style type="text/css">
         <!--
         .STYLE1 {
@@ -36,52 +37,56 @@
             <tr>
                 <td width="717" height="191">&nbsp;</td>
                 <td width="218" class="STYLE3"><p>&nbsp;</p>
-                    <%if(session.getAttribute("websitename")!=null){%>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
-                    <%}%>
                     <p align="center">&nbsp;</p>
             </tr>
         </table>
     </div>
     <div id="mainContent_2">
-        <p align="center" class="STYLE2 ">用户反馈信息总览</p>
+        <p align="center" class="STYLE2 ">网站图片信息总览</p>
 
         <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
-            <% if(request.getAttribute("feedbacks")!=null){
-                List<Feedback> feedbacks= (List<Feedback>) request.getAttribute("feedbacks");%>
+            <% if(request.getAttribute("picturemessages")!=null){
+                List<PictureNews> picturemessages= (List<PictureNews>) request.getAttribute("picturemessages");%>
             <tr>
                 <td class="STYLE1" height="50">序号</td>
+                <td class="STYLE1" height="50">类型</td>
                 <td class="STYLE1" height="50">标题</td>
                 <td class="STYLE1" height="50">作者</td>
                 <td class="STYLE1" height="50">发布时间</td>
-                <td class="STYLE1" height="50">操作</td>
             </tr>
-            <%    for (int i = 0; i < feedbacks.size(); i++) {
+            <%    for (int i = 0; i < picturemessages.size(); i++) {
             %>
             <tr height="50">
                 <td height="50">
-                    <%=feedbacks.get(i).getId()%>
+                    <%=picturemessages.get(i).getId()%>
                 </td>
                 <td height="50">
-                    <%=feedbacks.get(i).getFeedbacktopic()%>
+                    <%=picturemessages.get(i).getType()%>
                 </td>
                 <td height="50">
-                    <%= feedbacks.get(i).getFeedbackauthor()%>
+                    <%= picturemessages.get(i).getTopic()%>
                 </td>
                 <td height="50">
-                    <%=feedbacks.get(i).getPublishtime()%>
+                    <%= picturemessages.get(i).getAuthor()%>
+                </td>
+                <td height="50">
+                    <%=picturemessages.get(i).getPublishtime()%>
+                </td>
+                <td height="50">
+                    <a href="#">删除</a>
                 </td>
             </tr>
             <%}}else{%>
             <tr class="STYLE1">
-                暂时无用户反馈信息
+                暂时无信息
             </tr>
             <%}%>
         </table>
     </div>
     <div id="footer_1">
-
     </div>
+</div>
 </div>
 </body>
 </html>

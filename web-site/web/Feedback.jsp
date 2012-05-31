@@ -1,3 +1,4 @@
+<%@ page import="pojo.SiteUser" %>
 <%--
   User: wangyan
   Date: 12-5-23
@@ -35,12 +36,22 @@
 </head>
 <body>
 <div id="container_1">
-    <div id="header_2">
-        <div align="center" class="STYLE2"></div>
+    <div class="STYLE1" id="header_1">
+        <table width="900" height="195" border="0">
+            <tr>
+                <td width="717" height="191">&nbsp;</td>
+                <td width="218" class="STYLE3"><p>&nbsp;</p>
+                    <p align="center"><%=session.getAttribute("websitename")%></p>
+                    <p align="center">&nbsp;</p>
+                        <%if(( session.getAttribute("user"))!=null){%>
+                    <p align="center"><%=((SiteUser) session.getAttribute("user")).getUsername()%> 欢迎您登录本网站！</p>
+                        <%}%>
+            </tr>
+        </table>
     </div>
     <div id="mainContent_2">
         <div align="center">
-            <form action="FeedbackAction" method="post" name="loginform" class="STYLE1" id="loginform">
+            <form action="FeedbackAction.action" method="post" name="loginform" class="STYLE1" id="loginform">
               <p class="STYLE3">标题 </p>
               <label>
               <input name="title" type="text" class="STYLE3" maxlength="60">

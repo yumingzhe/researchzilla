@@ -34,4 +34,6 @@ public interface MessageDao {
     public Message getOnePublicNoticeByID(int id);
 
     public Message getOneNewsByID(int id);
+
+    public List<Message> getAllMessages();
 }

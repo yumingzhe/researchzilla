@@ -3,6 +3,7 @@ package service;
 import pojo.SiteUser;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -19,5 +20,9 @@ public interface SiteUserService {
     public void updateSiteUser(SiteUser siteUser);
 
     public Serializable saveSiteUser(SiteUser siteUser);
+
+    public List<SiteUser> getAllSiteUser();
+
+    public void deleteSiteUserById(int uid);
 }
 

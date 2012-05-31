@@ -38,7 +38,7 @@ public class GetInternalNoticeAction extends ActionSupport {
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-
+        request.setCharacterEncoding("utf-8");
         List list = messageService.getSomeInternalNotice();
         session.setAttribute("internalnotices", list);
 
@@ -47,17 +47,18 @@ public class GetInternalNoticeAction extends ActionSupport {
 
     public String getAllResult() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
         List list = messageService.getAllInternalNotice();
         request.setAttribute("allinternalnotices", list);
-        return "aquireall";
+        return "acquireall";
     }
 
     public String getOneResult() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-
+        request.setCharacterEncoding("utf-8");
         int id=Integer.parseInt(internalnoticeid);
         Message internalnotice = messageService.getOneInternalNoticeByID(id);
         request.setAttribute("oneinternalnotice", internalnotice);
-        return "aquireone";
+        return "acquireone";
     }
 }

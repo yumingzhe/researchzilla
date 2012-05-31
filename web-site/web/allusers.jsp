@@ -1,6 +1,5 @@
 <%@ page import="pojo.SiteUser" %>
 <%@ page import="java.util.List" %>
-<%@ page import="pojo.Feedback" %>
 <%--
   User: wangyan
   Date: 12-5-30
@@ -10,7 +9,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <title>用户反馈信息显示页面</title>
+    <title>全部用户信息显示页面</title>
     <style type="text/css">
         <!--
         .STYLE1 {
@@ -36,51 +35,51 @@
             <tr>
                 <td width="717" height="191">&nbsp;</td>
                 <td width="218" class="STYLE3"><p>&nbsp;</p>
-                    <%if(session.getAttribute("websitename")!=null){%>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
-                    <%}%>
                     <p align="center">&nbsp;</p>
             </tr>
         </table>
     </div>
     <div id="mainContent_2">
-        <p align="center" class="STYLE2 ">用户反馈信息总览</p>
+        <p align="center" class="STYLE2 ">用户信息总览</p>
 
         <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
-            <% if(request.getAttribute("feedbacks")!=null){
-                List<Feedback> feedbacks= (List<Feedback>) request.getAttribute("feedbacks");%>
+            <% if(request.getAttribute("siteusers")!=null){
+                List<SiteUser> siteusers= (List<SiteUser>) request.getAttribute("siteusers");%>
             <tr>
                 <td class="STYLE1" height="50">序号</td>
-                <td class="STYLE1" height="50">标题</td>
-                <td class="STYLE1" height="50">作者</td>
-                <td class="STYLE1" height="50">发布时间</td>
+                <td class="STYLE1" height="50">姓名</td>
+                <td class="STYLE1" height="50">Email</td>
+                <td class="STYLE1" height="50">学号</td>
                 <td class="STYLE1" height="50">操作</td>
             </tr>
-            <%    for (int i = 0; i < feedbacks.size(); i++) {
+            <%    for (int i = 0; i < siteusers.size(); i++) {
             %>
             <tr height="50">
                 <td height="50">
-                    <%=feedbacks.get(i).getId()%>
+                    <%=siteusers.get(i).getUid()%>
                 </td>
                 <td height="50">
-                    <%=feedbacks.get(i).getFeedbacktopic()%>
+                    <%=siteusers.get(i).getUsername()%>
                 </td>
                 <td height="50">
-                    <%= feedbacks.get(i).getFeedbackauthor()%>
+                    <%= siteusers.get(i).getEmail()%>
                 </td>
                 <td height="50">
-                    <%=feedbacks.get(i).getPublishtime()%>
+                    <%=siteusers.get(i).getInstituteId()%>
+                </td>
+                <td height="50">
+                    <a href="http://localhost:8080/UserAction!deleteoneuser.action?uid=<%=siteusers.get(i).getUid()%>">删除</a>
                 </td>
             </tr>
             <%}}else{%>
             <tr class="STYLE1">
-                暂时无用户反馈信息
+                暂时无用户信息
             </tr>
             <%}%>
         </table>
     </div>
     <div id="footer_1">
-
     </div>
 </div>
 </body>

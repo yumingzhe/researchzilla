@@ -11,7 +11,7 @@
 </head>
 <body>
 <%
-    response.sendRedirect("http://localhost:8080/GetWebsiteTitleAction");
+    response.sendRedirect("http://localhost:8080/GetWebsiteTitleAction.action");
 %>
 </body>
 </html>

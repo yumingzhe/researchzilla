@@ -2,6 +2,7 @@ package pojo;
 
 import java.io.Serializable;
 import java.util.Set;
+import pojo.Group;
 
 public class SiteUser implements Serializable {
     private Integer uid;

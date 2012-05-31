@@ -10,7 +10,7 @@
         <property name="author" column="author" type="string" length="20" not-null="true"/>
         <property name="publisher" column="publisher" type="string" length="20" not-null="true" />
         <property name="topic" column="topic" type="string" length="50" not-null="true"/>
-        <property name="picture" column="picture" type="blob"  not-null="true"/>
+        <property name="path" column="path" type="string"  />
         <property name="content" column="content" type="string" length="2000" not-null="true"/>
         <property name="publishtime" column="publishtime" type="timestamp" not-null="true"/>
     </class>

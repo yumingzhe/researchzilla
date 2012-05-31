@@ -26,9 +26,6 @@
     </style>
 </head>
 <body>
-<s:actionerror/>
-<s:fielderror/>
-<s:actionmessage/>
 <div id="container_1">
     <div id="header_2">
         <div align="center" class="STYLE1">用户注册界面</div>

@@ -8,7 +8,8 @@ import java.io.File;
 public class WebsiteMessage {
     private int id;
     private String websitename;
-    private File background;
+    private File backgroundimage;
+    private String path;
     private String defaultlanguage;
     private String maintenanceaddress;
     private int visits;
@@ -33,12 +34,20 @@ public class WebsiteMessage {
         this.websitename = websitename;
     }
 
-    public File getBackground() {
-        return background;
+    public File getBackgroundimage() {
+        return backgroundimage;
     }
 
-    public void setBackground(File background) {
-        this.background = background;
+    public void setBackgroundimage(File backgroundimage) {
+        this.backgroundimage = backgroundimage;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getDefaultlanguage() {

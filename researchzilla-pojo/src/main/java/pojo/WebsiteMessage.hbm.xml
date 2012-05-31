@@ -2,12 +2,12 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="pojo.WebsiteMessage" table="researchzilla_websitemessage">
+    <class name="pojo.WebsiteMessage" table="researchzilla_websitemessage"   dynamic-update= "true">
         <id name="id" column="id" type="int">
             <generator class="increment"/>
         </id>
         <property name="websitename" column="websitename" type="string" length="50" not-null="true"/>
-        <property name="background" column="background" type="blob"  />
+        <property name="path" column="path" type="string" length="100" />
         <property name="defaultlanguage" column="defaultlanguage" type="string" length="50"  not-null="true" />
         <property name="maintenanceaddress" column="maintenanceaddress" type="string" length="50" not-null="true"/>
         <property name="visits" column="visits" type="int" not-null="true"/>

@@ -92,4 +92,21 @@ public class SiteUserDaoImpl implements SiteUserDao {
             return null;
         return (SiteUser) siteUser.get(0);
     }
+
+    @Override
+    public List<SiteUser> getAllSiteUser() {
+        List siteusers = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from SiteUser ");
+                return query.list();
+            }
+        });
+        return siteusers;
+    }
+
+    @Override
+    public void deleteSiteUserById(final int uid) {
+
+    }
 }

@@ -27,8 +27,7 @@
             <tr>
                 <td width="717" height="191">&nbsp;</td>
                 <td width="218" class="STYLE3"><p>&nbsp;</p>
-                    <p align="center">2012年5月20日</p>
-                    <p align="center">星期日</p>
+                    <p align="center"><%=session.getAttribute("websitename")%></p>
                     <p align="center">&nbsp;</p>
                         <%if(( session.getAttribute("user"))!=null){%>
                     <p align="center"><%=((SiteUser) session.getAttribute("user")).getUsername()%> 欢迎您登录本网站！</p>

@@ -28,7 +28,7 @@ public class GetWebsiteTitleAction extends ActionSupport{
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-
+        request.setCharacterEncoding("utf-8");
         WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
 
         String websitename=websiteMessage.getWebsitename();

@@ -46,17 +46,7 @@ public class WebsiteMessageDaoImpl implements WebsiteMessageDao {
     }
 
     @Override
-    public void updateWebsiteVisits(int count) {
-        List websitemessage = this.getTemplate().executeFind(new HibernateCallback<Object>() {
-            @Override
-            public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from WebsiteMessage");
-                return query.list();
-            }
-        });
-
-        WebsiteMessage websiteMessage=((WebsiteMessage) websitemessage.get(0));
-        websiteMessage.setVisits(count);
+    public void updateWebsiteVisits(WebsiteMessage websiteMessage) {
         this.getTemplate().saveOrUpdate(websiteMessage);
     }
 

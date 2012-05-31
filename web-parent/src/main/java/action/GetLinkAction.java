@@ -28,9 +28,17 @@ public class GetLinkAction extends ActionSupport {
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-
+        request.setCharacterEncoding("utf-8");
         List list=linkService.getAllLink();
         session.setAttribute("links",list);
         return SUCCESS;
+    }
+    public String getalllinks() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        request.setCharacterEncoding("utf-8");
+        List list=linkService.getAllLink();
+        request.setAttribute("links",list);
+        return "acquireall";
     }
 }

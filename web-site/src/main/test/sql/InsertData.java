@@ -73,32 +73,32 @@ public class InsertData {
         } */
 
 
-        Message message = new Message();
-        message.setType("news");
-        message.setAuthor("李四");
+     /*   Message message = new Message();
+        message.setType("publicnotice");
+        message.setAuthor("王五");
         message.setPublisher("王艳");
-        message.setTopic("news");
+        message.setTopic("publicnotice");
         message.setContent("wuyanzu will come here");
         message.setPublishtime(new Timestamp(new Date().getTime()));
         session.save(message);
         transaction.commit();
-        session.close();
-        /*WebsiteMessage message = new WebsiteMessage();
-        message.setWebsitename("山东科技大学");
-        message.setBackground(null);
-        message.setMaintenanceaddress("wangyan_megan@yeah.net");
-        message.setDefaultlanguage("chinese");
-        message.setVisits(0);
-        session.save(message);
-        transaction.commit();
-        session.close();
-        Link link = new Link();
+        session.close(); */
+        WebsiteMessage message = new WebsiteMessage();
+       message.setWebsitename("山东科技大学");
+       message.setPath("");
+       message.setMaintenanceaddress("wangyan_megan@yeah.net");
+       message.setDefaultlanguage("chinese");
+       message.setVisits(0);
+       session.save(message);
+       transaction.commit();
+       session.close();
+     /*  Link link = new Link();
 
-        link.setWebsitename("百度");
-        link.setWebsiteurl("http://www.baidu.com/");
-        session.save(link);
-        transaction.commit();
-        session.close();*/
+       link.setWebsitename("百度");
+       link.setWebsiteurl("http://www.baidu.com/");
+       session.save(link);
+       transaction.commit();
+       session.close(); */
 
     }
 }

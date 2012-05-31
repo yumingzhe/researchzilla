@@ -27,14 +27,13 @@
     <link href="layout.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<s:actionerror/>
 <div id="container_1">
     <div id="header_2">
         <div align="center" class="STYLE2">登录窗口</div>
     </div>
     <div id="mainContent_2">
         <div align="center">
-            <form action="LoginAction" method="post" name="loginform" class="STYLE1" id="loginform">
+            <form action="LoginAction.action" method="post" name="loginform" class="STYLE1" id="loginform">
                 <table width="304" height="92" border="2" align="center">
                     <tr>
                         <td width="86" class="STYLE1">用户名</td>

@@ -3,6 +3,7 @@ package dao;
 import pojo.SiteUser;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -21,5 +22,9 @@ public interface SiteUserDao {
     public void updateSiteUser(SiteUser siteUser);
 
     public SiteUser getSiteUserByUID(int uid);
+
+    public List<SiteUser> getAllSiteUser();
+
+    public void deleteSiteUserById(int uid);
 
 }

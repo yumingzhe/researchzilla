@@ -17,6 +17,7 @@ public class Message {
     private String content;
     private Timestamp publishtime;
     private File accesory;
+    private String filepath;
 
     public int getId() {
         return id;
@@ -58,6 +59,7 @@ public class Message {
         this.topic = topic;
     }
 
+
     public String getContent() {
         return content;
     }
@@ -82,4 +84,11 @@ public class Message {
         this.accesory = accesory;
     }
 
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
+    }
 }

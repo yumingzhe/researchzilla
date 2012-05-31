@@ -16,11 +16,13 @@ import java.io.File;
  */
 public class BasicDesignAction extends ActionSupport {
     private String websitename;
-    private File backgroundimage;
     private String maintenanceaddress;
     private String defaultlanguage;
 
     private WebsiteMessageService websiteMessageService;
+
+    public BasicDesignAction() {
+    }
 
     public String getWebsitename() {
         return websitename;
@@ -28,14 +30,6 @@ public class BasicDesignAction extends ActionSupport {
 
     public void setWebsitename(String websitename) {
         this.websitename = websitename;
-    }
-
-    public File getBackgroundimage() {
-        return backgroundimage;
-    }
-
-    public void setBackgroundimage(File backgroundimage) {
-        this.backgroundimage = backgroundimage;
     }
 
     public String getMaintenanceaddress() {
@@ -65,26 +59,17 @@ public class BasicDesignAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-
-        WebsiteMessage websiteMessage=new WebsiteMessage();
-        websiteMessage.setWebsitename(websitename);
-        websiteMessage.setBackground(backgroundimage);
-        websiteMessage.setMaintenanceaddress(maintenanceaddress);
-        websiteMessage.setDefaultlanguage(defaultlanguage);
+        request.setCharacterEncoding("utf-8");
+        WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
+        websiteMessage.setWebsitename((String) request.getAttribute("websitename"));
+        websiteMessage.setPath((String) request.getAttribute("path"));
+        websiteMessage.setMaintenanceaddress((String) request.getAttribute("maintenanceaddress"));
+        websiteMessage.setDefaultlanguage((String) request.getAttribute("defaultlanguage"));
         websiteMessageService.updateWebsiteMessage(websiteMessage);
-        session.setAttribute("websitemessage",websiteMessage);
+
+        request.setAttribute("websitemessage",websiteMessage);
 
         return SUCCESS;
     }
 
-    public String getOldWebsiteMessage() throws Exception {
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-
-        WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
-        session.setAttribute("websitemessage",websiteMessage);
-
-        return "acquirewebsitemessage";
-    }
 }

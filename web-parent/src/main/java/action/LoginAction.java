@@ -1,15 +1,17 @@
 package action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import pojo.SiteUser;
+import pojo.WebsiteMessage;
 import service.SiteUserService;
 import service.WebsiteMessageService;
 import util.MD5Util;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 /**
  * User: wangyan
@@ -64,17 +66,24 @@ public class LoginAction extends ActionSupport {
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession actionSession = request.getSession();
-       /* ServletContext application = (ServletContext) ServletActionContext.getContext().getApplication();
+        request.setCharacterEncoding("utf-8");
+        ActionContext context = ActionContext.getContext();
+        Map application = (Map) context.getApplication();
 
-        int count=0;
-        if(application.getAttribute("count")==null) {
-            application.setAttribute("count",1);
+
+        WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
+        int count=websiteMessage.getVisits();
+        System.out.println(application.get("count"));
+        if(application.get("count")==null) {
+            application.put("count", 1);
+            count=1;
         }else{
-            count=(Integer)application.getAttribute("count");
-            count++;
-            application.setAttribute("count",count);
+            count=count+1;
+            application.put("count", count);
         }
-        websiteMessageService.updateWebsiteVisits(count); */
+        System.out.println(count);
+        websiteMessage.setVisits(count);
+        websiteMessageService.updateWebsiteVisits(websiteMessage);
 
         SiteUser userone = siteUserService.getSiteUserByInstituteId(this.username);
         SiteUser usertwo = siteUserService.getSiteUserByEmail(this.username);
@@ -84,7 +93,6 @@ public class LoginAction extends ActionSupport {
                 Boolean banned = userone.getBanned();
                 if (banned == false) {
                     String passwordstring = MD5Util.hashString(this.password + userone.getSalt());
-                    System.out.println(passwordstring);
                     if (this.username.equals(userone.getInstituteId()) && passwordstring.equals(userone.getPassword())) {
                         actionSession.setAttribute("user", userone);
                         return SUCCESS;
