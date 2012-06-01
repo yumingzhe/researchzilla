@@ -11,12 +11,13 @@
         <property name="tag" column="tag" type="java.lang.String" length="10"/>
         <property name="groupId" column="groupId" type="java.lang.Integer"/>
         <property name="access" column="access" type="java.lang.String" length="10"/>
-        <property name="description" column="description" type="java.lang.String" length="30"/>
+        <property name="description" column="description" type="java.lang.String" length="2000"/>
         <property name="postDate" column="postTime" type="timestamp"/>
         <property name="comment" column="comment" type="java.lang.Boolean"/>
-        <many-to-one name="siteUser" column="posterId" class="pojo.SiteUser"/>
+        <many-to-one name="siteUser" column="posterId" class="pojo.SiteUser" cascade="all" lazy="false"/>
         <one-to-one name="activity" class="pojo.Activity" cascade="all"/>
-        <set name="commentEntities" table="researchzilla_comment">
+        <set name="commentEntities" table="researchzilla_comment" cascade="all" lazy="false" order-by="postTime desc"
+             inverse="true">
             <key column="blogId"/>
             <one-to-many class="pojo.CommentEntity"/>
         </set>

@@ -32,4 +32,9 @@ public class ActivityServiceImpl implements ActivityService {
     public List<Activity> getAllActivitiesByUID(int uid) {
         return activityDao.getAllActivitiesByUID(uid);
     }
+
+    @Override
+    public void executeSQL(String sql) {
+        this.activityDao.executeSQL(sql);
+    }
 }

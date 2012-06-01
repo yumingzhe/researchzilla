@@ -15,15 +15,15 @@
         <property name="instituteId" column="instituteId" type="java.lang.String"/>
         <one-to-one name="userEntity" class="pojo.UserEntity" cascade="all"/>
         <one-to-one name="register" class="pojo.Register" lazy="false" cascade="all"/>
-        <set name="activities" table="researchzilla_activity" inverse="false" cascade="all" lazy="false">
+        <set name="activities" table="researchzilla_activity" inverse="false" cascade="persist" lazy="false">
             <key column="personId"/>
             <one-to-many class="pojo.Activity"/>
         </set>
-        <set name="blogs" table="researchzilla_blogs" inverse="true" cascade="all" lazy="true">
+        <set name="blogs" table="researchzilla_blogs" inverse="false" cascade="save-update" lazy="false">
             <key column="posterId"/>
             <one-to-many class="pojo.Blog"/>
         </set>
-        <set name="files" table="researchzilla_file">
+        <set name="files" table="researchzilla_file" inverse="true" cascade="save-update">
             <key column="ownerId"/>
             <one-to-many class="pojo.File"/>
         </set>

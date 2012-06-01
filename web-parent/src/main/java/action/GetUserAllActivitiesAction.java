@@ -50,6 +50,8 @@ public class GetUserAllActivitiesAction extends ActionSupport {
         List<Activity> activities = activityService.getAllActivitiesByUID(Integer.parseInt(uid));
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("useractivities", activities);
+
+        request.getSession().setAttribute("user", siteUser);
         return SUCCESS;
     }
 }

@@ -56,4 +56,15 @@ public class ActivityDaoImpl implements ActivityDao {
             }
         });
     }
+
+    @Override
+    public void executeSQL(final String sql) {
+        this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                session.createQuery(sql).executeUpdate();
+                return null;
+            }
+        });
+    }
 }

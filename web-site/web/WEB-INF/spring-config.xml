@@ -5,8 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="user" value="root"/>
-        <property name="password" value="123456"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost/test"/>
+        <property name="password" value=""/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost/researchzilla"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="initialPoolSize" value="2"/>
         <property name="minPoolSize" value="2"/>
@@ -81,6 +81,14 @@
         <property name="siteUserService" ref="siteUserService"/>
     </bean>
 
+    <bean id="getSpecifiedBlog" class="action.GetSpecifiedBlogAction" scope="prototype">
+        <property name="blogService" ref="blogService"/>
+    </bean>
+
+    <bean id="getUserAllBlogs" class="action.GetUserAllBlogs">
+        <property name="blogService" ref="blogService"/>
+    </bean>
+
     <!--LetterEntity Bean group-->
     <bean id="letterEntityDao" class="dao.impl.LetterEntityDaoImpl">
         <property name="factory" ref="sessionFactory"/>
@@ -90,6 +98,26 @@
     </bean>
     <bean id="sendSiteLetterAction" class="action.SendSiteLetterAction">
         <property name="letterEntityService" ref="letterEntityService"/>
+    </bean>
+
+    <!--CommentEntity Bean group-->
+    <bean id="commentEntityDao" class="dao.impl.CommentEntityDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="commentEntityService" class="service.impl.CommentEntityServiceImpl">
+        <property name="commentEntityDao" ref="commentEntityDao"/>
+    </bean>
+    <bean id="postCommentAction" class="action.PostCommentAction">
+        <property name="blogService" ref="blogService"/>
+        <property name="siteUserService" ref="siteUserService"/>
+        <property name="fileService" ref="fileService"/>
+        <property name="activityService" ref="activityService"/>
+        <property name="commentEntityService" ref="commentEntityService"/>
+    </bean>
+
+    <bean id="deleteCommentAction" class="action.DeleteCommentAction">
+        <property name="commentEntityService" ref="commentEntityService"/>
+        <property name="activityService" ref="activityService"/>
     </bean>
 
     <!--Message Bean group-->
@@ -184,12 +212,10 @@
         <property name="websiteMessageService" ref="websiteMessageService"/>
     </bean>
 
-
     <bean id="forgetpasswordAction" class="action.ForgetPasswordAction">
         <property name="registerService" ref="registerService"/>
         <property name="siteUserService" ref="siteUserService"/>
     </bean>
-
     <bean id="resetpasswordAction" class="action.ResetPasswordAction">
         <property name="registerService" ref="registerService"/>
         <property name="siteUserService" ref="siteUserService"/>
@@ -202,6 +228,16 @@
     <bean id="blogService" class="service.impl.BlogServiceImpl">
         <property name="blogDao" ref="blogDao"/>
     </bean>
+    <bean id="postblogAction" class="action.PostBlogAction">
+        <property name="activityService" ref="activityService"/>
+        <property name="blogService" ref="blogService"/>
+        <property name="siteUserService" ref="siteUserService"/>
+    </bean>
+    <bean id="deleteblogAction" class="action.DeleteBlogAction">
+        <property name="blogService" ref="blogService"/>
+        <property name="siteUserService" ref="siteUserService"/>
+        <property name="activityService" ref="activityService"/>
+    </bean>
 
     <!--Activity Bean Group-->
     <bean id="activityDao" class="dao.impl.ActivityDaoImpl">
@@ -210,13 +246,6 @@
     <bean id="activityService" class="service.impl.ActivityServiceImpl">
         <property name="activityDao" ref="activityDao"/>
     </bean>
-
-    <bean id="postblogAction" class="action.PostBlogAction">
-        <property name="activityService" ref="activityService"/>
-        <property name="blogService" ref="blogService"/>
-        <property name="siteUserService" ref="siteUserService"/>
-    </bean>
-
 
     <!--File Bean Group-->
     <bean id="fileDao" class="dao.impl.FileDaoImpl">
@@ -228,5 +257,4 @@
     <bean id="uploadfileAction" class="action.UploadFileAction">
         <property name="fileService" ref="fileService"/>
     </bean>
-
 </beans>

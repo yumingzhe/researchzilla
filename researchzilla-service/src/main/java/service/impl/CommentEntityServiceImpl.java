@@ -28,4 +28,14 @@ public class CommentEntityServiceImpl implements CommentEntityService {
     public Serializable saveCommentEntity(CommentEntity commentEntity) {
         return commentEntityDao.saveCommentEntity(commentEntity);
     }
+
+    @Override
+    public void deleteCommentEntityById(int id) {
+        this.commentEntityDao.deleteCommentEntityById(id);
+    }
+
+    @Override
+    public CommentEntity getCommentEntityById(int id) {
+        return this.commentEntityDao.getCommentEntityById(id);
+    }
 }

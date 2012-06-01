@@ -141,8 +141,8 @@ public class SiteUser implements Serializable {
         this.register = register;
     }
 
-    @Override
+  /*  @Override
     public String toString() {
         return this.username + " " + this.email + " " + this.password + " " + this.register.getSiteUser().getUid() + " " + this.register.getRegisterTime();
-    }
+    }*/
 }
