@@ -65,7 +65,7 @@
                     <%=picturemessages.get(i).getType()%>
                 </td>
                 <td height="50">
-                    <%= picturemessages.get(i).getTopic()%>
+                    <a href="http://localhost:8080/MessageAction!getOnePictureMessage.action?picturemessageid=<%=picturemessages.get(i).getId()%>"><%= picturemessages.get(i).getTopic()%>
                 </td>
                 <td height="50">
                     <%= picturemessages.get(i).getAuthor()%>

@@ -19,6 +19,24 @@ public interface MessageService {
 
     public List<Message> getAllInternalNotice();
 
+    public int getInternalNoticeTotalCount();
+
+    public int getInternalNoticeTotalPage(int pageSize);
+
+    public int getPublicNoticeTotalCount();
+
+    public int getPublicNoticeTotalPage(int pageSize);
+
+    public int getNewsTotalCount();
+
+    public int getNewsTotalPage(int pageSize);
+
+    public List<Message> getInternalNotice(final int pageSize, final int currentPage);
+
+    public List<Message> getPublicNotice(final int pageSize, final int currentPage);
+
+    public List<Message> getNews(final int pageSize, final int currentPage);
+
     public List<Message> getAllPublicNotice();
 
     public List<Message> getAllNews();
@@ -36,5 +54,7 @@ public interface MessageService {
     public Message getOneNewsByID(int id);
 
     public List<Message> getAllMessages();
+
+    public Message getOneMessageByID(int id);
 
 }

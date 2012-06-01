@@ -1,9 +1,9 @@
 <%--
   User: wangyan
   Date: 12-5-28
-  Time: ÏÂÎç8:24
+  Time: ä¸‹åˆ8:24
 --%>
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%@page import="com.jspsmart.upload.SmartUpload"%>
 <%@ page import="java.awt.*" %>
@@ -11,9 +11,10 @@
 <%@ page import="java.io.FileOutputStream" %>
 <%@ page import="com.sun.image.codec.jpeg.JPEGImageEncoder" %>
 <%@ page import="com.sun.image.codec.jpeg.JPEGCodec" %>
+<%@ page import="pojo.PictureNews" %>
 <html>
 <head>
-    <title>ÎÄ¼şÉÏ´«´¦ÀíÒ³Ãæ </title>
+    <title>æ–‡ä»¶ä¸Šä¼ å¤„ç†é¡µé¢ </title>
 
 </head>
 <body>
@@ -21,18 +22,18 @@
     SmartUpload mySmartUpload =new SmartUpload();
     long file_size_max=4000000;
     String ext="";
-    String url="img/"; //Ó¦±£Ö¤ÔÚ¸ùÄ¿Â¼ÖĞÓĞ´ËÄ¿Â¼µÄ´æÔÚ£¨Ò²¾ÍÊÇËµĞèÒª×Ô¼º½¨Á¢ÏàÓ¦µÄÎÄ¼ş¼Ğ£©
-    //³õÊ¼»¯
+    String url="./img/"; //åº”ä¿è¯åœ¨æ ¹ç›®å½•ä¸­æœ‰æ­¤ç›®å½•çš„å­˜åœ¨ï¼ˆä¹Ÿå°±æ˜¯è¯´éœ€è¦è‡ªå·±å»ºç«‹ç›¸åº”çš„æ–‡ä»¶å¤¹ï¼‰
+    //åˆå§‹åŒ–
     mySmartUpload.initialize(pageContext);
-    //Ö»ÔÊĞíÉÏÔØ´ËÀàÎÄ¼ş
+    //åªå…è®¸ä¸Šè½½æ­¤ç±»æ–‡ä»¶
     try {
-        mySmartUpload.setAllowedFilesList("jpg,gif");//´Ë´¦µÄÎÄ¼ş¸ñÊ½¿ÉÒÔ¸ù¾İĞèÒª×Ô¼ºĞŞ¸Ä
-        //ÉÏÔØÎÄ¼ş
+        mySmartUpload.setAllowedFilesList("jpg,gif");//æ­¤å¤„çš„æ–‡ä»¶æ ¼å¼å¯ä»¥æ ¹æ®éœ€è¦è‡ªå·±ä¿®æ”¹
+        //ä¸Šè½½æ–‡ä»¶
         mySmartUpload.upload();
     } catch (Exception e){
 %>
 <SCRIPT language=javascript>
-    alert("Ö»ÔÊĞíÉÏ´«.jpgºÍ.gifÀàĞÍÍ¼Æ¬ÎÄ¼ş");
+    alert("åªå…è®¸ä¸Šä¼ .jpgå’Œ.gifç±»å‹å›¾ç‰‡æ–‡ä»¶");
     window.location='addmessage.jsp';
 </script>
 <%
@@ -42,40 +43,42 @@
         com.jspsmart.upload.File myFile = mySmartUpload.getFiles().getFile(0);
         if (myFile.isMissing()){%>
 <SCRIPT language=javascript>
-    alert("ÇëÏÈÑ¡ÔñÒªÉÏ´«µÄÎÄ¼ş");
+    alert("è¯·å…ˆé€‰æ‹©è¦ä¸Šä¼ çš„æ–‡ä»¶");
     window.location='addmessage.jsp';
 </script>
 <%}else{
-    //String myFileName=myFile.getFileName(); //È¡µÃÉÏÔØµÄÎÄ¼şµÄÎÄ¼şÃû
-    ext= myFile.getFileExt();      //È¡µÃºó×ºÃû
-    int file_size=myFile.getSize();     //È¡µÃÎÄ¼şµÄ´óĞ¡
+    String myFileName=myFile.getFileName(); //å–å¾—ä¸Šè½½çš„æ–‡ä»¶çš„æ–‡ä»¶å
+    ext= myFile.getFileExt();      //å–å¾—åç¼€å
+    int file_size=myFile.getSize();     //å–å¾—æ–‡ä»¶çš„å¤§å°
     String saveurl="";
     if(file_size<file_size_max){
-        //¸ü¸ÄÎÄ¼şÃû£¬È¡µÃµ±Ç°ÉÏ´«Ê±¼äµÄºÁÃëÊıÖµ
-        Calendar calendar = Calendar.getInstance();
-        String filename = String.valueOf(calendar.getTimeInMillis());
-        saveurl=request.getRealPath("/")+url;
-        saveurl+=filename+"."+ext;          //±£´æÂ·¾¶
-        myFile.saveAs(saveurl,mySmartUpload.SAVE_PHYSICAL);
+
+        saveurl=url;
+        saveurl+=myFileName;          //ä¿å­˜è·¯å¾„
+        myFile.saveAs(saveurl,mySmartUpload.SAVE_VIRTUAL);
         //out.print(filename);
-        request.setAttribute("filename",filename);
+        request.setAttribute("filename",myFileName);
         request.setAttribute("path",saveurl);
         System.out.println(request.getAttribute("path"));
-        mySmartUpload.getRequest().getParameter("topic");
-        request.setAttribute("topic",mySmartUpload.getRequest().getParameter("topic"));
-        request.setAttribute("type",mySmartUpload.getRequest().getParameter("type"));
-        request.setAttribute("author",mySmartUpload.getRequest().getParameter("author"));
-        request.setAttribute("publisher",mySmartUpload.getRequest().getParameter("publisher"));
-        request.setAttribute("content",mySmartUpload.getRequest().getParameter("content"));
-//-----------------------ÉÏ´«Íê³É£¬¿ªÊ¼Éú³ÉËõÂÔÍ¼-------------------------
-        java.io.File file = new java.io.File(saveurl);        //¶ÁÈë¸Õ²ÅÉÏ´«µÄÎÄ¼ş
-        String newurl=request.getRealPath("/")+url+filename+"_min."+ext;  //ĞÂµÄËõÂÔÍ¼±£´æµØÖ·
-        Image src = javax.imageio.ImageIO.read(file);                     //¹¹ÔìImage¶ÔÏó
+
+        PictureNews pictureNews=new PictureNews();
+        pictureNews.setTopic(mySmartUpload.getRequest().getParameter("topic"));
+        pictureNews.setType(mySmartUpload.getRequest().getParameter("type"));
+        pictureNews.setAuthor(mySmartUpload.getRequest().getParameter("author"));
+        pictureNews.setPublisher(mySmartUpload.getRequest().getParameter("publisher"));
+        pictureNews.setPath(saveurl);
+        pictureNews.setContent(mySmartUpload.getRequest().getParameter("content"));
+        request.setAttribute("picturenews",pictureNews);
+
+//-----------------------ä¸Šä¼ å®Œæˆï¼Œå¼€å§‹ç”Ÿæˆç¼©ç•¥å›¾-------------------------
+   /*     java.io.File file = new java.io.File(saveurl);        //è¯»å…¥åˆšæ‰ä¸Šä¼ çš„æ–‡ä»¶
+        String newurl=url+"min."+myFileName;  //æ–°çš„ç¼©ç•¥å›¾ä¿å­˜åœ°å€
+        Image src = javax.imageio.ImageIO.read(file);                     //æ„é€ Imageå¯¹è±¡
         float tagsize=200;
-        int old_w=src.getWidth(null);                                     //µÃµ½Ô´Í¼¿í
+        int old_w=src.getWidth(null);                                     //å¾—åˆ°æºå›¾å®½
         int old_h=src.getHeight(null);
         int new_w=0;
-        int new_h=0;                            //µÃµ½Ô´Í¼³¤
+        int new_h=0;                            //å¾—åˆ°æºå›¾é•¿
         int tempsize;
         float tempdouble;
         if(old_w>old_h){
@@ -84,17 +87,17 @@
             tempdouble=old_h/tagsize;
         }
         new_w=Math.round(old_w/tempdouble);
-        new_h=Math.round(old_h/tempdouble);//¼ÆËãĞÂÍ¼³¤¿í
+        new_h=Math.round(old_h/tempdouble);//è®¡ç®—æ–°å›¾é•¿å®½
         BufferedImage tag = new BufferedImage(new_w,new_h,BufferedImage.TYPE_INT_RGB);
-        tag.getGraphics().drawImage(src,0,0,new_w,new_h,null);       //»æÖÆËõĞ¡ºóµÄÍ¼
-        FileOutputStream newimage=new FileOutputStream(newurl);          //Êä³öµ½ÎÄ¼şÁ÷
+        tag.getGraphics().drawImage(src,0,0,new_w,new_h,null);       //ç»˜åˆ¶ç¼©å°åçš„å›¾
+        FileOutputStream newimage=new FileOutputStream(newurl);          //è¾“å‡ºåˆ°æ–‡ä»¶æµ
         JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(newimage);
-        encoder.encode(tag);                                               //½üJPEG±àÂë
-        newimage.close(); %>
-<img src="<%=newurl%>" vspace="3" border="0" align="absmiddle" />
+        encoder.encode(tag);                                               //è¿‘JPEGç¼–ç 
+        newimage.close();*/ %>
+
 <%}else{
     out.print("<SCRIPT language=''javascript''>");
-    out.print("alert(''ÉÏ´«ÎÄ¼ş´óĞ¡²»ÄÜ³¬¹ı"+(file_size_max/1000)+"K'');");
+    out.print("alert(''ä¸Šä¼ æ–‡ä»¶å¤§å°ä¸èƒ½è¶…è¿‡"+(file_size_max/1000)+"K'');");
     out.print("window.location='addmessage.jsp'");
     out.print("</SCRIPT>");
 }

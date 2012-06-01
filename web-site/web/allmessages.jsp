@@ -64,7 +64,7 @@
                     <%=messages.get(i).getType()%>
                 </td>
                 <td height="50">
-                    <%= messages.get(i).getTopic()%>
+                    <a href="http://localhost:8080/MessageAction!getOneMessage.action?messageid=<%=messages.get(i).getId()%>"><%= messages.get(i).getTopic()%>
                 </td>
                 <td height="50">
                     <%= messages.get(i).getAuthor()%>

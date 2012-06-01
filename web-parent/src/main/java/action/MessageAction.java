@@ -27,6 +27,8 @@ public class MessageAction extends ActionSupport {
     private String content;
     private File accessory;
 
+    private String messageid;
+    private String picturemessageid;
     private MessageService messageService;
     private PictureNewsService pictureNewsService;
 
@@ -86,6 +88,22 @@ public class MessageAction extends ActionSupport {
         this.accessory = accessory;
     }
 
+    public String getMessageid() {
+        return messageid;
+    }
+
+    public void setMessageid(String messageid) {
+        this.messageid = messageid;
+    }
+
+    public String getPicturemessageid() {
+        return picturemessageid;
+    }
+
+    public void setPicturemessageid(String picturemessageid) {
+        this.picturemessageid = picturemessageid;
+    }
+
     public MessageService getMessageService() {
         return messageService;
     }
@@ -122,12 +140,12 @@ public class MessageAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setCharacterEncoding("utf-8");
         PictureNews message=new PictureNews();
-        message.setTopic((String) request.getAttribute("topic"));
-        message.setType((String) request.getAttribute("type"));
-        message.setAuthor((String) request.getAttribute("author"));
-        message.setPublisher((String) request.getAttribute("publisher"));
-        message.setPath((String) request.getAttribute("path"));
-        message.setContent((String) request.getAttribute("content"));
+        message.setTopic(((PictureNews) request.getAttribute("picturenews")).getTopic());
+        message.setType(((PictureNews) request.getAttribute("picturenews")).getType());
+        message.setAuthor(((PictureNews) request.getAttribute("picturenews")).getAuthor());
+        message.setPublisher(((PictureNews) request.getAttribute("picturenews")).getPublisher());
+        message.setPath(((PictureNews) request.getAttribute("picturenews")).getPath());
+        message.setContent(((PictureNews) request.getAttribute("picturenews")).getContent());
         message.setPublishtime(new Timestamp(new Date().getTime()));
         pictureNewsService.savePictureNews(message);
         return SUCCESS;
@@ -143,9 +161,28 @@ public class MessageAction extends ActionSupport {
     public String getallpicturemessages() throws Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setCharacterEncoding("utf-8");
-        List list = pictureNewsService.getAllPictureNews();
+        List list = pictureNewsService.getAllPictureMessages();
         request.setAttribute("picturemessages", list);
 
         return "acquireallpicture";
     }
+    public String getOneMessage() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
+        int id=Integer.parseInt(messageid);
+        Message message = messageService.getOneMessageByID(id);
+        request.setAttribute("onemessage", message);
+
+        return "acquireonemessage";
+    }
+    public String getOnePictureMessage() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
+        int id=Integer.parseInt(picturemessageid);
+        PictureNews message = pictureNewsService.getOnePictureMessageByID(id);
+        request.setAttribute("onepicturemessage", message);
+
+        return "acquireonepicturemessage";
+    }
+
 }

@@ -42,6 +42,25 @@
 
         -->
     </style>
+    <style type="text/css">
+        <!--
+        .STYLE4 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        -->
+    </style>
+    <style type="text/css">
+        <!--
+        .STYLE5 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #FF0000;
+        }
+
+        -->
+    </style>
 
 </head>
 <body>
@@ -53,7 +72,7 @@
                 <td width="218" class="STYLE3">
                     <p>&nbsp;</p>
 
-                    <p align="center"><%=session.getAttribute("websitename")%>
+                    <p align="center" class="STYLE4"><%=session.getAttribute("websitename")%>
                     </p>
 
                     <p align="center">&nbsp;</p>
@@ -74,10 +93,10 @@
             <div id="sidebar1">
                 <form action="LoginAction.action" method="post" name="form1" class="STYLE1" id="form1">
                     <p class="STYLE3">登录窗口</p>
-                    <table width="278" height="74" border="0">
+                    <table width="276" height="74" border="0">
                         <tr>
                             <td width="69" class="STYLE1">用户名</td>
-                            <td width="199"><label>
+                            <td ><label>
                                 <input name="username" type="text" class="STYLE1" id="username" size="20"
                                        maxlength="20"/>
                             </label></td>
@@ -110,10 +129,10 @@
             </div>
             <%} else {%>
             <div class="STYLE3" id="sidebar1">
-                <a href="http://localhost:8080/GetInternalNoticeAction!getAllResult.action">内部通知</a>
+                <a href="http://localhost:8080/GetInternalNoticeAction!getSomeResult.action">内部通知</a>
                 <marquee direction="up" behavior="scroll" scrollamount="2" onMouseOver="this.stop()"
                          onMouseOut="this.start()">
-                    <table width="278" height="190" border="1" class="STYLE2">
+                    <table width="278" height="190" border="0" class="STYLE5" >
                         <%
                             List<Message> internalnotices = (List<Message>) session.getAttribute("internalnotices");
                             for (int i = 0; i < internalnotices.size(); i++) {
@@ -155,7 +174,7 @@
         </div>
         <div id="sidebar4">
             <div class="STYLE3" id="content3"><a
-                    href="http://localhost:8080/GetPublicNoticeAction!getAllResult.action">最新公告</a>
+                    href="http://localhost:8080/GetPublicNoticeAction!getSomeResult.action">最新公告</a>
                 <table width="306" height="255" border="1" class="STYLE2">
                     <%
                         List<Message> publicnotices = (List<Message>) session.getAttribute("publicnotices");
@@ -166,17 +185,17 @@
                             <%= publicnotices.get(i).getType()%>
                         </td>
                         <td>
-                            <a href="http://localhost:8080/GetPublicNoticeAction!getOneResult.action?publicnoticeid=<%=publicnotices.get(i).getId()%>"><%= publicnotices.get(i).getContent()%>
+                            <a href="http://localhost:8080/GetPublicNoticeAction!getOneResult.action?publicnoticeid=<%=publicnotices.get(i).getId()%>"><%= publicnotices.get(i).getTopic()%>
                             </a>
                         </td>
                     </tr>
                     <%}%>
                 </table>
             </div>
-            <div class="STYLE3" id="content4"><a href="#">成果聚焦</a></div>
+            <div class="STYLE3" id="content4"><a href="http://localhost:8080/GetAccomplishmentAction!getSomeResult.action">成果聚焦</a></div>
         </div>
         <div id="content">
-            <div class="STYLE3" id="content1"><a href="#">图片新闻</a>
+            <div class="STYLE3" id="content1"><a href="http://localhost:8080/GetPictureNewsAction!getSomeResult.action">图片新闻</a>
 
               <%--  <div id="featured">
                     <div class="content" style="">
@@ -188,7 +207,7 @@
                     <img src="img/1338348321156_min.jpg" alt="and more features" />
                 </div>--%>
             </div>
-            <div class="STYLE3" id="content2"><a href="http://localhost:8080/GetNewsAction!getAllResult.action">新闻快讯</a>
+            <div class="STYLE3" id="content2"><a href="http://localhost:8080/GetNewsAction!getSomeResult.action">新闻快讯</a>
                 <table width="334" height="255" border="1" class="STYLE2">
                     <%
                         List<Message> news = (List<Message>) session.getAttribute("news");
@@ -199,7 +218,7 @@
                             <%= news.get(i).getType()%>
                         </td>
                         <td>
-                            <a href="http://localhost:8080/GetNewsAction.action!getOneResult.action?newsid=<%=news.get(i).getId()%>"> <%= news.get(i).getContent()%></a>
+                            <a href="http://localhost:8080/GetNewsAction.action!getOneResult.action?newsid=<%=news.get(i).getId()%>"> <%= news.get(i).getTopic()%></a>
                         </td>
                     </tr>
                     <%}%>

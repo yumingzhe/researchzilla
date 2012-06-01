@@ -5,7 +5,7 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <constant name="struts.multipart.saveDir" value="D:\workspace\researchzilla\classes\artifacts\web_site_war_exploded\img"/>
+    <!--<constant name="struts.multipart.saveDir" value="D:\workspace\researchzilla\classes\artifacts\web_site_war_exploded\img"/>-->
     <constant name="struts.i18n.encoding" value="GB18030"/>
     <package name="pkg" extends="struts-default">
         <action name="RegisterAction" class="registerAction">
@@ -52,21 +52,33 @@
 
         <action name="GetInternalNoticeAction" class="getInternalNoticeAction">
             <result name="success" type="redirectAction">GetPublicNoticeAction</result>
-            <result name="acquireall">homepagetwo.jsp</result>
-            <result name="acquireone">detailcontent.jsp</result>
+            <result name="acquireall">/homepagetwo.jsp</result>
+            <result name="acquiresome">/homepagetwo.jsp</result>
+            <result name="acquireone">/detailcontent.jsp</result>
         </action>
         <action name="GetPublicNoticeAction" class="getPublicNoticeAction">
             <result name="success" type="redirectAction">GetNewsAction</result>
             <result name="acquireall">/homepagetwo.jsp</result>
+            <result name="acquiresome">/homepagetwo.jsp</result>
             <result name="acquireone">/detailcontent.jsp</result>
         </action>
 
         <action name="GetNewsAction" class="getNewsAction">
             <result name="success" type="redirectAction">GetLinkAction</result>
             <result name="acquireall">/homepagetwo.jsp</result>
+            <result name="acquiresome">/homepagetwo.jsp</result>
             <result name="acquireone">/detailcontent.jsp</result>
         </action>
-
+        <action name="GetPictureNewsAction" class="getPictureNewsAction">
+            <result name="acquireall">/homepagetwo.jsp</result>
+            <result name="acquiresome">/homepagetwo.jsp</result>
+            <result name="acquireone">/detailpicturecontent.jsp</result>
+        </action>
+        <action name="GetAccomplishmentAction" class="getAccomplishmentAction">
+            <result name="acquireall">/homepagetwo.jsp</result>
+            <result name="acquiresome">/homepagetwo.jsp</result>
+            <result name="acquireone">/detailpicturecontent.jsp</result>
+        </action>
         <action name="GetLinkAction" class="getLinkAction">
             <result name="success" type="redirectAction">GetVisitsAction</result>
             <result name="acquireall" >/linksmanage.jsp</result>
@@ -103,6 +115,8 @@
             <result name="success">/addmessagesuccess.jsp</result>
             <result name="acquireall">/allmessages.jsp</result>
             <result name="acquireallpicture">/allpicturemessages.jsp</result>
+            <result name="acquireonemessage">/detailcontent.jsp</result>
+            <result name="acquireonepicturemessage">/detailpicturecontent.jsp</result>
         </action>
         <action name="ExitAction" class="exitAction">
             <result name="success">/homepageone.jsp</result>

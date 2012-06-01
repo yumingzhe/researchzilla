@@ -6,6 +6,7 @@ import pojo.WebsiteMessage;
 import service.WebsiteMessageService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 
@@ -59,12 +60,15 @@ public class BasicDesignAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-        request.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("gb2312");
+        HttpServletResponse response=ServletActionContext.getResponse();
+        response.setContentType("text/html;charset=gb2312");
         WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
-        websiteMessage.setWebsitename((String) request.getAttribute("websitename"));
-        websiteMessage.setPath((String) request.getAttribute("path"));
-        websiteMessage.setMaintenanceaddress((String) request.getAttribute("maintenanceaddress"));
-        websiteMessage.setDefaultlanguage((String) request.getAttribute("defaultlanguage"));
+        websiteMessage.setWebsitename(((WebsiteMessage)request.getAttribute("websitemess")).getWebsitename());
+        System.out.println(((WebsiteMessage)request.getAttribute("websitemess")).getWebsitename());
+        websiteMessage.setPath(((WebsiteMessage)request.getAttribute("websitemess")).getPath());
+        websiteMessage.setMaintenanceaddress(((WebsiteMessage)request.getAttribute("websitemess")).getMaintenanceaddress());
+        websiteMessage.setDefaultlanguage(((WebsiteMessage)request.getAttribute("websitemess")).getDefaultlanguage());
         websiteMessageService.updateWebsiteMessage(websiteMessage);
 
         request.setAttribute("websitemessage",websiteMessage);

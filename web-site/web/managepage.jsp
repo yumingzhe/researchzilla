@@ -2,13 +2,14 @@
 <%--
   User: wangyan
   Date: 12-5-24
-  Time: Д╦▀Е█┬3:50
+  Time: обнГ3:50
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page contentType="text/html;charset=gb2312"  %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Е░▌Е▐╟Г╝║Г░├И║╣И²╒</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>╨Сл╗╧эюМрЁцФ</title>
     <link href="layout.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         <!--
@@ -46,28 +47,28 @@
 <body>
 <div id="container_1">
     <div id="header_2">
-        <div align="center" class="STYLE1">Е░▌Е▐╟Г╝║Г░├</div>
+        <div align="center" class="STYLE1">╨Сл╗╧эюМ</div>
     </div>
     <div id="menu">
         <ul id="nav">
-            <li><a href="#" class="STYLE2">Г■╗Ф┬╥Д©║Ф│╞Г╝║Г░├</a>
+            <li><a href="#" class="STYLE2">сц╩╖пео╒╧эюМ</a>
                 <ul>
-                    <li><a href="http://localhost:8080/UserAction!getallusers.action">Ф÷╔Г°▀Ф┴─Ф°┴Г■╗Ф┬╥</a></li>
+                    <li><a href="http://localhost:8080/UserAction!getallusers.action">╡И©╢кЫспсц╩╖</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="STYLE2">Г╫▒Г╚≥Д©║Ф│╞Г╝║Г░├</a>
+            <li><a href="#" class="STYLE2">мЬу╬пео╒╧эюМ</a>
                 <ul>
-                    <li><a href="addmesssage.jsp">Ф╥╩Е┼═Е⌡╬Г┴┤Д©║Ф│╞</a></li>
-                    <li><a href="addtextmessage.jsp">Ф╥╩Е┼═Ф√┤Ф°╛Д©║Ф│╞</a></li>
-                    <li><a href="http://localhost:8080/MessageAction!getallmessages.action">Ф÷╔Г°▀Г╨╞Ф√┤Ф°╛Ф╤┬Ф│╞</a></li>
-                   <li><a href="http://localhost:8080/MessageAction!getallpicturemessages.action">Ф÷╔Г°▀Е░╚Е⌡╬Г┴┤Ф╤┬Ф│╞</a></li>
+                    <li><a href="addmesssage.jsp">лМ╪см╪ф╛пео╒</a></li>
+                    <li><a href="addtextmessage.jsp">лМ╪снд╠╬пео╒</a></li>
+                    <li><a href="http://localhost:8080/MessageAction!getallmessages.action">╡И©╢╢©нд╠╬оШо╒</a></li>
+                   <li><a href="http://localhost:8080/MessageAction!getallpicturemessages.action">╡И©╢╨╛м╪ф╛оШо╒</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="STYLE2">ГЁ╩Г╩÷Д©║Ф│╞Г╩╢Ф┼╓</a>
+            <li><a href="#" class="STYLE2">о╣мЁпео╒н╛╩╓</a>
                 <ul>
-                    <li><a href="http://localhost:8080/BasicMessageChangeAction.action">Е÷╨Ф°╛Д©║Ф│╞Х╝╬Г╫╝</a></li>
+                    <li><a href="http://localhost:8080/BasicMessageChangeAction.action">╩Ы╠╬пео╒иХжц</a></li>
                 </ul>
-             <li><a href="http://localhost:8080/FeedbackAction!getallfeedbacks.action">Г■╗Ф┬╥Е▐█И╕┬Д©║Ф│╞</a></li>
+             <li><a href="http://localhost:8080/FeedbackAction!getallfeedbacks.action">сц╩╖╥╢ю║пео╒</a></li>
         </ul>
     </div>
 

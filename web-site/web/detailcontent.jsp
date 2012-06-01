@@ -43,18 +43,20 @@
                 <td class="STYLE1"><%=((Message)request.getAttribute("oneinternalnotice")).getTopic()%></td>
                 <%}else if(request.getAttribute("onepublicnotice")!=null){%>
                 <td class="STYLE1"><%=((Message)request.getAttribute("onepublicnotice")).getTopic()%></td>
-                <%}else{%>
+                <%}else if(request.getAttribute("onenews")!=null){%>
                 <td class="STYLE1"><%=((Message)request.getAttribute("onenews")).getTopic()%></td>
-                <%}%>
+                <%}else if(request.getAttribute("onemessage")!=null){%>
+                <td class="STYLE1"><%=((Message)request.getAttribute("onemessage")).getTopic()%></td>
+                <%}else{}%>
             </tr>
         </table>
 
-        <table width="745" height="463" border="0" align="center">
+        <table width="700" height="463" border="0" align="center">
             <%if(request.getAttribute("oneinternalnotice")!=null){%>
             <tr>
-                <td >作者：<%=((Message)request.getAttribute("oneinternalnotice")).getAuthor()%></td>
-                <td >发布者：<%=((Message)request.getAttribute("oneinternalnotice")).getPublisher()%></td>
-                <td >发布时间：<%=((Message)request.getAttribute("oneinternalnotice")).getPublishtime()%></td>
+                <td >作者：<%=((Message)request.getAttribute("oneinternalnotice")).getAuthor()%>  发布者：<%=((Message)request.getAttribute("oneinternalnotice")).getPublisher()%>
+                    发布时间：<%=((Message)request.getAttribute("oneinternalnotice")).getPublishtime()%>
+                </td>
             </tr>
             <tr>
                 <td><%=((Message)request.getAttribute("oneinternalnotice")).getContent()%></td>
@@ -62,12 +64,11 @@
             <tr>
                 <td><%=((Message)request.getAttribute("oneinternalnotice")).getAccesory()%></td>
             </tr>
-            <td class="STYLE1"><%=((Message)request.getAttribute("oneinternalnotice")).getTopic()%></td>
             <%}else if(request.getAttribute("onepublicnotice")!=null){%>
             <tr>
-                <td >作者：<%=((Message)request.getAttribute("onepublicnotice")).getAuthor()%></td>
-                <td >发布者：<%=((Message)request.getAttribute("onepublicnotice")).getPublisher()%></td>
-                <td >发布时间：<%=((Message)request.getAttribute("onepublicnotice")).getPublishtime()%></td>
+                <td >作者：<%=((Message)request.getAttribute("onepublicnotice")).getAuthor()%> 发布者：<%=((Message)request.getAttribute("onepublicnotice")).getPublisher()%>
+                    发布时间：<%=((Message)request.getAttribute("onepublicnotice")).getPublishtime()%>
+                </td>
             </tr>
             <tr>
                 <td><%=((Message)request.getAttribute("onepublicnotice")).getContent()%></td>
@@ -75,11 +76,11 @@
             <tr>
                 <td><%=((Message)request.getAttribute("onepublicnotice")).getAccesory()%></td>
             </tr>
-            <%}else{%>
+            <%}else if(request.getAttribute("onenews")!=null){%>
             <tr>
-                <td >作者：<%=((Message)request.getAttribute("onenews")).getAuthor()%></td>
-                <td >发布者：<%=((Message)request.getAttribute("onenews")).getPublisher()%></td>
-                <td >发布时间：<%=((Message)request.getAttribute("onenews")).getPublishtime()%></td>
+                <td >作者：<%=((Message)request.getAttribute("onenews")).getAuthor()%> 发布者：<%=((Message)request.getAttribute("onenews")).getPublisher()%>
+                    发布时间：<%=((Message)request.getAttribute("onenews")).getPublishtime()%>
+                </td>
             </tr>
             <tr>
                 <td><%=((Message)request.getAttribute("onenews")).getContent()%></td>
@@ -87,16 +88,22 @@
             <tr>
                 <td><%=((Message)request.getAttribute("onenews")).getAccesory()%></td>
             </tr>
-            <%}%>
+            <%}else if(request.getAttribute("onemessage")!=null){%>
+            <tr>
+                <td >作者：<%=((Message)request.getAttribute("onemessage")).getAuthor()%> 发布者：<%=((Message)request.getAttribute("onemessage")).getPublisher()%>
+                    类型：<%=((Message)request.getAttribute("onemessage")).getType()%> 发布时间：<%=((Message)request.getAttribute("onemessage")).getPublishtime()%>
+                </td>
+            </tr>
+            <tr>
+                <td><%=((Message)request.getAttribute("onemessage")).getContent()%></td>
+            </tr>
+            <tr>
+                <td><%=((Message)request.getAttribute("onemessage")).getAccesory()%></td>
+            </tr>
+            <%}else{}%>
         </table>
     </div>
     <div id="footer_1">
-        <div align="center">
-            <p>维护邮箱：
-                <%=session.getAttribute("maintenanceaddress")%>
-            </p>
-            <p><a href="feedback.jsp">用户反馈</a></p>
-        </div>
     </div>
 </div>
 </body>

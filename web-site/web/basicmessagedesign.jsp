@@ -2,13 +2,14 @@
 <%--
   User: wangyan
   Date: 12-5-28
-  Time: 下午5:00
+  Time: ����5:00
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java"  pageEncoding="gb2312"%>
+<%@ page contentType="text/html;charset=gb2312"  %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <title>网站基本信息设置页面</title>
+    <title>��վ������Ϣ����ҳ��</title>
     <link href="layout.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         <!--
@@ -24,32 +25,35 @@
 
 <div id="container_1">
     <div id="header_2">
-        <div align="center" class="STYLE1">后台管理</div>
+        <div align="center" class="STYLE1">��̨����</div>
     </div>
     <div id="mainContent_2">
+        <%request.setCharacterEncoding("gb2312");
+          response.setContentType("text/html;charset=gb2312");%>
         <%if(request.getAttribute("websitemessage")!=null){%>
         <form id="form1" name="form1" method="post" enctype="multipart/form-data" action="dobasicmessagechange.jsp">
             <table width="543" height="239" border="0" align="center">
                 <tr>
-                    <td width="171" height="53" class="STYLE8">网站标题：</td>
+                    <td width="171" height="53" class="STYLE8">��վ���⣺</td>
                     <td width="362"><label class="STYLE8">
                         <input name="websitename" type="text" class="STYLE8" value="<%=((WebsiteMessage)request.getAttribute("websitemessage")).getWebsitename()%>"/>
                     </label></td>
+                    <%System.out.println(((WebsiteMessage)request.getAttribute("websitemessage")).getWebsitename());%>
                 </tr>
                 <tr>
-                    <td class="STYLE8">网站背景图片：</td>
+                    <td class="STYLE8">��վ����ͼƬ��</td>
                     <td><label>
                         <input name="path" type="file"  class="STYLE8" value="<%=((WebsiteMessage)request.getAttribute("websitemessage")).getPath()%>" />
                     </label></td>
                 </tr>
                 <tr>
-                    <td class="STYLE8">网站维护组邮箱：</td>
+                    <td class="STYLE8">��վά�������䣺</td>
                     <td><label>
                         <input name="maintenanceaddress" type="text" class="STYLE8" value="<%=((WebsiteMessage)request.getAttribute("websitemessage")).getMaintenanceaddress()%>"/>
                     </label></td>
                 </tr>
                 <tr>
-                    <td class="STYLE8">网站默认语言：</td>
+                    <td class="STYLE8">��վĬ�����ԣ�</td>
                     <td><label>
                         <select name="defaultlanguage" value="<%=((WebsiteMessage)request.getAttribute("websitemessage")).getDefaultlanguage()%>">
                             <option value="Chinese">Chinese</option>
@@ -60,12 +64,13 @@
             </table>
             <p align="center" class="STYLE5">
                 <label>
-                    <input name="Submit" type="submit" class="STYLE8" value="更新" />
+                    <input name="Submit" type="submit" class="STYLE8" value="����" />
                 </label>
             </p>
         </form>
         <%}%>
-         <%String imgUrl= ((WebsiteMessage)request.getAttribute("websitemessage")).getPath();%>
+         <%String imgUrl= ((WebsiteMessage)request.getAttribute("websitemessage")).getPath();
+         %>
         <div align="center">
             <img src="<%=imgUrl%>" alt="images"/>
         </div>

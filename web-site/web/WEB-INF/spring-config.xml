@@ -125,7 +125,12 @@
         <property name="messageService" ref="messageService"/>
         <property name="pictureNewsService" ref="pictureNewsService"/>
     </bean>
-
+    <bean id="getPictureNewsAction" class="action.GetPictureNewsAction">
+        <property name="pictureNewsService" ref="pictureNewsService"/>
+    </bean>
+    <bean id="getAccomplishmentAction" class="action.GetAccomplishmentAction">
+        <property name="pictureNewsService" ref="pictureNewsService"/>
+    </bean>
     <!--Subject Bean group-->
     <bean id="subjectDao" class="dao.impl.SubjectDaoImpl">
         <property name="factory" ref="sessionFactory"/>
