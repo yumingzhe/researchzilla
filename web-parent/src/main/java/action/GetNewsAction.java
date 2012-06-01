@@ -47,6 +47,7 @@ public class GetNewsAction extends ActionSupport {
 
     public String getAllResult() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
         List list = messageService.getAllNews();
         request.setAttribute("allnewses", list);
         return "acquireall";
@@ -54,7 +55,7 @@ public class GetNewsAction extends ActionSupport {
 
     public String getOneResult() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-
+        request.setCharacterEncoding("utf-8");
         int id=Integer.parseInt(newsid);
         Message news= messageService.getOneNewsByID(id);
         request.setAttribute("onenews", news);

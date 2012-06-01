@@ -28,7 +28,7 @@ public class GetVisitsAction extends ActionSupport {
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-
+        request.setCharacterEncoding("utf-8");
         WebsiteMessage  websiteMessage=websiteMessageService.getWebsiteMessage();
 
         int visits=websiteMessage.getVisits(0);

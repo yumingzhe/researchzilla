@@ -13,4 +13,6 @@ public interface FeedbackService {
     public Serializable saveFeedback(Feedback feedback);
 
     public List<Feedback> getAllFeedback();
+
+    public Feedback getOneFeedbackByID(int id);
 }

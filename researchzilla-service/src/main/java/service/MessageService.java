@@ -35,4 +35,6 @@ public interface MessageService {
 
     public Message getOneNewsByID(int id);
 
+    public List<Message> getAllMessages();
+
 }

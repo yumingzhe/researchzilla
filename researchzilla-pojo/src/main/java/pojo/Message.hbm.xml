@@ -12,6 +12,6 @@
         <property name="topic" column="topic" type="string" length="50" not-null="true"/>
         <property name="content" column="content" type="string" length="2000" not-null="true"/>
         <property name="publishtime" column="publishtime" type="timestamp" not-null="true"/>
-        <property name="accesory" column="accesory" type="blob"/>
+        <property name="filepath" column="filepath" type="string"/>
     </class>
 </hibernate-mapping>

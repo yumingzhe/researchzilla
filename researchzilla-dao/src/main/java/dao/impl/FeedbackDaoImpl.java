@@ -57,4 +57,19 @@ public class FeedbackDaoImpl implements FeedbackDao {
         });
         return feedbacks;
     }
+
+    @Override
+    public Feedback getOneFeedbackByID(final int id) {
+        List feedbacks = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Feedback as f where  f.id= :id").setInteger("id", id);
+                return query.list();
+            }
+        });
+        if(feedbacks==null)
+            return  null;
+        Feedback feedback= (Feedback) feedbacks.get(0);
+        return feedback;
+    }
 }

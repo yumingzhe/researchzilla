@@ -38,7 +38,7 @@ public class GetPublicNoticeAction extends ActionSupport {
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-
+        request.setCharacterEncoding("utf-8");
         List list=messageService.getSomePublicNotice();
         session.setAttribute("publicnotices",list);
 
@@ -47,14 +47,15 @@ public class GetPublicNoticeAction extends ActionSupport {
 
     public String getAllResult() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-        List list = messageService.getAllInternalNotice();
+        request.setCharacterEncoding("utf-8");
+        List list = messageService.getAllPublicNotice();
         request.setAttribute("allpublicnotices", list);
         return "acquireall";
     }
 
     public String getOneResult() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-
+        request.setCharacterEncoding("utf-8");
         int id=Integer.parseInt(publicnoticeid);
         Message publicnotice = messageService.getOnePublicNoticeByID(id);
         request.setAttribute("onepublicnotice", publicnotice);

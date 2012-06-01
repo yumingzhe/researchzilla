@@ -32,4 +32,9 @@ public class FeedbackServiceImpl  implements FeedbackService{
     public List<Feedback> getAllFeedback() {
         return feedbackDao.getAllFeedback();
     }
+
+    @Override
+    public Feedback getOneFeedbackByID(int id) {
+        return feedbackDao.getOneFeedbackByID(id);
+    }
 }

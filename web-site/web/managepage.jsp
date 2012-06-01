@@ -1,3 +1,4 @@
+<%@ page import="pojo.WebsiteMessage" %>
 <%--
   User: wangyan
   Date: 12-5-24
@@ -6,7 +7,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>后台管理页面</title>
     <link href="layout.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
@@ -18,6 +19,29 @@
         .STYLE2 {font-size: 16px}
         -->
     </style>
+
+    <script type=text/javascript><!--//--><![CDATA[//><!--
+    function menuFix() {
+        var sfEls = document.getElementById("nav").getElementsByTagName("li");
+        for (var i=0; i<sfEls.length; i++) {
+            sfEls[i].onmouseover=function() {
+                this.className+=(this.className.length>0? " ": "") + "sfhover";
+            }
+            sfEls[i].onMouseDown=function() {
+                this.className+=(this.className.length>0? " ": "") + "sfhover";
+            }
+            sfEls[i].onMouseUp=function() {
+                this.className+=(this.className.length>0? " ": "") + "sfhover";
+            }
+            sfEls[i].onmouseout=function() {
+                this.className=this.className.replace(new RegExp("( ?|^)sfhover\\b"),
+                        "");
+            }
+        }
+    }
+    window.onload=menuFix;
+    //--><!]]></script>
+
 </head>
 <body>
 <div id="container_1">
@@ -28,29 +52,27 @@
         <ul id="nav">
             <li><a href="#" class="STYLE2">用户信息管理</a>
                 <ul>
-                    <li><a href="#">查看用户</a></li>
-                    <li><a href="#">添加用户</a></li>
-                    <li><a href="#">修改用户</a></li>
-                    <li><a href="#">删除用户</a></li>
+                    <li><a href="http://localhost:8080/UserAction!getallusers.action">查看所有用户</a></li>
                 </ul>
             </li>
             <li><a href="#" class="STYLE2">网站信息管理</a>
                 <ul>
-                    <li><a href="#">添加信息</a></li>
-                    <li><a href="#">修改信息</a></li>
-                    <li><a href="#">删除信息</a></li>
+                    <li><a href="addmesssage.jsp">添加图片信息</a></li>
+                    <li><a href="addtextmessage.jsp">添加文本信息</a></li>
+                    <li><a href="http://localhost:8080/MessageAction!getallmessages.action">查看纯文本消息</a></li>
+                   <li><a href="http://localhost:8080/MessageAction!getallpicturemessages.action">查看含图片消息</a></li>
                 </ul>
             </li>
             <li><a href="#" class="STYLE2">系统信息维护</a>
                 <ul>
-                    <li><a href="#">基本信息设置</a></li>
-                    <li><a href="#">统计信息总览</a></li>
+                    <li><a href="http://localhost:8080/BasicMessageChangeAction.action">基本信息设置</a></li>
                 </ul>
-            </li>
-            <li><a href="#" class="STYLE2">用户反馈信息</a> </li>
+             <li><a href="http://localhost:8080/FeedbackAction!getallfeedbacks.action">用户反馈信息</a></li>
         </ul>
     </div>
+
     <div id="mainContent_2">
+
     </div>
     <div id="footer_1"></div>
 </div>

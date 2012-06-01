@@ -5,6 +5,12 @@
 <%@ page import="java.util.*" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<s:actionerror/>
+<s:actionmessage/>
+<s:fielderror/>
 <html>
 <head>
     <title>Researchzilla|<%=((Blog) request.getAttribute("specifiedblog")).getTitle()%>

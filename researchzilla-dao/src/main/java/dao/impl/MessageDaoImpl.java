@@ -188,4 +188,16 @@ public class MessageDaoImpl implements MessageDao {
         Message news= (Message) newses.get(0);
         return news;
     }
+
+    @Override
+    public List<Message> getAllMessages() {
+        List messages = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message ");
+                return query.list();
+            }
+        });
+        return messages;
+    }
 }

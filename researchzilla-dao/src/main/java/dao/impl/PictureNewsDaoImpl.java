@@ -68,7 +68,7 @@ public class PictureNewsDaoImpl implements PictureNewsDao {
         List picturenewses = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from PictureNews as p where p.type= :type order by id desc").setString("type","picturenews");
+                Query query = session.createQuery("from PictureNews as p where p.type= :type ").setString("type","picturenews");
                 return query.list();
             }
         });
@@ -80,7 +80,7 @@ public class PictureNewsDaoImpl implements PictureNewsDao {
         List accomplishments = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from PictureNews as p where p.type= :type order by id desc").setString("type","accomplishment");
+                Query query = session.createQuery("from PictureNews as p where p.type= :type ").setString("type","accomplishment");
                 return query.list();
             }
         });

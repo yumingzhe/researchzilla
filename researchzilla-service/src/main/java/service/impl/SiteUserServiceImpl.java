@@ -5,6 +5,7 @@ import pojo.SiteUser;
 import service.SiteUserService;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -45,5 +46,15 @@ public class SiteUserServiceImpl implements SiteUserService {
     @Override
     public Serializable saveSiteUser(SiteUser siteUser) {
         return siteUserDao.saveSiteUser(siteUser);
+    }
+
+    @Override
+    public List<SiteUser> getAllSiteUser() {
+        return siteUserDao.getAllSiteUser();
+    }
+
+    @Override
+    public void deleteSiteUserById(int uid) {
+        siteUserDao.deleteSiteUserById(uid);
     }
 }

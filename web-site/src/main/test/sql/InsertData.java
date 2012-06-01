@@ -80,7 +80,7 @@ public class InsertData {
         session.save(blog);*/
 
 
-       /* SiteUser siteUser = (SiteUser) session.get(SiteUser.class, 1);
+        /* SiteUser siteUser = (SiteUser) session.get(SiteUser.class, 1);
         Blog blog = (Blog) session.get(Blog.class, 1);
         CommentEntity commentEntity = new CommentEntity();
         commentEntity.setBlog(blog);
@@ -97,7 +97,41 @@ public class InsertData {
         commentEntity.setActivity(activity);
         session.save(commentEntity);*/
 
+
         transaction.commit();
         session.close();
+
+
+/*        Activity activity = (Activity) session.get(Activity.class, 2);
+        CommentEntity commentEntity = activity.getCommentEntity();
+        if (commentEntity != null) {
+            Blog blog = commentEntity.getBlog();
+            if (blog != null) {
+                System.out.println("blog title: " + blog.getTitle() + " blog content: " + blog.getContent());
+            }
+        } else {
+            System.out.print("i am here");
+        } */
+
+
+        /*   Message message = new Message();
+       message.setType("publicnotice");
+       message.setAuthor("王五");
+       message.setPublisher("王艳");
+       message.setTopic("publicnotice");
+       message.setContent("wuyanzu will come here");
+       message.setPublishtime(new Timestamp(new Date().getTime()));
+       session.save(message);
+       transaction.commit();
+       session.close(); */
+
+        /*  Link link = new Link();
+
+       link.setWebsitename("百度");
+       link.setWebsiteurl("http://www.baidu.com/");
+       session.save(link);
+       transaction.commit();
+       session.close(); */
+
     }
 }

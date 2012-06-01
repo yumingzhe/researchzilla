@@ -3,12 +3,14 @@ package action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import pojo.Feedback;
+import pojo.SiteUser;
 import service.FeedbackService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: wangyan
@@ -19,6 +21,7 @@ public class FeedbackAction extends ActionSupport{
     private String title;
     private String content;
 
+    private String feedbackid;
     private FeedbackService feedbackService;
 
     public String getTitle() {
@@ -37,22 +40,20 @@ public class FeedbackAction extends ActionSupport{
         this.content = content;
     }
 
+    public String getFeedbackid() {
+        return feedbackid;
+    }
+
+    public void setFeedbackid(String feedbackid) {
+        this.feedbackid = feedbackid;
+    }
+
     public FeedbackService getFeedbackService() {
         return feedbackService;
     }
 
     public void setFeedbackService(FeedbackService feedbackService) {
         this.feedbackService = feedbackService;
-    }
-
-    @Override
-    public void validate() {
-        if(this.title==null){
-            this.addFieldError(title,"you must input title");
-        }
-        if(this.content==null){
-            this.addFieldError(content,"you must input content");
-        }
     }
 
     @Override
@@ -64,9 +65,27 @@ public class FeedbackAction extends ActionSupport{
         feedback.setFeedbacktopic(this.title);
         feedback.setFeedbackcontent(this.content);
         feedback.setPublishtime(new Timestamp(new Date().getTime()));
-        feedback.setFeedbackauthor((String) session.getAttribute("username"));
+        feedback.setFeedbackauthor(((SiteUser) session.getAttribute("user")).getUsername());
 
         feedbackService.saveFeedback(feedback);
         return SUCCESS;
+    }
+    public String getallfeedbacks() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
+        List list = feedbackService.getAllFeedback();
+        request.setAttribute("feedbacks", list);
+
+        return "acquireall";
+    }
+
+    public String getOneFeedback() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
+        int id=Integer.parseInt(feedbackid);
+        Feedback feedback = feedbackService.getOneFeedbackByID(id);
+        request.setAttribute("onefeedback", feedback);
+
+        return "acquireone";
     }
 }

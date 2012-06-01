@@ -124,14 +124,14 @@ a:hover { color: #F00; }
 }
 #nav li ul {
     line-height: 27px;  list-style-type: none;text-align:left;
-    left: -999em; width: 120px; position: absolute;
+    left: -999em; width: 140px; position: absolute;
 }
 #nav li ul li{
-    float: left; width: 120px;
+    float: left; width: 140px;
     background: #F6F6F6;
 }
 #nav li ul a{
-    display: block; width: 120px;width: 96px;text-align:left;padding-left:24px;
+    display: block; width: 140px;width: 116px;text-align:left;padding-left:24px;
 }
 #nav li ul a:link  {
     color:#666; text-decoration:none;
@@ -149,6 +149,4 @@ a:hover { color: #F00; }
 #nav li.sfhover ul {
     left: auto;
 }
-#nav li ul.current ul { display:block;}
-#nav li ul:hover ul { display:block;}
 

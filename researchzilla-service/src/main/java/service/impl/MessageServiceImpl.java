@@ -84,5 +84,10 @@ public class MessageServiceImpl implements MessageService {
         return messageDao.getOneNewsByID(id);
     }
 
+    @Override
+    public List<Message> getAllMessages() {
+        return messageDao.getAllMessages();
+    }
+
 
 }
