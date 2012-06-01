@@ -56,4 +56,32 @@ public class BlogDaoImpl implements BlogDao {
             }
         }).get(0);
     }
+
+    @Override
+    public List getAllBlogsByUID(final int uid) {
+        return this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Blog as b where b.siteUser.id= :uid").setInteger("uid", uid);
+                return query.list();
+            }
+        });
+    }
+
+    @Override
+    public void updateBlog(Blog blog) {
+        this.getTemplate().update(blog);
+    }
+
+    @Override
+    public void deleteBlogById(final int id) {
+        this.getTemplate().execute(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Blog blog = (Blog) session.get(Blog.class, id);
+                session.delete(blog);
+                return null;
+            }
+        });
+    }
 }

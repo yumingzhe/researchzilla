@@ -11,4 +11,8 @@ import java.io.Serializable;
  */
 public interface CommentEntityService {
     public Serializable saveCommentEntity(CommentEntity commentEntity);
+
+    public void deleteCommentEntityById(int id);
+
+    public CommentEntity getCommentEntityById(int id);
 }

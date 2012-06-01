@@ -3,6 +3,7 @@ package service;
 import pojo.Blog;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -13,4 +14,10 @@ public interface BlogService {
     public Serializable saveBlog(Blog blog);
 
     public Blog getBlogById(int id);
+
+    public List<Blog> getAllBlogsByUID(int uid);
+
+    public void updateBlog(Blog blog);
+
+    public void deleteBlogById(int id);
 }

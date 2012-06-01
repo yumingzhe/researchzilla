@@ -2,10 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import pojo.*;
-import service.BlogService;
-import service.CommentEntityService;
-import service.FileService;
-import service.SiteUserService;
+import service.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -24,6 +21,15 @@ public class PostCommentAction extends ActionSupport {
     private FileService fileService;
     private SiteUserService siteUserService;
     private CommentEntityService commentEntityService;
+    private ActivityService activityService;
+
+    public ActivityService getActivityService() {
+        return activityService;
+    }
+
+    public void setActivityService(ActivityService activityService) {
+        this.activityService = activityService;
+    }
 
     public CommentEntityService getCommentEntityService() {
         return commentEntityService;
@@ -93,21 +99,27 @@ public class PostCommentAction extends ActionSupport {
     public String execute() throws Exception {
         if (this.type.equals("blog")) {
             Blog blog = blogService.getBlogById(Integer.parseInt(objectId));
+
             CommentEntity commentEntity = new CommentEntity();
             commentEntity.setPostTime(new Timestamp(new Date().getTime()));
+            commentEntity.setContent(this.content);
 
             SiteUser siteUser = siteUserService.getSiteUserByUID(Integer.parseInt(uid));
+
             commentEntity.setSiteUser(siteUser);
-            commentEntity.setContent(this.content);
             commentEntity.setBlog(blog);
+//            blog.getCommentEntities().add(commentEntity);
 
             Activity activity = new Activity();
-            activity.setBlog(blog);
-            activity.setSiteUser(siteUser);
             activity.setCommentEntity(commentEntity);
+            activity.setSiteUser(siteUser);
+            activity.setActivityOccurTime(new Timestamp(new Date().getTime()));
+            activity.setAction("发表评论");
 
             commentEntity.setActivity(activity);
             commentEntityService.saveCommentEntity(commentEntity);
+//            activityService.saveActivity(activity);
+
             return SUCCESS;
         } else if (this.type.equals("file")) {
             File file = fileService.getFileById(Integer.parseInt(objectId));
@@ -127,6 +139,7 @@ public class PostCommentAction extends ActionSupport {
             commentEntity.setActivity(activity);
             commentEntityService.saveCommentEntity(commentEntity);
             return SUCCESS;
-        } else return INPUT;
+        }
+        return INPUT;
     }
 }

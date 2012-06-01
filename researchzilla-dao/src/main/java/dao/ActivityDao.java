@@ -14,4 +14,6 @@ public interface ActivityDao {
     public Serializable saveActivity(Activity activity);
 
     public List<Activity> getAllActivitiesByUID(int uid);
+
+    public void executeSQL(String sql);
 }

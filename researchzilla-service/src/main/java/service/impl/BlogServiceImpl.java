@@ -5,6 +5,7 @@ import pojo.Blog;
 import service.BlogService;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -30,5 +31,20 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog getBlogById(int id) {
         return blogDao.getBlogById(id);
+    }
+
+    @Override
+    public List<Blog> getAllBlogsByUID(int uid) {
+        return blogDao.getAllBlogsByUID(uid);
+    }
+
+    @Override
+    public void updateBlog(Blog blog) {
+        this.blogDao.updateBlog(blog);
+    }
+
+    @Override
+    public void deleteBlogById(int id) {
+        this.blogDao.deleteBlogById(id);
     }
 }

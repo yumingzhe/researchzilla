@@ -10,7 +10,7 @@ import service.SiteUserService;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.*;
+import java.util.Date;
 
 /**
  * User: yumingzhe
@@ -29,6 +29,15 @@ public class PostBlogAction extends ActionSupport {
     private SiteUserService siteUserService;
     private BlogService blogService;
     private ActivityService activityService;
+    private int identifier;
+
+    public int getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(int identifier) {
+        this.identifier = identifier;
+    }
 
     public ActivityService getActivityService() {
         return activityService;
@@ -120,7 +129,7 @@ public class PostBlogAction extends ActionSupport {
 
     @Override
     public void validate() {
-        if (this.title == null) {
+        if (this.title == null || this.title.equals("")) {
             this.addFieldError("title", "You must enter a valid title");
         }
         if (this.content == null) {
@@ -135,7 +144,6 @@ public class PostBlogAction extends ActionSupport {
         if (this.posterId == null) {
             this.posterId = "1";
         }
-
     }
 
     @Override
@@ -147,18 +155,23 @@ public class PostBlogAction extends ActionSupport {
         blog.setContent(this.content);
         blog.setDescription(this.description);
         blog.setTag(this.tag);
-        blog.setComment(this.comment);
+        if (this.comment.equals("on"))
+            blog.setComment(true);
+        else blog.setComment(false);
         blog.setAccess(this.access);
         blog.setPostDate(new Timestamp(new Date().getTime()));
         blog.setSiteUser(siteUser);
 
         Activity activity = new Activity();
         activity.setActivityOccurTime(new Timestamp(new Date().getTime()));
+        activity.setAction("发表日志");
         activity.setSiteUser(siteUser);
         activity.setBlog(blog);
         blog.setActivity(activity);
 
-        blogService.saveBlog(blog);//this will add blog and activity record into Table 'researchzilla_blog' and 'reaserchzilla_activity'
+        Serializable id = blogService.saveBlog(blog);//this will add blog and activity record into Table 'researchzilla_blog' and 'reaserchzilla_activity'
+
+        this.identifier = Integer.parseInt(id.toString());
         return SUCCESS;
     }
 }

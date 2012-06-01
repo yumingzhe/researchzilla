@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Date: 5/19/12
  * Time: 11:03 PM
  */
-public class CommentEntity {
+public class CommentEntity implements Comparable<CommentEntity> {
     private Integer id;
     private Timestamp postTime;
     private String content;
@@ -70,5 +70,10 @@ public class CommentEntity {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public int compareTo(CommentEntity o) {
+        return this.getPostTime().compareTo(o.getPostTime());
     }
 }
