@@ -25,6 +25,10 @@ public interface SiteUserDao {
 
     public List<SiteUser> getAllSiteUser();
 
-    public void deleteSiteUserById(int uid);
+    public int getSiteUserTotalCount();
+
+    public int getSiteUserTotalPage(int pageSize);
+
+    public List<SiteUser> getSomeSiteUser(final int pageSize, final int currentPage);
 
 }

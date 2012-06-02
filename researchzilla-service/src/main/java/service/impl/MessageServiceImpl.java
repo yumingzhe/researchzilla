@@ -44,6 +44,51 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public int getInternalNoticeTotalCount() {
+        return messageDao.getInternalNoticeTotalCount();
+    }
+
+    @Override
+    public int getInternalNoticeTotalPage(int pageSize) {
+        return messageDao.getInternalNoticeTotalPage(pageSize);
+    }
+
+    @Override
+    public int getPublicNoticeTotalCount() {
+        return messageDao.getPublicNoticeTotalCount();
+    }
+
+    @Override
+    public int getPublicNoticeTotalPage(int pageSize) {
+        return messageDao.getPublicNoticeTotalPage(pageSize);
+    }
+
+    @Override
+    public int getNewsTotalCount() {
+        return messageDao.getNewsTotalCount();
+    }
+
+    @Override
+    public int getNewsTotalPage(int pageSize) {
+        return messageDao.getNewsTotalPage(pageSize);
+    }
+
+    @Override
+    public List<Message> getInternalNotice(final int pageSize, final int currentPage) {
+        return messageDao.getInternalNotice(pageSize,currentPage);
+    }
+
+    @Override
+    public List<Message> getPublicNotice(int pageSize, int currentPage) {
+        return messageDao.getPublicNotice(pageSize,currentPage);
+    }
+
+    @Override
+    public List<Message> getNews(int pageSize, int currentPage) {
+        return messageDao.getNews(pageSize,currentPage);
+    }
+
+    @Override
     public List<Message> getAllPublicNotice() {
         return messageDao.getAllPublicNotice();
     }
@@ -87,6 +132,26 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public List<Message> getAllMessages() {
         return messageDao.getAllMessages();
+    }
+
+    @Override
+    public int getMessageTotalCount() {
+        return messageDao.getMessageTotalCount();
+    }
+
+    @Override
+    public int getMessageTotalPage(int pageSize) {
+        return messageDao.getMessageTotalPage(pageSize);
+    }
+
+    @Override
+    public List<Message> getMessage(int pageSize, int currentPage) {
+        return messageDao.getMessage(pageSize,currentPage);
+    }
+
+    @Override
+    public Message getOneMessageByID(int id) {
+        return messageDao.getOneMessageByID(id);
     }
 
 

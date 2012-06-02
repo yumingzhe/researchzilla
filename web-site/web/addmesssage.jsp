@@ -38,7 +38,7 @@
                     <td><label>
                         <select name="type" class="STYLE3">
                             <option value="picturenews">picturenews</option>
-                            <option value="achievement">achievement</option>
+                            <option value="accomplishment">accomplishment</option>
                         </select>
                     </label></td>
                 </tr>

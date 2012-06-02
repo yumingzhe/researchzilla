@@ -34,7 +34,27 @@ public class FeedbackServiceImpl  implements FeedbackService{
     }
 
     @Override
+    public int getFeedbackTotalCount() {
+        return feedbackDao.getFeedbackTotalCount();
+    }
+
+    @Override
+    public int getFeedbackTotalPage(int pageSize) {
+        return feedbackDao.getFeedbackTotalPage(pageSize);
+    }
+
+    @Override
+    public List<Feedback> getFeedback(int pageSize, int currentPage) {
+        return feedbackDao.getFeedback(pageSize,currentPage);
+    }
+
+    @Override
     public Feedback getOneFeedbackByID(int id) {
         return feedbackDao.getOneFeedbackByID(id);
+    }
+
+    @Override
+    public void deleteOneFeedbackByID(int id) {
+        feedbackDao.deleteOneFeedbackByID(id);
     }
 }

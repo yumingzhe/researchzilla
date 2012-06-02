@@ -2,8 +2,8 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
-import pojo.Message;
-import service.MessageService;
+import pojo.PictureNews;
+import service.PictureNewsService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,26 +11,25 @@ import java.util.List;
 
 /**
  * User: wangyan
- * Date: 12-5-24
- * Time: 下午4:13
+ * Date: 12-5-31
+ * Time: 上午9:59
  */
-public class GetInternalNoticeAction extends ActionSupport {
-    private String internalnoticeid;
+public class GetAccomplishmentAction extends ActionSupport {
+    private String accomplishmentid;
     private String pagenumber;
 
     private int currentPage;//当前页码数
     private int pageSize;//每页显示数据量
     private int totalCount;//信息总数
     private int totalPage;//页面总数
+    private PictureNewsService pictureNewsService;
 
-    private MessageService messageService;
-
-    public String getInternalnoticeid() {
-        return internalnoticeid;
+    public String getAccomplishmentid() {
+        return accomplishmentid;
     }
 
-    public void setInternalnoticeid(String internalnoticeid) {
-        this.internalnoticeid = internalnoticeid;
+    public void setAccomplishmentid(String accomplishmentid) {
+        this.accomplishmentid = accomplishmentid;
     }
 
     public String getPagenumber() {
@@ -43,6 +42,10 @@ public class GetInternalNoticeAction extends ActionSupport {
 
     public int getCurrentPage() {
         return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
     }
 
     public int getPageSize() {
@@ -69,37 +72,29 @@ public class GetInternalNoticeAction extends ActionSupport {
         this.totalPage = totalPage;
     }
 
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
+    public PictureNewsService getPictureNewsService() {
+        return pictureNewsService;
     }
 
-    public MessageService getMessageService() {
-        return messageService;
-    }
-
-    public void setMessageService(MessageService messageService) {
-        this.messageService = messageService;
+    public void setPictureNewsService(PictureNewsService pictureNewsService) {
+        this.pictureNewsService = pictureNewsService;
     }
 
     @Override
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        request.setCharacterEncoding("utf-8");
-        List list = messageService.getSomeInternalNotice();
-        session.setAttribute("internalnotices", list);
-
+        HttpSession session=request.getSession();
+        List list=pictureNewsService.getFiveAccomplishment();
+        session.setAttribute("fiveaccomplishments",list);
         return SUCCESS;
     }
 
     public String getAllResult() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-        request.setCharacterEncoding("utf-8");
-        List list = messageService.getAllInternalNotice();
-        request.setAttribute("allinternalnotices", list);
+        List list=pictureNewsService.getAllAccomplishment();
+        request.setAttribute("allaccomplishments",list);
         return "acquireall";
     }
-
     public String getSomeResult()throws Exception{
         HttpServletRequest request=ServletActionContext.getRequest();
         String pageString=request.getParameter("pagenumber");
@@ -116,10 +111,10 @@ public class GetInternalNoticeAction extends ActionSupport {
             currentPage=1;
         }
         pageSize=5;
-        List list=messageService.getInternalNotice( pageSize,currentPage);
-        totalPage=messageService.getInternalNoticeTotalPage(pageSize);
+        List list=pictureNewsService.getAccomplishment( pageSize,currentPage);
+        totalPage=pictureNewsService.getAccomplishmentTotalPage(pageSize);
 
-        request.setAttribute("someinternalnotices",list);
+        request.setAttribute("someaccomplishments",list);
         request.setAttribute("totalpage",totalPage);
         request.setAttribute("currentpage",currentPage);
         return "acquiresome";
@@ -127,9 +122,9 @@ public class GetInternalNoticeAction extends ActionSupport {
     public String getOneResult() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setCharacterEncoding("utf-8");
-        int id=Integer.parseInt(internalnoticeid);
-        Message internalnotice = messageService.getOneInternalNoticeByID(id);
-        request.setAttribute("oneinternalnotice", internalnotice);
+        int id=Integer.parseInt(accomplishmentid);
+        PictureNews accomplishment= pictureNewsService.getOneAccomplishmentByID(id);
+        request.setAttribute("oneaccomplishment", accomplishment);
         return "acquireone";
     }
 }

@@ -59,6 +59,39 @@ public class FeedbackDaoImpl implements FeedbackDao {
     }
 
     @Override
+    public int getFeedbackTotalCount() {
+        List feedbacks = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery(" from Feedback");
+                return query.list();
+            }
+        });
+        return feedbacks.size();
+    }
+
+    @Override
+    public int getFeedbackTotalPage(int pageSize) {
+        int totalCount=this.getFeedbackTotalCount();
+        int totalPage=((totalCount+pageSize)-1)/pageSize;
+        return totalPage;
+    }
+
+    @Override
+    public List<Feedback> getFeedback(final int pageSize, final int currentPage) {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Feedback ");
+                query.setMaxResults(pageSize);
+                query.setFirstResult(pageSize*(currentPage-1));
+                return query.list();
+            }
+        });
+        return notices;
+    }
+
+    @Override
     public Feedback getOneFeedbackByID(final int id) {
         List feedbacks = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
@@ -71,5 +104,18 @@ public class FeedbackDaoImpl implements FeedbackDao {
             return  null;
         Feedback feedback= (Feedback) feedbacks.get(0);
         return feedback;
+    }
+
+    @Override
+    public void deleteOneFeedbackByID(final int id) {
+        List feedbacks = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Feedback as f where  f.id= :id").setInteger("id", id);
+                return query.list();
+            }
+        });
+        Feedback feedback= (Feedback) feedbacks.get(0);
+        this.getTemplate().delete(feedback);
     }
 }

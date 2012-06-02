@@ -54,7 +54,18 @@ public class SiteUserServiceImpl implements SiteUserService {
     }
 
     @Override
-    public void deleteSiteUserById(int uid) {
-        siteUserDao.deleteSiteUserById(uid);
+    public int getSiteUserTotalCount() {
+        return siteUserDao.getSiteUserTotalCount();
     }
+
+    @Override
+    public int getSiteUserTotalPage(int pageSize) {
+        return siteUserDao.getSiteUserTotalPage(pageSize);
+    }
+
+    @Override
+    public List<SiteUser> getSomeSiteUser(int pageSize, int currentPage) {
+        return siteUserDao.getSomeSiteUser(pageSize,currentPage);
+    }
+
 }

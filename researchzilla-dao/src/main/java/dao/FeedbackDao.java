@@ -14,5 +14,13 @@ public interface FeedbackDao {
 
     public List<Feedback> getAllFeedback();
 
+    public int getFeedbackTotalCount();
+
+    public int getFeedbackTotalPage(int pageSize);
+
+    public List<Feedback> getFeedback(final int pageSize, final int currentPage);
+
     public Feedback getOneFeedbackByID(int id);
+
+    public void deleteOneFeedbackByID(int id);
 }

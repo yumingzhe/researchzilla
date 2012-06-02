@@ -1,5 +1,6 @@
 package action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import pojo.WebsiteMessage;
@@ -7,6 +8,7 @@ import service.WebsiteMessageService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 /**
  * User: wangyan
@@ -30,7 +32,6 @@ public class GetWebsiteTitleAction extends ActionSupport{
         HttpSession session = request.getSession();
         request.setCharacterEncoding("utf-8");
         WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
-
         String websitename=websiteMessage.getWebsitename();
 
         session.setAttribute("websitename",websitename);

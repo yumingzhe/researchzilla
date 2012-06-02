@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import="pojo.SiteUser" %>
 <%@ page import="java.util.List" %>
 <%@ page import="pojo.Feedback" %>
@@ -28,27 +29,45 @@
         }
         -->
     </style>
+
 </head>
 <body>
 <div id="container_1">
     <div class="STYLE1" id="header_1">
         <table width="900" height="195" border="0">
             <tr>
-                <td width="717" height="191">&nbsp;</td>
-                <td width="218" class="STYLE3"><p>&nbsp;</p>
+                <td width="640" height="191">&nbsp;</td>
+                <td width="255" class="STYLE2"><p>&nbsp;</p>
                     <%if(session.getAttribute("websitename")!=null){%>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
                     <%}%>
-                    <p align="center">&nbsp;</p>
+                    <p align="center">&nbsp;</p> </td>
             </tr>
+            <table align="right">
+                <tr>
+                    <td><a href="managepage.jsp">返回后台管理页面</a></td>
+                </tr>
+            </table>
         </table>
     </div>
     <div id="mainContent_2">
         <p align="center" class="STYLE2 ">用户反馈信息总览</p>
 
+
+            <%  int intPageCount;  //总页数
+                int intPage;       //待显示页码
+
+                if(request.getAttribute("somefeedbacks")!=null){  %>
         <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
-            <% if(request.getAttribute("feedbacks")!=null){
-                List<Feedback> feedbacks= (List<Feedback>) request.getAttribute("feedbacks");%>
+              <%  List<Feedback> feedbacks= (List<Feedback>) request.getAttribute("somefeedbacks");
+                    intPage=  (Integer)(request.getAttribute("currentpage"));
+                    if(intPage==1){
+                        intPage=1;
+                    }else {
+                        if(intPage<1) intPage=1;
+                    }
+                    intPageCount=(Integer)(request.getAttribute("totalpage"));
+                    if(intPage>intPageCount) intPage=intPageCount;%>
             <tr>
                 <td class="STYLE1" height="50">序号</td>
                 <td class="STYLE1" height="50">标题</td>
@@ -63,7 +82,7 @@
                     <%=feedbacks.get(i).getId()%>
                 </td>
                 <td height="50">
-                    <%=feedbacks.get(i).getFeedbacktopic()%>
+                    <a href="http://localhost:8080/FeedbackAction!getOneFeedback.action?feedbackid=<%=feedbacks.get(i).getId()%>"><%=feedbacks.get(i).getFeedbacktopic()%></a>
                 </td>
                 <td height="50">
                     <%= feedbacks.get(i).getFeedbackauthor()%>
@@ -71,13 +90,30 @@
                 <td height="50">
                     <%=feedbacks.get(i).getPublishtime()%>
                 </td>
+                <td height="50">
+                    <a href="http://localhost:8080/FeedbackAction!deleteOneFeedback.action?feedbackid=<%=feedbacks.get(i).getId()%>"> 删除</a>
+                </td>
             </tr>
-            <%}}else{%>
+            <%}%>
+        </table>
+            <table align="center">
+                <tr><td align="right">第<%=intPage%>页 共<%=intPageCount%>页</td></tr>
+                <%if(intPage>1){%>
+                <a href="http://localhost:8080/FeedbackAction!getsomefeedbacks.action?pagenumber=<%=intPage-1%> ">上一页</a>
+                <% }else{ %>
+                上一页
+                <%} %>
+                <%if(intPage<intPageCount){%>
+                <a href="http://localhost:8080/FeedbackAction!getsomefeedbacks.action?pagenumber=<%=intPage+1%>">下一页</a>
+                <% }else {%>
+                下一页
+                <%}%>
+            </table>
+            <%}else{%>
             <tr class="STYLE1">
                 暂时无用户反馈信息
             </tr>
             <%}%>
-        </table>
     </div>
     <div id="footer_1">
 

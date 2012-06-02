@@ -25,7 +25,7 @@
         <div align="center" class="STYLE1">添加文本消息界面</div>
     </div>
     <div id="mainContent_2">
-        <form id="addmessageform" name="addmessageform" method="post" action="MessageAction.action">
+        <form id="addmessageform" name="addmessageform" enctype="multipart/form-data" method="post" action="doaddtextmessage.jsp">
             <table width="623" height="406" border="0" align="center">
                 <tr>
                     <td width="184"><div align="center" class="STYLE3">标题*</div></td>

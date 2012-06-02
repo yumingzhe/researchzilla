@@ -27,6 +27,14 @@ public class MessageAction extends ActionSupport {
     private String content;
     private File accessory;
 
+    private String messageid;
+    private String picturemessageid;
+    private String pagenumber;
+
+    private int currentPage;//当前页码数
+    private int pageSize;//每页显示数据量
+    private int totalCount;//信息总数
+    private int totalPage;//页面总数
     private MessageService messageService;
     private PictureNewsService pictureNewsService;
 
@@ -86,6 +94,62 @@ public class MessageAction extends ActionSupport {
         this.accessory = accessory;
     }
 
+    public String getMessageid() {
+        return messageid;
+    }
+
+    public void setMessageid(String messageid) {
+        this.messageid = messageid;
+    }
+
+    public String getPicturemessageid() {
+        return picturemessageid;
+    }
+
+    public void setPicturemessageid(String picturemessageid) {
+        this.picturemessageid = picturemessageid;
+    }
+
+    public String getPagenumber() {
+        return pagenumber;
+    }
+
+    public void setPagenumber(String pagenumber) {
+        this.pagenumber = pagenumber;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
+
     public MessageService getMessageService() {
         return messageService;
     }
@@ -107,13 +171,13 @@ public class MessageAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setCharacterEncoding("utf-8");
         Message message=new Message();
-        message.setTopic((String) request.getAttribute("topic"));
-        message.setType((String) request.getAttribute("type"));
-        message.setAuthor((String) request.getAttribute("author"));
-        message.setPublisher((String) request.getAttribute("publisher"));
-        message.setContent((String) request.getAttribute("content"));
+        message.setTopic(((Message) request.getAttribute("message")).getTopic());
+        message.setType(((Message) request.getAttribute("message")).getType());
+        message.setAuthor(((Message) request.getAttribute("message")).getAuthor());
+        message.setPublisher(((Message) request.getAttribute("message")).getPublisher());
+        message.setContent(((Message) request.getAttribute("message")).getContent());
         message.setPublishtime(new Timestamp(new Date().getTime()));
-        message.setAccesory((File) request.getAttribute("accessory"));
+        message.setFilepath(((Message) request.getAttribute("message")).getFilepath());
         messageService.saveMessage(message);
         return SUCCESS;
     }
@@ -122,12 +186,12 @@ public class MessageAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setCharacterEncoding("utf-8");
         PictureNews message=new PictureNews();
-        message.setTopic((String) request.getAttribute("topic"));
-        message.setType((String) request.getAttribute("type"));
-        message.setAuthor((String) request.getAttribute("author"));
-        message.setPublisher((String) request.getAttribute("publisher"));
-        message.setPath((String) request.getAttribute("path"));
-        message.setContent((String) request.getAttribute("content"));
+        message.setTopic(((PictureNews) request.getAttribute("picturenews")).getTopic());
+        message.setType(((PictureNews) request.getAttribute("picturenews")).getType());
+        message.setAuthor(((PictureNews) request.getAttribute("picturenews")).getAuthor());
+        message.setPublisher(((PictureNews) request.getAttribute("picturenews")).getPublisher());
+        message.setPath(((PictureNews) request.getAttribute("picturenews")).getPath());
+        message.setContent(((PictureNews) request.getAttribute("picturenews")).getContent());
         message.setPublishtime(new Timestamp(new Date().getTime()));
         pictureNewsService.savePictureNews(message);
         return SUCCESS;
@@ -143,9 +207,93 @@ public class MessageAction extends ActionSupport {
     public String getallpicturemessages() throws Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setCharacterEncoding("utf-8");
-        List list = pictureNewsService.getAllPictureNews();
+        List list = pictureNewsService.getAllPictureMessages();
         request.setAttribute("picturemessages", list);
 
         return "acquireallpicture";
     }
+
+    public String getsomemessages()throws Exception{
+        HttpServletRequest request=ServletActionContext.getRequest();
+        String pageString=request.getParameter("pagenumber");
+        if(pageString==null||pageString.length()==0){
+            pageString="1";
+        }
+        currentPage=0;
+        try{
+            currentPage=Integer.parseInt(pageString);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        if(currentPage==0){
+            currentPage=1;
+        }
+        pageSize=5;
+        List list=messageService.getMessage( pageSize,currentPage);
+        totalPage=messageService.getMessageTotalPage(pageSize);
+
+        request.setAttribute("somemessages",list);
+        request.setAttribute("totalpage",totalPage);
+        request.setAttribute("currentpage",currentPage);
+        return "acquiresomemessage";
+    }
+    public String getsomepicturemessages()throws Exception{
+        HttpServletRequest request=ServletActionContext.getRequest();
+        String pageString=request.getParameter("pagenumber");
+        if(pageString==null||pageString.length()==0){
+            pageString="1";
+        }
+        currentPage=0;
+        try{
+            currentPage=Integer.parseInt(pageString);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        if(currentPage==0){
+            currentPage=1;
+        }
+        pageSize=5;
+        List list=pictureNewsService.getPictureMessage( pageSize,currentPage);
+        totalPage=pictureNewsService.getPictureMessageTotalPage(pageSize);
+        request.setAttribute("somepicturemessages",list);
+        request.setAttribute("totalpage",totalPage);
+        request.setAttribute("currentpage",currentPage);
+        return "acquiresomepicturemessage";
+    }
+
+    public String getOneMessage() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
+        int id=Integer.parseInt(messageid);
+        Message message = messageService.getOneMessageByID(id);
+        request.setAttribute("onemessage", message);
+
+        return "acquireonemessage";
+    }
+    public String getOnePictureMessage() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
+        int id=Integer.parseInt(picturemessageid);
+        PictureNews message = pictureNewsService.getOnePictureMessageByID(id);
+        request.setAttribute("onepicturemessage", message);
+
+        return "acquireonepicturemessage";
+    }
+
+    public String deleteOneMessage() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
+        int id=Integer.parseInt(messageid);
+        messageService.deleteMessageById(id);
+;       return "successdelete";
+    }
+
+    public String deleteOnePictureMessage() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
+        int id=Integer.parseInt(picturemessageid);
+        pictureNewsService.deletePictureNews(id);
+         return "successdelete";
+    }
+
 }

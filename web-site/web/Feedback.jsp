@@ -39,8 +39,8 @@
     <div class="STYLE1" id="header_1">
         <table width="900" height="195" border="0">
             <tr>
-                <td width="717" height="191">&nbsp;</td>
-                <td width="218" class="STYLE3"><p>&nbsp;</p>
+                <td width="640" height="191">&nbsp;</td>
+                <td width="255" class="STYLE3"><p>&nbsp;</p>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
                     <p align="center">&nbsp;</p>
                         <%if(( session.getAttribute("user"))!=null){%>

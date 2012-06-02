@@ -2,6 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import pojo.Link;
 import service.LinkService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +39,7 @@ public class GetLinkAction extends ActionSupport {
         HttpSession session = request.getSession();
         request.setCharacterEncoding("utf-8");
         List list=linkService.getAllLink();
-        request.setAttribute("links",list);
+        request.setAttribute("alllinks",list);
         return "acquireall";
     }
 }

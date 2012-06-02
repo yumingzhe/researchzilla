@@ -1,16 +1,13 @@
 package action;
 
-//import com.jspsmart.upload.*;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import pojo.WebsiteMessage;
 import service.WebsiteMessageService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.PageContext;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.util.Calendar;
 
 /**
  * User: wangyan
@@ -95,8 +92,11 @@ public class BasicMessageChangeAction  extends ActionSupport{
     @Override
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-        request.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("gb2312");
+        HttpServletResponse response=ServletActionContext.getResponse();
+        response.setContentType("text/html:charset=gb2312");
         WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
+
         request.setAttribute("websitemessage",websiteMessage);
 
         return SUCCESS;

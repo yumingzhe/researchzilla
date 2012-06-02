@@ -53,13 +53,14 @@ public class MessageDaoImpl implements MessageDao {
 
     @Override
     public void deleteMessageById(final int id) {
-        List message =  this.getTemplate().executeFind(new HibernateCallback<Object>() {
+        List messages =  this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Message as m where m.id= :id").setInteger("id", id);
                 return query.list();
             }
         });
+        Message message= (Message) messages.get(0);
         this.getTemplate().delete(message);
     }
 
@@ -69,6 +70,104 @@ public class MessageDaoImpl implements MessageDao {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Message as m where m.type= :type").setString("type","internalnotice");
+                return query.list();
+            }
+        });
+        return notices;
+    }
+
+    //获取信息总数
+    public int getInternalNoticeTotalCount(){
+        List messages = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery(" from Message as m where m.type= :type").setString("type", "internalnotice");
+                return query.list();
+            }
+        });
+        return messages.size();
+    }
+    //获取总页数
+    public int getInternalNoticeTotalPage(int pageSize){
+       int totalCount=this.getInternalNoticeTotalCount();
+       int totalPage=((totalCount+pageSize)-1)/pageSize;
+        return totalPage;
+    }
+
+    @Override
+    public int getPublicNoticeTotalCount() {
+        List messages = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery(" from Message as m where m.type= :type").setString("type", "publicnotice");
+                return query.list();
+            }
+        });
+        return messages.size();
+    }
+
+    @Override
+    public int getPublicNoticeTotalPage(int pageSize) {
+        int totalCount=this.getPublicNoticeTotalCount();
+        int totalPage=((totalCount+pageSize)-1)/pageSize;
+        return totalPage;
+    }
+
+    @Override
+    public int getNewsTotalCount() {
+        List messages = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery(" from Message as m where m.type= :type").setString("type", "news");
+                return query.list();
+            }
+        });
+        return messages.size();
+    }
+
+    @Override
+    public int getNewsTotalPage(int pageSize) {
+        int totalCount=this.getNewsTotalCount();
+        int totalPage=((totalCount+pageSize)-1)/pageSize;
+        return totalPage;
+    }
+
+    @Override
+    public List<Message> getInternalNotice(final int pageSize, final int currentPage) {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type").setString("type","internalnotice");
+                query.setMaxResults(pageSize);
+                query.setFirstResult(pageSize*(currentPage-1));
+                return query.list();
+            }
+        });
+        return notices;
+    }
+
+    @Override
+    public List<Message> getPublicNotice(final int pageSize, final int currentPage) {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type").setString("type","publicnotice");
+                query.setMaxResults(pageSize);
+                query.setFirstResult(pageSize*(currentPage-1));
+                return query.list();
+            }
+        });
+        return notices;
+    }
+
+    @Override
+    public List<Message> getNews(final int pageSize, final int currentPage) {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where m.type= :type").setString("type","news");
+                query.setMaxResults(pageSize);
+                query.setFirstResult(pageSize*(currentPage-1));
                 return query.list();
             }
         });
@@ -199,5 +298,54 @@ public class MessageDaoImpl implements MessageDao {
             }
         });
         return messages;
+    }
+
+    @Override
+    public int getMessageTotalCount() {
+        List messages = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery(" from Message ");
+                return query.list();
+            }
+        });
+        return messages.size();
+    }
+
+    @Override
+    public int getMessageTotalPage(int pageSize) {
+        int totalCount=this.getMessageTotalCount();
+        int totalPage=((totalCount+pageSize)-1)/pageSize;
+        return totalPage;
+    }
+
+    @Override
+    public List<Message> getMessage(final int pageSize, final int currentPage) {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message");
+                query.setMaxResults(pageSize);
+                query.setFirstResult(pageSize*(currentPage-1));
+                return query.list();
+            }
+        });
+        return notices;
+    }
+
+    @Override
+    public Message getOneMessageByID(final int id) {
+        List messages = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message as m where  m.id= :id");
+                query.setInteger("id",id);
+                return query.list();
+            }
+        });
+        if(messages==null)
+            return  null;
+        Message message= (Message) messages.get(0);
+        return message;
     }
 }

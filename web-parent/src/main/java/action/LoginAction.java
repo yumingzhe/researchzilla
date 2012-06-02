@@ -67,23 +67,7 @@ public class LoginAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession actionSession = request.getSession();
         request.setCharacterEncoding("utf-8");
-        ActionContext context = ActionContext.getContext();
-        Map application = (Map) context.getApplication();
 
-
-        WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
-        int count=websiteMessage.getVisits();
-        System.out.println(application.get("count"));
-        if(application.get("count")==null) {
-            application.put("count", 1);
-            count=1;
-        }else{
-            count=count+1;
-            application.put("count", count);
-        }
-        System.out.println(count);
-        websiteMessage.setVisits(count);
-        websiteMessageService.updateWebsiteVisits(websiteMessage);
 
         SiteUser userone = siteUserService.getSiteUserByInstituteId(this.username);
         SiteUser usertwo = siteUserService.getSiteUserByEmail(this.username);

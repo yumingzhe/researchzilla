@@ -33,19 +33,37 @@
     <div class="STYLE1" id="header_1">
         <table width="900" height="195" border="0">
             <tr>
-                <td width="717" height="191">&nbsp;</td>
-                <td width="218" class="STYLE3"><p>&nbsp;</p>
+                <td width="640" height="191">&nbsp;</td>
+                <td width="255" class="STYLE2"><p>&nbsp;</p>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
                     <p align="center">&nbsp;</p>
+                </td>
             </tr>
+            <table align="right">
+                <tr>
+                    <td><a href="managepage.jsp">返回后台管理页面</a></td>
+                </tr>
+            </table>
         </table>
     </div>
     <div id="mainContent_2">
         <p align="center" class="STYLE2 ">用户信息总览</p>
 
-        <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
-            <% if(request.getAttribute("siteusers")!=null){
-                List<SiteUser> siteusers= (List<SiteUser>) request.getAttribute("siteusers");%>
+
+            <%  int intPageCount;  //总页数
+                int intPage;       //待显示页码
+
+                if(request.getAttribute("someusers")!=null){ %>
+                <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
+              <% List<SiteUser> siteusers= (List<SiteUser>) request.getAttribute("someusers");
+                 intPage=  (Integer)(request.getAttribute("currentpage"));
+                    if(intPage==1){
+                        intPage=1;
+                    }else {
+                        if(intPage<1) intPage=1;
+                    }
+                    intPageCount=(Integer)(request.getAttribute("totalpage"));
+                    if(intPage>intPageCount) intPage=intPageCount;%>
             <tr>
                 <td class="STYLE1" height="50">序号</td>
                 <td class="STYLE1" height="50">姓名</td>
@@ -72,12 +90,26 @@
                     <a href="http://localhost:8080/UserAction!deleteoneuser.action?uid=<%=siteusers.get(i).getUid()%>">删除</a>
                 </td>
             </tr>
-            <%}}else{%>
+            <%}%>
+            </table>
+            <table align="center">
+            <tr><td align="right">第<%=intPage%>页 共<%=intPageCount%>页</td></tr>
+            <%if(intPage>1){%>
+            <a href="http://localhost:8080/UserAction!getsomeusers.action?pagenumber=<%=intPage-1%> ">上一页</a>
+            <% }else{ %>
+            上一页
+            <%} %>
+            <%if(intPage<intPageCount){%>
+            <a href="http://localhost:8080/UserAction!getsomeusers.action?pagenumber=<%=intPage+1%>">下一页</a>
+            <% }else {%>
+            下一页
+            <%}%>
+            </table>
+            <%}else{%>
             <tr class="STYLE1">
                 暂时无用户信息
             </tr>
             <%}%>
-        </table>
     </div>
     <div id="footer_1">
     </div>

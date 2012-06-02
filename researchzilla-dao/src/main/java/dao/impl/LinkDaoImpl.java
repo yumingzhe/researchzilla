@@ -53,13 +53,14 @@ public class LinkDaoImpl implements LinkDao {
 
     @Override
     public void deleteLinkById(final int id) {
-        List link =  this.getTemplate().executeFind(new HibernateCallback<Object>() {
+        List links =  this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Link as l where l.id= :id").setInteger("id", id);
                 return query.list();
             }
         });
+        Link link= (Link) links.get(0);
         this.getTemplate().delete(link);
     }
 
