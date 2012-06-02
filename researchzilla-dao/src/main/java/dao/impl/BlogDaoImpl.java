@@ -70,7 +70,7 @@ public class BlogDaoImpl implements BlogDao {
 
     @Override
     public void updateBlog(Blog blog) {
-        this.getTemplate().update(blog);
+        this.getTemplate().saveOrUpdate(blog);
     }
 
     @Override
@@ -81,6 +81,17 @@ public class BlogDaoImpl implements BlogDao {
                 Blog blog = (Blog) session.get(Blog.class, id);
                 session.delete(blog);
                 return null;
+            }
+        });
+    }
+
+    @Override
+    public List searchBlogByTag(final String tag) {
+        return this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Blog as b where b.tag= :tag").setString("tag", tag);
+                return query.list();
             }
         });
     }

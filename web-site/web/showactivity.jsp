@@ -87,7 +87,7 @@
         <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
             <li class="elgg-menu-item-activity elgg-state-selected"><a
                     href="http://elgg-yumingzhe.rhcloud.com/activity">Activity</a></li>
-            <li class="elgg-menu-item-blog"><a href="http://localhost:8080/getUserAllBlogs?uid=<%=1%>">Blogs</a>
+            <li class="elgg-menu-item-blog"><a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=1%>">Blogs</a>
             </li>
             <li class="elgg-menu-item-file"><a href="http://elgg-yumingzhe.rhcloud.com/file/all">Files</a></li>
             <li class="elgg-menu-item-groups"><a href="http://elgg-yumingzhe.rhcloud.com/groups/all">Groups</a></li>
@@ -136,14 +136,15 @@
                             <div class="elgg-image">
                                 <div class="elgg-avatar elgg-avatar-small">
                                     <span class="elgg-icon elgg-icon-hover-menu "></span>
-                                    <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe" class="">
+                                    <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=activity.getSiteUser().getUid()%>"
+                                       class="">
                                         <img src="img/arrow.png" alt="yumingzhe" title="yumingzhe" class=""/>
                                     </a>
                                 </div>
                             </div>
                             <div class="elgg-body">
                                 <div class="elgg-river-summary">
-                                    <a href="http://localhost:8080/getUserAllActivitiesAction?uid=<%=activity.getSiteUser().getUid()%>"
+                                    <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=activity.getSiteUser().getUid()%>"
                                        class="elgg-river-subject">
                                         <%=activity.getSiteUser().getUsername()%>
                                     </a>
@@ -151,7 +152,7 @@
                                     <%
                                         if (activity.getAction().equals("发表日志")) {
                                     %>
-                                    <a href="http://localhost:8080/getSpecifiedBlogAction?blogid=<%=activity.getBlog().getId()%>"
+                                    <a href="http://localhost:8080/getSpecifiedBlogAction.action?blogid=<%=activity.getBlog().getId()%>"
                                        class="elgg-river-object">
                                         <%=activity.getBlog().getTitle()%>
                                     </a>
@@ -159,7 +160,7 @@
                                         }
                                         if (activity.getAction().equals("发表评论")) {
                                     %>对
-                                    <a href="http://localhost:8080/getSpecifiedBlogAction?blogid=<%=activity.getCommentEntity().getBlog().getId()%>"
+                                    <a href="http://localhost:8080/getSpecifiedBlogAction.action?blogid=<%=activity.getCommentEntity().getBlog().getId()%>"
                                        class="elgg-river-object">
                                         <%=activity.getCommentEntity().getBlog().getTitle()%>
                                     </a>

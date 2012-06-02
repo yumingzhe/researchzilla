@@ -6,7 +6,7 @@
         <id name="id" column="id" type="int">
             <generator class="increment"/>
         </id>
-        <property name="content" column="content" type="java.lang.String" length="50"/>
+        <property name="content" column="content" type="java.lang.String" length="500"/>
         <property name="postTime" column="postTime" type="timestamp"/>
         <many-to-one name="siteUser" column="posterId" class="pojo.SiteUser"/>
         <many-to-one name="blog" class="pojo.Blog" column="blogId"/>

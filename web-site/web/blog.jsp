@@ -18,7 +18,7 @@
     <link rel="SHORTCUT ICON" href="conf/favicon.ico"/>
     <link rel="stylesheet" href="css/researchzilla.css"
           type="text/css"/>
-   <%-- <!--[if gt IE 7]>
+    <%-- <!--[if gt IE 7]>
     <link rel="stylesheet" type="text/css"
           href="http://elgg-yumingzhe.rhcloud.com/cache/css/default/ie.1338195242.css"/>
     <![endif]-->
@@ -133,13 +133,13 @@
         </h1>
         <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
             <li class="elgg-menu-item-activity"><a
-                    href="http://localhost:8080/getUserAllActivitiesAction?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Activity</a>
+                    href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Activity</a>
             </li>
             <li class="elgg-menu-item-blog"><a
-                    href="http://localhost:8080/getUserAllBlogs?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Blogs</a>
+                    href="http://localhost:8080/getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Blogs</a>
             </li>
             <li class="elgg-menu-item-file"><a
-                    href="http://localhost:8080/showUserAllFiles?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Files</a>
+                    href="http://localhost:8080/showUserAllFiles.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Files</a>
             </li>
             <li class="elgg-menu-item-groups"><a href="http://elgg-yumingzhe.rhcloud.com/groups/all">Groups</a></li>
         </ul>
@@ -209,19 +209,25 @@
                                 class="elgg-heading-basic">yumingzhe</span>&#64;yumingzhe</a></li>
                         <li>
                             <ul class="elgg-menu elgg-menu-hover-actions">
-                                <li class="elgg-menu-item-avatar-edit"><a
-                                        href="http://elgg-yumingzhe.rhcloud.com/avatar/edit/yumingzhe">Edit
-                                    avatar</a></li>
-                                <li class="elgg-menu-item-profile-edit"><a
-                                        href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe/edit">Edit
-                                    profile</a></li>
+                                <li class="elgg-menu-item-avatar-edit">
+                                    <a href="http://elgg-yumingzhe.rhcloud.com/avatar/edit/yumingzhe">Edit
+                                        avatar
+                                    </a>
+                                </li>
+                                <li class="elgg-menu-item-profile-edit">
+                                    <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe/edit">
+                                        Edit profile
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li>
                             <ul class="elgg-menu elgg-menu-hover-admin">
-                                <li class="elgg-menu-item-logbrowser"><a
-                                        href="http://elgg-yumingzhe.rhcloud.com/admin/utilities/logbrowser?user_guid=35">Explore
-                                    log</a></li>
+                                <li class="elgg-menu-item-logbrowser">
+                                    <a href="http://elgg-yumingzhe.rhcloud.com/admin/utilities/logbrowser?user_guid=35">
+                                        Explore log
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -235,11 +241,12 @@
             <div class="elgg-body">
                 <ul class="elgg-menu elgg-menu-entity elgg-menu-hz elgg-menu-entity-default">
                     <li class="elgg-menu-item-edit">
-                        <a href="http://elgg-yumingzhe.rhcloud.com/blog/edit/49" title="Edit this">Edit
+                        <a href="http://localhost:8080/getSpecifiedBlogAction.action?blogid=<%=blog.getId()%>&type=update"
+                           title="Edit this">Edit
                         </a>
                     </li>
                     <li class="elgg-menu-item-delete"><a
-                            href="http://localhost:8080/deleteblogAction?blogid=<%=blog.getId()%>&uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>"
+                            href="http://localhost:8080/deleteblogAction.action?blogid=<%=blog.getId()%>&uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>"
                             title="Delete this" rel="Are you sure you want to delete this item?"
                             class="elgg-requires-confirmation"><span
                             class="elgg-icon elgg-icon-delete "></span></a></li>
@@ -252,26 +259,30 @@
                     <acronym
                             title="<%=blog.getPostDate()%>"><%=DateFormat.formatPeriod(blog.getPostDate().getTime(), new Date().getTime())%>
                     </acronym> 前发表
-                    <a href="http://localhost:8080/getSpecifiedBlogAction?blogid=<%=blog.getId()%>#mycomment">Comments
+                    <a href="http://localhost:8080/getSpecifiedBlogAction.action?blogid=<%=blog.getId()%>#mycomment">Comments
                         (<%=blog.getCommentEntities().size()%>)
                     </a>
                 </div>
                 <div><span class="elgg-icon elgg-icon-tag "></span>
                     <ul class="elgg-tags">
-                        <li><a href="http://elgg-yumingzhe.rhcloud.com/search?q=c&amp;search_type=tags"
-                               rel="tag">c</a></li>
+                        <li>
+                            <a href="http://localhost:8080/searchBlogByTag.action?tag=<%=blog.getTag() != null ? blog.getTag() : ""%>"
+                               rel="tag"><%=blog.getTag() != null ? blog.getTag() : ""%>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="elgg-output blog-post"><p>
-            <%
-                out.write(blog.getContent());
-            %>
-        </p>
+        <div class="elgg-output blog-post">
+            <p>
+                <%
+                    out.write(blog.getContent());
+                %>
+            </p>
         </div>
     </div>
-    <div class="elgg-comments blog-comments" id="mycomment"><h3>Comments</h3>
+    <div class="elgg-comments blog-comments" id="mycomment"><h3>评论</h3>
         <ul class="elgg-list elgg-list-annotation elgg-annotation-list">
             <%
                 Set<CommentEntity> commentEntities = blog.getCommentEntities();
@@ -322,7 +333,7 @@
                         <div class="mbn">
                             <ul class="elgg-menu elgg-menu-annotation elgg-menu-hz float-alt elgg-menu-annotation-default">
                                 <li class="elgg-menu-item-delete">
-                                    <a href="http://localhost:8080/deleteCommentAction?commentid=<%=commentEntity.getId()%>&blogid=<%=blog.getId()%>"
+                                    <a href="http://localhost:8080/deleteCommentAction.action?commentid=<%=commentEntity.getId()%>&blogid=<%=blog.getId()%>"
                                        rel="Are you sure you want to delete this item?"
                                        class="elgg-requires-confirmation">
                                     <span class="elgg-icon elgg-icon-delete">
@@ -330,11 +341,13 @@
                                     </a>
                                 </li>
                             </ul>
-                            <a href="http://localhost:8080/getUserAllActivitiesAction?uid=<%=commentEntity.getSiteUser().getUid()%>">yumingzhe</a>
+                            <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=commentEntity.getSiteUser().getUid()%>">
+                                <%=commentEntity.getSiteUser().getUsername()%>
+                            </a>
 	<span class="elgg-subtext">
 		<acronym title="<%=commentEntity.getPostTime()%>">
             <%=DateFormat.formatPeriod(commentEntity.getPostTime().getTime(), new Date().getTime())%>
-        </acronym>
+        </acronym>前
 	</span>
 
                             <div class="elgg-output">
@@ -350,7 +363,7 @@
                 }
             %>
         </ul>
-        <form method="post" action="http://localhost:8080/postCommentAction"
+        <form method="post" action="http://localhost:8080/postCommentAction.action"
               name="elgg_add_comment" class="elgg-form elgg-form-comments-add">
             <fieldset>
                 <div>
