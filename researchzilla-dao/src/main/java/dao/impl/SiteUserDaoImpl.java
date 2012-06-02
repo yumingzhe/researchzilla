@@ -106,7 +106,35 @@ public class SiteUserDaoImpl implements SiteUserDao {
     }
 
     @Override
-    public void deleteSiteUserById(final int uid) {
+    public int getSiteUserTotalCount() {
+        List siteusers = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery(" from SiteUser ");
+                return query.list();
+            }
+        });
+        return siteusers.size();
+    }
 
+    @Override
+    public int getSiteUserTotalPage(int pageSize) {
+        int totalCount=this.getSiteUserTotalCount();
+        int totalPage=((totalCount+pageSize)-1)/pageSize;
+        return totalPage;
+    }
+
+    @Override
+    public List<SiteUser> getSomeSiteUser(final int pageSize, final int currentPage) {
+        List users = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from SiteUser as s where s.banned= :banned").setBoolean("banned",false);
+                query.setMaxResults(pageSize);
+                query.setFirstResult(pageSize*(currentPage-1));
+                return query.list();
+            }
+        });
+        return users;
     }
 }

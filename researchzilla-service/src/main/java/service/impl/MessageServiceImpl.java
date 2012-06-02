@@ -135,6 +135,21 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public int getMessageTotalCount() {
+        return messageDao.getMessageTotalCount();
+    }
+
+    @Override
+    public int getMessageTotalPage(int pageSize) {
+        return messageDao.getMessageTotalPage(pageSize);
+    }
+
+    @Override
+    public List<Message> getMessage(int pageSize, int currentPage) {
+        return messageDao.getMessage(pageSize,currentPage);
+    }
+
+    @Override
     public Message getOneMessageByID(int id) {
         return messageDao.getOneMessageByID(id);
     }

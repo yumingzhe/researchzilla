@@ -61,7 +61,8 @@ public class PictureNewsDaoImpl implements PictureNewsDao {
                 return query.list();
             }
         });
-        this.getTemplate().delete(picturenews);
+        PictureNews pictureNews= (PictureNews) picturenews.get(0);
+        this.getTemplate().delete(pictureNews);
     }
 
     @Override
@@ -199,6 +200,39 @@ public class PictureNewsDaoImpl implements PictureNewsDao {
     }
 
     @Override
+    public int getPictureMessageTotalCount() {
+        List messages = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery(" from PictureNews");
+                return query.list();
+            }
+        });
+        return messages.size();
+    }
+
+    @Override
+    public int getPictureMessageTotalPage(int pageSize) {
+        int totalCount=this.getPictureMessageTotalCount();
+        int totalPage=((totalCount+pageSize)-1)/pageSize;
+        return totalPage;
+    }
+
+    @Override
+    public List<PictureNews> getPictureMessage(final int pageSize, final int currentPage) {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from PictureNews");
+                query.setMaxResults(pageSize);
+                query.setFirstResult(pageSize*(currentPage-1));
+                return query.list();
+            }
+        });
+        return notices;
+    }
+
+    @Override
     public PictureNews getOnePictureMessageByID(final int id) {
         List picturemessages = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
@@ -212,6 +246,32 @@ public class PictureNewsDaoImpl implements PictureNewsDao {
             return  null;
         PictureNews picturemessage= (PictureNews) picturemessages.get(0);
         return picturemessage;
+    }
+
+    @Override
+    public List<PictureNews> getThreePicture() {
+        List pictures = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from PictureNews as p where p.type=:type order by id desc ").setString("type","picturenews");
+                query.setMaxResults(3);
+                return query.list();
+            }
+        });
+        return pictures;
+    }
+
+    @Override
+    public List<PictureNews> getFiveAccomplishment() {
+        List pictures = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from PictureNews as p where p.type=:type order by id desc ").setString("type","accomplishment");
+                query.setMaxResults(5);
+                return query.list();
+            }
+        });
+        return pictures;
     }
 
 }

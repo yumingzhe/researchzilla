@@ -82,7 +82,11 @@ public class GetAccomplishmentAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        return super.execute();    //To change body of overridden methods use File | Settings | File Templates.
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session=request.getSession();
+        List list=pictureNewsService.getFiveAccomplishment();
+        session.setAttribute("fiveaccomplishments",list);
+        return SUCCESS;
     }
 
     public String getAllResult() throws Exception {
@@ -94,7 +98,6 @@ public class GetAccomplishmentAction extends ActionSupport {
     public String getSomeResult()throws Exception{
         HttpServletRequest request=ServletActionContext.getRequest();
         String pageString=request.getParameter("pagenumber");
-        System.out.println("pagenumber"+pageString);
         if(pageString==null||pageString.length()==0){
             pageString="1";
         }
@@ -110,7 +113,7 @@ public class GetAccomplishmentAction extends ActionSupport {
         pageSize=5;
         List list=pictureNewsService.getAccomplishment( pageSize,currentPage);
         totalPage=pictureNewsService.getAccomplishmentTotalPage(pageSize);
-        //    System.out.println("totalpage"+totalPage);
+
         request.setAttribute("someaccomplishments",list);
         request.setAttribute("totalpage",totalPage);
         request.setAttribute("currentpage",currentPage);

@@ -59,7 +59,6 @@
         //out.print(filename);
         request.setAttribute("filename",myFileName);
         request.setAttribute("path",saveurl);
-        System.out.println(request.getAttribute("path"));
 
         PictureNews pictureNews=new PictureNews();
         pictureNews.setTopic(mySmartUpload.getRequest().getParameter("topic"));

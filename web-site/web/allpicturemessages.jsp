@@ -35,19 +35,36 @@
     <div class="STYLE1" id="header_1">
         <table width="900" height="195" border="0">
             <tr>
-                <td width="717" height="191">&nbsp;</td>
-                <td width="218" class="STYLE3"><p>&nbsp;</p>
+                <td width="640" height="191">&nbsp;</td>
+                <td width="255" class="STYLE2"><p>&nbsp;</p>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
                     <p align="center">&nbsp;</p>
+                </td>
             </tr>
+            <table align="right">
+                <tr>
+                    <td><a href="managepage.jsp">返回后台管理页面</a></td>
+                </tr>
+            </table>
         </table>
     </div>
     <div id="mainContent_2">
         <p align="center" class="STYLE2 ">网站图片信息总览</p>
 
-        <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
-            <% if(request.getAttribute("picturemessages")!=null){
-                List<PictureNews> picturemessages= (List<PictureNews>) request.getAttribute("picturemessages");%>
+
+            <%   int intPageCount;  //总页数
+                int intPage;       //待显示页码
+                if(request.getAttribute("somepicturemessages")!=null){ %>
+         <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
+            <%    List<PictureNews> picturemessages= (List<PictureNews>) request.getAttribute("somepicturemessages");
+                intPage=  (Integer)(request.getAttribute("currentpage"));
+                if(intPage==1){
+                    intPage=1;
+                }else {
+                    if(intPage<1) intPage=1;
+                }
+                intPageCount=(Integer)(request.getAttribute("totalpage"));
+                if(intPage>intPageCount) intPage=intPageCount;%>
             <tr>
                 <td class="STYLE1" height="50">序号</td>
                 <td class="STYLE1" height="50">类型</td>
@@ -74,15 +91,31 @@
                     <%=picturemessages.get(i).getPublishtime()%>
                 </td>
                 <td height="50">
-                    <a href="#">删除</a>
+                    <a href="http://localhost:8080/MessageAction!deleteOnePictureMessage.action?picturemessageid=<%=picturemessages.get(i).getId()%>">删除</a>
                 </td>
             </tr>
-            <%}}else{%>
+            <%}%>
+         </table>
+        <table align="center">
+            <tr><td align="right">第<%=intPage%>页 共<%=intPageCount%>页</td></tr>
+            <%if(intPage>1){%>
+            <a href="http://localhost:8080/MessageAction!getsomepicturemessages.action?pagenumber=<%=intPage-1%> ">上一页</a>
+            <% }else{ %>
+            上一页
+            <%} %>
+            <%if(intPage<intPageCount){%>
+            <a href="http://localhost:8080/MessageAction!getsomepicturemessages.action?pagenumber=<%=intPage+1%>">下一页</a>
+            <% }else {%>
+            下一页
+            <%}%>
+
+        </table>
+        <%}else{%>
             <tr class="STYLE1">
                 暂时无信息
             </tr>
             <%}%>
-        </table>
+
     </div>
     <div id="footer_1">
     </div>

@@ -5,7 +5,7 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <!--<constant name="struts.multipart.saveDir" value="D:\workspace\researchzilla\classes\artifacts\web_site_war_exploded\img"/>-->
+    <!--<constant name="struts.multipart.saveDir" value="D:\workspace\researchzilla\classes\artifacts\web_site_war_exploded\"/>-->
     <constant name="struts.i18n.encoding" value="GB18030"/>
     <package name="pkg" extends="struts-default">
         <action name="RegisterAction" class="registerAction">
@@ -73,9 +73,11 @@
 
 
         <action name="FeedbackAction" class="feedbackAction">
-            <result name="success">/feedback.jsp</result>
+            <result name="success">/addmessagesuccess.jsp</result>
             <result name="acquireall">/feedbackshow.jsp</result>
+            <result name="acquiresomefeedback">/feedbackshow.jsp</result>
             <result name="acquireone">/feedbackdetail.jsp</result>
+            <result name="deleteone">/deletemessagesuccess.jsp</result>
         </action>
 
         <action name="GetInternalNoticeAction" class="getInternalNoticeAction">
@@ -92,7 +94,7 @@
         </action>
 
         <action name="GetNewsAction" class="getNewsAction">
-            <result name="success" type="redirectAction">GetLinkAction</result>
+            <result name="success" type="redirectAction">GetPictureNewsAction</result>
             <result name="acquireall">/homepagetwo.jsp</result>
             <result name="acquiresome">/homepagetwo.jsp</result>
             <result name="acquireone">/detailcontent.jsp</result>
@@ -101,15 +103,17 @@
             <result name="acquireall">/homepagetwo.jsp</result>
             <result name="acquiresome">/homepagetwo.jsp</result>
             <result name="acquireone">/detailpicturecontent.jsp</result>
+            <result name="success" type="redirectAction">GetAccomplishmentAction</result>
         </action>
         <action name="GetAccomplishmentAction" class="getAccomplishmentAction">
             <result name="acquireall">/homepagetwo.jsp</result>
             <result name="acquiresome">/homepagetwo.jsp</result>
             <result name="acquireone">/detailpicturecontent.jsp</result>
+            <result name="success" type="redirectAction">GetLinkAction</result>
         </action>
         <action name="GetLinkAction" class="getLinkAction">
             <result name="success" type="redirectAction">GetVisitsAction</result>
-            <result name="acquireall" >/linksmanage.jsp</result>
+            <result name="acquireall" >/alllinks.jsp</result>
         </action>
 
         <action name="GetVisitsAction" class="getVisitsAction">
@@ -117,9 +121,11 @@
         </action>
 
         <action name="GetMaintenanceAddressAction" class="getMaintenanceAddressAction">
-            <result name="success">/homepageone.jsp</result>
+            <result name="success" type="redirectAction">GetWebsiteBackgroundAction</result>
         </action>
-
+         <action name="GetWebsiteBackgroundAction" class="getWebsiteBackgroundAction">
+             <result name="success">/homepageone.jsp</result>
+         </action>
         <action name="GetWebsiteTitleAction" class="getWebsiteTitleAction">
             <result name="success" type="redirectAction">GetInternalNoticeAction</result>
         </action>
@@ -132,17 +138,28 @@
         </action>
         <action name="UserAction" class="userAction">
             <result name="acquireall">/allusers.jsp</result>
+            <result name="acquiresomeuser">/allusers.jsp</result>
             <result name="deleteone">/managepage.jsp</result>
         </action>
         <action name="MessageAction" class="messageAction">
             <result name="success">/addmessagesuccess.jsp</result>
             <result name="acquireall">/allmessages.jsp</result>
             <result name="acquireallpicture">/allpicturemessages.jsp</result>
+            <result name="acquiresomemessage">/allmessages.jsp</result>
+            <result name="acquiresomepicturemessage">/allpicturemessages.jsp</result>
             <result name="acquireonemessage">/detailcontent.jsp</result>
             <result name="acquireonepicturemessage">/detailpicturecontent.jsp</result>
+            <result name="successdelete">/deletemessagesuccess.jsp</result>
         </action>
         <action name="ExitAction" class="exitAction">
             <result name="success">/homepageone.jsp</result>
+        </action>
+         <action name="GetStatisticsAction" class="getStatisticsAction">
+             <result name="success">/detailstatistics.jsp</result>
+         </action>
+        <action name="LinkAction" class="linkAction">
+            <result name="success">/addmessagesuccess.jsp</result>
+            <result name="deleteone">/deletemessagesuccess.jsp</result>
         </action>
     </package>
 </struts>

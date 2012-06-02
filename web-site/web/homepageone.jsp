@@ -1,8 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ page import="pojo.SiteUser" %>
-<%@ page import="pojo.Message" %>
 <%@ page import="java.util.List" %>
-<%@ page import="pojo.Link" %>
+<%@ page import="pojo.*" %>
 <%--
   User: wangyan
   Date: 12-5-22
@@ -68,8 +66,9 @@
     <div class="STYLE1" id="header">
         <table width="945" height="195" border="0">
             <tr>
-                <td width="717" height="191">&nbsp;</td>
-                <td width="218" class="STYLE3">
+                <%String imgUrl= (String) session.getAttribute("imagepath");%>
+                <td width="685" height="191"><img src="<%=imgUrl%>" alt="images" align="center"/></td>
+                <td width="250" class="STYLE3">
                     <p>&nbsp;</p>
 
                     <p align="center" class="STYLE4"><%=session.getAttribute("websitename")%>
@@ -88,6 +87,7 @@
         </table>
     </div>
     <div id="mainContent">
+
         <div id="sidebar">
             <%if ((session.getAttribute("user")) == null) {%>
             <div id="sidebar1">
@@ -133,7 +133,7 @@
                 <marquee direction="up" behavior="scroll" scrollamount="2" onMouseOver="this.stop()"
                          onMouseOut="this.start()">
                     <table width="278" height="190" border="0" class="STYLE5" >
-                        <%
+                        <% if(session.getAttribute("internalnotices")!=null){
                             List<Message> internalnotices = (List<Message>) session.getAttribute("internalnotices");
                             for (int i = 0; i < internalnotices.size(); i++) {
                         %>
@@ -143,14 +143,14 @@
                                 </a>
                             </td>
                         </tr>
-                        <%}%>
+                        <%}}%>
                     </table>
                 </marquee>
             </div>
             <%}%>
             <div class="STYLE3" id="sidebar2">网址导航
                 <table width="278" height="190" border="1" class="STYLE2">
-                    <%
+                    <% if(session.getAttribute("links")!=null){
                         List<Link> links = (List<Link>) session.getAttribute("links");
                         for (int i = 0; i < links.size(); i++) {
                     %>
@@ -159,7 +159,7 @@
                             <a href="<%=links.get(i).getWebsiteurl()%>"><%= links.get(i).getWebsitename()%></a>
                         </td>
                     </tr>
-                    <%}%>
+                    <%}}%>
                 </table>
             </div>
             <div class="STYLE3" id="sidebar3">网站访问统计
@@ -176,7 +176,7 @@
             <div class="STYLE3" id="content3"><a
                     href="http://localhost:8080/GetPublicNoticeAction!getSomeResult.action">最新公告</a>
                 <table width="306" height="255" border="1" class="STYLE2">
-                    <%
+                    <%  if(session.getAttribute("publicnotices")!=null) {
                         List<Message> publicnotices = (List<Message>) session.getAttribute("publicnotices");
                         for (int i = 0; i < publicnotices.size(); i++) {
                     %>
@@ -189,27 +189,55 @@
                             </a>
                         </td>
                     </tr>
-                    <%}%>
+                    <%}}%>
                 </table>
             </div>
-            <div class="STYLE3" id="content4"><a href="http://localhost:8080/GetAccomplishmentAction!getSomeResult.action">成果聚焦</a></div>
+            <div class="STYLE3" id="content4"><a href="http://localhost:8080/GetAccomplishmentAction!getSomeResult.action">成果聚焦</a>
+                <table width="306" height="255"  border="1" class="STYLE2">
+                    <% if( session.getAttribute("fiveaccomplishments")!=null){
+                        List<PictureNews> accomplishments = (List<PictureNews>) session.getAttribute("fiveaccomplishments");
+                        for (int i = 0; i < accomplishments.size(); i++) {
+                    %>
+                    <tr>
+                        <td>
+                            <%= accomplishments.get(i).getType()%>
+                        </td>
+                        <td>
+                            <a href="http://localhost:8080/GetAccomplishmentAction!getOneResult.action?accomplishmentid=<%=accomplishments.get(i).getId()%>"> <%= accomplishments.get(i).getTopic()%></a>
+                        </td>
+                    </tr>
+                    <%}}%>
+                </table>
+            </div>
         </div>
         <div id="content">
             <div class="STYLE3" id="content1"><a href="http://localhost:8080/GetPictureNewsAction!getSomeResult.action">图片新闻</a>
-
-              <%--  <div id="featured">
-                    <div class="content" style="">
-                        <h1>Orbit does content now.</h1>
-                        <h3>Highlight me...I'm text.</h3>
-                    </div>
-                    <a href=""><img src="img/1338339790671_min.jpg" alt="Overflow: Hidden No More" /> </a>
-                    <img src="img/1338339611828_min.jpg"  alt="HTML Captions" />
-                    <img src="img/1338348321156_min.jpg" alt="and more features" />
-                </div>--%>
+                <marquee direction="left" behavior="scroll" scrollamount="3" width="400"  onMouseOver="this.stop()"
+                         onMouseOut="this.start()">
+                    <table width="400" height="280" border="0" class="STYLE2">
+                        <% if( session.getAttribute("threepicturenews")!=null){
+                            List<PictureNews> picturenews = (List<PictureNews>) session.getAttribute("threepicturenews");%>
+                        <tr>
+                         <%   for (int i = 0; i < picturenews.size(); i++) {%>
+                            <td>
+                                <a href="http://localhost:8080/GetPictureNewsAction!getOneResult.action?picturenewsid=<%=picturenews.get(i).getId()%>"><img src="<%=picturenews.get(i).getPath()%>" alt="images"/> </a>
+                            </td>
+                        <%}%>
+                        </tr>
+                        <tr>
+                            <%   for (int i = 0; i < picturenews.size(); i++) {%>
+                            <td>
+                                <a href="http://localhost:8080/GetPictureNewsAction!getOneResult.action?picturenewsid=<%=picturenews.get(i).getId()%>"><%=picturenews.get(i).getTopic()%> </a>
+                            </td>
+                            <%}%>
+                        </tr>
+                        <%}%>
+                    </table>
+                </marquee>
             </div>
             <div class="STYLE3" id="content2"><a href="http://localhost:8080/GetNewsAction!getSomeResult.action">新闻快讯</a>
-                <table width="334" height="255" border="1" class="STYLE2">
-                    <%
+                <table width="400" height="255" border="1" class="STYLE2">
+                    <% if((List<Message>) session.getAttribute("news")!=null){
                         List<Message> news = (List<Message>) session.getAttribute("news");
                         for (int i = 0; i < news.size(); i++) {
                     %>
@@ -221,7 +249,7 @@
                             <a href="http://localhost:8080/GetNewsAction.action!getOneResult.action?newsid=<%=news.get(i).getId()%>"> <%= news.get(i).getTopic()%></a>
                         </td>
                     </tr>
-                    <%}%>
+                    <%}}%>
                 </table>
             </div>
 

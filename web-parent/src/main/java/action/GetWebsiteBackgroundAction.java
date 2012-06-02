@@ -1,6 +1,5 @@
 package action;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import pojo.WebsiteMessage;
@@ -8,14 +7,13 @@ import service.WebsiteMessageService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Map;
 
 /**
  * User: wangyan
- * Date: 12-5-25
- * Time: 上午9:27
+ * Date: 12-6-1
+ * Time: 下午7:57
  */
-public class GetVisitsAction extends ActionSupport {
+public class GetWebsiteBackgroundAction  extends ActionSupport{
     private WebsiteMessageService websiteMessageService;
 
     public WebsiteMessageService getWebsiteMessageService() {
@@ -31,21 +29,12 @@ public class GetVisitsAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         request.setCharacterEncoding("utf-8");
-        WebsiteMessage  websiteMessage=websiteMessageService.getWebsiteMessage();
-        ActionContext context = ActionContext.getContext();
-        Map application = (Map) context.getApplication();
+        WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
 
-        int count=websiteMessage.getVisits();
-        count=count+1;
-        application.put("count", count);
-        websiteMessage.setVisits(count);
-        System.out.println(count);
-        websiteMessageService.updateWebsiteVisits(websiteMessage);
-
-        int visits=websiteMessage.getVisits(0);
-
-        session.setAttribute("visits",visits);
+        String imagepath=websiteMessage.getPath();
+        session.setAttribute("imagepath",imagepath);
 
         return SUCCESS;
     }
+
 }

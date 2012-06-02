@@ -96,7 +96,6 @@ public class BasicMessageChangeAction  extends ActionSupport{
         HttpServletResponse response=ServletActionContext.getResponse();
         response.setContentType("text/html:charset=gb2312");
         WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
-        System.out.println(websiteMessage.getWebsitename());
 
         request.setAttribute("websitemessage",websiteMessage);
 

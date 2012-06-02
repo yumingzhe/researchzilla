@@ -11,10 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import pojo.Activity;
-import pojo.Blog;
-import pojo.CommentEntity;
-import pojo.SiteUser;
+import pojo.*;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
@@ -29,7 +26,7 @@ public class InsertData {
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        SiteUser siteUser = new SiteUser();
+        /* SiteUser siteUser = new SiteUser();
         siteUser.setUsername("yumingzhe");
         siteUser.setEmail("yumingzhe@live.cn");
         siteUser.setActive(true);
@@ -39,7 +36,7 @@ public class InsertData {
         siteUser.setSalt("ljfinv");
         session.save(siteUser);
 
-        /* SiteUser siteUser = (SiteUser) session.get(SiteUser.class, 1);
+         SiteUser siteUser = (SiteUser) session.get(SiteUser.class, 1);
         Blog blog = (Blog) session.get(Blog.class, 1);
         CommentEntity commentEntity = new CommentEntity();
         commentEntity.setSiteUser(siteUser);
@@ -98,10 +95,6 @@ public class InsertData {
         session.save(commentEntity);*/
 
 
-        transaction.commit();
-        session.close();
-
-
 /*        Activity activity = (Activity) session.get(Activity.class, 2);
         CommentEntity commentEntity = activity.getCommentEntity();
         if (commentEntity != null) {
@@ -125,13 +118,13 @@ public class InsertData {
        transaction.commit();
        session.close(); */
 
-        /*  Link link = new Link();
+        Link link = new Link();
 
-       link.setWebsitename("百度");
-       link.setWebsiteurl("http://www.baidu.com/");
+       link.setWebsitename("google学术搜索");
+       link.setWebsiteurl("http://scholar.google.com/");
        session.save(link);
        transaction.commit();
-       session.close(); */
+       session.close();
 
     }
 }

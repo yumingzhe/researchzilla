@@ -55,5 +55,11 @@ public interface MessageDao {
 
     public List<Message> getAllMessages();
 
+    public int getMessageTotalCount();
+
+    public int getMessageTotalPage(int pageSize);
+
+    public List<Message> getMessage(final int pageSize, final int currentPage);
+
     public Message getOneMessageByID(int id);
 }

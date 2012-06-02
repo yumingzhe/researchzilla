@@ -94,7 +94,32 @@ public class PictureNewsServiceImpl implements PictureNewsService {
     }
 
     @Override
+    public int getPictureMessageTotalCount() {
+        return pictureNewsDao.getPictureMessageTotalCount();
+    }
+
+    @Override
+    public int getPictureMessageTotalPage(int pageSize) {
+        return pictureNewsDao.getPictureMessageTotalPage(pageSize);
+    }
+
+    @Override
+    public List<PictureNews> getPictureMessage(int pageSize, int currentPage) {
+        return pictureNewsDao.getPictureMessage(pageSize,currentPage);
+    }
+
+    @Override
     public PictureNews getOnePictureMessageByID(int id) {
         return pictureNewsDao.getOnePictureMessageByID(id);
+    }
+
+    @Override
+    public List<PictureNews> getThreePicture() {
+        return pictureNewsDao.getThreePicture();
+    }
+
+    @Override
+    public List<PictureNews> getFiveAccomplishment() {
+        return pictureNewsDao.getFiveAccomplishment();
     }
 }

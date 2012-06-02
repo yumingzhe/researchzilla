@@ -74,17 +74,17 @@ body { font-family:Verdana; font-size:14px; margin:0;}
 
 
 #container_1 {
-	width:900px;
+	width:950px;
 	margin-top: auto;
 	margin-right: auto;
 	margin-bottom: auto;
-	margin-left: 20%;
+	margin-left: 15%;
 }
 #header_1 { height:200px; background:#6cf; margin-bottom:5px;}
 #mainContent_1 { height:500px; margin-bottom:5px;}
 #sidebar_1 { float:left; width:245px; height:500px; background:#9ff;}
 #content_1 { float:right; width:645px; height:500px; background:#cff;}
-#content_2 { float:right; width:640px; height:500px; background:#cff;}
+#content_2 { float:right; width:690px; height:500px; background:#cff;}
 #bar1{margin:5px 5px 5px 5px; width:240px; height:50px;background:#6cf }
 #bar2{margin:5px 5px 5px 5px; width:240px; height:50px;background:#6cf }
 #bar3{margin:5px 5px 5px 5px; width:240px; height:50px;background:#6cf }

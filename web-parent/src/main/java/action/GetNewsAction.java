@@ -102,7 +102,6 @@ public class GetNewsAction extends ActionSupport {
     public String getSomeResult()throws Exception{
         HttpServletRequest request=ServletActionContext.getRequest();
         String pageString=request.getParameter("pagenumber");
-        System.out.println("pagenumber"+pageString);
         if(pageString==null||pageString.length()==0){
             pageString="1";
         }

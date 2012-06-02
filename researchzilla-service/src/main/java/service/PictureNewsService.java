@@ -39,6 +39,16 @@ public interface PictureNewsService {
 
     public List<PictureNews> getAllPictureMessages();
 
+    public int getPictureMessageTotalCount();
+
+    public int getPictureMessageTotalPage(int pageSize);
+
+    public List<PictureNews> getPictureMessage(final int pageSize, final int currentPage);
+
     public PictureNews getOnePictureMessageByID(int id);
+
+    public List<PictureNews> getThreePicture();
+
+    public List<PictureNews> getFiveAccomplishment();
 
 }

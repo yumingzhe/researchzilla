@@ -102,7 +102,6 @@ public class GetPublicNoticeAction extends ActionSupport {
     public String getSomeResult()throws Exception{
         HttpServletRequest request=ServletActionContext.getRequest();
         String pageString=request.getParameter("pagenumber");
-        System.out.println("pagenumber"+pageString);
         if(pageString==null||pageString.length()==0){
             pageString="1";
         }
@@ -118,7 +117,6 @@ public class GetPublicNoticeAction extends ActionSupport {
         pageSize=5;
         List list=messageService.getPublicNotice( pageSize,currentPage);
         totalPage=messageService.getPublicNoticeTotalPage(pageSize);
-         System.out.println("totalpage"+totalPage);
         request.setAttribute("somepublicnotices",list);
         request.setAttribute("totalpage",totalPage);
         request.setAttribute("currentpage",currentPage);

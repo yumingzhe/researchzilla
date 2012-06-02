@@ -103,7 +103,6 @@ public class GetInternalNoticeAction extends ActionSupport {
     public String getSomeResult()throws Exception{
         HttpServletRequest request=ServletActionContext.getRequest();
         String pageString=request.getParameter("pagenumber");
-        System.out.println("pagenumber"+pageString);
         if(pageString==null||pageString.length()==0){
             pageString="1";
         }
@@ -119,7 +118,7 @@ public class GetInternalNoticeAction extends ActionSupport {
         pageSize=5;
         List list=messageService.getInternalNotice( pageSize,currentPage);
         totalPage=messageService.getInternalNoticeTotalPage(pageSize);
-    //    System.out.println("totalpage"+totalPage);
+
         request.setAttribute("someinternalnotices",list);
         request.setAttribute("totalpage",totalPage);
         request.setAttribute("currentpage",currentPage);

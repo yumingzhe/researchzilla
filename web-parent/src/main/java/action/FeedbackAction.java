@@ -22,6 +22,12 @@ public class FeedbackAction extends ActionSupport{
     private String content;
 
     private String feedbackid;
+    private String pagenumber;
+
+    private int currentPage;//当前页码数
+    private int pageSize;//每页显示数据量
+    private int totalCount;//信息总数
+    private int totalPage;//页面总数
     private FeedbackService feedbackService;
 
     public String getTitle() {
@@ -46,6 +52,46 @@ public class FeedbackAction extends ActionSupport{
 
     public void setFeedbackid(String feedbackid) {
         this.feedbackid = feedbackid;
+    }
+
+    public String getPagenumber() {
+        return pagenumber;
+    }
+
+    public void setPagenumber(String pagenumber) {
+        this.pagenumber = pagenumber;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
     }
 
     public FeedbackService getFeedbackService() {
@@ -78,7 +124,30 @@ public class FeedbackAction extends ActionSupport{
 
         return "acquireall";
     }
-
+    public String getsomefeedbacks()throws Exception{
+        HttpServletRequest request=ServletActionContext.getRequest();
+        String pageString=request.getParameter("pagenumber");
+        System.out.println("pagenumber"+pageString);
+        if(pageString==null||pageString.length()==0){
+            pageString="1";
+        }
+        currentPage=0;
+        try{
+            currentPage=Integer.parseInt(pageString);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        if(currentPage==0){
+            currentPage=1;
+        }
+        pageSize=5;
+        List list=feedbackService.getFeedback( pageSize,currentPage);
+        totalPage=feedbackService.getFeedbackTotalPage(pageSize);
+        request.setAttribute("somefeedbacks",list);
+        request.setAttribute("totalpage",totalPage);
+        request.setAttribute("currentpage",currentPage);
+        return "acquiresomefeedback";
+    }
     public String getOneFeedback() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setCharacterEncoding("utf-8");
@@ -88,4 +157,13 @@ public class FeedbackAction extends ActionSupport{
 
         return "acquireone";
     }
+    public String deleteOneFeedback() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setCharacterEncoding("utf-8");
+        int id=Integer.parseInt(feedbackid);
+        feedbackService.deleteOneFeedbackByID(id);
+
+        return "deleteone";
+    }
+
 }

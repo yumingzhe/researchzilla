@@ -17,22 +17,28 @@
         .STYLE1 {font-size: 24px}
         -->
     </style>
+    <style type="text/css">
+        <!--
+        .STYLE4 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        -->
+    </style>
     <link href="layout.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="container_1">
     <div class="STYLE1" id="header_1">
-        <table width="900" height="195" border="0">
+        <table width="930" height="195" border="0">
             <tr>
-                <td width="717" height="191">&nbsp;</td>
-                <td width="218" class="STYLE3"><p>&nbsp;</p>
-                    <p align="center"><%=session.getAttribute("websitename")%></p>
-                    <p align="center">&nbsp;</p>
-                    <%if(( session.getAttribute("user"))!=null){%>
-                    <p align="center"><%=((SiteUser) session.getAttribute("user")).getUsername()%> 欢迎您登录本网站！</p>
-                    <%}%>
+                <td width="680" height="191">&nbsp;</td>
+                <td width="250" class="STYLE4"><p>&nbsp;</p>
+                    <p align="center"><%=session.getAttribute("websitename")%></p></td>
             </tr>
         </table>
+        <div align="right" ><a href="homepageone.jsp">返回网站页面</a></div>
     </div>
     <div id="mainContent_1">
         <div id="sidebar_1">
@@ -81,7 +87,7 @@
                 <% }else {%>
                 下一页
                 <%}%>
-            </table>
+             </table>
             <%}else if(request.getAttribute("somepublicnotices")!=null){%>
                 <table width="578" height="423" border="0">
             <%   List<Message> publicnotices= (List<Message>) request.getAttribute("somepublicnotices");
@@ -223,6 +229,7 @@
                 <%}%>
             </table>
                 <%}else {}%>
+
         </div>
     </div>
     <div id="footer_1">

@@ -5,8 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="user" value="root"/>
-        <property name="password" value=""/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost/researchzilla"/>
+        <property name="password" value="123456"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost/test"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="initialPoolSize" value="2"/>
         <property name="minPoolSize" value="2"/>
@@ -61,7 +61,11 @@
     <bean id="userAction" class="action.UserAction">
         <property name="siteUserService" ref="siteUserService"/>
     </bean>
-
+    <bean id="getStatisticsAction" class="action.GetStatisticsAction">
+        <property name="siteUserService" ref="siteUserService"/>
+        <property name="messageService" ref="messageService"/>
+        <property name="pictureNewsService" ref="pictureNewsService"/>
+    </bean>
 
     <!--Register Bean group-->
     <bean id="registerDao" class="dao.impl.RegisterDaoImpl">
@@ -177,6 +181,9 @@
     <bean id="getLinkAction" class="action.GetLinkAction">
         <property name="linkService" ref="linkService"/>
     </bean>
+    <bean id="linkAction" class="action.LinkAction">
+        <property name="linkService" ref="linkService"/>
+    </bean>
 
     <!--Feedback Bean group-->
     <bean id="feedbackDao" class="dao.impl.FeedbackDaoImpl">
@@ -203,6 +210,9 @@
         <property name="websiteMessageService" ref="websiteMessageService"/>
     </bean>
     <bean id="getWebsiteTitleAction" class="action.GetWebsiteTitleAction">
+        <property name="websiteMessageService" ref="websiteMessageService"/>
+    </bean>
+    <bean id="getWebsiteBackgroundAction" class="action.GetWebsiteBackgroundAction">
         <property name="websiteMessageService" ref="websiteMessageService"/>
     </bean>
     <bean id="basicDesignAction" class="action.BasicDesignAction">

@@ -53,13 +53,14 @@ public class MessageDaoImpl implements MessageDao {
 
     @Override
     public void deleteMessageById(final int id) {
-        List message =  this.getTemplate().executeFind(new HibernateCallback<Object>() {
+        List messages =  this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Message as m where m.id= :id").setInteger("id", id);
                 return query.list();
             }
         });
+        Message message= (Message) messages.get(0);
         this.getTemplate().delete(message);
     }
 
@@ -297,6 +298,39 @@ public class MessageDaoImpl implements MessageDao {
             }
         });
         return messages;
+    }
+
+    @Override
+    public int getMessageTotalCount() {
+        List messages = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery(" from Message ");
+                return query.list();
+            }
+        });
+        return messages.size();
+    }
+
+    @Override
+    public int getMessageTotalPage(int pageSize) {
+        int totalCount=this.getMessageTotalCount();
+        int totalPage=((totalCount+pageSize)-1)/pageSize;
+        return totalPage;
+    }
+
+    @Override
+    public List<Message> getMessage(final int pageSize, final int currentPage) {
+        List notices = this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from Message");
+                query.setMaxResults(pageSize);
+                query.setFirstResult(pageSize*(currentPage-1));
+                return query.list();
+            }
+        });
+        return notices;
     }
 
     @Override

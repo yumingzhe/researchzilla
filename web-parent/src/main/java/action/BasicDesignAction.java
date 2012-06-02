@@ -65,7 +65,7 @@ public class BasicDesignAction extends ActionSupport {
         response.setContentType("text/html;charset=gb2312");
         WebsiteMessage websiteMessage=websiteMessageService.getWebsiteMessage();
         websiteMessage.setWebsitename(((WebsiteMessage)request.getAttribute("websitemess")).getWebsitename());
-        System.out.println(((WebsiteMessage)request.getAttribute("websitemess")).getWebsitename());
+
         websiteMessage.setPath(((WebsiteMessage)request.getAttribute("websitemess")).getPath());
         websiteMessage.setMaintenanceaddress(((WebsiteMessage)request.getAttribute("websitemess")).getMaintenanceaddress());
         websiteMessage.setDefaultlanguage(((WebsiteMessage)request.getAttribute("websitemess")).getDefaultlanguage());

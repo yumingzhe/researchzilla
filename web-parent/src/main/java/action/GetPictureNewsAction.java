@@ -82,7 +82,12 @@ public class GetPictureNewsAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        return super.execute();    //To change body of overridden methods use File | Settings | File Templates.
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session=request.getSession();
+        List list=pictureNewsService.getThreePicture();
+
+        session.setAttribute("threepicturenews",list);
+        return SUCCESS;
     }
 
     public String getAllResult() throws Exception {
@@ -95,7 +100,6 @@ public class GetPictureNewsAction extends ActionSupport {
     public String getSomeResult()throws Exception{
         HttpServletRequest request=ServletActionContext.getRequest();
         String pageString=request.getParameter("pagenumber");
-        System.out.println("pagenumber"+pageString);
         if(pageString==null||pageString.length()==0){
             pageString="1";
         }
@@ -111,7 +115,7 @@ public class GetPictureNewsAction extends ActionSupport {
         pageSize=5;
         List list=pictureNewsService.getPictureNews( pageSize,currentPage);
         totalPage=pictureNewsService.getPictureNewsTotalPage(pageSize);
-        //    System.out.println("totalpage"+totalPage);
+
         request.setAttribute("somepicturenewses",list);
         request.setAttribute("totalpage",totalPage);
         request.setAttribute("currentpage",currentPage);

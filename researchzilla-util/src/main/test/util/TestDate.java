@@ -19,6 +19,6 @@ public class TestDate {
         date2.setMonth(5);
         date2.setYear(2012);
         date2.setDate(1);
-        System.out.println(DateFormat.formatPeriod(date1.getTime(), date2.getTime()));
+    //    System.out.println(DateFormat.formatPeriod(date1.getTime(), date2.getTime()));
     }
 }
