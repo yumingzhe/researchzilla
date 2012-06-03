@@ -69,4 +69,10 @@ public class FileDaoImpl implements FileDao {
             }
         });
     }
+
+    @Override
+    public void deleteFile(pojo.File file) {
+        this.getTemplate().delete(file);
+    }
+
 }

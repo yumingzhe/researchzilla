@@ -37,4 +37,9 @@ public class FileServiceImpl implements FileService {
     public List<File> getUserAllFilesByUID(int uid) {
         return (List<File>) this.fileDao.getUserAllFilesByUID(uid);
     }
+
+    @Override
+    public void deleteFile(File file) {
+        this.fileDao.deleteFile(file);
+    }
 }

@@ -16,4 +16,6 @@ public interface FileService {
     public File getFileById(int id);
 
     public List<File> getUserAllFilesByUID(int uid);
+
+    public void deleteFile(File file);
 }

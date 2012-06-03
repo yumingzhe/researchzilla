@@ -17,4 +17,6 @@ public interface FileDao {
     public File getFileById(int id);
 
     public List getUserAllFilesByUID(int uid);
+
+    public void deleteFile(File file);
 }

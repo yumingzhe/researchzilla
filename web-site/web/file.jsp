@@ -148,9 +148,12 @@
                         <%=file.getFileName()%>
                     </h2>
                     <ul class="elgg-menu elgg-menu-title elgg-menu-hz elgg-menu-title-default">
-                        <li class="elgg-menu-item-download"><a
-                                href="http://elgg-yumingzhe.rhcloud.com/file/download/82"
-                                class="elgg-button elgg-button-action">下载文件</a></li>
+                        <li class="elgg-menu-item-download">
+                            <a href="http://localhost:8080/downloadFileAction.action?fileid=<%=file.getId()%>"
+                               class="elgg-button elgg-button-action">
+                                下载文件
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="elgg-content">
