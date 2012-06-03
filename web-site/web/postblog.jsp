@@ -77,8 +77,6 @@
     <div class="elgg-page-topbar">
         <div class="elgg-inner">
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-alt">
-                <%--<li class="elgg-menu-item-administration"><a href="http://elgg-yumingzhe.rhcloud.com/admin"><span
-                        class="elgg-icon elgg-icon-settings "></span>Administration</a></li>--%>
                 <li class="elgg-menu-item-usersettings"><a
                         href="http://elgg-yumingzhe.rhcloud.com/settings/user/yumingzhe"><span
                         class="elgg-icon elgg-icon-settings "></span>Settings</a></li>
@@ -125,10 +123,6 @@
             </ul>
             <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
                 <fieldset>
-                    <%--<input type="text" class="search-input" size="21" name="q" value="Search"
-                           onblur="if (this.value=='') { this.value='Search' }"
-                           onfocus="if (this.value=='Search') { this.value='' };"/>
-                    <input type="submit" value="Go" class="search-submit-button"/>--%>
                 </fieldset>
             </form>
         </div>
@@ -208,14 +202,7 @@
     <div class="elgg-page-footer">
         <div class="elgg-inner">
             <ul class="elgg-menu elgg-menu-footer elgg-menu-hz elgg-menu-footer-alt">
-                <%--<li class="elgg-menu-item-report-this"><a
-             href="javascript:elgg.forward(&#039;reportedcontent/add&#039;+&#039;?address=&#039;+encodeURIComponent(location.href)+&#039;&amp;title=&#039;+encodeURIComponent(document.title));"
-             title="Report this page to an administrator"><span
-             class="elgg-icon elgg-icon-report-this "></span>Report this</a></li>--%>
             </ul>
-            <%-- <div class="mts clearfloat float-alt"><a href="http://elgg.org" class=""><img
-        src="http://elgg-yumingzhe.rhcloud.com/_graphics/powered_by_elgg_badge_drk_bckgnd.gif"
-        alt="Powered by Elgg" width="106" height="15"/></a></div>--%>
         </div>
     </div>
 </div>

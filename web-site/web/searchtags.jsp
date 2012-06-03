@@ -33,7 +33,7 @@
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-alt">
                 <li class="elgg-menu-item-usersettings">
                     <a href="http://elgg-yumingzhe.rhcloud.com/settings/user/yumingzhe">
-                        <span class="elgg-icon elgg-icon-settings "></span>Settings</a></li>
+                        <span class="elgg-icon elgg-icon-settings "></span>个人设置</a></li>
                 <li class="elgg-menu-item-logout"><a
                         href="http://elgg-yumingzhe.rhcloud.com/action/logout?__elgg_ts=1338626446&amp;__elgg_token=5a560c51917aaf244b248187ca2219dd">Log
                     out</a></li>
@@ -59,30 +59,26 @@
             <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
                 <li class="elgg-menu-item-activity">
                     <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>">
-                        Activity
+                        最近活动
                     </a>
                 </li>
                 <li class="elgg-menu-item-blog">
                     <a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=siteUser.getUid()%>">
-                        Blogs
+                        日志
                     </a>
                 </li>
                 <li class="elgg-menu-item-file"><a href="http://elgg-yumingzhe.rhcloud.com/file/all">
-                    Files
+                    文件
                 </a>
                 </li>
                 <li class="elgg-menu-item-groups">
                     <a href="http://elgg-yumingzhe.rhcloud.com/groups/all">
-                        Groups
+                        组
                     </a>
                 </li>
             </ul>
             <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
                 <fieldset>
-                    <%--<input type="text" class="search-input" size="21" name="q" value="Search"
-                        onblur="if (this.value=='') { this.value='Search' }"
-                        onfocus="if (this.value=='Search') { this.value='' };"/>
-                 <input type="submit" value="Go" class="search-submit-button"/>--%>
                 </fieldset>
             </form>
         </div>

@@ -3,6 +3,7 @@ package service;
 import pojo.File;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -13,4 +14,6 @@ public interface FileService {
     public Serializable saveFile(File file);
 
     public File getFileById(int id);
+
+    public List<File> getUserAllFilesByUID(int uid);
 }

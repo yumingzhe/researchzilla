@@ -1,9 +1,8 @@
-<%@ page import="pojo.SiteUser" %>
 <%@ page import="pojo.Activity" %>
-<%@ page import="java.util.List" %>
+<%@ page import="pojo.SiteUser" %>
 <%@ page import="util.DateFormat" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="pojo.Blog" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,20 +10,6 @@
     <link rel="SHORTCUT ICON" href="conf/favicon.ico"/>
     <link rel="stylesheet" href="css/researchzilla.css"
           type="text/css"/>
-
-    <!--[if gt IE 7]>
-    <link rel="stylesheet" type="text/css"
-          href="http://elgg-yumingzhe.rhcloud.com/cache/css/default/ie.1336721654.css"/>
-    <![endif]-->
-    <!--[if IE 7]>
-    <link rel="stylesheet" type="text/css"
-          href="http://elgg-yumingzhe.rhcloud.com/cache/css/default/ie7.1336721654.css"/>
-    <![endif]-->
-    <!--[if IE 6]>
-    <link rel="stylesheet" type="text/css"
-          href="http://elgg-yumingzhe.rhcloud.com/cache/css/default/ie6.1336721654.css"/>
-    <![endif]-->
-
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript"
             src="js/jquery-ui-1.8.20.custom.min.js"></script>
@@ -32,8 +17,6 @@
     <script type="text/javascript" src="js/researchzilla.js"></script>
     <link rel="alternate" type="application/rss+xml" title="RSS"
           href="http://elgg-yumingzhe.rhcloud.com/activity?view=rss"/>
-    <%--<link rel="meta" type="application/rdf+xml" title="FOAF"
-          href="http://elgg-yumingzhe.rhcloud.com/activity?view=foaf"/>--%>
 </head>
 <body>
 <div class="elgg-page elgg-page-default">
@@ -46,15 +29,19 @@
 <div class="elgg-page-topbar">
     <div class="elgg-inner">
         <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-alt">
-            <li class="elgg-menu-item-usersettings"><a
-                    href="http://localhost:8080/accountsetting.jsp"><span
-                    class="elgg-icon elgg-icon-settings "></span>Settings</a></li>
-            <li class="elgg-menu-item-logout"><a
-                    href="http://elgg-yumingzhe.rhcloud.com/action/logout?__elgg_ts=1338188590&amp;__elgg_token=70d0293b14df7075c3878caadea61971">Log
-                out</a></li>
+            <li class="elgg-menu-item-usersettings">
+                <a href="http://localhost:8080/accountsetting.jsp">
+                    <span class="elgg-icon elgg-icon-settings "></span>
+                    个人设置
+                </a>
+            </li>
+            <li class="elgg-menu-item-logout">
+                <a href="http://localhost:8080/ExitAction.action">
+                    Log out
+                </a>
+            </li>
         </ul>
         <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-default">
-
             <%--网站图标--%>
             <%-- <li class="elgg-menu-item-elgg-logo"><a href="http://www.elgg.org/" class="elgg-topbar-logo"><img
             src="http://elgg-yumingzhe.rhcloud.com/_graphics/elgg_toolbar_logo.gif" alt="Elgg logo" width="38"
@@ -68,11 +55,11 @@
                             title="Profile" class="elgg-border-plain elgg-transition"/>
                 </a>
             </li>
-            <%--<li class="elgg-menu-item-friends"><a href="http://elgg-yumingzhe.rhcloud.com/friends/elgg" title="Friends"><span
-          class="elgg-icon elgg-icon-users "></span></a></li>--%>
-            <li class="elgg-menu-item-messages"><a
-                    href="http://elgg-yumingzhe.rhcloud.com/messages/inbox/elgg"><span
-                    class='elgg-icon elgg-icon-mail'></span></a></li>
+            <li class="elgg-menu-item-messages">
+                <a href="http://elgg-yumingzhe.rhcloud.com/messages/inbox/elgg">
+                    <span class='elgg-icon elgg-icon-mail'></span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
@@ -85,46 +72,39 @@
                 Researchzilla </a>
         </h1>
         <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
-            <li class="elgg-menu-item-activity elgg-state-selected"><a
-                    href="http://elgg-yumingzhe.rhcloud.com/activity">Activity</a></li>
-            <li class="elgg-menu-item-blog"><a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=1%>">Blogs</a>
+            <li class="elgg-menu-item-activity elgg-state-selected">
+                <a href="http://elgg-yumingzhe.rhcloud.com/activity">
+                    最近活动
+                </a>
             </li>
-            <li class="elgg-menu-item-file"><a href="http://elgg-yumingzhe.rhcloud.com/file/all">Files</a></li>
-            <li class="elgg-menu-item-groups"><a href="http://elgg-yumingzhe.rhcloud.com/groups/all">Groups</a></li>
+            <li class="elgg-menu-item-blog">
+                <a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=1%>">
+                    日志
+                </a>
+            </li>
+            <li class="elgg-menu-item-file">
+                <a href="http://localhost:8080/getUserAllFilesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">
+                    文件
+                </a>
+            </li>
+            <li class="elgg-menu-item-groups">
+                <a href="http://elgg-yumingzhe.rhcloud.com/groups/all">
+                    组
+                </a>
+            </li>
         </ul>
         <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
             <fieldset>
-                <%--
-                   <input type="text" class="search-input" size="21" name="q" value="Search"
-                       onblur="if (this.value=='') { this.value='Search' }"
-                       onfocus="if (this.value=='Search') { this.value='' };"/>
-                <input type="submit" value="Go" class="search-submit-button"/>
-                --%>
             </fieldset>
         </form>
     </div>
 </div>
 <div class="elgg-page-body">
     <div class="elgg-inner">
-
-        <div class="elgg-layout <%--elgg-layout-one-sidebar--%> clearfix elgg-river-layout">
-            <%--<div class="elgg-sidebar">
-                <ul class="elgg-menu elgg-menu-extras elgg-menu-hz elgg-menu-extras-default">
-                    <li class="elgg-menu-item-rss"><a href="http://elgg-yumingzhe.rhcloud.com/activity?view=rss"
-                                                      title="RSS feed for this page"><span
-                            class="elgg-icon elgg-icon-rss "></span></a>
-                    </li>
-                    <li class="elgg-menu-item-bookmark"><a
-                            href="http://elgg-yumingzhe.rhcloud.com/bookmarks/add/73?address=http%3A%2F%2Felgg-yumingzhe.rhcloud.com%2Factivity"
-                            title="Bookmark this page" rel="nofollow"><span
-                            class="elgg-icon elgg-icon-push-pin-alt "></span></a>
-                    </li>
-                </ul>
-            </div>--%>
-
+        <div class="elgg-layout clearfix elgg-river-layout">
             <div class="elgg-main elgg-body">
                 <div class="elgg-head clearfix">
-                    <h2 class="elgg-heading-main">Activity</h2>
+                    <h2 class="elgg-heading-main">活动</h2>
                 </div>
                 <ul class="elgg-list elgg-list-river elgg-river">
                     <%
@@ -225,16 +205,6 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                        <%--<form method="post"
-                                              action="http://elgg-yumingzhe.rhcloud.com/action/comments/add"
-                                              id="comments-add-82" class="elgg-form hidden elgg-form-comments-add">
-                                            <fieldset><input type="hidden" name="__elgg_token"
-                                                             value="9ff243949a404e7618e5ec763a5fa42d"/><input
-                                                    type="hidden"
-                                                    name="__elgg_ts"
-                                                    value="1338528297"/>
-                                            </fieldset>
-                                        </form>--%>
                                     </div>
                                     <%
                                         }

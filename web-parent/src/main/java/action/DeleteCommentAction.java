@@ -13,9 +13,27 @@ import service.CommentEntityService;
  */
 public class DeleteCommentAction extends ActionSupport {
     private String commentid;
+    private String type;
     private String blogid;
+    private String fileid;
     private CommentEntityService commentEntityService;
     private ActivityService activityService;
+
+    public String getFileid() {
+        return fileid;
+    }
+
+    public void setFileid(String fileid) {
+        this.fileid = fileid;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getBlogid() {
         return blogid;
@@ -51,10 +69,18 @@ public class DeleteCommentAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
+
         CommentEntity commentEntity = commentEntityService.getCommentEntityById(Integer.parseInt(commentid));
         String sql = "delete from Activity where commentId=" + commentEntity.getId();
         activityService.executeSQL(sql);
         commentEntityService.deleteCommentEntityById(Integer.parseInt(commentid));
-        return SUCCESS;
+
+        if (this.type.equals("blog")) {
+            return "blog";
+        }
+        if (this.type.equals("file")) {
+            return "file";
+        }
+        return INPUT;
     }
 }

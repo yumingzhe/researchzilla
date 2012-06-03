@@ -17,6 +17,9 @@
     <script type="text/javascript" src="js/researchzilla.js"></script>
 </head>
 <body>
+<%
+    SiteUser siteUser = (SiteUser) session.getAttribute("user");
+%>
 <div class="elgg-page elgg-page-default">
     <div class="elgg-page-messages">
         <ul class="elgg-system-messages">
@@ -58,13 +61,14 @@
             </h1>
             <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
                 <li class="elgg-menu-item-activity"><a
-                        href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Activity</a>
+                        href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">最近活动</a>
                 </li>
                 <li class="elgg-menu-item-blog elgg-state-selected"><a
-                        href="http://localhost:8080/getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Blogs</a>
+                        href="http://localhost:8080/getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">日志</a>
                 </li>
-                <li class="elgg-menu-item-file"><a href="http://elgg-yumingzhe.rhcloud.com/file/all">Files</a></li>
-                <li class="elgg-menu-item-groups"><a href="http://elgg-yumingzhe.rhcloud.com/groups/all">Groups</a></li>
+                <li class="elgg-menu-item-file"><a
+                        href="http://localhost:8080/getUserAllFilesAction.action?uid=<%=siteUser.getUid()%>">文件</a></li>
+                <li class="elgg-menu-item-groups"><a href="http://elgg-yumingzhe.rhcloud.com/groups/all">组</a></li>
             </ul>
             <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
                 <fieldset>

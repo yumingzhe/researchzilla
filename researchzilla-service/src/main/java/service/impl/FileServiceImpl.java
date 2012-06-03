@@ -5,6 +5,7 @@ import pojo.File;
 import service.FileService;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: yumingzhe
@@ -30,5 +31,10 @@ public class FileServiceImpl implements FileService {
     @Override
     public File getFileById(int id) {
         return this.fileDao.getFileById(id);
+    }
+
+    @Override
+    public List<File> getUserAllFilesByUID(int uid) {
+        return (List<File>) this.fileDao.getUserAllFilesByUID(uid);
     }
 }

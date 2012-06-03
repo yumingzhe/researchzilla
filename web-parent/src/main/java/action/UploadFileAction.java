@@ -2,7 +2,9 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import pojo.SiteUser;
 import service.FileService;
+import service.SiteUserService;
 
 import java.io.File;
 import java.sql.Timestamp;
@@ -17,6 +19,7 @@ import java.util.List;
  */
 public class UploadFileAction extends ActionSupport {
     private int groupId;
+    private String uid;
     private File file;
     private String fileFileName;
     private String fileContentType;
@@ -25,6 +28,23 @@ public class UploadFileAction extends ActionSupport {
     private String tag;
     private String access;
     private FileService fileService;
+    private SiteUserService siteUserService;
+
+    public SiteUserService getSiteUserService() {
+        return siteUserService;
+    }
+
+    public void setSiteUserService(SiteUserService siteUserService) {
+        this.siteUserService = siteUserService;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public FileService getFileService() {
         return fileService;
@@ -114,6 +134,7 @@ public class UploadFileAction extends ActionSupport {
         List<String> types = (List<String>) ServletActionContext.getContext().getApplication().get("allowedFileType");
         if (types == null) {
             types = new ArrayList<String>();
+            types.add("application/octet-stream");
             types.add("application/msword");//.doc
             types.add("xml");
             types.add("ppt");
@@ -137,13 +158,21 @@ public class UploadFileAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
+        SiteUser siteUser = siteUserService.getSiteUserByUID(Integer.parseInt(uid));
         pojo.File fileEntity = new pojo.File();
-        fileEntity.setAccess(access);
+        if (this.access.equals("1"))
+            fileEntity.setAccess("private");
+        if (this.access.equals("2"))
+            fileEntity.setAccess("public");
+        if (this.access.equals("3"))
+            fileEntity.setAccess("group");
         fileEntity.setTag(tag);
         fileEntity.setDescription(description);
         fileEntity.setFileName(fileFileName);
         fileEntity.setUploadTime(new Timestamp(new Date().getTime()));
+        fileEntity.setFileType(this.fileContentType);
         fileEntity.setFile(file);
+        fileEntity.setSiteUser(siteUser);
         fileService.saveFile(fileEntity);
         //TODO ADD ACTIVITY
         return SUCCESS;

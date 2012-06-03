@@ -13,10 +13,10 @@
         <property name="description" column="description" type="java.lang.String"/>
         <property name="uploadTime" column="uploadTime" type="timestamp"/>
         <property name="file" column="file" type="java.io.File"/>
-        <many-to-one name="siteUser" column="ownerId" class="pojo.SiteUser"/>
+        <many-to-one name="siteUser" column="ownerId" class="pojo.SiteUser" lazy="false"/>
         <property name="tag" column="tag" type="java.lang.String"/>
         <property name="access" column="access" type="java.lang.String"/>
-        <set name="commentEntities" table="researchzilla_comment">
+        <set name="commentEntities" table="researchzilla_comment" lazy="false">
             <key column="fileId"></key>
             <one-to-many class="pojo.CommentEntity"/>
         </set>
