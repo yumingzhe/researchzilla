@@ -5,8 +5,8 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <constant name="struts.multipart.saveDir"
-              value="D:\workspace\researchzilla\classes\artifacts\web_site_war_exploded\img"/>
+    <!--<constant name="struts.multipart.saveDir"
+              value="D:\workspace\researchzilla\classes\artifacts\web_site_war_exploded\img"/>-->
     <!--<constant name="struts.i18n.encoding" value="GB18030"/>-->
     <!--<constant name="struts.multipart.saveDir" value="D:\workspace\researchzilla\classes\artifacts\web_site_war_exploded\"/>-->
     <package name="pkg" extends="struts-default">
@@ -26,6 +26,9 @@
 
         <action name="getUserAllBlogs" class="getUserAllBlogs">
             <result name="success">/allblogs.jsp</result>
+        </action>
+        <action name="getUserAllFilesAction" class="getUserAllFilesAction">
+            <result name="success">/allfiles.jsp</result>
         </action>
 
         <action name="searchBlogByTag" class="searchBlogByTag">
@@ -50,12 +53,32 @@
             <result name="success">/login.jsp</result>
             <result name="input">/forgetpassword.jsp</result>
         </action>
-
-        <action name="uploadfileAction" class="uploadfileAction">
-
+        <action name="updateAccountSettingAction" class="updateAccountSettingAction">
+            <result name="success">getUserAllActivitiesAction.action</result>
+            <result name="input">/accountsetting.jsp</result>
         </action>
 
-        <!--Blog Bean group-->
+        <!--File Action Group-->
+        <action name="uploadfileAction" class="uploadfileAction">
+            <result name="success" type="redirectAction">getUserAllFilesAction?uid=${uid}</result>
+            <result name="input">/addfile.jsp</result>
+        </action>
+        <action name="getSpecifiedFileAction" class="getSpecifiedFileAction">
+            <result name="success">/file.jsp</result>
+        </action>
+        <action name="deleteFileAction" class="deleteFileAction">
+            <result name="success" type="redirectAction">getUserAllFilesAction?uid=${uid}</result>
+            <result name="input" type="redirectAction">getSpecifiedFileAction?fileid=${fileid}</result>
+        </action>
+        <action name="downloadFileAction" class="downloadFileAction">
+            <result name="success" type="stream">
+                <param name="inputName">file</param>
+                <param name="contentType">text/plain</param>
+                <param name="contentDisposition">attachement;filename=${fileName}</param>
+            </result>
+        </action>
+
+        <!--Blog Action group-->
         <action name="postblogAction" class="postblogAction">
             <result name="input">/postblog.jsp</result>
             <result name="error">/postblog.jsp</result>
@@ -72,12 +95,14 @@
             <result name="success" type="redirectAction">getSpecifiedBlogAction?blogid=${blogid}</result>
         </action>
 
-        <!--Comment Bean group-->
+        <!--Comment Action group-->
         <action name="postCommentAction" class="postCommentAction">
-            <result name="success" type="redirectAction">getSpecifiedBlogAction?blogid=${objectId}</result>
+            <result name="blog" type="redirectAction">getSpecifiedBlogAction?blogid=${objectId}</result>
+            <result name="file" type="redirectAction">getSpecifiedFileAction?fileid=${objectId}</result>
         </action>
         <action name="deleteCommentAction" class="deleteCommentAction">
-            <result name="success" type="redirectAction">getSpecifiedBlogAction?blogid=${blogid}</result>
+            <result name="blog" type="redirectAction">getSpecifiedBlogAction?blogid=${blogid}</result>
+            <result name="file" type="redirectAction">getSpecifiedFileAction?fileid=${fileid}</result>
         </action>
 
 
@@ -123,7 +148,7 @@
         <action name="GetLinkAction" class="getLinkAction">
             <result name="success" type="redirectAction">GetVisitsAction</result>
             <!--<result name="acquireall">/linksmanage.jsp</result>-->
-            <result name="acquireall" >/alllinks.jsp</result>
+            <result name="acquireall">/alllinks.jsp</result>
         </action>
 
         <action name="GetVisitsAction" class="getVisitsAction">
@@ -133,9 +158,9 @@
         <action name="GetMaintenanceAddressAction" class="getMaintenanceAddressAction">
             <result name="success" type="redirectAction">GetWebsiteBackgroundAction</result>
         </action>
-         <action name="GetWebsiteBackgroundAction" class="getWebsiteBackgroundAction">
-             <result name="success">/homepageone.jsp</result>
-         </action>
+        <action name="GetWebsiteBackgroundAction" class="getWebsiteBackgroundAction">
+            <result name="success">/homepageone.jsp</result>
+        </action>
         <action name="GetWebsiteTitleAction" class="getWebsiteTitleAction">
             <result name="success" type="redirectAction">GetInternalNoticeAction</result>
         </action>
@@ -164,9 +189,9 @@
         <action name="ExitAction" class="exitAction">
             <result name="success">/homepageone.jsp</result>
         </action>
-         <action name="GetStatisticsAction" class="getStatisticsAction">
-             <result name="success">/detailstatistics.jsp</result>
-         </action>
+        <action name="GetStatisticsAction" class="getStatisticsAction">
+            <result name="success">/detailstatistics.jsp</result>
+        </action>
         <action name="LinkAction" class="linkAction">
             <result name="success">/addmessagesuccess.jsp</result>
             <result name="deleteone">/deletemessagesuccess.jsp</result>
