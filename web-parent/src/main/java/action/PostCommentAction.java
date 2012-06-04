@@ -120,7 +120,7 @@ public class PostCommentAction extends ActionSupport {
             commentEntityService.saveCommentEntity(commentEntity);
 //            activityService.saveActivity(activity);
 
-            return SUCCESS;
+            return "blog";
         } else if (this.type.equals("file")) {
             File file = fileService.getFileById(Integer.parseInt(objectId));
             CommentEntity commentEntity = new CommentEntity();
@@ -135,10 +135,11 @@ public class PostCommentAction extends ActionSupport {
             activity.setSiteUser(siteUser);
             activity.setCommentEntity(commentEntity);
             activity.setActivityOccurTime(new Timestamp(new Date().getTime()));
+            activity.setAction("发表评论");
 
             commentEntity.setActivity(activity);
             commentEntityService.saveCommentEntity(commentEntity);
-            return SUCCESS;
+            return "file";
         }
         return INPUT;
     }

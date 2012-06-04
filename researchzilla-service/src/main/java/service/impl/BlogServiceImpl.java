@@ -47,4 +47,9 @@ public class BlogServiceImpl implements BlogService {
     public void deleteBlogById(int id) {
         this.blogDao.deleteBlogById(id);
     }
+
+    @Override
+    public List searchBlogByTag(String tag) {
+        return this.blogDao.searchBlogByTag(tag);
+    }
 }

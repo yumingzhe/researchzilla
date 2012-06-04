@@ -20,4 +20,6 @@ public interface BlogService {
     public void updateBlog(Blog blog);
 
     public void deleteBlogById(int id);
+
+    public List searchBlogByTag(String tag);
 }

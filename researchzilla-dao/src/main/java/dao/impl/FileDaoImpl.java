@@ -58,4 +58,21 @@ public class FileDaoImpl implements FileDao {
         });
         return files.get(0);
     }
+
+    @Override
+    public List getUserAllFilesByUID(final int uid) {
+        return this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from File  as f  where f.siteUser.id= :uid").setInteger("uid", uid);
+                return query.list();
+            }
+        });
+    }
+
+    @Override
+    public void deleteFile(pojo.File file) {
+        this.getTemplate().delete(file);
+    }
+
 }

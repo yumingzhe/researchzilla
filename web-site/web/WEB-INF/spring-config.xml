@@ -85,11 +85,17 @@
         <property name="siteUserService" ref="siteUserService"/>
     </bean>
 
+    <!--Blog Bean group-->
     <bean id="getSpecifiedBlog" class="action.GetSpecifiedBlogAction" scope="prototype">
         <property name="blogService" ref="blogService"/>
     </bean>
-
-    <bean id="getUserAllBlogs" class="action.GetUserAllBlogs">
+    <bean id="getUserAllBlogs" class="action.GetUserAllBlogs" scope="prototype">
+        <property name="blogService" ref="blogService"/>
+    </bean>
+    <bean id="updateBlogAction" class="action.UpdateBlogAction" scope="prototype">
+        <property name="blogService" ref="blogService"/>
+    </bean>
+    <bean id="searchBlogByTag" class="action.SearchBlogByTag">
         <property name="blogService" ref="blogService"/>
     </bean>
 
@@ -143,7 +149,6 @@
     <bean id="getNewsAction" class="action.GetNewsAction">
         <property name="messageService" ref="messageService"/>
     </bean>
-
 
 
     <!--PictureNews Bean group-->
