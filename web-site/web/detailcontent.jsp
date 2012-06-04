@@ -47,7 +47,7 @@
             </tr>
             <table align="right">
                 <tr>
-                    <td><a href="managepage.jsp">返回后台管理页面</a></td>
+                    <td><a href="homepageone.jsp">返回首页</a></td>
                 </tr>
             </table>
         </table>

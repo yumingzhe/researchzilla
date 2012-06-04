@@ -49,9 +49,7 @@
         </table>
         <div align="right" ><a href="index.jsp">首页</a></div>
     </div>
-    <div class="STYLE2" ></div>
     <div id="mainContent_1">
-        <div class="STYLE2" ></div>
         <div id="sidebar_1">
             <div id="left">
                 <%if((session.getAttribute("user")) != null){%>
@@ -63,11 +61,14 @@
                 <div id="bar5" align="center" class="STYLE1"><a href="http://localhost:8080/GetAccomplishmentAction!getSomeResult.action">成果聚焦</a></div>
             </div>
         </div>
-        <div  id="content_2">详细内容分条显示框
+        <div  id="content_2"  class="STYLE1">
             <%
                 int intPageCount;  //总页数
                 int intPage;       //待显示页码
                 if(request.getAttribute("someinternalnotices")!=null&&(session.getAttribute("user")) != null){ %>
+                <p>&nbsp;</p>
+                内部通知
+                <p>&nbsp;</p>
                 <table width="578"  border="2" bordercolor="#00CCFF" class="STYLE1">
                  <%   List<Message> internalnotices= (List<Message>) request.getAttribute("someinternalnotices");
                     intPage=  (Integer)(request.getAttribute("currentpage"));
@@ -102,6 +103,9 @@
                 <%}%>
              </table>
             <%}else if(request.getAttribute("somepublicnotices")!=null){%>
+            <p>&nbsp;</p>
+            最新公告
+            <p>&nbsp;</p>
                 <table width="578"  border="2" bordercolor="#00CCFF" class="STYLE1">
             <%   List<Message> publicnotices= (List<Message>) request.getAttribute("somepublicnotices");
                 intPage=  (Integer)(request.getAttribute("currentpage"));
@@ -137,6 +141,9 @@
                 <%}%>
             </table>
                 <%}else if(request.getAttribute("somenewses")!=null){ %>
+            <p>&nbsp;</p>
+            新闻快讯
+            <p>&nbsp;</p>
                     <table width="578"  border="2" bordercolor="#00CCFF" class="STYLE1">
             <%   List<Message> newses= (List<Message>) request.getAttribute("somenewses");
                 intPage=  (Integer)(request.getAttribute("currentpage"));
@@ -172,6 +179,9 @@
                 <%}%>
             </table>
                 <%}else if(request.getAttribute("somepicturenewses")!=null){ %>
+            <p>&nbsp;</p>
+            图片新闻
+            <p>&nbsp;</p>
                     <table width="578"  border="2" bordercolor="#00CCFF" class="STYLE1">
             <%   List<PictureNews> picturenewses= (List<PictureNews>) request.getAttribute("somepicturenewses");
                 intPage=  (Integer)(request.getAttribute("currentpage"));
@@ -207,6 +217,9 @@
                 <%}%>
             </table>
                 <%}else if(request.getAttribute("someaccomplishments")!=null){ %>
+            <p>&nbsp;</p>
+            成果聚焦
+            <p>&nbsp;</p>
                     <table width="578"  border="2" bordercolor="#00CCFF" class="STYLE1">
             <%   List<PictureNews> accomplishments= (List<PictureNews>) request.getAttribute("someaccomplishments");
                 intPage=  (Integer)(request.getAttribute("currentpage"));
