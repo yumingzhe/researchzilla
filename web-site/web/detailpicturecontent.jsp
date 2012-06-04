@@ -79,7 +79,7 @@
                 <td align="center"><img src="<%=((PictureNews)request.getAttribute("onepicturenews")).getPath()%>" alt="images"/></td>
             </tr>
             <tr>
-                <td align="center"><%=((PictureNews)request.getAttribute("onepicturenews")).getContent()%> </td>
+                <td align="center"  height="200"><%=((PictureNews)request.getAttribute("onepicturenews")).getContent()%> </td>
             </tr>
 
             <%}else if(request.getAttribute("oneaccomplishment")!=null){%>
@@ -93,7 +93,7 @@
                 <td  align="center"><img src="<%=((PictureNews)request.getAttribute("oneaccomplishment")).getPath()%>" alt="images"/></td>
             </tr>
             <tr>
-                <td align="center"><%=((PictureNews)request.getAttribute("oneaccomplishment")).getContent()%></td>
+                <td align="center"  height="200"><%=((PictureNews)request.getAttribute("oneaccomplishment")).getContent()%></td>
             </tr>
             <%}else if(request.getAttribute("onepicturemessage")!=null) {%>
             <tr>
@@ -106,7 +106,7 @@
                 <td align="center"><img src="<%=((PictureNews)request.getAttribute("onepicturemessage")).getPath()%>" alt="images"/></td>
             </tr>
             <tr>
-                <td align="center"><%=((PictureNews)request.getAttribute("onepicturemessage")).getContent()%></td>
+                <td align="center"  height="200"><%=((PictureNews)request.getAttribute("onepicturemessage")).getContent()%></td>
             </tr>
              <%}%>
 

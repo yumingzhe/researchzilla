@@ -77,7 +77,7 @@
                 </td>
             </tr>
             <tr>
-                <td align="center"><%=((Message)request.getAttribute("oneinternalnotice")).getContent()%></td>
+                <td align="center"  height="300"><%=((Message)request.getAttribute("oneinternalnotice")).getContent()%></td>
             </tr>
             <%--<tr>
                 <td><%=((Message)request.getAttribute("oneinternalnotice")).getAccesory()%></td>
@@ -90,7 +90,7 @@
                 </td>
             </tr>
             <tr>
-                <td ><%=((Message)request.getAttribute("onepublicnotice")).getContent()%></td>
+                <td  height="300"><%=((Message)request.getAttribute("onepublicnotice")).getContent()%></td>
             </tr>
            <%-- <tr>
                 <td ><%=((Message)request.getAttribute("onepublicnotice")).getAccesory()%></td>
@@ -103,7 +103,7 @@
                 </td>
             </tr>
             <tr>
-                <td align="center"><%=((Message)request.getAttribute("onenews")).getContent()%></td>
+                <td align="center"  height="300"><%=((Message)request.getAttribute("onenews")).getContent()%></td>
             </tr>
 
             <%}else if(request.getAttribute("onemessage")!=null){%>
@@ -114,7 +114,7 @@
                 </td>
             </tr>
             <tr>
-                <td align="center"><%=((Message)request.getAttribute("onemessage")).getContent()%></td>
+                <td align="center"  height="300"><%=((Message)request.getAttribute("onemessage")).getContent()%></td>
             </tr>
             <%--<tr>
                 <td ><%=((Message)request.getAttribute("onemessage")).getAccesory()%></td>

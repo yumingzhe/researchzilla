@@ -51,6 +51,7 @@
     </div>
     <div class="STYLE2" ></div>
     <div id="mainContent_1">
+        <div class="STYLE2" ></div>
         <div id="sidebar_1">
             <div id="left">
                 <%if((session.getAttribute("user")) != null){%>
