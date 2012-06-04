@@ -228,7 +228,7 @@ public class MessageAction extends ActionSupport {
         if(currentPage==0){
             currentPage=1;
         }
-        pageSize=5;
+        pageSize=6;
         List list=messageService.getMessage( pageSize,currentPage);
         totalPage=messageService.getMessageTotalPage(pageSize);
 
@@ -252,7 +252,7 @@ public class MessageAction extends ActionSupport {
         if(currentPage==0){
             currentPage=1;
         }
-        pageSize=5;
+        pageSize=6;
         List list=pictureNewsService.getPictureMessage( pageSize,currentPage);
         totalPage=pictureNewsService.getPictureMessageTotalPage(pageSize);
         request.setAttribute("somepicturemessages",list);
@@ -285,7 +285,7 @@ public class MessageAction extends ActionSupport {
         request.setCharacterEncoding("utf-8");
         int id=Integer.parseInt(messageid);
         messageService.deleteMessageById(id);
-;       return "successdelete";
+        return "successdelete";
     }
 
     public String deleteOnePictureMessage() throws Exception{

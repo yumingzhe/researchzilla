@@ -37,7 +37,10 @@
             <tr>
                 <td width="640" height="191">&nbsp;</td>
                 <td width="255" class="STYLE3"><p>&nbsp;</p>
-                    <p align="center"><%=session.getAttribute("websitename")%></p> </td>
+                    <%if(session.getAttribute("websitename")!=null){%>
+                    <p align="center"><%=session.getAttribute("websitename")%></p>
+                    <%}%>
+                </td>
             </tr>
             <table align="right">
                 <tr>
@@ -48,7 +51,7 @@
     </div>
     <div id="mainContent_2">
         <p>&nbsp;</p>
-        <table width="396" height="30" border="0" align="center" class="STYLE1">
+        <table width="396" height="30" border="2" bordercolor="#00CCFF" align="center" class="STYLE1">
             <tr>
                 <%if(request.getAttribute("onefeedback")!=null){%>
                 <td class="STYLE1"><%=((Feedback)request.getAttribute("onefeedback")).getFeedbacktopic()%></td>
@@ -56,15 +59,15 @@
             </tr>
         </table>
 
-        <table width="700" height="463" border="0" align="center">
+        <table  width="500" border="2" bordercolor="#00CCFF" align="center">
             <%if(request.getAttribute("onefeedback")!=null){%>
             <tr>
-                <td >作者：<%=((Feedback)request.getAttribute("onefeedback")).getFeedbackauthor()%>
+                <td height="30">作者：<%=((Feedback)request.getAttribute("onefeedback")).getFeedbackauthor()%>
                     发布时间：<%=((Feedback)request.getAttribute("onefeedback")).getPublishtime()%>
                 </td>
             </tr>
             <tr>
-                <td><%=((Feedback)request.getAttribute("onefeedback")).getFeedbackcontent()%></td>
+                <td height="100"><%=((Feedback)request.getAttribute("onefeedback")).getFeedbackcontent()%></td>
             </tr>
             <%}else{}%>
         </table>

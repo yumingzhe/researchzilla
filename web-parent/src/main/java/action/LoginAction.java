@@ -58,16 +58,24 @@ public class LoginAction extends ActionSupport {
 
     public void validate() {
        if (this.username == null)
-            this.addFieldError(username, "you must enter username");
-        if (this.password == null)
+            this.addFieldError(username, "you must set a username");
+       if (this.password == null)
             this.addFieldError(password, "you must set a password");
     }
 
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession actionSession = request.getSession();
+        HttpSession session = request.getSession();
         request.setCharacterEncoding("utf-8");
+        WebsiteMessage  websiteMessage=websiteMessageService.getWebsiteMessage();
+        ActionContext context = ActionContext.getContext();
+        Map application = (Map) context.getApplication();
 
+        int count=websiteMessage.getVisits();
+        count=count+1;
+        session.setAttribute("visits", count);
+        websiteMessage.setVisits(count);
+        websiteMessageService.updateWebsiteVisits(websiteMessage);
 
         SiteUser userone = siteUserService.getSiteUserByInstituteId(this.username);
         SiteUser usertwo = siteUserService.getSiteUserByEmail(this.username);
@@ -78,7 +86,7 @@ public class LoginAction extends ActionSupport {
                 if (banned == false) {
                     String passwordstring = MD5Util.hashString(this.password + userone.getSalt());
                     if (this.username.equals(userone.getInstituteId()) && passwordstring.equals(userone.getPassword())) {
-                        actionSession.setAttribute("user", userone);
+                        session.setAttribute("user", userone);
                         return SUCCESS;
                     }
                 }
@@ -91,7 +99,7 @@ public class LoginAction extends ActionSupport {
                     String passwordstring = MD5Util.hashString(this.password + usertwo.getSalt());
                     System.out.println(passwordstring);
                     if (this.username.equals(usertwo.getEmail()) && passwordstring.equals(usertwo.getPassword())) {
-                        actionSession.setAttribute("user", usertwo);
+                        session.setAttribute("user", usertwo);
                         return SUCCESS;
                     }
                 }

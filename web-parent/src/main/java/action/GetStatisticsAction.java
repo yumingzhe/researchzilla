@@ -2,12 +2,14 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
-import pojo.SiteUser;
+import pojo.WebsiteMessage;
 import service.MessageService;
 import service.PictureNewsService;
 import service.SiteUserService;
+import service.WebsiteMessageService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * User: wangyan
@@ -21,6 +23,8 @@ public class GetStatisticsAction extends ActionSupport {
     private MessageService messageService;
 
     private PictureNewsService pictureNewsService;
+
+    private WebsiteMessageService websiteMessageService;
 
     public SiteUserService getSiteUserService() {
         return siteUserService;
@@ -46,16 +50,27 @@ public class GetStatisticsAction extends ActionSupport {
         this.pictureNewsService = pictureNewsService;
     }
 
+    public WebsiteMessageService getWebsiteMessageService() {
+        return websiteMessageService;
+    }
+
+    public void setWebsiteMessageService(WebsiteMessageService websiteMessageService) {
+        this.websiteMessageService = websiteMessageService;
+    }
+
     @Override
     public String execute() throws Exception {
         HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
         int usercount=siteUserService.getSiteUserTotalCount();
+        int visits=(Integer)session.getAttribute("visits");
         int internalnoticecount=messageService.getInternalNoticeTotalCount();
         int publicnoticecount=messageService.getPublicNoticeTotalCount();
         int newscount=messageService.getNewsTotalCount();
         int picturenewscount=pictureNewsService.getPictureMessageTotalCount();
         int accomplishmentcount=pictureNewsService.getAccomplishmentTotalCount();
         request.setAttribute("usercount",usercount);
+        request.setAttribute("visits",visits);
         request.setAttribute("internalnoticecount",internalnoticecount);
         request.setAttribute("publicnoticecount",publicnoticecount);
         request.setAttribute("newscount",newscount);

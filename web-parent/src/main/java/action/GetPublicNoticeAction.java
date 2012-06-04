@@ -114,7 +114,7 @@ public class GetPublicNoticeAction extends ActionSupport {
         if(currentPage==0){
             currentPage=1;
         }
-        pageSize=5;
+        pageSize=6;
         List list=messageService.getPublicNotice( pageSize,currentPage);
         totalPage=messageService.getPublicNoticeTotalPage(pageSize);
         request.setAttribute("somepublicnotices",list);

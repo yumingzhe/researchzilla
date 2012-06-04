@@ -54,7 +54,10 @@ public class LinkAction extends ActionSupport {
 
     @Override
     public void validate() {
-        super.validate();    //To change body of overridden methods use File | Settings | File Templates.
+        if (this.title == null)
+            this.addFieldError(title, "you must set a title");
+        if (this.url == null)
+            this.addFieldError(url, "you must set a url");
     }
 
     @Override

@@ -32,18 +32,8 @@ public class GetVisitsAction extends ActionSupport {
         HttpSession session = request.getSession();
         request.setCharacterEncoding("utf-8");
         WebsiteMessage  websiteMessage=websiteMessageService.getWebsiteMessage();
-        ActionContext context = ActionContext.getContext();
-        Map application = (Map) context.getApplication();
 
-        int count=websiteMessage.getVisits();
-        count=count+1;
-        application.put("count", count);
-        websiteMessage.setVisits(count);
-        System.out.println(count);
-        websiteMessageService.updateWebsiteVisits(websiteMessage);
-
-        int visits=websiteMessage.getVisits(0);
-
+        int visits=websiteMessage.getVisits();
         session.setAttribute("visits",visits);
 
         return SUCCESS;

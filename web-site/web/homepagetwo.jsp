@@ -11,7 +11,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title><%=session.getAttribute("websitename")%></title>
+    <title><%if(session.getAttribute("websitename")!=null){%>
+        <%=session.getAttribute("websitename")%>
+        <%}%></title>
     <style type="text/css">
         <!--
         .STYLE1 {font-size: 24px}
@@ -23,10 +25,17 @@
             font-size: 30px;
             font-weight: bold;
         }
-
         -->
     </style>
     <link href="layout.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        <!--
+        .STYLE2 {
+            font-size: 24px;
+            background-image: url("img/menu.jpg");
+        }
+        -->
+    </style>
 </head>
 <body>
 <div id="container_1">
@@ -38,12 +47,16 @@
                     <p align="center"><%=session.getAttribute("websitename")%></p></td>
             </tr>
         </table>
-        <div align="right" ><a href="homepageone.jsp">返回网站页面</a></div>
+        <div align="right" ><a href="index.jsp">首页</a></div>
     </div>
+    <div class="STYLE2" ></div>
     <div id="mainContent_1">
+        <div class="STYLE2" ></div>
         <div id="sidebar_1">
             <div id="left">
+                <%if((session.getAttribute("user")) != null){%>
                 <div id="bar1" align="center" class="STYLE1"><a href="http://localhost:8080/GetInternalNoticeAction!getSomeResult.action">内部通知</a></div>
+                <%}%>
                 <div id="bar2" align="center" class="STYLE1"><a href="http://localhost:8080/GetPublicNoticeAction!getSomeResult.action">最新公告</a></div>
                 <div id="bar3" align="center" class="STYLE1"><a href="http://localhost:8080/GetPictureNewsAction!getSomeResult.action">图片新闻</a></div>
                 <div id="bar4" align="center" class="STYLE1"><a href="http://localhost:8080/GetNewsAction!getSomeResult.action">新闻快讯</a></div>
@@ -54,8 +67,8 @@
             <%
                 int intPageCount;  //总页数
                 int intPage;       //待显示页码
-                if(request.getAttribute("someinternalnotices")!=null){ %>
-                <table width="578" height="423" border="0">
+                if(request.getAttribute("someinternalnotices")!=null&&(session.getAttribute("user")) != null){ %>
+                <table width="578"  border="2" bordercolor="#00CCFF" class="STYLE1">
                  <%   List<Message> internalnotices= (List<Message>) request.getAttribute("someinternalnotices");
                     intPage=  (Integer)(request.getAttribute("currentpage"));
                     if(intPage==1){
@@ -68,7 +81,7 @@
                     for (int i= 0; i< internalnotices.size(); i++) {
                 %>
                 <tr>
-                    <td>
+                    <td height="50">
                         <a href="http://localhost:8080/GetInternalNoticeAction!getOneResult.action?internalnoticeid=<%=internalnotices.get(i).getId()%>"><%= internalnotices.get(i).getTopic()%>
                         </a>
                     </td>
@@ -89,7 +102,7 @@
                 <%}%>
              </table>
             <%}else if(request.getAttribute("somepublicnotices")!=null){%>
-                <table width="578" height="423" border="0">
+                <table width="578"  border="2" bordercolor="#00CCFF" class="STYLE1">
             <%   List<Message> publicnotices= (List<Message>) request.getAttribute("somepublicnotices");
                 intPage=  (Integer)(request.getAttribute("currentpage"));
                 if(intPage==1){
@@ -103,7 +116,7 @@
                 for (int i= 0; i< publicnotices.size(); i++) {
             %>
             <tr>
-                <td>
+                <td height="50">
                     <a href="http://localhost:8080/GetPublicNoticeAction!getOneResult.action?publicnoticeid=<%=publicnotices.get(i).getId()%>"><%= publicnotices.get(i).getTopic()%>
                     </a>
                 </td>
@@ -124,7 +137,7 @@
                 <%}%>
             </table>
                 <%}else if(request.getAttribute("somenewses")!=null){ %>
-                    <table width="578" height="423" border="0">
+                    <table width="578"  border="2" bordercolor="#00CCFF" class="STYLE1">
             <%   List<Message> newses= (List<Message>) request.getAttribute("somenewses");
                 intPage=  (Integer)(request.getAttribute("currentpage"));
                 if(intPage==1){
@@ -138,7 +151,7 @@
                 for (int i= 0; i< newses.size(); i++) {
             %>
             <tr>
-                <td>
+                <td height="50">
                     <a href="http://localhost:8080/GetInternalNoticeAction!getOneResult.action?internalnoticeid=<%=newses.get(i).getId()%>"><%= newses.get(i).getTopic()%>
                     </a>
                 </td>
@@ -159,7 +172,7 @@
                 <%}%>
             </table>
                 <%}else if(request.getAttribute("somepicturenewses")!=null){ %>
-                    <table width="578" height="423" border="0">
+                    <table width="578"  border="2" bordercolor="#00CCFF" class="STYLE1">
             <%   List<PictureNews> picturenewses= (List<PictureNews>) request.getAttribute("somepicturenewses");
                 intPage=  (Integer)(request.getAttribute("currentpage"));
                 if(intPage==1){
@@ -173,7 +186,7 @@
                 for (int i= 0; i< picturenewses.size(); i++) {
             %>
             <tr>
-                <td>
+                <td height="50">
                     <a href="http://localhost:8080/GetPictureNewsAction!getOneResult.action?picturenewsid=<%=picturenewses.get(i).getId()%>"><%= picturenewses.get(i).getTopic()%>
                     </a>
                 </td>
@@ -194,7 +207,7 @@
                 <%}%>
             </table>
                 <%}else if(request.getAttribute("someaccomplishments")!=null){ %>
-                    <table width="578" height="423" border="0">
+                    <table width="578"  border="2" bordercolor="#00CCFF" class="STYLE1">
             <%   List<PictureNews> accomplishments= (List<PictureNews>) request.getAttribute("someaccomplishments");
                 intPage=  (Integer)(request.getAttribute("currentpage"));
                 if(intPage==1){
@@ -208,7 +221,7 @@
                 for (int i= 0; i< accomplishments.size(); i++) {
             %>
             <tr>
-                <td>
+                <td height="50">
                     <a href="http://localhost:8080/GetAccomplishmentAction!getOneResult.action?accomplishmentid=<%=accomplishments.get(i).getId()%>"><%= accomplishments.get(i).getTopic()%>
                     </a>
                 </td>
@@ -237,7 +250,13 @@
             <p>维护邮箱：
                 <%=session.getAttribute("maintenanceaddress")%>
             </p>
-            <p><a href="feedback.jsp">用户反馈</a></p>
+            <p>
+                <%if(session.getAttribute("user")!=null){%>
+                <a href="feedback.jsp">用户反馈</a>
+                <%}else{%>
+                用户反馈
+                <%}%>
+            </p>
         </div>
     </div>
 </div>

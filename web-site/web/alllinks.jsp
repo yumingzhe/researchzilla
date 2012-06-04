@@ -17,6 +17,8 @@
         .STYLE1 {
             font-size: 18px;
             font-weight: bold;
+            background-image: url("img/menu.jpg");
+            height: 10px;
         }
         -->
     </style>
@@ -37,7 +39,9 @@
             <tr>
                 <td width="640" height="191">&nbsp;</td>
                 <td width="25518" class="STYLE2"><p>&nbsp;</p>
+                    <%if(session.getAttribute("websitename")!=null){%>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
+                    <%}%>
                     <p align="center">&nbsp;</p>
                 </td>
             </tr>
@@ -48,34 +52,35 @@
             </table>
         </table>
     </div>
+    <div class="STYLE1"></div>
     <div id="mainContent_2">
         <p align="center" class="STYLE2 ">网站链接信息总览</p>
-
+        <p>&nbsp;</p>
         <%
             if(request.getAttribute("alllinks")!=null){ %>
-        <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
+        <table  height="350"border="0" align="center" >
+            <table  border="2" align="center" bordercolor="#00CCFF">
             <%    List<Link> links= (List<Link>) request.getAttribute("alllinks");%>
             <tr>
-                <td class="STYLE1" height="50">序号</td>
-                <td class="STYLE1" height="50">网站标题</td>
-                <td class="STYLE1" height="50">网址</td>
-                <td class="STYLE1" height="50">操作</td>
+                <td class="STYLE1" >序号</td>
+                <td class="STYLE1" >网站标题</td>
+                <td class="STYLE1" >网址</td>
+                <td class="STYLE1" >操作</td>
             </tr>
             <%    for (int i = 0; i < links.size(); i++) {
             %>
-            <tr>
-                <td> <%=links.get(i).getId()%>
+            <tr height="50">
+                <td height="50"> <%=links.get(i).getId()%>
                 </td>
-                <td><a href="http://localhost:8080/LinkAction!deleteonelink.action?linkid=<%=links.get(i).getId()%>"><%= links.get(i).getWebsitename()%>
+                <td height="50"><a href="http://localhost:8080/LinkAction!deleteonelink.action?linkid=<%=links.get(i).getId()%>"><%= links.get(i).getWebsitename()%>
                 </td>
-                <td><%= links.get(i).getWebsiteurl()%>
+                <td height="50"><%= links.get(i).getWebsiteurl()%>
                 </td>
-                <td><a href="http://localhost:8080/LinkAction!deleteonelink.action?linkid=<%=links.get(i).getId()%>">删除</a>
+                <td height="50"><a href="http://localhost:8080/LinkAction!deleteonelink.action?linkid=<%=links.get(i).getId()%>">删除</a>
                 </td>
             </tr>
             <%}%>
-        </table>
-
+            </table>
         </table>
         <%}else{%>
         <tr class="STYLE1">

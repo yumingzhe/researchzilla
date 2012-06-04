@@ -110,7 +110,7 @@ public class GetAccomplishmentAction extends ActionSupport {
         if(currentPage==0){
             currentPage=1;
         }
-        pageSize=5;
+        pageSize=6;
         List list=pictureNewsService.getAccomplishment( pageSize,currentPage);
         totalPage=pictureNewsService.getAccomplishmentTotalPage(pageSize);
 

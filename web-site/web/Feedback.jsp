@@ -41,7 +41,9 @@
             <tr>
                 <td width="640" height="191">&nbsp;</td>
                 <td width="255" class="STYLE3"><p>&nbsp;</p>
+                        <%if(session.getAttribute("websitename")!=null){%>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
+                        <%}%>
                     <p align="center">&nbsp;</p>
                         <%if(( session.getAttribute("user"))!=null){%>
                     <p align="center"><%=((SiteUser) session.getAttribute("user")).getUsername()%> 欢迎您登录本网站！</p>

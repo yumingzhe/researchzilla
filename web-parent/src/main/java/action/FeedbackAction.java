@@ -29,7 +29,6 @@ public class FeedbackAction extends ActionSupport{
     private int totalCount;//信息总数
     private int totalPage;//页面总数
     private FeedbackService feedbackService;
-
     public String getTitle() {
         return title;
     }
@@ -121,13 +120,11 @@ public class FeedbackAction extends ActionSupport{
         request.setCharacterEncoding("utf-8");
         List list = feedbackService.getAllFeedback();
         request.setAttribute("feedbacks", list);
-
         return "acquireall";
     }
     public String getsomefeedbacks()throws Exception{
         HttpServletRequest request=ServletActionContext.getRequest();
         String pageString=request.getParameter("pagenumber");
-        System.out.println("pagenumber"+pageString);
         if(pageString==null||pageString.length()==0){
             pageString="1";
         }
@@ -140,9 +137,10 @@ public class FeedbackAction extends ActionSupport{
         if(currentPage==0){
             currentPage=1;
         }
-        pageSize=5;
+        pageSize=6;
         List list=feedbackService.getFeedback( pageSize,currentPage);
         totalPage=feedbackService.getFeedbackTotalPage(pageSize);
+
         request.setAttribute("somefeedbacks",list);
         request.setAttribute("totalpage",totalPage);
         request.setAttribute("currentpage",currentPage);

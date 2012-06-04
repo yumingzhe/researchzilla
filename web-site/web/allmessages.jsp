@@ -16,6 +16,8 @@
         .STYLE1 {
             font-size: 18px;
             font-weight: bold;
+            background-image: url("img/menu.jpg");
+            height: 10px;
         }
         -->
     </style>
@@ -35,8 +37,10 @@
         <table width="900" height="195" border="0">
             <tr>
                 <td width="640" height="191">&nbsp;</td>
-                <td width="25518" class="STYLE2"><p>&nbsp;</p>
+                <td width="25518" class="STYLE2">
+                    <%if(session.getAttribute("websitename")!=null){%>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
+                    <%}%>
                     <p align="center">&nbsp;</p>
                 </td>
             </tr>
@@ -47,13 +51,15 @@
             </table>
         </table>
     </div>
+    <div class="STYLE1"></div>
     <div id="mainContent_2">
         <p align="center" class="STYLE2 ">网站纯文本信息总览</p>
-
+        <p>&nbsp;</p>
             <%   int intPageCount;  //总页数
                 int intPage;       //待显示页码
                 if(request.getAttribute("somemessages")!=null){ %>
-                    <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
+                <table height="350" border="0" align="center" >
+                    <table  border="2" align="center" bordercolor="#00CCFF">
               <%    List<Message> messages= (List<Message>) request.getAttribute("somemessages");
                     intPage=  (Integer)(request.getAttribute("currentpage"));
                     if(intPage==1){
@@ -64,26 +70,27 @@
                     intPageCount=(Integer)(request.getAttribute("totalpage"));
                     if(intPage>intPageCount) intPage=intPageCount;%>
             <tr>
-                <td class="STYLE1" height="50">序号</td>
-                <td class="STYLE1" height="50">类型</td>
-                <td class="STYLE1" height="50">标题</td>
-                <td class="STYLE1" height="50">作者</td>
-                <td class="STYLE1" height="50">发布时间</td>
+                <td class="STYLE1" >序号</td>
+                <td class="STYLE1" >类型</td>
+                <td class="STYLE1" >标题</td>
+                <td class="STYLE1" >作者</td>
+                <td class="STYLE1" >发布时间</td>
+                <td class="STYLE1" >操作</td>
             </tr>
             <%    for (int i = 0; i < messages.size(); i++) {
             %>
-            <tr>
-                <td> <%=messages.get(i).getId()%>
+            <tr height="50">
+                <td height="50"> <%=messages.get(i).getId()%>
+                </td >
+                <td height="50"> <%=messages.get(i).getType()%>
                 </td>
-                <td> <%=messages.get(i).getType()%>
+                <td height="50"><a href="http://localhost:8080/MessageAction!getOneMessage.action?messageid=<%=messages.get(i).getId()%>"><%= messages.get(i).getTopic()%>
                 </td>
-                <td><a href="http://localhost:8080/MessageAction!getOneMessage.action?messageid=<%=messages.get(i).getId()%>"><%= messages.get(i).getTopic()%>
+                <td height="50"><%= messages.get(i).getAuthor()%>
                 </td>
-                <td><%= messages.get(i).getAuthor()%>
+                <td height="50"> <%=messages.get(i).getPublishtime()%>
                 </td>
-                <td> <%=messages.get(i).getPublishtime()%>
-                </td>
-                <td><a href="http://localhost:8080/MessageAction!deleteOneMessage.action?messageid=<%=messages.get(i).getId()%>">删除</a>
+                <td height="50"><a href="http://localhost:8080/MessageAction!deleteOneMessage.action?messageid=<%=messages.get(i).getId()%>">删除</a>
                 </td>
             </tr>
             <%}%>
@@ -100,7 +107,7 @@
                 <% }else {%>
                 下一页
                 <%}%>
-
+            </table>
             </table>
             <%}else{%>
             <tr class="STYLE1">

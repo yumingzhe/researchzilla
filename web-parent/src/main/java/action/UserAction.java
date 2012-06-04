@@ -109,7 +109,7 @@ public class UserAction extends ActionSupport {
         if(currentPage==0){
             currentPage=1;
         }
-        pageSize=5;
+        pageSize=10;
         List list=siteUserService.getSomeSiteUser( pageSize,currentPage);
         totalPage=siteUserService.getSiteUserTotalPage(pageSize);
         //    System.out.println("totalpage"+totalPage);

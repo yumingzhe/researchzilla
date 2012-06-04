@@ -5,9 +5,5 @@
     <title></title>
 </head>
 <body>
-
-<s:actionerror/>
-<s:actionmessage/>
-
 </body>
 </html>

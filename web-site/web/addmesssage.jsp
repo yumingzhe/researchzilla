@@ -15,6 +15,7 @@
             font-size: 36px;
             font-weight: bold;
         }
+        .STYLE2 {font-size: 18px; font-weight: bold;background-image: url("img/menu.jpg"); }
         .STYLE3 {font-size: 18px; font-weight: bold; }
         -->
     </style>
@@ -24,6 +25,7 @@
     <div id="header_2">
         <div align="center" class="STYLE1">添加图片消息界面</div>
     </div>
+    <div class="STYLE2" height="30"></div>
     <div id="mainContent_2">
         <form id="addmessageform" name="addmessageform" method="post"  enctype="multipart/form-data" action="doaddmessage.jsp">
             <table width="623" height="406" border="0" align="center">

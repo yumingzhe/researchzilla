@@ -17,7 +17,16 @@
             font-size: 36px;
             font-weight: bold;
         }
-        .STYLE2 {font-size: 16px}
+        -->
+    </style>
+    <style type="text/css">
+        <!--
+        .STYLE2 {
+            font-size: 20px;
+            font-weight: bold;
+            background-image: url("img/menu.jpg");
+        }
+
         -->
     </style>
 </head>
@@ -25,8 +34,15 @@
 
 <div id="container_1">
     <div id="header_2">
-        <div align="center" class="STYLE1">后台管理</div>
+        <div align="center" class="STYLE1">
+            <%if(session.getAttribute("websitename")!=null){%>
+            <p align="center"><%=session.getAttribute("websitename")%></p>
+            <%}%>
+            后台管理
+        </div>
+        <div align="right" ><a href="managepage.jsp">返回后台管理页面</a></div>
     </div>
+    <div align="right" class="STYLE2"></div>
     <div id="mainContent_2">
         <%request.setCharacterEncoding("gb2312");
           response.setContentType("text/html;charset=gb2312");%>
@@ -59,6 +75,12 @@
                             <option value="Chinese">Chinese</option>
                             <option value="English">English</option>
                         </select>
+                    </label></td>
+                </tr>
+                <tr>
+                    <td class="STYLE8">网站访问量：</td>
+                    <td><label>
+                        <input name="maintenanceaddress" type="text" class="STYLE8" value="<%=((WebsiteMessage)request.getAttribute("websitemessage")).getVisits()%>"/>
                     </label></td>
                 </tr>
             </table>

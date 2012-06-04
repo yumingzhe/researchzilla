@@ -15,6 +15,8 @@
         .STYLE1 {
             font-size: 18px;
             font-weight: bold;
+            background-image: url("img/menu.jpg");
+            height: 10px;
         }
         -->
     </style>
@@ -35,7 +37,9 @@
             <tr>
                 <td width="640" height="191">&nbsp;</td>
                 <td width="255" class="STYLE2"><p>&nbsp;</p>
+                    <%if(session.getAttribute("websitename")!=null){%>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
+                    <%}%>
                     <p align="center">&nbsp;</p>
                 </td>
             </tr>
@@ -48,13 +52,13 @@
     </div>
     <div id="mainContent_2">
         <p align="center" class="STYLE2 ">用户信息总览</p>
-
+        <p>&nbsp;</p>
 
             <%  int intPageCount;  //总页数
                 int intPage;       //待显示页码
 
                 if(request.getAttribute("someusers")!=null){ %>
-                <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
+                <table border="2" align="center" bordercolor="#00CCFF">
               <% List<SiteUser> siteusers= (List<SiteUser>) request.getAttribute("someusers");
                  intPage=  (Integer)(request.getAttribute("currentpage"));
                     if(intPage==1){
@@ -65,11 +69,11 @@
                     intPageCount=(Integer)(request.getAttribute("totalpage"));
                     if(intPage>intPageCount) intPage=intPageCount;%>
             <tr>
-                <td class="STYLE1" height="50">序号</td>
-                <td class="STYLE1" height="50">姓名</td>
-                <td class="STYLE1" height="50">Email</td>
-                <td class="STYLE1" height="50">学号</td>
-                <td class="STYLE1" height="50">操作</td>
+                <td class="STYLE1" height="30" >序号</td>
+                <td class="STYLE1" height="30">姓名</td>
+                <td class="STYLE1" height="30">Email</td>
+                <td class="STYLE1" height="30">学号</td>
+                <td class="STYLE1" height="30">操作</td>
             </tr>
             <%    for (int i = 0; i < siteusers.size(); i++) {
             %>

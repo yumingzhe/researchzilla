@@ -112,6 +112,7 @@
             <result name="acquiresomefeedback">/feedbackshow.jsp</result>
             <result name="acquireone">/feedbackdetail.jsp</result>
             <result name="deleteone">/deletemessagesuccess.jsp</result>
+            <result name="input">/error.jsp</result>
         </action>
 
         <action name="GetInternalNoticeAction" class="getInternalNoticeAction">
