@@ -154,12 +154,12 @@
                                     <div class="elgg-subtext">由
                                         <a href="http://localhost:8080/getUserAllActivities.action?uid=<%=file.getSiteUser().getUid()%>">
                                             <%=file.getSiteUser().getUsername()%>
-                                        </a>
+                                        </a> 上传于
                                         <acronym title="<%=file.getUploadTime()%>">
                                             <%=DateFormat.formatPeriod(file.getUploadTime().getTime(), new Date().getTime())%>
-                                        </acronym>
+                                        </acronym>前
                                         <a href="http://localhost:8080/getSpecifiedFileAction.action?fileid=<%=file.getId()%>#mycomment">
-                                            Comments
+                                            评论
                                             (<%=file.getCommentEntities().size()%>)
                                         </a>
                                     </div>

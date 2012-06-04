@@ -107,20 +107,24 @@
         <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
             <li class="elgg-menu-item-activity">
                 <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>">
-                    Activity
+                    最近活动
                 </a>
             </li>
             <li class="elgg-menu-item-blog">
                 <a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=siteUser.getUid()%>">
-                    Blogs
+                    日志
                 </a>
             </li>
             <li class="elgg-menu-item-file">
                 <a href="http://localhost:8080/getUserAllFilesAction.action?uid=<%=siteUser.getUid()%>">
-                    Files
+                    文件
                 </a>
             </li>
-            <li class="elgg-menu-item-groups"><a href="http://elgg-yumingzhe.rhcloud.com/groups/all">Groups</a></li>
+            <li class="elgg-menu-item-groups">
+                <a href="http://elgg-yumingzhe.rhcloud.com/groups/all">
+                    组
+                </a>
+            </li>
         </ul>
         <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
             <fieldset>
@@ -138,7 +142,6 @@
                     <li>
                         <a href="http://localhost:8080/getUserAllFilesAction.action?uid=<%=siteUser.getUid()%>">Files</a>
                     </li>
-                    <li><a href="http://elgg-yumingzhe.rhcloud.com/file/owner/yumingzhe">yumingzhe</a></li>
                     <li>
                         <%=file.getFileName()%>
                     </li>
@@ -158,30 +161,27 @@
                 </div>
                 <div class="elgg-content">
                     <div class="elgg-image-block clearfix">
-                        <div class="elgg-image"><a href="http://elgg-yumingzhe.rhcloud.com/file/view/82/agenda"><img
-                                src="http://elgg-yumingzhe.rhcloud.com/mod/file/graphics/icons/text.gif"
-                                alt="agenda"/></a></div>
+                        <div class="elgg-image">
+                            <a href="http://localhost:8080/getSpecifiedFileAction.action?fileid=<%=file.getId()%>">
+                                <img src="img/text.gif" alt="<%=file.getFileName()%>"/>
+                            </a>
+                        </div>
                         <div class="elgg-body">
                             <ul class="elgg-menu elgg-menu-entity elgg-menu-hz elgg-menu-entity-default">
-                                <li class="elgg-menu-item-access"><span class="elgg-access">Public</span></li>
-                                <li class="elgg-menu-item-edit">
-                                    <a href="http://elgg-yumingzhe.rhcloud.com/file/edit/82" title="Edit this">
-                                        Edit
-                                    </a>
+                                <li class="elgg-menu-item-access">
+                                    <span class="elgg-access">
+                                        <%=file.getAccess()%>
+                                    </span>
                                 </li>
                                 <li class="elgg-menu-item-delete">
-                                    <a href="http://elgg-yumingzhe.rhcloud.com/action/file"
-                                       title="Delete this" rel="Are you sure you want to delete this item?"
-                                       class="elgg-requires-confirmation">
-                                        <span
-                                                class="elgg-icon elgg-icon-delete ">
-
-                                        </span>
+                                    <a href="http://localhost:8080/deleteFileAction.action?fileid=<%=file.getId()%>&uid=<%=siteUser.getUid()%>"
+                                       title="Delete this" class="elgg-requires-confirmation">
+                                        <span class="elgg-icon elgg-icon-delete "></span>
                                     </a>
                                 </li>
                             </ul>
                             <h3>
-                                <a href="http://elgg-yumingzhe.rhcloud.com/file/view/82/agenda">
+                                <a href="http://localhost:8080/getSpecifiedFileAction.action?fileid=<%=file.getId()%>">
                                     <%=file.getFileName()%>
                                 </a>
                             </h3>
@@ -197,11 +197,11 @@
                                     Comments(<%=file.getCommentEntities().size()%>)
                                 </a>
                             </div>
-                            <div><span class="elgg-icon elgg-icon-tag "></span>
+                            <div>
+                                <span class="elgg-icon elgg-icon-tag"></span>
                                 <ul class="elgg-tags">
                                     <li>
-                                        <a href="http://elgg-yumingzhe.rhcloud.com/search?q=agenda&amp;search_type=tags"
-                                           rel="tag">
+                                        <a href="http://elgg-yumingzhe.rhcloud.com/search?q=agenda&amp;search_type=tags" rel="tag">
                                             <%=file.getTag()%>
                                         </a>
                                     </li>
