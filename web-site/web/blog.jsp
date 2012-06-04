@@ -126,22 +126,32 @@
                 Researchzilla </a>
         </h1>
         <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
-            <li class="elgg-menu-item-activity"><a
-                    href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">最近活动</a>
+            <li class="elgg-menu-item-activity">
+                <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">
+                    最近活动
+                </a>
             </li>
-            <li class="elgg-menu-item-blog"><a
-                    href="http://localhost:8080/getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">日志</a>
+            <li class="elgg-menu-item-blog">
+                <a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">
+                    日志
+                </a>
             </li>
-            <li class="elgg-menu-item-file"><a
-                    href="http://localhost:8080/showUserAllFiles.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">文件</a>
+            <li class="elgg-menu-item-file">
+                <a href="http://localhost:8080/getUserAllFilesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">
+                    文件
+                </a>
             </li>
-            <li class="elgg-menu-item-groups"><a href="http://elgg-yumingzhe.rhcloud.com/groups/all">组</a></li>
+            <li class="elgg-menu-item-groups">
+                <a href="http://elgg-yumingzhe.rhcloud.com/groups/all">
+                    组
+                </a>
+            </li>
         </ul>
         <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
             <fieldset>
                 <input type="text" class="search-input" size="21" name="q" value="Search"
-                <%--onblur="if (this.value=='') { this.value='Search' }"
-            onfocus="if (this.value=='Search') { this.value='' };"/>--%>
+                onblur="if (this.value=='') { this.value='Search' }"
+            onfocus="if (this.value=='Search') { this.value='' };"/>
                 <input type="submit" value="Go" class="search-submit-button"/>
             </fieldset>
         </form>
@@ -156,7 +166,6 @@
                 <ul class="elgg-menu elgg-breadcrumbs">
                     <li><a href="getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Blogs</a>
                     </li>
-                    <li><a href="http://elgg-yumingzhe.rhcloud.com/blog/owner/yumingzhe">yumingzhe</a></li>
                     <li><%=blog.getTitle()%>
                     </li>
                 </ul>
