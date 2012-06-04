@@ -163,7 +163,17 @@
                     <div class="elgg-image-block clearfix">
                         <div class="elgg-image">
                             <a href="http://localhost:8080/getSpecifiedFileAction.action?fileid=<%=file.getId()%>">
+                                <%
+                                    if (file.getFileType().equals("text/plain")) {
+                                %>
                                 <img src="img/text.gif" alt="<%=file.getFileName()%>"/>
+                                <%
+                                } else if (file.getFileType().equals("application/msword")) {
+                                %>
+                                <img src="img/word.gif" alt="<%=file.getFileName()%>"/>
+                                <%
+                                    }
+                                %>
                             </a>
                         </div>
                         <div class="elgg-body">
@@ -201,7 +211,8 @@
                                 <span class="elgg-icon elgg-icon-tag"></span>
                                 <ul class="elgg-tags">
                                     <li>
-                                        <a href="http://elgg-yumingzhe.rhcloud.com/search?q=agenda&amp;search_type=tags" rel="tag">
+                                        <a href="http://elgg-yumingzhe.rhcloud.com/search?q=agenda&amp;search_type=tags"
+                                           rel="tag">
                                             <%=file.getTag()%>
                                         </a>
                                     </li>

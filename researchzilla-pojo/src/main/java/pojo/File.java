@@ -13,7 +13,7 @@ public class File {
     private Integer groupId;
     private String fileName;
     private String fileType;
-    private java.io.File file;
+    private String file;
     private Integer fileIconId;
     private String description;
     private Timestamp uploadTime;
@@ -22,11 +22,11 @@ public class File {
     private String access;
     private Set<CommentEntity> commentEntities;
 
-    public java.io.File getFile() {
+    public String getFile() {
         return file;
     }
 
-    public void setFile(java.io.File file) {
+    public void setFile(String file) {
         this.file = file;
     }
 

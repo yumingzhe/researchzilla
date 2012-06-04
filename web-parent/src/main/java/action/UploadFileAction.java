@@ -6,7 +6,7 @@ import pojo.SiteUser;
 import service.FileService;
 import service.SiteUserService;
 
-import java.io.File;
+import java.io.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -171,8 +171,27 @@ public class UploadFileAction extends ActionSupport {
         fileEntity.setFileName(fileFileName);
         fileEntity.setUploadTime(new Timestamp(new Date().getTime()));
         fileEntity.setFileType(this.fileContentType);
-        fileEntity.setFile(file);
         fileEntity.setSiteUser(siteUser);
+
+        InputStream fileInputStream = new FileInputStream(file);
+        String path = ServletActionContext.getRequest().getRealPath("/uploadData");
+
+        File uploadFile = new File(path);
+        uploadFile.mkdirs();
+        uploadFile = new File(path, fileEntity.getFileName());
+
+        OutputStream outputStream = new FileOutputStream(uploadFile);
+
+        byte[] buffer = new byte[1024 * 1024];
+        int length;
+        while ((length = fileInputStream.read(buffer)) > 0) {
+            outputStream.write(buffer, 0, length);
+        }
+        fileInputStream.close();
+        outputStream.close();
+
+        fileEntity.setFile(uploadFile.getAbsolutePath());
+
         fileService.saveFile(fileEntity);
         //TODO ADD ACTIVITY
         return SUCCESS;

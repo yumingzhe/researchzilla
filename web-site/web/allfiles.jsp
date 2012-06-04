@@ -82,7 +82,7 @@
                     </a>
                 </li>
                 <li class="elgg-menu-item-blog">
-                    <a href="http://localhost:8080/getSpecifiedBlogAction.action?uid=<%=siteUser.getUid()%>">日志</a></li>
+                    <a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=siteUser.getUid()%>">日志</a></li>
                 <li class="elgg-menu-item-file elgg-state-selected">
                     <a href="http://localhost:8080/getUserAllFilesAction.action?uid=<%=siteUser.getUid()%>">
                         文件
@@ -127,11 +127,24 @@
                         <li id="elgg-object-82" class="elgg-item">
                             <div class="elgg-image-block clearfix">
                                 <div class="elgg-image">
-                                    <a href="http://elgg-yumingzhe.rhcloud.com/file/view/82/agenda">
+                                    <a href="http://localhost:8080/getSpecifiedFileAction.action?fileid=<%=file.getId()%>">
+                                        <%
+                                            if (file.getFileType().equals("text/plain")) {
+                                        %>
                                         <img
-                                                src="http://elgg-yumingzhe.rhcloud.com/mod/file/graphics/icons/text.gif"
-                                                alt="agenda"/>
+                                                src="img/text.gif"
+                                                alt="<%=file.getFileName()%>"/>
+                                        <%
+                                        } else if (file.getFileType().equals("application/msword")) {
+                                        %>
+                                        <img
+                                                src="img/word.gif"
+                                                alt="<%=file.getFileName()%>"/>
+                                        <%
+                                            }
+                                        %>
                                     </a>
+
                                 </div>
                                 <div class="elgg-body">
                                     <ul class="elgg-menu elgg-menu-entity elgg-menu-hz elgg-menu-entity-default">

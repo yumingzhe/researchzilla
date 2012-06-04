@@ -12,7 +12,7 @@
         <property name="fileIconId" column="fileIconId" type="int"/>
         <property name="description" column="description" type="java.lang.String"/>
         <property name="uploadTime" column="uploadTime" type="timestamp"/>
-        <property name="file" column="file" type="java.io.File"/>
+        <property name="file" column="file" type="java.lang.String"/>
         <many-to-one name="siteUser" column="ownerId" class="pojo.SiteUser" lazy="false"/>
         <property name="tag" column="tag" type="java.lang.String"/>
         <property name="access" column="access" type="java.lang.String"/>

@@ -16,6 +16,15 @@ import java.io.InputStream;
 public class DownloadFileAction extends ActionSupport {
     private String fileid;
     private FileService fileService;
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public String getFileid() {
         return fileid;
@@ -35,7 +44,8 @@ public class DownloadFileAction extends ActionSupport {
 
     public InputStream getFile() {
         File fileEntity = fileService.getFileById(Integer.parseInt(fileid));
-        FileInputStream fileInputStream = null;
+        this.fileName = fileEntity.getFileName();
+        InputStream fileInputStream = null;
         try {
             fileInputStream = new FileInputStream(fileEntity.getFile());
         } catch (FileNotFoundException e) {

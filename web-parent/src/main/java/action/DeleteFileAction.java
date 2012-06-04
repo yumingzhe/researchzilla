@@ -75,7 +75,11 @@ public class DeleteFileAction extends ActionSupport {
         String sql = "delete from Activity where fileId=" + fileEntity.getId();
         activityService.executeSQL(sql);
         fileEntity.setSiteUser(null);
-        fileService.deleteFile(fileEntity);
-        return SUCCESS;
+        java.io.File file = new java.io.File(fileEntity.getFile());
+        if (file.delete()) {
+            fileService.deleteFile(fileEntity);
+            return SUCCESS;
+        } else
+            return INPUT;
     }
 }
