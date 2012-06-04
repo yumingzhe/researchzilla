@@ -17,6 +17,7 @@
             font-weight: bold;
         }
         .STYLE2 {font-size: 18px}
+        .STYLE3 {font-size: 18px; font-weight: bold;background-image: url("img/menu.jpg"); }
         -->
     </style>
 
@@ -26,7 +27,7 @@
     <div id="header_2">
         <div align="center" class="STYLE1">后台管理</div>
     </div>
-
+    <div class="STYLE3" height="30"></div>
     <div id="mainContent_2">
         <div align="center" class="STYLE2">添加信息成功！</div>
         <div align="center" class="STYLE2"><a href="managepage.jsp">点此返回后台管理界面</a></div>

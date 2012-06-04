@@ -115,7 +115,7 @@ public class GetInternalNoticeAction extends ActionSupport {
         if(currentPage==0){
             currentPage=1;
         }
-        pageSize=5;
+        pageSize=6;
         List list=messageService.getInternalNotice( pageSize,currentPage);
         totalPage=messageService.getInternalNoticeTotalPage(pageSize);
 

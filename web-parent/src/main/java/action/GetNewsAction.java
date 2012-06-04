@@ -114,7 +114,7 @@ public class GetNewsAction extends ActionSupport {
         if(currentPage==0){
             currentPage=1;
         }
-        pageSize=5;
+        pageSize=6;
         List list=messageService.getNews( pageSize,currentPage);
         totalPage=messageService.getNewsTotalPage(pageSize);
         request.setAttribute("somenewses",list);

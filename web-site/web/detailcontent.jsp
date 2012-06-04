@@ -36,7 +36,9 @@
             <tr>
                 <td width="640" height="191">&nbsp;</td>
                 <td width="255" class="STYLE3"><p>&nbsp;</p>
+                    <%if(session.getAttribute("websitename")!=null){%>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
+                    <%}%>
                     <p align="center">&nbsp;</p>
                         <%if(( session.getAttribute("user"))!=null){%>
                     <p align="center"><%=((SiteUser) session.getAttribute("user")).getUsername()%> 欢迎您登录本网站！</p>
@@ -52,69 +54,71 @@
     </div>
     <div id="mainContent_2">
         <p>&nbsp;</p>
-        <table width="396" height="30" border="0" align="center" class="STYLE1">
+        <table width="396" height="30" border="2" bordercolor="#00CCFF" align="center" class="STYLE1">
             <tr>
                 <%if(request.getAttribute("oneinternalnotice")!=null){%>
-                <td class="STYLE1"><%=((Message)request.getAttribute("oneinternalnotice")).getTopic()%></td>
+                <td class="STYLE1" align="center" ><%=((Message)request.getAttribute("oneinternalnotice")).getTopic()%></td>
                 <%}else if(request.getAttribute("onepublicnotice")!=null){%>
-                <td class="STYLE1"><%=((Message)request.getAttribute("onepublicnotice")).getTopic()%></td>
+                <td class="STYLE1" align="center" ><%=((Message)request.getAttribute("onepublicnotice")).getTopic()%></td>
                 <%}else if(request.getAttribute("onenews")!=null){%>
-                <td class="STYLE1"><%=((Message)request.getAttribute("onenews")).getTopic()%></td>
+                <td class="STYLE1" align="center" ><%=((Message)request.getAttribute("onenews")).getTopic()%></td>
                 <%}else if(request.getAttribute("onemessage")!=null){%>
-                <td class="STYLE1"><%=((Message)request.getAttribute("onemessage")).getTopic()%></td>
+                <td class="STYLE1" align="center" ><%=((Message)request.getAttribute("onemessage")).getTopic()%></td>
                 <%}else{}%>
             </tr>
         </table>
-
-        <table width="700" height="463" border="0" align="center">
+        <p>&nbsp;</p>
+        <table width="500"  border="2" bordercolor="#00CCFF" align="center">
             <%if(request.getAttribute("oneinternalnotice")!=null){%>
             <tr>
-                <td >作者：<%=((Message)request.getAttribute("oneinternalnotice")).getAuthor()%>  发布者：<%=((Message)request.getAttribute("oneinternalnotice")).getPublisher()%>
+                <td height="30">作者：<%=((Message)request.getAttribute("oneinternalnotice")).getAuthor()%>
+                    发布者：<%=((Message)request.getAttribute("oneinternalnotice")).getPublisher()%><br>
                     发布时间：<%=((Message)request.getAttribute("oneinternalnotice")).getPublishtime()%>
                 </td>
             </tr>
             <tr>
-                <td><%=((Message)request.getAttribute("oneinternalnotice")).getContent()%></td>
+                <td align="center"><%=((Message)request.getAttribute("oneinternalnotice")).getContent()%></td>
             </tr>
-            <tr>
+            <%--<tr>
                 <td><%=((Message)request.getAttribute("oneinternalnotice")).getAccesory()%></td>
-            </tr>
+            </tr>--%>
             <%}else if(request.getAttribute("onepublicnotice")!=null){%>
             <tr>
-                <td >作者：<%=((Message)request.getAttribute("onepublicnotice")).getAuthor()%> 发布者：<%=((Message)request.getAttribute("onepublicnotice")).getPublisher()%>
+                <td height="30">作者：<%=((Message)request.getAttribute("onepublicnotice")).getAuthor()%>
+                    发布者：<%=((Message)request.getAttribute("onepublicnotice")).getPublisher()%><br>
                     发布时间：<%=((Message)request.getAttribute("onepublicnotice")).getPublishtime()%>
                 </td>
             </tr>
             <tr>
-                <td><%=((Message)request.getAttribute("onepublicnotice")).getContent()%></td>
+                <td ><%=((Message)request.getAttribute("onepublicnotice")).getContent()%></td>
             </tr>
-            <tr>
-                <td><%=((Message)request.getAttribute("onepublicnotice")).getAccesory()%></td>
-            </tr>
+           <%-- <tr>
+                <td ><%=((Message)request.getAttribute("onepublicnotice")).getAccesory()%></td>
+            </tr>--%>
             <%}else if(request.getAttribute("onenews")!=null){%>
             <tr>
-                <td >作者：<%=((Message)request.getAttribute("onenews")).getAuthor()%> 发布者：<%=((Message)request.getAttribute("onenews")).getPublisher()%>
+                <td height="30" >作者：<%=((Message)request.getAttribute("onenews")).getAuthor()%>
+                    发布者：<%=((Message)request.getAttribute("onenews")).getPublisher()%> <br>
                     发布时间：<%=((Message)request.getAttribute("onenews")).getPublishtime()%>
                 </td>
             </tr>
             <tr>
-                <td><%=((Message)request.getAttribute("onenews")).getContent()%></td>
+                <td align="center"><%=((Message)request.getAttribute("onenews")).getContent()%></td>
             </tr>
-            <tr>
-                <td><%=((Message)request.getAttribute("onenews")).getAccesory()%></td>
-            </tr>
+
             <%}else if(request.getAttribute("onemessage")!=null){%>
             <tr>
-                <td >作者：<%=((Message)request.getAttribute("onemessage")).getAuthor()%> 发布者：<%=((Message)request.getAttribute("onemessage")).getPublisher()%>
-                    类型：<%=((Message)request.getAttribute("onemessage")).getType()%> 发布时间：<%=((Message)request.getAttribute("onemessage")).getPublishtime()%>
+                <td height="30">作者：<%=((Message)request.getAttribute("onemessage")).getAuthor()%>
+                    发布者：<%=((Message)request.getAttribute("onemessage")).getPublisher()%><br>
+                    发布时间：<%=((Message)request.getAttribute("onemessage")).getPublishtime()%>
                 </td>
             </tr>
             <tr>
-                <td><%=((Message)request.getAttribute("onemessage")).getContent()%></td>
+                <td align="center"><%=((Message)request.getAttribute("onemessage")).getContent()%></td>
             </tr>
-            <tr>
-                <td><%=((Message)request.getAttribute("onemessage")).getAccesory()%></td>
-            </tr>
+            <%--<tr>
+                <td ><%=((Message)request.getAttribute("onemessage")).getAccesory()%></td>
+            </tr>--%>
             <%}else{}%>
 
         </table>

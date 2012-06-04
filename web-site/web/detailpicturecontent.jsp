@@ -37,7 +37,9 @@
             <tr>
                 <td width="640" height="191">&nbsp;</td>
                 <td width="255" class="STYLE3"><p>&nbsp;</p>
+                    <%if(session.getAttribute("websitename")!=null){%>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
+                    <%}%>
                     <p align="center">&nbsp;</p>
                         <%if(( session.getAttribute("user"))!=null){%>
                     <p align="center"><%=((SiteUser) session.getAttribute("user")).getUsername()%> 欢迎您登录本网站！</p>
@@ -53,55 +55,58 @@
     </div>
     <div id="mainContent_2">
         <p>&nbsp;</p>
-        <table width="396" height="30" border="0" align="center" class="STYLE1">
-            <tr>
+        <table width="396" height="30" border="2" bordercolor="#00CCFF" align="center" class="STYLE1">
+            <tr >
                 <%if(request.getAttribute("onepicturenews")!=null){%>
-                <td class="STYLE1"><%=((PictureNews)request.getAttribute("onepicturenews")).getTopic()%></td>
+                <td class="STYLE1" align="center" ><%=((PictureNews)request.getAttribute("onepicturenews")).getTopic()%></td>
                 <%}else if(request.getAttribute("oneaccomplishment")!=null){%>
-                <td class="STYLE1"><%=((PictureNews)request.getAttribute("oneaccomplishment")).getTopic()%></td>
+                <td class="STYLE1" align="center" ><%=((PictureNews)request.getAttribute("oneaccomplishment")).getTopic()%></td>
                 <%}else if(request.getAttribute("onepicturemessage")!=null){%>
-                <td class="STYLE1"><%=((PictureNews)request.getAttribute("onepicturemessage")).getTopic()%></td>
+                <td class="STYLE1" align="center" ><%=((PictureNews)request.getAttribute("onepicturemessage")).getTopic()%></td>
                 <%}else{}%>
             </tr>
         </table>
-
-        <table width="700" height="500" border="0" align="center">
+        <p>&nbsp;</p>
+        <table width="500"  border="2" bordercolor="#00CCFF" align="center">
             <%if(request.getAttribute("onepicturenews")!=null){%>
             <tr>
-                <td >作者：<%=((PictureNews)request.getAttribute("onepicturenews")).getAuthor()%> 发布者：<%=((PictureNews)request.getAttribute("onepicturenews")).getPublisher()%>
+                <td height="30" align="center" >作者：<%=((PictureNews)request.getAttribute("onepicturenews")).getAuthor()%>
+                    发布者：<%=((PictureNews)request.getAttribute("onepicturenews")).getPublisher()%><br>
                     发布时间：<%=((PictureNews)request.getAttribute("onepicturenews")).getPublishtime()%>
                 </td>
             </tr>
             <tr>
-                <td><img src="<%=((PictureNews)request.getAttribute("onepicturenews")).getPath()%>" alt="images"/></td>
+                <td align="center"><img src="<%=((PictureNews)request.getAttribute("onepicturenews")).getPath()%>" alt="images"/></td>
             </tr>
             <tr>
-                <td><%=((PictureNews)request.getAttribute("onepicturenews")).getContent()%> </td>
+                <td align="center"><%=((PictureNews)request.getAttribute("onepicturenews")).getContent()%> </td>
             </tr>
 
             <%}else if(request.getAttribute("oneaccomplishment")!=null){%>
             <tr>
-                <td >作者：<%=((PictureNews)request.getAttribute("oneaccomplishment")).getAuthor()%> 发布者：<%=((PictureNews)request.getAttribute("oneaccomplishment")).getPublisher()%>
+                <td height="30">作者：<%=((PictureNews)request.getAttribute("oneaccomplishment")).getAuthor()%>
+                    发布者：<%=((PictureNews)request.getAttribute("oneaccomplishment")).getPublisher()%><br>
                     发布时间：<%=((PictureNews)request.getAttribute("oneaccomplishment")).getPublishtime()%>
                 </td>
             </tr>
             <tr>
-                <td><img src="<%=((PictureNews)request.getAttribute("oneaccomplishment")).getPath()%>" alt="images"/></td>
+                <td  align="center"><img src="<%=((PictureNews)request.getAttribute("oneaccomplishment")).getPath()%>" alt="images"/></td>
             </tr>
             <tr>
-                <td><%=((PictureNews)request.getAttribute("oneaccomplishment")).getContent()%></td>
+                <td align="center"><%=((PictureNews)request.getAttribute("oneaccomplishment")).getContent()%></td>
             </tr>
             <%}else if(request.getAttribute("onepicturemessage")!=null) {%>
             <tr>
-                <td >作者：<%=((PictureNews)request.getAttribute("onepicturemessage")).getAuthor()%> 发布者：<%=((PictureNews)request.getAttribute("onepicturemessage")).getPublisher()%>
+                <td height="30">作者：<%=((PictureNews)request.getAttribute("onepicturemessage")).getAuthor()%>
+                    发布者：<%=((PictureNews)request.getAttribute("onepicturemessage")).getPublisher()%><br>
                     发布时间：<%=((PictureNews)request.getAttribute("onepicturemessage")).getPublishtime()%>
                 </td>
             </tr>
             <tr>
-                <td><img src="<%=((PictureNews)request.getAttribute("onepicturemessage")).getPath()%>" alt="images"/></td>
+                <td align="center"><img src="<%=((PictureNews)request.getAttribute("onepicturemessage")).getPath()%>" alt="images"/></td>
             </tr>
             <tr>
-                <td><%=((PictureNews)request.getAttribute("onepicturemessage")).getContent()%></td>
+                <td align="center"><%=((PictureNews)request.getAttribute("onepicturemessage")).getContent()%></td>
             </tr>
              <%}%>
 

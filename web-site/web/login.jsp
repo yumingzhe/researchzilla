@@ -25,6 +25,21 @@
         -->
     </style>
     <link href="layout.css" rel="stylesheet" type="text/css" />
+    <style type="text/css"> /* Css样式要放到页面头部，而且要加上<style> */
+    .btn {
+        color: #0000FF;
+        background-image: url(img/button.bmp);
+        line-height: 15px;
+        height: 23px;
+        width: 72px;
+        font-size: 15px;
+        font-weight: bold;
+        margin: 10px 0 0 20px; /*margin-top 和 margin-left 一句就可以实现了 */
+        border: none; /* border-top\left\right\bottom 也可以缩到一句 */
+    }
+    </style>
+
+
 </head>
 <body>
 <div id="container_1">
@@ -50,13 +65,13 @@
                 </table>
                 <table width="303" height="95" border="0">
                     <tr>
-                        <td width="147" height="39"><label>
+                        <td width="147" ><label>
                             <div align="center">
-                              <input name="submit" type="submit" class="STYLE1" id="submit" value="登录" />
+                              <input name="submit" type="submit" class="btn" id="submit" value="登录" />
                                 </div>
                         </label></td>
                       <td width="146"><label>
-                            <input name="reset" type="reset" class="STYLE1" id="reset" value="重置" />
+                            <input name="reset" type="reset" class="btn" id="reset" value="重置" />
                         </label>
                         </td>
                     </tr>

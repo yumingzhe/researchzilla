@@ -17,7 +17,13 @@
             font-size: 36px;
             font-weight: bold;
         }
-        .STYLE2 {font-size: 16px}
+        .STYLE2 {
+            font-size: 16px;
+             background-image:url("img/menu.jpg");
+        }
+        .STYLE3 {
+            font-size: 16px;
+        }
         -->
     </style>
 
@@ -47,8 +53,12 @@
 <body>
 <div id="container_1">
     <div id="header_2">
-        <div align="center" class="STYLE1"><%=session.getAttribute("websitename")%>后台管理</div>
-        <div align="right" class="STYLE2"><a href="homepageone.jsp">返回网站页面</a></div>
+        <div align="center" class="STYLE1">
+            <%if(session.getAttribute("websitename")!=null){%>
+            <%=session.getAttribute("websitename")%>
+            <%}%>后台管理
+        </div>
+        <div align="right" class="STYLE3" ><a href="index.jsp">首页</a></div>
     </div>
     <div id="menu">
         <ul id="nav">
@@ -59,7 +69,7 @@
             </li>
             <li><a href="#" class="STYLE2">网站信息管理</a>
                 <ul>
-                    <li><a href="addmesssage.jsp">添加图片信息</a></li>
+                    <li><a href="addmesssage.jsp" >添加图片信息</a></li>
                     <li><a href="addtextmessage.jsp">添加文本信息</a></li>
                     <li><a href="http://localhost:8080/MessageAction!getsomemessages.action">查看文本消息</a></li>
                    <li><a href="http://localhost:8080/MessageAction!getsomepicturemessages.action">查看图片消息</a></li>
@@ -77,7 +87,11 @@
                     <li><a href="addlink.jsp">添加新链接</a></li>
                 </ul>
             </li>
-             <li><a href="http://localhost:8080/FeedbackAction!getsomefeedbacks.action">用户反馈信息</a></li>
+            <li><a href="#" class="STYLE2">反馈信息管理</a>
+                <ul>
+                    <li><a href="http://localhost:8080/FeedbackAction!getsomefeedbacks.action">查看所有留言</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 

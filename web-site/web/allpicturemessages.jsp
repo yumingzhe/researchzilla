@@ -17,6 +17,8 @@
         .STYLE1 {
             font-size: 18px;
             font-weight: bold;
+            background-image: url("img/menu.jpg");
+            height: 10px;
         }
         -->
     </style>
@@ -37,7 +39,9 @@
             <tr>
                 <td width="640" height="191">&nbsp;</td>
                 <td width="255" class="STYLE2"><p>&nbsp;</p>
+                    <%if(session.getAttribute("websitename")!=null){%>
                     <p align="center"><%=session.getAttribute("websitename")%></p>
+                    <%}%>
                     <p align="center">&nbsp;</p>
                 </td>
             </tr>
@@ -48,14 +52,16 @@
             </table>
         </table>
     </div>
+    <div class="STYLE1"></div>
     <div id="mainContent_2">
         <p align="center" class="STYLE2 ">网站图片信息总览</p>
-
+        <p>&nbsp;</p>
 
             <%   int intPageCount;  //总页数
                 int intPage;       //待显示页码
                 if(request.getAttribute("somepicturemessages")!=null){ %>
-         <table width="662" height="473" border="2" align="center" bordercolor="#00CCFF">
+        <table height="350" border="0" align="center" >
+                    <table  border="2" align="center" bordercolor="#00CCFF">
             <%    List<PictureNews> picturemessages= (List<PictureNews>) request.getAttribute("somepicturemessages");
                 intPage=  (Integer)(request.getAttribute("currentpage"));
                 if(intPage==1){
@@ -66,11 +72,12 @@
                 intPageCount=(Integer)(request.getAttribute("totalpage"));
                 if(intPage>intPageCount) intPage=intPageCount;%>
             <tr>
-                <td class="STYLE1" height="50">序号</td>
-                <td class="STYLE1" height="50">类型</td>
-                <td class="STYLE1" height="50">标题</td>
-                <td class="STYLE1" height="50">作者</td>
-                <td class="STYLE1" height="50">发布时间</td>
+                <td class="STYLE1" >序号</td>
+                <td class="STYLE1" >类型</td>
+                <td class="STYLE1" >标题</td>
+                <td class="STYLE1" >作者</td>
+                <td class="STYLE1" >发布时间</td>
+                <td class="STYLE1" >操作</td>
             </tr>
             <%    for (int i = 0; i < picturemessages.size(); i++) {
             %>
@@ -95,6 +102,7 @@
                 </td>
             </tr>
             <%}%>
+         </table>
          </table>
         <table align="center">
             <tr><td align="right">第<%=intPage%>页 共<%=intPageCount%>页</td></tr>

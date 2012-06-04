@@ -14,10 +14,6 @@ public class WebsiteMessage {
     private String maintenanceaddress;
     private int visits;
 
-    public int getVisits() {
-        return visits;
-    }
-
     public int getId() {
         return id;
     }
@@ -66,7 +62,7 @@ public class WebsiteMessage {
         this.maintenanceaddress = maintenanceaddress;
     }
 
-    public int getVisits(int i) {
+    public int getVisits() {
         return visits;
     }
 

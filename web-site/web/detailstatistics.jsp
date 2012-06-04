@@ -17,53 +17,83 @@
             font-size: 36px;
             font-weight: bold;
         }
-        .STYLE2 {font-size: 16px}
         -->
     </style>
+    <style type="text/css">
+        <!--
+        .STYLE3 {
+            font-size: 16px;
+        }
+        -->
+    </style>
+    <style type="text/css">
+        <!--
+        .STYLE2 {
+            font-size: 18px;
+            font-weight: bold;
+            background-image: url("img/menu.jpg");
+        }
+        -->
+    </style>
+
 </head>
 <body>
 
 <div id="container_1">
     <div id="header_2">
-        <div align="center" class="STYLE1">后台管理</div>
-        <div align="right" ><a href="managepage.jsp">返回后台管理页面</a></div>
+        <div align="center" class="STYLE1">
+            <%if(session.getAttribute("websitename")!=null){%>
+            <p align="center"><%=session.getAttribute("websitename")%></p>
+            <%}%>
+            后台管理
+        </div>
+        <div align="right" ><a href="managepage.jsp" class="STYLE3">返回后台管理页面</a></div>
     </div>
+ <div class="STYLE2"></div>
     <div id="mainContent_2">
+        <p align="center" class="STYLE1 ">网站静态统计信息信息总览</p>
+        <p>&nbsp;</p>
         <%request.setCharacterEncoding("gb2312");
             response.setContentType("text/html;charset=gb2312");%>
-            <table width="543" height="239" border="0" align="center">
+            <table  width="400" border="2" bordercolor="#00CCFF" align="center">
                 <tr>
-                    <td width="171" height="53" class="STYLE8">网站总注册用户数：</td>
+                    <td width="171" height="53" class="STYLE2">网站总注册用户数：</td>
                     <%if(request.getAttribute("usercount")!=null){%>
                     <td><%=request.getAttribute("usercount")%></td>
                     <%}%>
                 </tr>
                 <tr>
-                    <td width="171" height="53" class="STYLE8">网站内部通知条数：</td>
+                    <td width="171" height="53" class="STYLE2">网站总登录访问量：</td>
+                    <%if(request.getAttribute("visits")!=null){%>
+                    <td><%=request.getAttribute("visits")%></td>
+                    <%}%>
+                </tr>
+                <tr>
+                    <td width="171" height="53" class="STYLE2">网站内部通知条数：</td>
                     <%if(request.getAttribute("internalnoticecount")!=null){%>
                     <td><%=request.getAttribute("internalnoticecount")%></td>
                     <%}%>
                 </tr>
                 <tr>
-                    <td width="171" height="53" class="STYLE8">网站最新公告条数：</td>
+                    <td width="171" height="53" class="STYLE2">网站最新公告条数：</td>
                     <%if(request.getAttribute("publicnoticecount")!=null){%>
                     <td><%=request.getAttribute("publicnoticecount")%></td>
                     <%}%>
                 </tr>
                 <tr>
-                    <td width="171" height="53" class="STYLE8">网站新闻快讯条数：</td>
+                    <td width="171" height="53" class="STYLE2">网站新闻快讯条数：</td>
                     <%if(request.getAttribute("newscount")!=null){%>
                     <td><%=request.getAttribute("newscount")%></td>
                     <%}%>
                 </tr>
                 <tr>
-                    <td width="171" height="53" class="STYLE8">网站图片新闻条数：</td>
+                    <td width="171" height="53" class="STYLE2">网站图片新闻条数：</td>
                     <%if(request.getAttribute("picturenewscount")!=null){%>
                     <td><%=request.getAttribute("picturenewscount")%></td>
                     <%}%>
                 </tr>
                 <tr>
-                    <td width="171" height="53" class="STYLE8">网站成果聚焦条数：</td>
+                    <td width="171" height="53" class="STYLE2">网站成果聚焦条数：</td>
                     <%if(request.getAttribute("accomplishmentcount")!=null){%>
                     <td><%=request.getAttribute("accomplishmentcount")%></td>
                     <%}%>
