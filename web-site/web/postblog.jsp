@@ -8,20 +8,6 @@
     <link rel="SHORTCUT ICON" href="http://elgg-yumingzhe.rhcloud.com/_graphics/favicon.ico"/>
     <link rel="stylesheet" href="http://elgg-yumingzhe.rhcloud.com/cache/css/default/elgg.1338195242.css"
           type="text/css"/>
-
-    <!--[if gt IE 7]>
-    <link rel="stylesheet" type="text/css"
-          href="http://elgg-yumingzhe.rhcloud.com/cache/css/default/ie.1338195242.css"/>
-    <![endif]-->
-    <!--[if IE 7]>
-    <link rel="stylesheet" type="text/css"
-          href="http://elgg-yumingzhe.rhcloud.com/cache/css/default/ie7.1338195242.css"/>
-    <![endif]-->
-    <!--[if IE 6]>
-    <link rel="stylesheet" type="text/css"
-          href="http://elgg-yumingzhe.rhcloud.com/cache/css/default/ie6.1338195242.css"/>
-    <![endif]-->
-
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript"
             src="js/jquery-ui-1.8.20.custom.min.js"></script>
@@ -62,9 +48,6 @@
             }
         });
     </script>
-
-    <%--<link rel="meta" type="application/rdf+xml" title="FOAF"
-          href="http://elgg-yumingzhe.rhcloud.com/blog/add/35?view=foaf"/>--%>
 </head>
 <body>
 <div class="elgg-page elgg-page-default">
@@ -79,7 +62,7 @@
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-alt">
                 <li class="elgg-menu-item-usersettings"><a
                         href="http://elgg-yumingzhe.rhcloud.com/settings/user/yumingzhe"><span
-                        class="elgg-icon elgg-icon-settings "></span>Settings</a></li>
+                        class="elgg-icon elgg-icon-settings "></span>个人设置</a></li>
                 <li class="elgg-menu-item-logout"><a
                         href="http://elgg-yumingzhe.rhcloud.com/action/logout?__elgg_ts=1338342665&amp;__elgg_token=90d8a27be2b1181b4fda28b2659d46d2">Log
                     out</a></li>
@@ -92,9 +75,7 @@
                                                       class="elgg-topbar-avatar"><img
                         src="http://elgg-yumingzhe.rhcloud.com/mod/profile/icondirect.php?lastcache=1335068576&amp;joindate=1333026415&amp;guid=35&amp;size=topbar"
                         alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/></a></li>
-                <%--<li class="elgg-menu-item-friends"><a href="http://elgg-yumingzhe.rhcloud.com/friends/yumingzhe"
-                                                      title="Friends"><span
-                        class="elgg-icon elgg-icon-users "></span></a></li>--%>
+
                 <li class="elgg-menu-item-messages"><a
                         href="http://elgg-yumingzhe.rhcloud.com/messages/inbox/yumingzhe"><span
                         class='elgg-icon elgg-icon-mail'></span></a></li>
@@ -112,14 +93,24 @@
             <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
                 <li class="elgg-menu-item-activity">
                     <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">
-                        Activity
+                        最近活动
                     </a>
                 </li>
-                <li class="elgg-menu-item-blog"><a
-                        href="http://localhost:8080/getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Blogs</a>
+                <li class="elgg-menu-item-blog">
+                    <a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">
+                        日志
+                    </a>
                 </li>
-                <li class="elgg-menu-item-file"><a href="http://elgg-yumingzhe.rhcloud.com/file/all">Files</a></li>
-                <li class="elgg-menu-item-groups"><a href="http://elgg-yumingzhe.rhcloud.com/groups/all">Groups</a></li>
+                <li class="elgg-menu-item-file">
+                    <a href="http://localhost:8080/getUserAllFilesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">
+                        文件
+                    </a>
+                </li>
+                <li class="elgg-menu-item-groups">
+                    <a href="http://localhost:8080/getUserAllGroupsAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">
+                        组
+                    </a>
+                </li>
             </ul>
             <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
                 <fieldset>
@@ -143,13 +134,8 @@
                     </div>
                     <form method="post" action="postblogAction.action" id="blog-post-edit" name="blog_post"
                           cssClass="elgg_form elgg-form-alt elgg-form-blog-save">
-                        <%--<form method="post" action="http://localhost:8080/postblogAction" id="blog-post-edit"
-                     name="blog_post" class="elgg-form elgg-form-alt elgg-form-blog-save">--%>
                         <fieldset>
-                            <%--<input type="hidden" name="__elgg_token"
-                                      value="90d8a27be2b1181b4fda28b2659d46d2"/>
-                         <input type="hidden" name="__elgg_ts" value="1338342665"/>--%>
-
+                            <input type="hidden" name="groupid" value="<%=request.getParameter("groupid")%>"/>
                             <div>
                                 <label for="blog_title">标题</label>
                                 <input type="text" name="title" id="blog_title" class="elgg-input-text"/>
@@ -189,8 +175,6 @@
                                 </select>
                             </div>
                             <div class="elgg-foot">
-                                <input type="hidden" name="guid"/>
-                                <input type="hidden" name="container_guid" value="35"/>
                                 <input type="submit" value="Save" name="save" class="elgg-button elgg-button-submit"/>
                             </div>
                         </fieldset>

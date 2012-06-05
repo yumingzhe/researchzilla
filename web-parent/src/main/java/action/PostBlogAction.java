@@ -3,9 +3,11 @@ package action;
 import com.opensymphony.xwork2.ActionSupport;
 import pojo.Activity;
 import pojo.Blog;
+import pojo.Group;
 import pojo.SiteUser;
 import service.ActivityService;
 import service.BlogService;
+import service.GroupService;
 import service.SiteUserService;
 
 import java.io.Serializable;
@@ -29,7 +31,25 @@ public class PostBlogAction extends ActionSupport {
     private SiteUserService siteUserService;
     private BlogService blogService;
     private ActivityService activityService;
+    private GroupService groupService;
     private int identifier;
+    private String groupid;
+
+    public GroupService getGroupService() {
+        return groupService;
+    }
+
+    public void setGroupService(GroupService groupService) {
+        this.groupService = groupService;
+    }
+
+    public String getGroupid() {
+        return groupid;
+    }
+
+    public void setGroupid(String groupid) {
+        this.groupid = groupid;
+    }
 
     public int getIdentifier() {
         return identifier;
@@ -167,10 +187,16 @@ public class PostBlogAction extends ActionSupport {
         activity.setAction("发表日志");
         activity.setSiteUser(siteUser);
         activity.setBlog(blog);
+        if (!groupid.equals("null")) {
+            Group group = groupService.getSpecifiedGroupByGroupId(Integer.parseInt(groupid));
+            group.getBlogs().add(blog);
+            group.getActivities().add(activity);
+            activity.setGroup(group);
+            blog.setGroup(group);
+        }
+
         blog.setActivity(activity);
-
         Serializable id = blogService.saveBlog(blog);//this will add blog and activity record into Table 'researchzilla_blog' and 'reaserchzilla_activity'
-
         this.identifier = Integer.parseInt(id.toString());
         return SUCCESS;
     }

@@ -51,12 +51,6 @@
             }
         });
     </script>
-
-
-    <link rel="alternate" type="application/rss+xml" title="RSS"
-          href="http://elgg-yumingzhe.rhcloud.com/file/view/82/agenda?view=rss"/>
-    <link rel="meta" type="application/rdf+xml" title="FOAF"
-          href="http://elgg-yumingzhe.rhcloud.com/file/view/82/agenda?view=foaf"/>
 </head>
 <body>
 <%
@@ -75,24 +69,26 @@
     <div class="elgg-inner">
         <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-alt">
 
-            <li class="elgg-menu-item-usersettings"><a
-                    href="http://localhost:8080/accountsetting.jsp"><span
-                    class="elgg-icon elgg-icon-settings "></span>个人设置</a></li>
-            <li class="elgg-menu-item-logout"><a
-                    href="http://elgg-yumingzhe.rhcloud.com/action/logout?__elgg_ts=1338707281&amp;__elgg_token=81573224770cbcff7fae2f44aca40acd">Log
-                out</a></li>
+            <li class="elgg-menu-item-usersettings">
+                <a href="http://localhost:8080/accountsetting.jsp">
+                    <span class="elgg-icon elgg-icon-settings "></span>
+                    个人设置
+                </a>
+            </li>
+            <li class="elgg-menu-item-logout">
+                <a href="http://localhost:8080/ExitAction.action">
+                    Log out
+                </a>
+            </li>
         </ul>
         <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-default">
-            <li class="elgg-menu-item-elgg-logo"><a href="http://www.elgg.org/" class="elgg-topbar-logo"><img
-                    src="http://elgg-yumingzhe.rhcloud.com/_graphics/elgg_toolbar_logo.gif" alt="Elgg logo"
-                    width="38" height="20"/></a></li>
-            <li class="elgg-menu-item-profile"><a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
-                                                  class="elgg-topbar-avatar"><img
-                    src="http://elgg-yumingzhe.rhcloud.com/mod/profile/icondirect.php?lastcache=1335068576&amp;joindate=1333026415&amp;guid=35&amp;size=topbar"
-                    alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/></a></li>
-            <li class="elgg-menu-item-messages"><a
-                    href="http://elgg-yumingzhe.rhcloud.com/messages/inbox/yumingzhe"><span
-                    class='elgg-icon elgg-icon-mail'></span></a></li>
+            <li class="elgg-menu-item-profile">
+                <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
+                   class="elgg-topbar-avatar">
+                    <img src="img/icondirect.jpg"
+                         alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
@@ -121,7 +117,7 @@
                 </a>
             </li>
             <li class="elgg-menu-item-groups">
-                <a href="http://elgg-yumingzhe.rhcloud.com/groups/all">
+                <a href="http://localhost:8080/getUserAllGroupsAction.action?uid=<%=siteUser.getUid()%>">
                     组
                 </a>
             </li>
@@ -200,9 +196,10 @@
                                 <a href="http://elgg-yumingzhe.rhcloud.com/file/owner/yumingzhe">
                                     <%=file.getSiteUser().getUsername()%>
                                 </a>
+                                上传于
                                 <acronym title="<%=file.getUploadTime()%>">
                                     <%=DateFormat.formatPeriod(file.getUploadTime().getTime(), new Date().getTime())%>
-                                </acronym>
+                                </acronym>前
                                 <a href="http://localhost:8080/getSpecifiedFileAction.action?fileid=<%=file.getId()%>#mycomment">
                                     Comments(<%=file.getCommentEntities().size()%>)
                                 </a>

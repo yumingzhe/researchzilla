@@ -15,6 +15,33 @@ public class Group {
     private String access;
     private SiteUser groupOwner;
     private Set<SiteUser> members;
+    private Set<Blog> blogs;
+    private Set<Activity> activities;
+    private Set<File> files;
+
+    public Set<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(Set<File> files) {
+        this.files = files;
+    }
+
+    public Set<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Set<Activity> activities) {
+        this.activities = activities;
+    }
+
+    public Set<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(Set<Blog> blogs) {
+        this.blogs = blogs;
+    }
 
     public Set<SiteUser> getMembers() {
         return members;

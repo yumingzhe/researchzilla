@@ -89,29 +89,16 @@
                 </a>
             </li>
             <li class="elgg-menu-item-logout">
-                <a href="http://elgg-yumingzhe.rhcloud.com/action/logout?__elgg_ts=1338255610&amp;__elgg_token=3cfbfd80394a1c9c423dd7667808480d">
+                <a href="http://localhost:8080/ExitAction.action">
                     Log out
                 </a>
             </li>
         </ul>
         <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-default">
-            <li class="elgg-menu-item-elgg-logo">
-                <a href="http://www.elgg.org/" class="elgg-topbar-logo">
-                    <img src="http://elgg-yumingzhe.rhcloud.com/_graphics/elgg_toolbar_logo.gif" alt="Elgg logo"
-                         width="38" height="20"/>
-                </a>
-            </li>
             <li class="elgg-menu-item-profile">
                 <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe" class="elgg-topbar-avatar">
-                    <img
-                            src="http://elgg-yumingzhe.rhcloud.com/mod/profile/icondirect.php?lastcache=1335068576&amp;joindate=1333026415&amp;guid=35&amp;size=topbar"
-                            alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
-                </a>
-            </li>
-            <li class="elgg-menu-item-messages">
-                <a href="http://elgg-yumingzhe.rhcloud.com/messages/inbox/yumingzhe">
-                    <span class='elgg-icon elgg-icon-mail'>
-                    </span>
+                    <img src="img/icondirect.jpg"
+                         alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
                 </a>
             </li>
         </ul>
@@ -122,7 +109,8 @@
     <div class="elgg-inner">
 
         <h1>
-            <a class="elgg-heading-site" href="http://elgg-yumingzhe.rhcloud.com/">
+            <a class="elgg-heading-site"
+               href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>">
                 Researchzilla </a>
         </h1>
         <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
@@ -142,19 +130,11 @@
                 </a>
             </li>
             <li class="elgg-menu-item-groups">
-                <a href="http://elgg-yumingzhe.rhcloud.com/groups/all">
+                <a href="http://localhost:8080/getSpecifiedGroupAction.action?uid=<%=siteUser.getUid()%>">
                     组
                 </a>
             </li>
         </ul>
-        <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
-            <fieldset>
-                <input type="text" class="search-input" size="21" name="q" value="Search"
-                onblur="if (this.value=='') { this.value='Search' }"
-            onfocus="if (this.value=='Search') { this.value='' };"/>
-                <input type="submit" value="Go" class="search-submit-button"/>
-            </fieldset>
-        </form>
     </div>
 </div>
 <div class="elgg-page-body">
@@ -164,7 +144,8 @@
 
             <div class="elgg-main elgg-body"><br>
                 <ul class="elgg-menu elgg-breadcrumbs">
-                    <li><a href="getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Blogs</a>
+                    <li>
+                        <a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">Blogs</a>
                     </li>
                     <li><%=blog.getTitle()%>
                     </li>
@@ -179,37 +160,15 @@
                             <div class="elgg-avatar elgg-avatar-tiny">
                                 <span class="elgg-icon elgg-icon-hover-menu "></span>
                                 <ul class="elgg-menu elgg-menu-hover">
-                                    <li><a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"><span
-                                            class="elgg-heading-basic">yumingzhe</span>&#64;yumingzhe</a></li>
                                     <li>
-                                        <ul class="elgg-menu elgg-menu-hover-actions">
-                                            <li class="elgg-menu-item-avatar-edit">
-                                                <a href="http://elgg-yumingzhe.rhcloud.com/avatar/edit/yumingzhe">Edit
-                                                    avatar
-                                                </a>
-                                            </li>
-                                            <li class="elgg-menu-item-profile-edit">
-                                                <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe/edit">
-                                                    Edit profile
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul class="elgg-menu elgg-menu-hover-admin">
-                                            <li class="elgg-menu-item-logbrowser">
-                                                <a href="http://elgg-yumingzhe.rhcloud.com/admin/utilities/logbrowser?user_guid=35">
-                                                    Explore log
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                        <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"><span
+                                                class="elgg-heading-basic">yumingzhe</span>&#64;yumingzhe</a></li>
                                 </ul>
-                                <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe" class=""><img
-                                        src="img/icondirect.jpg" alt="yumingzhe"
-                                        title="yumingzhe" class=""
-                                <%--style="background: url(http://elgg-yumingzhe.rhcloud.com/mod/profile/icondirect.php?lastcache=1335068576&amp;joindate=1333026415&amp;guid=35&amp;size=tiny) no-repeat;"--%>
-                                        /></a>
+                                <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
+                                   class="">
+                                    <img src="img/icondirect.jpg" alt="yumingzhe"
+                                         title="yumingzhe" class=""/>
+                                </a>
                             </div>
                         </div>
                         <div class="elgg-body">
@@ -220,7 +179,7 @@
                                     </a>
                                 </li>
                                 <li class="elgg-menu-item-delete"><a
-                                        href="http://localhost:8080/deleteblogAction.action?blogid=<%=blog.getId()%>&uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>type=blog"
+                                        href="http://localhost:8080/deleteblogAction.action?blogid=<%=blog.getId()%>&uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>&type=blog"
                                         title="Delete this" rel="Are you sure you want to delete this item?"
                                         class="elgg-requires-confirmation"><span
                                         class="elgg-icon elgg-icon-delete "></span></a></li>
@@ -228,7 +187,7 @@
                             <h3></h3>
 
                             <div class="elgg-subtext">由
-                                <a href="http://elgg-yumingzhe.rhcloud.com/blog/owner/yumingzhe"><%=blog.getSiteUser().getUsername()%>
+                                <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"><%=blog.getSiteUser().getUsername()%>
                                 </a> 于
                                 <acronym
                                         title="<%=blog.getPostDate()%>"><%=DateFormat.formatPeriod(blog.getPostDate().getTime(), new Date().getTime())%>
@@ -273,7 +232,8 @@
                                 <div class="elgg-image">
                                     <div class="elgg-avatar elgg-avatar-tiny">
                                         <span class="elgg-icon elgg-icon-hover-menu "></span>
-                                        <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe" class=""><img
+                                        <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
+                                           class=""><img
                                                 src="img/icondirect.jpg"
                                                 alt="yumingzhe" title="yumingzhe" class=""
                                         <%--style="background: url(http://elgg-yumingzhe.rhcloud.com/mod/profile/icondirect.php?lastcache=1335068576&amp;joindate=1333026415&amp;guid=35&amp;size=tiny) no-repeat;"--%>
@@ -285,7 +245,7 @@
                                     <div class="mbn">
                                         <ul class="elgg-menu elgg-menu-annotation elgg-menu-hz float-alt elgg-menu-annotation-default">
                                             <li class="elgg-menu-item-delete">
-                                                <a href="http://localhost:8080/deleteCommentAction.action?commentid=<%=commentEntity.getId()%>&blogid=<%=blog.getId()%>"
+                                                <a href="http://localhost:8080/deleteCommentAction.action?commentid=<%=commentEntity.getId()%>&blogid=<%=blog.getId()%>&type=blog"
                                                    rel="Are you sure you want to delete this item?"
                                                    class="elgg-requires-confirmation">
                                     <span class="elgg-icon elgg-icon-delete">

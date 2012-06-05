@@ -95,4 +95,15 @@ public class BlogDaoImpl implements BlogDao {
             }
         });
     }
+
+    @Override
+    public void deleteBlogById(final String id) {
+        this.getTemplate().execute(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createSQLQuery("delete from researchzilla_blogs where id=" + id);
+                return query.executeUpdate();
+            }
+        });
+    }
 }

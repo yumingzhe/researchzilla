@@ -7,8 +7,8 @@
 <html>
 <head>
     <title>Researchzilla</title>
-    <link rel="SHORTCUT ICON" href="http://elgg-yumingzhe.rhcloud.com/_graphics/favicon.ico"/>
-    <link rel="stylesheet" href="http://elgg-yumingzhe.rhcloud.com/cache/css/default/elgg.1338195242.css"
+    <link rel="SHORTCUT ICON" href="conf/favicon.ico"/>
+    <link rel="stylesheet" href="css/researchzilla.css"
           type="text/css"/>
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript"
@@ -29,25 +29,26 @@
     <div class="elgg-page-topbar">
         <div class="elgg-inner">
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-alt">
-                <li class="elgg-menu-item-usersettings"><a
-                        href="http://localhost:8080/accountsetting.jsp"><span
-                        class="elgg-icon elgg-icon-settings "></span>Settings</a></li>
-                <li class="elgg-menu-item-logout"><a
-                        href="http://elgg-yumingzhe.rhcloud.com/action/logout?__elgg_ts=1338291979&amp;__elgg_token=ba88e76528e2e8a1f8a258e80e31f245">Log
-                    out</a></li>
+                <li class="elgg-menu-item-usersettings">
+                    <a href="http://localhost:8080/accountsetting.jsp">
+                        <span class="elgg-icon elgg-icon-settings "></span>
+                        个人设置
+                    </a>
+                </li>
+                <li class="elgg-menu-item-logout">
+                    <a href="http://localhost:8080/ExitAction.action">Log
+                        out
+                    </a>
+                </li>
             </ul>
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-default">
-                <%--网站图标--%>
-                <%-- <li class="elgg-menu-item-elgg-logo"><a href="http://www.elgg.org/" class="elgg-topbar-logo"><img
-               src="http://elgg-yumingzhe.rhcloud.com/_graphics/elgg_toolbar_logo.gif" alt="Elgg logo"
-               width="38" height="20"/></a></li>--%>
-                <li class="elgg-menu-item-profile"><a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
-                                                      class="elgg-topbar-avatar"><img
-                        src="http://elgg-yumingzhe.rhcloud.com/mod/profile/icondirect.php?lastcache=1335068576&amp;joindate=1333026415&amp;guid=35&amp;size=topbar"
-                        alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/></a></li>
-                <li class="elgg-menu-item-messages"><a
-                        href="http://elgg-yumingzhe.rhcloud.com/messages/inbox/yumingzhe"><span
-                        class='elgg-icon elgg-icon-mail'></span></a></li>
+                <li class="elgg-menu-item-profile">
+                    <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
+                       class="elgg-topbar-avatar">
+                        <img src="img/icondirect.jpg"
+                             alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -60,15 +61,26 @@
                     Researchzilla </a>
             </h1>
             <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
-                <li class="elgg-menu-item-activity"><a
-                        href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">最近活动</a>
+                <li class="elgg-menu-item-activity">
+                    <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">
+                        最近活动
+                    </a>
                 </li>
-                <li class="elgg-menu-item-blog elgg-state-selected"><a
-                        href="http://localhost:8080/getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">日志</a>
+                <li class="elgg-menu-item-blog elgg-state-selected">
+                    <a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>">
+                        日志
+                    </a>
                 </li>
-                <li class="elgg-menu-item-file"><a
-                        href="http://localhost:8080/getUserAllFilesAction.action?uid=<%=siteUser.getUid()%>">文件</a></li>
-                <li class="elgg-menu-item-groups"><a href="http://elgg-yumingzhe.rhcloud.com/groups/all">组</a></li>
+                <li class="elgg-menu-item-file">
+                    <a href="http://localhost:8080/getUserAllFilesAction.action?uid=<%=siteUser.getUid()%>">
+                        文件
+                    </a>
+                </li>
+                <li class="elgg-menu-item-groups">
+                    <a href="http://localhost:8080/getUserAllGroupsAction.action?uid=<%=siteUser.getUid()%>">
+                        组
+                    </a>
+                </li>
             </ul>
             <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
                 <fieldset>
@@ -128,11 +140,12 @@
                                             }
                                             if (blog.getSiteUser().getUid() == ((SiteUser) session.getAttribute("user")).getUid()) {
                                         %>
-                                        <li class="elgg-menu-item-delete"><a
-                                                href="http://localhost:8080/deleteblogAction.action?blogid=<%=blog.getId()%>&uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>"
-                                                title="Delete this" rel="Are you sure you want to delete this item?"
-                                                class="elgg-requires-confirmation"><span
-                                                class="elgg-icon elgg-icon-delete "></span></a>
+                                        <li class="elgg-menu-item-delete">
+                                            <a href="http://localhost:8080/deleteblogAction.action?blogid=<%=blog.getId()%>&uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>&type=blog"
+                                               title="Delete this"
+                                               class="elgg-requires-confirmation">
+                                                <span class="elgg-icon elgg-icon-delete "></span>
+                                            </a>
                                         </li>
                                         <%
                                             }
