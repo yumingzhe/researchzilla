@@ -74,11 +74,12 @@ public class DeleteBlogAction extends ActionSupport {
         }
         String sql = "delete from Activity where blogId=" + blog.getId();
         activityService.executeSQL(sql);
-        SiteUser siteUser = blog.getSiteUser();
+        /*SiteUser siteUser = blog.getSiteUser();
         siteUser.getBlogs().remove(blog);
-        blog.setSiteUser(null);
-        siteUserService.updateSiteUser(siteUser);
-        blogService.deleteBlogById(Integer.parseInt(blogid));
+        //blog.setSiteUser(null);
+        siteUserService.updateSiteUser(siteUser);*/
+//        blogService.deleteBlogById(Integer.parseInt(blogid));
+        blogService.deleteBlogById(blogid);
         return SUCCESS;
     }
 }

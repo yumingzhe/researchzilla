@@ -22,4 +22,6 @@ public interface BlogService {
     public void deleteBlogById(int id);
 
     public List searchBlogByTag(String tag);
+
+    public void deleteBlogById(String id);
 }

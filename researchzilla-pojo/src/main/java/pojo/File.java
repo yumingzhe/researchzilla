@@ -10,7 +10,6 @@ import java.util.Set;
  */
 public class File {
     private Integer id;
-    private Integer groupId;
     private String fileName;
     private String fileType;
     private String file;
@@ -21,6 +20,15 @@ public class File {
     private String tag;
     private String access;
     private Set<CommentEntity> commentEntities;
+    private Group group;
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 
     public String getFile() {
         return file;
@@ -52,14 +60,6 @@ public class File {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
     }
 
     public String getFileName() {

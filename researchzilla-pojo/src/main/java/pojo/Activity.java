@@ -15,7 +15,15 @@ public class Activity {
     private File file;
     private String action;
     private CommentEntity commentEntity;
+    private Group group;
 
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 
     public String getAction() {
         return action;

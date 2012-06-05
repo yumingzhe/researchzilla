@@ -1,9 +1,8 @@
 <%@ page import="pojo.SiteUser" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
-    <title>Researchzilla: Upload a file</title>
+    <title>Researchzilla: Create a new group</title>
     <link rel="SHORTCUT ICON" href="conf/favicon.ico"/>
     <link rel="stylesheet" href="css/researchzilla.css"
           type="text/css"/>
@@ -14,7 +13,7 @@
     <script type="text/javascript" src="js/jquery.form.js"></script>
     <script type="text/javascript" src="js/researchzilla.js"></script>
     <script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
-    <script language="javascript" type="text/javascript">
+    <script type="text/javascript">
         tinyMCE.init({
             mode:"textareas",
             theme:"advanced",
@@ -51,7 +50,6 @@
 <%
     SiteUser siteUser = (SiteUser) session.getAttribute("user");
 %>
-
 <div class="elgg-page elgg-page-default">
     <div class="elgg-page-messages">
         <ul class="elgg-system-messages">
@@ -63,34 +61,36 @@
         <div class="elgg-inner">
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-alt">
                 <li class="elgg-menu-item-usersettings">
-                    <a href="http://http://localhost:8080/accountsetting.jsp">
+                    <a href="http://localhost:8080/accountsetting.jsp">
                         <span class="elgg-icon elgg-icon-settings "></span>
                         个人设置
                     </a>
                 </li>
                 <li class="elgg-menu-item-logout">
-                    <a href="http://elgg-yumingzhe.rhcloud.com/action/logout?__elgg_ts=1338648">
+                    <a href="http://elgg-yumingzhe.rhcloud.com/action/logout">
                         Log out
                     </a>
                 </li>
             </ul>
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-default">
                 <li class="elgg-menu-item-elgg-logo">
-                    <a href="http://www.elgg.org/" class="elgg-topbar-logo">
-                        <img src="img/elgg_toolbar_logo.gif" alt="Elgg logo"
-                             width="38" height="20"/>
+                    <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
+                       class="elgg-topbar-logo">
+                        <img src="img/elgg_toolbar_logo.gif" alt="researchzilla" width="38" height="20"/>
                     </a>
                 </li>
                 <li class="elgg-menu-item-profile">
                     <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe" class="elgg-topbar-avatar">
-                        <img
-                                src="img/icondirect.jpg"
-                                alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
+                        <img src="img/icondirect.jpg"
+                             alt="<%=siteUser.getUsername()%>" title="Profile"
+                             class="elgg-border-plain elgg-transition"/>
                     </a>
                 </li>
-                <li class="elgg-menu-item-messages"><a
-                        href="http://elgg-yumingzhe.rhcloud.com/messages/inbox/yumingzhe"><span
-                        class='elgg-icon elgg-icon-mail'></span></a></li>
+                <li class="elgg-menu-item-messages">
+                    <a href="http://elgg-yumingzhe.rhcloud.com/messages/inbox/yumingzhe">
+                        <span class='elgg-icon elgg-icon-mail'></span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -109,7 +109,7 @@
                     </a>
                 </li>
                 <li class="elgg-menu-item-blog">
-                    <a href="http://localhost:8080/getUserAllBlogsAction.action?uid=<%=siteUser.getUid()%>">
+                    <a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=siteUser.getUid()%>">
                         日志
                     </a>
                 </li>
@@ -125,8 +125,7 @@
                 </li>
             </ul>
             <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
-                <fieldset>
-                </fieldset>
+                <fieldset></fieldset>
             </form>
         </div>
     </div>
@@ -137,46 +136,53 @@
                 <div class="elgg-main elgg-body">
                     <ul class="elgg-menu elgg-breadcrumbs">
                         <li>
-                            <a href="http://localhost:8080/getUserAllFilesAction.action?uid=<%=siteUser.getUid()%>">
-                                Files
+                            <a href="http://elgg-yumingzhe.rhcloud.com/groups/all">
+                                Groups
                             </a>
                         </li>
-                        </li>
-                        <li>Upload a file</li>
+                        <li>新建组</li>
                     </ul>
                     <div class="elgg-head clearfix">
-                        <h2 class="elgg-heading-main">上传文件</h2>
+                        <h2 class="elgg-heading-main">新建一个组</h2>
                     </div>
-                    <form method="post" action="http://localhost:8080/uploadfileAction.action"
-                          enctype="multipart/form-data" class="elgg-form elgg-form-file-upload">
-                        <input type="hidden" name="uid" value="<%=siteUser.getUid()%>"/>
-                        <input type="hidden" name="groupId" value="<%=request.getParameter("groupid")%>"/>
+                    <form method="post" action="http://localhost:8080/createGroupAction.action"
+                          enctype="multipart/form-data" class="elgg-form elgg-form-alt elgg-form-groups-edit">
                         <fieldset>
+                            <input type="hidden" name="uid" value="<%=siteUser.getUid()%>"/>
+
                             <div>
-                                <label>文件</label><br/>
-                                <input type="file" name="file" class="elgg-input-file"/>
+                                <label>组名</label><br/>
+                                <input type="text" name="groupName" class="elgg-input-text"/>
+                            </div>
+                            <div><label>描述</label>
+                                <ul class="elgg-menu elgg-menu-longtext elgg-menu-hz elgg-menu-longtext-default">
+                                    <li class="elgg-menu-item-tinymce-toggler">
+                                        <a href="javascript:" onclick="tinyMCE.get('description').show();return false;">[显示编辑器]</a>
+                                        <a href="javascript:" onclick="tinyMCE.get('description').hide();return false;">[删除编辑器]</a>
+                                    </li>
+                                </ul>
+                                <textarea id="description" name="description" class="elgg-input-longtext">
+                                </textarea>
+                            </div>
+                            <%--<div><label>简短描述</label><br/>
+                                <input type="text" name="briefdescription" class="elgg-input-text"/>
+                            </div>--%>
+                            <div>
+                                <label>标签</label><br/>
+                                <input type="text" name="tags" class="elgg-input-tags"/>
                             </div>
                             <div>
-                                <label>标题</label><br/>
-                                <input type="text" value="" name="title" class="elgg-input-text"/>
-                            </div>
-                            <div>
-                                <label>描述</label>
-                                <textarea id="description" name="description" class="elgg-input-longtext"></textarea>
-                            </div>
-                            <div>
-                                <label>标签</label>
-                                <input type="text" value="" name="tag" class="elgg-input-tags"/></div>
-                            <div>
-                                <label>访问权限</label><br/>
-                                <select name="access" class="elgg-input-dropdown elgg-input-access">
-                                    <option value="1" selected="selected">Private</option>
-                                    <option value="2">Public</option>
-                                    <option value="3">Group</option>
-                                </select>
+                                <label>
+                                    组状态
+                                    <br/>
+                                    <select name="access" class="elgg-input-dropdown elgg-input-access">
+                                        <option value="1">关闭</option>
+                                        <option value="2" selected="selected">开放-任何用户均可加入</option>
+                                    </select>
+                                </label>
                             </div>
                             <div class="elgg-foot">
-                                <input type="submit" value="上传" class="elgg-button elgg-button-submit"/>
+                                <input type="submit" value="Save" class="elgg-button elgg-button-submit"/>
                             </div>
                         </fieldset>
                     </form>
@@ -185,7 +191,8 @@
         </div>
     </div>
     <div class="elgg-page-footer">
-        <div class="elgg-inner"></div>
+        <div class="elgg-inner">
+        </div>
     </div>
 </div>
 </body>

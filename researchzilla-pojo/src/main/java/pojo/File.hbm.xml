@@ -6,7 +6,6 @@
         <id name="id" column="id" type="int">
             <generator class="increment"/>
         </id>
-        <property name="groupId" type="java.lang.Integer" column="groupId"/>
         <property name="fileName" column="fileName" type="java.lang.String"/>
         <property name="fileType" column="fileType" type="java.lang.String"/>
         <property name="fileIconId" column="fileIconId" type="int"/>
@@ -16,6 +15,7 @@
         <many-to-one name="siteUser" column="ownerId" class="pojo.SiteUser" lazy="false"/>
         <property name="tag" column="tag" type="java.lang.String"/>
         <property name="access" column="access" type="java.lang.String"/>
+        <many-to-one name="group" column="groupId" lazy="false"/>
         <set name="commentEntities" table="researchzilla_comment" lazy="false">
             <key column="fileId"></key>
             <one-to-many class="pojo.CommentEntity"/>

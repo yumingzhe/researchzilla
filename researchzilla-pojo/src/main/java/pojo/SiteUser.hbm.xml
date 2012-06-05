@@ -27,7 +27,7 @@
             <key column="ownerId"/>
             <one-to-many class="pojo.File"/>
         </set>
-        <set name="groups" cascade="all" table="researchzilla_siteuser_group">
+        <set name="groups" cascade="all" table="researchzilla_siteuser_group" lazy="false">
             <key column="siteuserId"/>
             <many-to-many class="pojo.Group" column="groupId" unique="true"/>
         </set>

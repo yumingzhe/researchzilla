@@ -2,8 +2,12 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import pojo.Activity;
+import pojo.Group;
 import pojo.SiteUser;
+import service.ActivityService;
 import service.FileService;
+import service.GroupService;
 import service.SiteUserService;
 
 import java.io.*;
@@ -18,7 +22,7 @@ import java.util.List;
  * Time: 9:46 PM
  */
 public class UploadFileAction extends ActionSupport {
-    private int groupId;
+    private String groupId;
     private String uid;
     private File file;
     private String fileFileName;
@@ -29,6 +33,24 @@ public class UploadFileAction extends ActionSupport {
     private String access;
     private FileService fileService;
     private SiteUserService siteUserService;
+    private ActivityService activityService;
+    private GroupService groupService;
+
+    public GroupService getGroupService() {
+        return groupService;
+    }
+
+    public void setGroupService(GroupService groupService) {
+        this.groupService = groupService;
+    }
+
+    public ActivityService getActivityService() {
+        return activityService;
+    }
+
+    public void setActivityService(ActivityService activityService) {
+        this.activityService = activityService;
+    }
 
     public SiteUserService getSiteUserService() {
         return siteUserService;
@@ -62,11 +84,11 @@ public class UploadFileAction extends ActionSupport {
         this.file = file;
     }
 
-    public int getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(int groupId) {
+    public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
 
@@ -173,6 +195,7 @@ public class UploadFileAction extends ActionSupport {
         fileEntity.setFileType(this.fileContentType);
         fileEntity.setSiteUser(siteUser);
 
+        //upload file to 'uploadData' dir
         InputStream fileInputStream = new FileInputStream(file);
         String path = ServletActionContext.getRequest().getRealPath("/uploadData");
 
@@ -181,7 +204,7 @@ public class UploadFileAction extends ActionSupport {
         uploadFile = new File(path, fileEntity.getFileName());
 
         OutputStream outputStream = new FileOutputStream(uploadFile);
-
+        //set upload buffer
         byte[] buffer = new byte[1024 * 1024];
         int length;
         while ((length = fileInputStream.read(buffer)) > 0) {
@@ -189,11 +212,22 @@ public class UploadFileAction extends ActionSupport {
         }
         fileInputStream.close();
         outputStream.close();
-
         fileEntity.setFile(uploadFile.getAbsolutePath());
 
+        //add upload activity
+        Activity activity = new Activity();
+        activity.setActivityOccurTime(new Timestamp(new Date().getTime()));
+        activity.setAction("上传文件");
+        activity.setSiteUser(siteUser);
+        activity.setFile(fileEntity);
+        if (groupId != null && !"null".equals(groupId)) {
+            Group group = groupService.getSpecifiedGroupByGroupId(Integer.parseInt(groupId));
+            activity.setGroup(group);
+            fileEntity.setGroup(group);
+            group.getFiles().add(fileEntity);
+        }
         fileService.saveFile(fileEntity);
-        //TODO ADD ACTIVITY
+        activityService.saveActivity(activity);
         return SUCCESS;
     }
 }

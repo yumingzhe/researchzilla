@@ -23,6 +23,20 @@
             <result name="input">/login.jsp</result>
         </action>
 
+        <!--Group action group-->
+        <action name="getUserAllGroupsAction" class="getUserAllGroupsAction">
+            <result name="success">/allgroups.jsp</result>
+        </action>
+        <action name="createGroupAction" class="createGroupAction">
+            <result name="success" type="redirectAction">getUserAllGroupsAction?uid=${uid}</result>
+            <result name="input">/creategroup.jsp</result>
+        </action>
+        <action name="getSpecifiedGroupAction" class="getSpecifiedGroupAction">
+            <result name="success">/group.jsp</result>
+        </action>
+        <action name="addUserIntoGroupAction" class="addUserIntoGroupAction">
+            <result name="success" type="redirectAction">getSpecifiedGroupAction?groupid=${groupid}</result>
+        </action>
 
         <action name="getUserAllBlogs" class="getUserAllBlogs">
             <result name="success">/allblogs.jsp</result>
@@ -85,7 +99,7 @@
             <result name="success" type="redirectAction">getSpecifiedBlogAction?blogid=${identifier}</result>
         </action>
         <action name="deleteblogAction" class="deleteblogAction">
-            <result name="success" type="redirectAction">getUserAllBlogs</result>
+            <result name="success" type="redirectAction">getUserAllBlogs?uid=${uid}</result>
         </action>
         <action name="getSpecifiedBlogAction" class="getSpecifiedBlog">
             <result name="success">/blog.jsp</result>
