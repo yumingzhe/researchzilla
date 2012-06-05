@@ -110,7 +110,7 @@
             <%   int intPageCount;  //总页数
                 int intPage;       //待显示页码
                 if(request.getAttribute("somemessages")!=null){ %>
-                <table height="350" border="0" align="center" >
+                <table width="600" height="350" border="0" align="center" >
                     <table  border="2" align="center" bordercolor="#00CCFF">
               <%    List<Message> messages= (List<Message>) request.getAttribute("somemessages");
                     intPage=  (Integer)(request.getAttribute("currentpage"));

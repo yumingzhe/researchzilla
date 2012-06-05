@@ -83,7 +83,11 @@
             font-size: 20px;
             font-weight: bold;
         }
-
+        .STYLE7 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff0000;
+        }
         -->
     </style>
 </head>
@@ -95,9 +99,9 @@
                 <%String imgUrl= (String) session.getAttribute("imagepath");%>
                 <td width="700" height="191" align="center"><img src="<%=imgUrl%>" alt="images" /></td>
                 <td width="250" class="STYLE6">
+                    <p class="STYLE7" align="right"><a href="http://localhost:8080/SubjectAction!getallsubjects.action">about us</a></p>
                     <p>&nbsp;</p>
                     <p align="center" class="STYLE4"><%=session.getAttribute("websitename")%></p>
-                    <p>&nbsp;</p>
                     <p>&nbsp;</p>
                     <%if ((session.getAttribute("user")) != null) {%>
                     <p align="center"><a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=

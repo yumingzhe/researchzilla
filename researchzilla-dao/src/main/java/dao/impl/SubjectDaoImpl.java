@@ -50,13 +50,14 @@ public class SubjectDaoImpl implements SubjectDao {
 
     @Override
     public void deleteSubjectById(final int id) {
-        List subject =  this.getTemplate().executeFind(new HibernateCallback<Object>() {
+        List subjects =  this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Subject as s where s.id= :id").setInteger("id", id);
                 return query.list();
             }
         });
+        Subject subject= (Subject) subjects.get(0);
         this.getTemplate().delete(subject);
     }
 
@@ -65,7 +66,7 @@ public class SubjectDaoImpl implements SubjectDao {
         List subjects = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from Subject ");
+                Query query = session.createQuery("from Subject");
                 return query.list();
             }
         });

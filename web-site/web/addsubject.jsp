@@ -1,41 +1,22 @@
-<%@ page import="pojo.SiteUser" %>
-<%@ page import="java.util.List" %>
-<%@ page import="pojo.Message" %>
-<%@ page import="pojo.Link" %>
 <%--
   User: wangyan
   Date: 12-5-30
-  Time: 上午9:09
+  Time: 下午1:45
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <title>全部链接显示页面</title>
-    <style type="text/css">
-        <!--
-        .STYLE1 {
-            font-size: 18px;
-            font-weight: bold;
-            background-image: url("img/menu.jpg");
-            height: 10px;
-        }
-        -->
-    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>网站链接添加页面</title>
     <link href="layout.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         <!--
-        .STYLE2 {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .STYLE3 {
-            font-size: 16px;
-        }
-        .STYLE4 {
+        .STYLE1 {
             font-size: 36px;
             font-weight: bold;
         }
+        .STYLE2 {font-size: 18px; font-weight: bold;background-image: url("img/menu.jpg"); }
+        .STYLE3 {font-size: 18px; font-weight: bold; }
         -->
     </style>
     <script type=text/javascript><!--//--><![CDATA[//><!--
@@ -63,21 +44,20 @@
 <body>
 <div id="container_1">
     <div id="header_2">
-        <div align="center" class="STYLE4">
+        <div align="center" class="STYLE1">
             <%if(session.getAttribute("websitename")!=null){%>
             <%=session.getAttribute("websitename")%>
             <%}%>后台管理
         </div>
-        <div align="right" class="STYLE3" ><a href="index.jsp">首页</a></div>
     </div>
     <div id="menu">
         <ul id="nav">
-            <li><a href="#" class="STYLE1">用户信息管理</a>
+            <li><a href="#" class="STYLE2">用户信息管理</a>
                 <ul>
                     <li><a href="http://localhost:8080/UserAction!getsomeusers.action">查看所有用户</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="STYLE1">网站信息管理</a>
+            <li><a href="#" class="STYLE2">网站信息管理</a>
                 <ul>
                     <li><a href="addmesssage.jsp" >添加图片信息</a></li>
                     <li><a href="addtextmessage.jsp">添加文本信息</a></li>
@@ -85,19 +65,19 @@
                     <li><a href="http://localhost:8080/MessageAction!getsomepicturemessages.action">查看图片消息</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="STYLE1">系统信息维护</a>
+            <li><a href="#" class="STYLE2">系统信息维护</a>
                 <ul>
                     <li><a href="http://localhost:8080/BasicMessageChangeAction.action">基本信息设置</a></li>
                     <li><a href="http://localhost:8080/GetStatisticsAction.action">统计信息浏览</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="STYLE1">网站链接管理</a>
+            <li><a href="#" class="STYLE2">网站链接管理</a>
                 <ul>
                     <li><a href="http://localhost:8080/GetLinkAction!getalllinks.action">查看全部链接</a></li>
                     <li><a href="addlink.jsp">添加新链接</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="STYLE1">反馈信息管理</a>
+            <li><a href="#" class="STYLE2">反馈信息管理</a>
                 <ul>
                     <li><a href="http://localhost:8080/FeedbackAction!getsomefeedbacks.action">查看所有留言</a></li>
                 </ul>
@@ -106,44 +86,47 @@
     </div>
     <div id="mainContent_2">
         <p>&nbsp;</p>
-        <p align="center" class="STYLE2 ">网站链接信息总览</p>
-        <p>&nbsp;</p>
-        <%
-            if(request.getAttribute("alllinks")!=null){ %>
-        <table width="600" height="350"border="0" align="center" >
-            <table  border="2" align="center" bordercolor="#00CCFF">
-            <%    List<Link> links= (List<Link>) request.getAttribute("alllinks");%>
-            <tr>
-                <td class="STYLE1" >序号</td>
-                <td class="STYLE1" >网站标题</td>
-                <td class="STYLE1" >网址</td>
-                <td class="STYLE1" >操作</td>
-            </tr>
-            <%    for (int i = 0; i < links.size(); i++) {
-            %>
-            <tr height="50">
-                <td height="50"> <%=links.get(i).getId()%>
-                </td>
-                <td height="50"><a href="http://localhost:8080/LinkAction!deleteonelink.action?linkid=<%=links.get(i).getId()%>"><%= links.get(i).getWebsitename()%>
-                </td>
-                <td height="50"><%= links.get(i).getWebsiteurl()%>
-                </td>
-                <td height="50"><a href="http://localhost:8080/LinkAction!deleteonelink.action?linkid=<%=links.get(i).getId()%>">删除</a>
-                </td>
-            </tr>
-            <%}%>
+        <form id="addmessageform" name="addmessageform" method="post"   action="SubjectAction.action">
+            <table width="543" height="239" border="0" align="center">
+                <tr>
+                    <td width="171" height="53" class="STYLE3">研究课题：</td>
+                    <td width="362"><label class="STYLE3">
+                        <input name="subjecttopic" type="text" class="STYLE3"/>
+                    </label></td>
+                </tr>
+                <tr>
+                    <td class="STYLE3">研究方向：</td>
+                    <td><label>
+                        <input name="researchdirection" type="text"  class="STYLE3"  />
+                    </label></td>
+                </tr>
+                <tr>
+                    <td class="STYLE3">参与人员：</td>
+                    <td><label>
+                        <input name="researchmember" type="text" class="STYLE3" />
+                    </label></td>
+                </tr>
+                <tr>
+                    <td class="STYLE3">开始时间</td>
+                    <td><label>
+                        <input name="starttime" type="text" class="STYLE3" />
+                    </label></td>
+                </tr>
+                <tr>
+                    <td class="STYLE3">进度描述</td>
+                    <td><label>
+                        <input name="prograss" type="text" class="STYLE3"/>
+                    </label></td>
+                </tr>
             </table>
-        </table>
-        <%}else{%>
-        <tr class="STYLE1">
-            暂时无信息
-        </tr>
-        <%}%>
-        <p align="center">首页网址导航最多只能显示五条，请慎重添加</p>
+            <p align="center" class="STYLE3">
+                <label>
+                    <input name="Submit" type="submit" class="STYLE3" value="提交" />
+                </label>
+            </p>
+        </form>
     </div>
-    <div id="footer_1">
-    </div>
-</div>
+    <div id="footer_1"></div>
 </div>
 </body>
 </html>

@@ -116,13 +116,25 @@ public class InsertData {
        message.setPublishtime(new Timestamp(new Date().getTime()));
        session.save(message);
        transaction.commit();
-       session.close(); */
-
-        Link link = new Link();
+       session.close();
+       WebsiteMessage websiteMessage=new WebsiteMessage();
+        websiteMessage.setWebsitename("软件工程研究室");
+        websiteMessage.setMaintenanceaddress("wangyan_megan@yeah.net");
+        websiteMessage.setDefaultlanguage("Chinese");
+        websiteMessage.setVisits(0);
+        session.save(websiteMessage); */
+     /*   Link link = new Link();
 
        link.setWebsitename("google学术搜索");
        link.setWebsiteurl("http://scholar.google.com/");
-       session.save(link);
+       session.save(link); */
+        Subject subject=new Subject();
+        subject.setSubjecttopic("计算机科学与技术");
+        subject.setResearchdirection("人工智能的属性论方法");
+        subject.setResearchmember("王艳 于明哲");
+        subject.setStarttime("2012年3月");
+        subject.setPrograss("40%");
+        session.save(subject);
        transaction.commit();
        session.close();
 

@@ -26,7 +26,10 @@
             font-weight: bold;
             background-image: url("img/menu.jpg");
         }
-        .STYLE3 {font-size: 18px}
+        .STYLE8 {
+            font-size: 18px;
+            font-weight: bold;
+        }
         -->
     </style>
     <script type=text/javascript><!--//--><![CDATA[//><!--
@@ -107,7 +110,6 @@
                     <td width="362"><label class="STYLE8">
                         <input name="websitename" type="text" class="STYLE8" value="<%=((WebsiteMessage)request.getAttribute("websitemessage")).getWebsitename()%>"/>
                     </label></td>
-                    <%System.out.println(((WebsiteMessage)request.getAttribute("websitemessage")).getWebsitename());%>
                 </tr>
                 <tr>
                     <td class="STYLE8">ÍøÕ¾±³¾°Í¼Æ¬£º</td>

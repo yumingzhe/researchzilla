@@ -111,7 +111,7 @@
                 int intPage;       //待显示页码
 
                 if(request.getAttribute("someusers")!=null){ %>
-                <table border="2" align="center" bordercolor="#00CCFF">
+                <table width="600" border="2" align="center" bordercolor="#00CCFF">
               <% List<SiteUser> siteusers= (List<SiteUser>) request.getAttribute("someusers");
                  intPage=  (Integer)(request.getAttribute("currentpage"));
                     if(intPage==1){

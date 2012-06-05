@@ -12,8 +12,8 @@ public class Subject {
     private String subjecttopic;
     private String researchdirection;
     private String researchmember;
-    private Timestamp starttime;
-    private Double prograss;
+    private String starttime;
+    private String prograss;
 
     public int getId() {
         return id;
@@ -47,19 +47,19 @@ public class Subject {
         this.researchmember = researchmember;
     }
 
-    public Timestamp getStarttime() {
+    public String getStarttime() {
         return starttime;
     }
 
-    public void setStarttime(Timestamp starttime) {
+    public void setStarttime(String starttime) {
         this.starttime = starttime;
     }
 
-    public Double getPrograss() {
+    public String getPrograss() {
         return prograss;
     }
 
-    public void setPrograss(Double prograss) {
+    public void setPrograss(String prograss) {
         this.prograss = prograss;
     }
 }
