@@ -15,8 +15,6 @@
             src="js/jquery-ui-1.8.20.custom.min.js"></script>
     <script type="text/javascript" src="js/jquery.form.js"></script>
     <script type="text/javascript" src="js/researchzilla.js"></script>
-    <link rel="alternate" type="application/rss+xml" title="RSS"
-          href="http://elgg-yumingzhe.rhcloud.com/activity?view=rss"/>
 </head>
 <body>
 <%
@@ -48,9 +46,10 @@
                 <li class="elgg-menu-item-profile">
                     <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
                        class="elgg-topbar-avatar">
-                        <img src="img/icondirect.jpg"
+                        <img src="<%=siteUser.getPortrait()%> "
                              alt="elgg"
-                             title="Profile" class="elgg-border-plain elgg-transition"/>
+                             title="Profile" class="elgg-border-plain elgg-transition"
+                             height="16" width="16"/>
                     </a>
                 </li>
             </ul>
@@ -179,7 +178,7 @@
 
                                                                 <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
                                                                    class="">
-                                                                    <img src="img/icondirect.jpg"
+                                                                    <img src="<%=siteUser.getPortrait()%>"
                                                                          alt="yumingzhe" title="yumingzhe" class=""/>
                                                                 </a>
                                                             </div>

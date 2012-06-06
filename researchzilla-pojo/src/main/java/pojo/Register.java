@@ -1,8 +1,9 @@
 package pojo;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Register {
+public class Register implements Serializable {
     private Integer id;
     private Integer uid;
     private Timestamp registerTime;

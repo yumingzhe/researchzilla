@@ -45,8 +45,9 @@
                 <li class="elgg-menu-item-profile">
                     <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
                        class="elgg-topbar-avatar">
-                        <img src="img/icondirect.jpg"
-                             alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
+                        <img src="<%=siteUser.getPortrait()%>"
+                             alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"
+                             width="16" height="16"/>
                     </a>
                 </li>
             </ul>
@@ -118,9 +119,10 @@
                                     <div class="elgg-avatar elgg-avatar-tiny">
                                         <span class="elgg-icon elgg-icon-hover-menu "></span>
                                         <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe" class=""><img
-                                                src="img/icondirect.jpg"
+                                                src="<%=siteUser.getPortrait()%>"
                                                 alt="yumingzhe" title="yumingzhe" class=""
-                                        <%--style="background: url(http://elgg-yumingzhe.rhcloud.com/mod/profile/icondirect.php?lastcache=1335068576&amp;joindate=1333026415&amp;guid=35&amp;size=tiny) no-repeat;"--%>/></a>
+                                                />
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="elgg-body">
@@ -184,15 +186,6 @@
     </div>
     <div class="elgg-page-footer">
         <div class="elgg-inner">
-            <%--<ul class="elgg-menu elgg-menu-footer elgg-menu-hz elgg-menu-footer-alt">
-                <li class="elgg-menu-item-report-this"><a
-                        href="javascript:elgg.forward(&#039;reportedcontent/add&#039;+&#039;?address=&#039;+encodeURIComponent(location.href)+&#039;&amp;title=&#039;+encodeURIComponent(document.title));"
-                        title="Report this page to an administrator"><span
-                        class="elgg-icon elgg-icon-report-this "></span>Report this</a></li>
-            </ul>--%>
-            <div class="mts clearfloat float-alt"><%--<a href="http://elgg.org" class=""><img
-                src="http://elgg-yumingzhe.rhcloud.com/_graphics/powered_by_elgg_badge_drk_bckgnd.gif"
-                alt="Powered by Elgg" width="106" height="15"/></a>--%></div>
         </div>
     </div>
 </div>

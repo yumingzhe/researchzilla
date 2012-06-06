@@ -1,5 +1,6 @@
 package pojo;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Set;
  * Date: 5/19/12
  * Time: 11:02 PM
  */
-public class Group {
+public class Group implements Serializable {
     private Integer groupId;
     private String groupName;
     private String description;

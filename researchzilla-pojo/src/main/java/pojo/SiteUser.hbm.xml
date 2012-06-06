@@ -11,6 +11,7 @@
         <property name="salt" column="salt" type="java.lang.String" length="8"/>
         <property name="active" column="active" type="boolean"/>
         <property name="banned" column="banned" type="boolean"/>
+        <property name="portrait" column="portrait" type="java.lang.String"/>
         <property name="email" column="email" type="java.lang.String" length="50"/>
         <property name="instituteId" column="instituteId" type="java.lang.String"/>
         <one-to-one name="userEntity" class="pojo.UserEntity" cascade="all"/>

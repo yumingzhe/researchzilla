@@ -48,8 +48,9 @@
             <li class="elgg-menu-item-profile">
                 <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
                    class="elgg-topbar-avatar">
-                    <img src="img/icondirect.jpg"
-                         alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
+                    <img src="<%=siteUser.getPortrait()%>"
+                         alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition" height="16"
+                         width="16s"/>
                 </a>
             </li>
         </ul>
@@ -110,7 +111,7 @@
 <div class="groups-profile clearfix elgg-image-block">
     <div class="elgg-image">
         <div class="groups-profile-icon">
-            <img src="img/icondirect.jpg" alt="<%=group.getGroupName()%>" class=""/>
+            <img src="<%=group.getGroupOwner().getPortrait()%>" alt="<%=group.getGroupName()%>" class=""/>
         </div>
         <div class="groups-stats">
             <p>
@@ -175,7 +176,7 @@
                                 <span class="elgg-icon elgg-icon-hover-menu "></span>
                                 <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
                                    class="">
-                                    <img src="img/icondirect.jpg"
+                                    <img src="<%=blog.getSiteUser().getPortrait()%>"
                                          alt="yumingzhe" title="yumingzhe" class=""/>
                                 </a>
                             </div>
@@ -331,7 +332,7 @@
                                 <span class="elgg-icon elgg-icon-hover-menu "></span>
                                 <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
                                    class="">
-                                    <img src="img/icondirect.jpg"
+                                    <img src="<%=activity.getSiteUser().getPortrait()%>"
                                          alt="yumingzhe" title="yumingzhe" class=""/>
                                 </a>
                             </div>
@@ -428,7 +429,7 @@
                                 <span class="elgg-icon elgg-icon-hover-menu "></span>
                                 <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=member.getUid()%>"
                                    class="">
-                                    <img src="img/icondirect.jpg" alt="<%=member.getUsername()%>"
+                                    <img src="<%=member.getPortrait()%>" alt="<%=member.getUsername()%>"
                                          title="<%=member.getUsername()%>"
                                          class=""/>
                                 </a>

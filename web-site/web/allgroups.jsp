@@ -44,8 +44,9 @@
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-default">
                 <li class="elgg-menu-item-profile">
                     <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe" class="elgg-topbar-avatar">
-                        <img src="img/icondirect.jpg"
-                             alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
+                        <img src="<%=siteUser.getPortrait()%>"
+                             alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition" width="16"
+                             height="16"/>
                     </a>
                 </li>
             </ul>

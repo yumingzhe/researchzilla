@@ -2,6 +2,7 @@ package pojo;
 
 import java.io.Serializable;
 import java.util.Set;
+
 import pojo.Group;
 
 public class SiteUser implements Serializable {
@@ -13,6 +14,7 @@ public class SiteUser implements Serializable {
     private Boolean banned;
     private String email;
     private String instituteId;
+    private String portrait;
     private UserEntity userEntity;
     private Register register;
     private Set<Activity> activities;
@@ -20,6 +22,14 @@ public class SiteUser implements Serializable {
     private Set<File> files;
     private Set<Group> groups;
     private Group group;
+
+    public String getPortrait() {
+        return portrait;
+    }
+
+    public void setPortrait(String portrait) {
+        this.portrait = portrait;
+    }
 
     public Group getGroup() {
         return group;
@@ -141,7 +151,7 @@ public class SiteUser implements Serializable {
         this.register = register;
     }
 
-  /*  @Override
+    /*  @Override
     public String toString() {
         return this.username + " " + this.email + " " + this.password + " " + this.register.getSiteUser().getUid() + " " + this.register.getRegisterTime();
     }*/

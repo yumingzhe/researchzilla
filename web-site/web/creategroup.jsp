@@ -73,17 +73,11 @@
                 </li>
             </ul>
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-default">
-                <li class="elgg-menu-item-elgg-logo">
-                    <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
-                       class="elgg-topbar-logo">
-                        <img src="img/elgg_toolbar_logo.gif" alt="researchzilla" width="38" height="20"/>
-                    </a>
-                </li>
                 <li class="elgg-menu-item-profile">
                     <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe" class="elgg-topbar-avatar">
-                        <img src="img/icondirect.jpg"
+                        <img src="<%=siteUser.getPortrait()%>"
                              alt="<%=siteUser.getUsername()%>" title="Profile"
-                             class="elgg-border-plain elgg-transition"/>
+                             class="elgg-border-plain elgg-transition" height="16" width="16"/>
                     </a>
                 </li>
                 <li class="elgg-menu-item-messages">

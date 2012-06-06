@@ -1,5 +1,6 @@
 package pojo;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -8,7 +9,7 @@ import java.util.Set;
  * Date: 5/19/12
  * Time: 9:47 PM
  */
-public class File {
+public class File implements Serializable {
     private Integer id;
     private String fileName;
     private String fileType;

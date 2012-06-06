@@ -97,8 +97,9 @@
         <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-default">
             <li class="elgg-menu-item-profile">
                 <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe" class="elgg-topbar-avatar">
-                    <img src="img/icondirect.jpg"
-                         alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
+                    <img src="<%=siteUser.getPortrait()%>"
+                         alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition" height="16"
+                         width="16"/>
                 </a>
             </li>
         </ul>
@@ -166,7 +167,7 @@
                                 </ul>
                                 <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
                                    class="">
-                                    <img src="img/icondirect.jpg" alt="yumingzhe"
+                                    <img src="<%=blog.getSiteUser().getPortrait()%>" alt="yumingzhe"
                                          title="yumingzhe" class=""/>
                                 </a>
                             </div>
@@ -234,7 +235,7 @@
                                         <span class="elgg-icon elgg-icon-hover-menu "></span>
                                         <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
                                            class=""><img
-                                                src="img/icondirect.jpg"
+                                                src="<%=commentEntity.getSiteUser().getPortrait()%>"
                                                 alt="yumingzhe" title="yumingzhe" class=""
                                         <%--style="background: url(http://elgg-yumingzhe.rhcloud.com/mod/profile/icondirect.php?lastcache=1335068576&amp;joindate=1333026415&amp;guid=35&amp;size=tiny) no-repeat;"--%>
                                                 />

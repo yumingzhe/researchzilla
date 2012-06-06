@@ -1,5 +1,6 @@
 package pojo;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -7,7 +8,7 @@ import java.sql.Timestamp;
  * Date: 5/23/12
  * Time: 4:42 PM
  */
-public class Activity {
+public class Activity implements Serializable {
     private int id;
     private Timestamp activityOccurTime;
     private SiteUser siteUser;

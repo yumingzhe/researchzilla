@@ -151,7 +151,6 @@
                                 <div class="elgg-body">
                                     <p>
                                         邮件地址:
-
                                         <input type="text" name="email" value="<%=siteUser.getEmail()%>"
                                                class="elgg-input-email"/>
                                     </p>
