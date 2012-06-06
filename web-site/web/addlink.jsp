@@ -77,6 +77,12 @@
                     <li><a href="addlink.jsp">添加新链接</a></li>
                 </ul>
             </li>
+            <li><a href="#" class="STYLE2">网站课题管理</a>
+                <ul>
+                    <li><a href="http://localhost:8080/SubjectAction!getallsubjectsm.action">查看全部课题</a></li>
+                    <li><a href="addsubject.jsp">添加新课题</a></li>
+                </ul>
+            </li>
             <li><a href="#" class="STYLE2">反馈信息管理</a>
                 <ul>
                     <li><a href="http://localhost:8080/FeedbackAction!getsomefeedbacks.action">查看所有留言</a></li>

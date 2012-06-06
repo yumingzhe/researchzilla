@@ -225,6 +225,10 @@
     <bean id="subjectService" class="service.impl.SubjectServiceImpl">
         <property name="subjectDao" ref="subjectDao"/>
     </bean>
+    <bean id="subjectAction" class="action.SubjectAction">
+        <property name="subjectService" ref="subjectService"/>
+    </bean>
+
 
     <!--Link Bean group-->
     <bean id="linkDao" class="dao.impl.LinkDaoImpl">

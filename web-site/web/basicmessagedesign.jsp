@@ -26,7 +26,10 @@
             font-weight: bold;
             background-image: url("img/menu.jpg");
         }
-        .STYLE3 {font-size: 18px}
+        .STYLE8 {
+            font-size: 18px;
+            font-weight: bold;
+        }
         -->
     </style>
     <script type=text/javascript><!--//--><![CDATA[//><!--
@@ -88,6 +91,12 @@
                     <li><a href="addlink.jsp">添加新链接</a></li>
                 </ul>
             </li>
+            <li><a href="#" class="STYLE2">网站课题管理</a>
+                <ul>
+                    <li><a href="http://localhost:8080/SubjectAction!getallsubjectsm.action">查看全部课题</a></li>
+                    <li><a href="addsubject.jsp">添加新课题</a></li>
+                </ul>
+            </li>
             <li><a href="#" class="STYLE2">反馈信息管理</a>
                 <ul>
                     <li><a href="http://localhost:8080/FeedbackAction!getsomefeedbacks.action">查看所有留言</a></li>
@@ -107,7 +116,6 @@
                     <td width="362"><label class="STYLE8">
                         <input name="websitename" type="text" class="STYLE8" value="<%=((WebsiteMessage)request.getAttribute("websitemessage")).getWebsitename()%>"/>
                     </label></td>
-                    <%System.out.println(((WebsiteMessage)request.getAttribute("websitemessage")).getWebsitename());%>
                 </tr>
                 <tr>
                     <td class="STYLE8">网站背景图片：</td>

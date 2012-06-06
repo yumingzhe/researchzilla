@@ -16,9 +16,12 @@
             font-size: 36px;
             font-weight: bold;
         }
-        .STYLE3 {font-size: 18px}
+        .STYLE3 {
+            font-size: 18px;
+            font-weight: bold;
+        }
         .STYLE2 {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
             background-image: url("img/menu.jpg");
         }
@@ -82,6 +85,12 @@
                     <li><a href="addlink.jsp">添加新链接</a></li>
                 </ul>
             </li>
+            <li><a href="#" class="STYLE2">网站课题管理</a>
+                <ul>
+                    <li><a href="http://localhost:8080/SubjectAction!getallsubjectsm.action">查看全部课题</a></li>
+                    <li><a href="addsubject.jsp">添加新课题</a></li>
+                </ul>
+            </li>
             <li><a href="#" class="STYLE2">反馈信息管理</a>
                 <ul>
                     <li><a href="http://localhost:8080/FeedbackAction!getsomefeedbacks.action">查看所有留言</a></li>
@@ -91,6 +100,7 @@
     </div>
 
     <div id="mainContent_2">
+        <p>&nbsp;</p>
         <div align="center" class="STYLE3">删除信息成功！</div>
 
     </div>

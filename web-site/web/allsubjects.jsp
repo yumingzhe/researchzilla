@@ -5,6 +5,7 @@
   Time: 下午3:50
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page import="pojo.Subject" %>
 <%@ page contentType="text/html;charset=gb2312"  %>
 <html>
 <head>
@@ -19,10 +20,14 @@
         }
         .STYLE2 {
             font-size: 16px;
-             background-image:url("img/menu.jpg");
+            background-image:url("img/menu.jpg");
         }
         .STYLE3 {
             font-size: 16px;
+        }
+        .STYLE4 {
+            font-size: 20px;
+            font-weight: bold;
         }
         -->
     </style>
@@ -72,7 +77,7 @@
                     <li><a href="addmesssage.jsp" >添加图片信息</a></li>
                     <li><a href="addtextmessage.jsp">添加文本信息</a></li>
                     <li><a href="http://localhost:8080/MessageAction!getsomemessages.action">查看文本消息</a></li>
-                   <li><a href="http://localhost:8080/MessageAction!getsomepicturemessages.action">查看图片消息</a></li>
+                    <li><a href="http://localhost:8080/MessageAction!getsomepicturemessages.action">查看图片消息</a></li>
                 </ul>
             </li>
             <li><a href="#" class="STYLE2">系统信息维护</a>
@@ -100,9 +105,47 @@
             </li>
         </ul>
     </div>
-
     <div id="mainContent_2">
-
+        <p>&nbsp;</p>
+        <p align="center" class="STYLE4 ">
+            <%if(session.getAttribute("websitename")!=null){%>
+            <%=session.getAttribute("websitename")%>
+            <%}%>网站课题介绍
+        </p>
+        <%if(session.getAttribute("subjects")!=null){ %>
+        <table  border="2" align="center" bordercolor="#00CCFF">
+            <% List<Subject> subjects= (List<Subject>) session.getAttribute("subjects");%>
+            <tr>
+                <td class="STYLE2" >序号</td>
+                <td class="STYLE2" >课题</td>
+                <td class="STYLE2" >研究方向</td>
+                <td class="STYLE2" >参与人员</td>
+                <td class="STYLE2" >开始时间</td>
+                <td class="STYLE2" >进度</td>
+                <td class="STYLE2" >操作</td>
+            </tr>
+            <%for (int i = 0; i < subjects.size(); i++) { %>
+            <tr height="50">
+                <td height="50"> <%=subjects.get(i).getId()%>
+                </td >
+                <td height="50"> <%=subjects.get(i).getSubjecttopic()%>
+                </td>
+                <td height="50"><%= subjects.get(i).getResearchdirection()%>
+                </td>
+                <td height="50"><%= subjects.get(i).getResearchmember()%>
+                </td>
+                <td height="50"> <%=subjects.get(i).getStarttime()%>
+                </td>
+                <td height="50"> <%=subjects.get(i).getPrograss()%>
+                </td>
+                <td height="50"> <a href="http://localhost:8080/SubjectAction!deleteonesubject.action?subjectid=<%=subjects.get(i).getId()%>">删除</a>
+                </td>
+                <td height="50"> <a href="http://localhost:8080/SubjectAction!updateonesubject.action?subjectid=<%=subjects.get(i).getId()%>">修改</a>
+                </td>
+            </tr>
+            <%}%>
+        </table>
+        <%}%>
     </div>
     <div id="footer_1"></div>
 </div>

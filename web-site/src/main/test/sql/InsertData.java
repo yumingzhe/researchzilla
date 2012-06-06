@@ -107,22 +107,35 @@ public class InsertData {
         } */
 
 
-        /*   Message message = new Message();
-       message.setType("publicnotice");
-       message.setAuthor("王五");
-       message.setPublisher("王艳");
-       message.setTopic("publicnotice");
-       message.setContent("wuyanzu will come here");
+/*       Message message = new Message();
+       message.setType("internalnotice");
+       message.setAuthor("王艳");
+       message.setPublisher("administrator");
+       message.setTopic("信息学院举行第三届亚沙会志愿者欢送会");
+       message.setContent("根据“吴方数学新秀奖”评选办法规定，在个人申报和教授推荐的基础上，经学院团委审查、" +
+               "“吴方数学新秀奖”评审委员会评审，确定数学与应用数学专业2008级孟凡钦同学为第一届“吴方数学新秀奖”获得者，现予以公示。");
        message.setPublishtime(new Timestamp(new Date().getTime()));
-       session.save(message);
-       transaction.commit();
-       session.close(); */
 
-        Link link = new Link();
+       session.save(message);*/
+       WebsiteMessage websiteMessage=new WebsiteMessage();
+        websiteMessage.setWebsitename("软件工程研究室");
+        websiteMessage.setMaintenanceaddress("wangyan_megan@yeah.net");
+        websiteMessage.setDefaultlanguage("Chinese");
+        websiteMessage.setVisits(10);
+        websiteMessage.setPath("./img/main_pic.jpg");
+        session.save(websiteMessage);
+        /*  Link link = new Link();
 
-       link.setWebsitename("google学术搜索");
-       link.setWebsiteurl("http://scholar.google.com/");
+       link.setWebsitename("SCIRUS");
+       link.setWebsiteurl("http://www.scirus.com/");
        session.save(link);
+       Subject subject=new Subject();
+        subject.setSubjecttopic("计算机科学与技术");
+        subject.setResearchdirection("数据仓库");
+        subject.setResearchmember("王艳 于明哲");
+        subject.setStarttime("2012年3月");
+        subject.setPrograss("40%");
+        session.save(subject);*/
        transaction.commit();
        session.close();
 

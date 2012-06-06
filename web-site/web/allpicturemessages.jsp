@@ -97,6 +97,12 @@
                     <li><a href="addlink.jsp">添加新链接</a></li>
                 </ul>
             </li>
+            <li><a href="#" class="STYLE1">网站课题管理</a>
+                <ul>
+                    <li><a href="http://localhost:8080/SubjectAction!getallsubjectsm.action">查看全部课题</a></li>
+                    <li><a href="addsubject.jsp">添加新课题</a></li>
+                </ul>
+            </li>
             <li><a href="#" class="STYLE1">反馈信息管理</a>
                 <ul>
                     <li><a href="http://localhost:8080/FeedbackAction!getsomefeedbacks.action">查看所有留言</a></li>
@@ -112,7 +118,7 @@
             <%   int intPageCount;  //总页数
                 int intPage;       //待显示页码
                 if(request.getAttribute("somepicturemessages")!=null){ %>
-        <table height="350" border="0" align="center" >
+        <table width="500" height="350" border="0" align="center" >
                     <table  border="2" align="center" bordercolor="#00CCFF">
             <%    List<PictureNews> picturemessages= (List<PictureNews>) request.getAttribute("somepicturemessages");
                 intPage=  (Integer)(request.getAttribute("currentpage"));
@@ -156,7 +162,7 @@
             <%}%>
          </table>
          </table>
-        <table align="center">
+        <table align="center" class="STYLE3">
             <tr><td align="right">第<%=intPage%>页 共<%=intPageCount%>页</td></tr>
             <%if(intPage>1){%>
             <a href="http://localhost:8080/MessageAction!getsomepicturemessages.action?pagenumber=<%=intPage-1%> ">上一页</a>

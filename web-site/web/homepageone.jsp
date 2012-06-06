@@ -83,7 +83,11 @@
             font-size: 20px;
             font-weight: bold;
         }
-
+        .STYLE7 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff0000;
+        }
         -->
     </style>
 </head>
@@ -95,9 +99,9 @@
                 <%String imgUrl= (String) session.getAttribute("imagepath");%>
                 <td width="700" height="191" align="center"><img src="<%=imgUrl%>" alt="images" /></td>
                 <td width="250" class="STYLE6">
+                    <p class="STYLE7" align="right"><a href="http://localhost:8080/SubjectAction!getallsubjects.action">about us</a></p>
                     <p>&nbsp;</p>
                     <p align="center" class="STYLE4"><%=session.getAttribute("websitename")%></p>
-                    <p>&nbsp;</p>
                     <p>&nbsp;</p>
                     <%if ((session.getAttribute("user")) != null) {%>
                     <p align="center"><a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=
@@ -210,9 +214,7 @@
                         for (int i = 0; i < publicnotices.size(); i++) {
                     %>
                     <tr>
-                        <td width="60" height="40">
-                            <%= publicnotices.get(i).getType()%>
-                        </td height="40">
+                        <td>★</td>
                         <td>
                             <a href="http://localhost:8080/GetPublicNoticeAction!getOneResult.action?publicnoticeid=<%=publicnotices.get(i).getId()%>"><%= publicnotices.get(i).getTopic()%>
                             </a>
@@ -230,9 +232,7 @@
                         for (int i = 0; i < accomplishments.size(); i++) {
                     %>
                     <tr>
-                        <td width="60" height="40">
-                            <%= accomplishments.get(i).getType()%>
-                        </td>
+                       <td>★</td>
                         <td height="40">
                             <a href="http://localhost:8080/GetAccomplishmentAction!getOneResult.action?accomplishmentid=<%=accomplishments.get(i).getId()%>"> <%= accomplishments.get(i).getTopic()%></a>
                         </td>
@@ -279,9 +279,7 @@
                         for (int i = 0; i < news.size(); i++) {
                     %>
                     <tr>
-                        <td width="60" height="40">
-                            <%= news.get(i).getType()%>
-                        </td>
+                        <td>★</td>
                         <td height="40">
                             <a href="http://localhost:8080/GetNewsAction.action!getOneResult.action?newsid=<%=news.get(i).getId()%>"> <%= news.get(i).getTopic()%></a>
                         </td>

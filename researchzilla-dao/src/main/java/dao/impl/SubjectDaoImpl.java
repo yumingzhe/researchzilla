@@ -23,6 +23,9 @@ public class SubjectDaoImpl implements SubjectDao {
     private SessionFactory factory;
 
     public HibernateTemplate getTemplate() {
+        if (template == null) {
+            template = new HibernateTemplate(this.factory);
+        }
         return template;
     }
 
@@ -50,13 +53,14 @@ public class SubjectDaoImpl implements SubjectDao {
 
     @Override
     public void deleteSubjectById(final int id) {
-        List subject =  this.getTemplate().executeFind(new HibernateCallback<Object>() {
+        List subjects =  this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Subject as s where s.id= :id").setInteger("id", id);
                 return query.list();
             }
         });
+        Subject subject= (Subject) subjects.get(0);
         this.getTemplate().delete(subject);
     }
 
@@ -66,6 +70,7 @@ public class SubjectDaoImpl implements SubjectDao {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
                 Query query = session.createQuery("from Subject ");
+                query.setMaxResults(5);
                 return query.list();
             }
         });
