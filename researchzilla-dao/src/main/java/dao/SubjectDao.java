@@ -1,6 +1,5 @@
 package dao;
 
-
 import pojo.Subject;
 
 import java.io.Serializable;
@@ -20,4 +19,3 @@ public interface SubjectDao {
 
     public List<Subject> getAllSubject();
 }
-

@@ -23,6 +23,9 @@ public class SubjectDaoImpl implements SubjectDao {
     private SessionFactory factory;
 
     public HibernateTemplate getTemplate() {
+        if (template == null) {
+            template = new HibernateTemplate(this.factory);
+        }
         return template;
     }
 
@@ -66,7 +69,8 @@ public class SubjectDaoImpl implements SubjectDao {
         List subjects = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from Subject");
+                Query query = session.createQuery("from Subject ");
+                query.setMaxResults(5);
                 return query.list();
             }
         });

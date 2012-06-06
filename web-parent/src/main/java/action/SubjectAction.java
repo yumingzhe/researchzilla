@@ -20,6 +20,7 @@ public class SubjectAction extends ActionSupport {
     private String researchmember;
     private String starttime;
     private String prograss;
+
     private SubjectService subjectService;
 
     public String getSubjecttopic() {
