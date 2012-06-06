@@ -23,6 +23,13 @@
             <result name="input">/login.jsp</result>
         </action>
 
+        <action name="uploadAvatarAction" class="uploadAvatarAction">
+            <result name="success" type="redirect">/editportrait.jsp?picturename=${fileFileName}</result>
+        </action>
+        <action name="cropAvatarAction" class="cropAvatarAction">
+            <result name="success" type="redirect">/editportrait.jsp</result>
+        </action>
+
         <!--Group action group-->
         <action name="getUserAllGroupsAction" class="getUserAllGroupsAction">
             <result name="success">/allgroups.jsp</result>
