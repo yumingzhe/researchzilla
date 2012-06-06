@@ -16,7 +16,7 @@
             font-size: 36px;
             font-weight: bold;
         }
-        .STYLE2 {font-size: 18px}
+        .STYLE2 {font-size: 18px;font-weight: bold;}
         .STYLE3 {font-size: 18px; font-weight: bold;background-image: url("img/menu.jpg"); }
         -->
     </style>
@@ -79,6 +79,12 @@
                     <li><a href="addlink.jsp">添加新链接</a></li>
                 </ul>
             </li>
+            <li><a href="#" class="STYLE3">网站课题管理</a>
+                <ul>
+                    <li><a href="http://localhost:8080/SubjectAction!getallsubjectsm.action">查看全部课题</a></li>
+                    <li><a href="addsubject.jsp">添加新课题</a></li>
+                </ul>
+            </li>
             <li><a href="#" class="STYLE3">反馈信息管理</a>
                 <ul>
                     <li><a href="http://localhost:8080/FeedbackAction!getsomefeedbacks.action">查看所有留言</a></li>
@@ -89,7 +95,6 @@
     <div id="mainContent_2">
         <p>&nbsp;</p>
         <div align="center" class="STYLE2">添加信息成功！</div>
-
     </div>
     <div id="footer_1"></div>
 </div>

@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <title>后台管理页面</title>
+    <title>研究室简介</title>
     <link href="layout.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         <!--

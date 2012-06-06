@@ -213,6 +213,8 @@
         <action name="SubjectAction" class="subjectAction">
             <result name="success">/addmessagesuccess.jsp</result>
             <result name="acquireall">/instruction.jsp</result>
+            <result name="acquireallm">/allsubjects.jsp</result>
+            <result name="deleteone">/deletemessagesuccess.jsp</result>
         </action>
     </package>
 </struts>

@@ -20,6 +20,7 @@ public class SubjectAction extends ActionSupport {
     private String researchmember;
     private String starttime;
     private String prograss;
+    private String subjectid;
 
     private SubjectService subjectService;
 
@@ -63,6 +64,14 @@ public class SubjectAction extends ActionSupport {
         this.prograss = prograss;
     }
 
+    public String getSubjectid() {
+        return subjectid;
+    }
+
+    public void setSubjectid(String subjectid) {
+        this.subjectid = subjectid;
+    }
+
     public SubjectService getSubjectService() {
         return subjectService;
     }
@@ -93,5 +102,20 @@ public class SubjectAction extends ActionSupport {
         List list = subjectService.getAllSubject();
         session.setAttribute("subjects", list);
         return "acquireall";
+    }
+    public String getallsubjectsm() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        request.setCharacterEncoding("utf-8");
+        List list = subjectService.getAllSubject();
+        session.setAttribute("subjects", list);
+        return "acquireallm";
+    }
+    public String deleteonesubject() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        int id =Integer.parseInt(subjectid);
+        subjectService.deleteSubjectById(id);
+        return "deleteone";
     }
 }

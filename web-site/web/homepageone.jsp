@@ -214,9 +214,7 @@
                         for (int i = 0; i < publicnotices.size(); i++) {
                     %>
                     <tr>
-                        <td width="60" height="40">
-                            <%= publicnotices.get(i).getType()%>
-                        </td height="40">
+                        <td>★</td>
                         <td>
                             <a href="http://localhost:8080/GetPublicNoticeAction!getOneResult.action?publicnoticeid=<%=publicnotices.get(i).getId()%>"><%= publicnotices.get(i).getTopic()%>
                             </a>
@@ -234,9 +232,7 @@
                         for (int i = 0; i < accomplishments.size(); i++) {
                     %>
                     <tr>
-                        <td width="60" height="40">
-                            <%= accomplishments.get(i).getType()%>
-                        </td>
+                       <td>★</td>
                         <td height="40">
                             <a href="http://localhost:8080/GetAccomplishmentAction!getOneResult.action?accomplishmentid=<%=accomplishments.get(i).getId()%>"> <%= accomplishments.get(i).getTopic()%></a>
                         </td>
@@ -283,9 +279,7 @@
                         for (int i = 0; i < news.size(); i++) {
                     %>
                     <tr>
-                        <td width="60" height="40">
-                            <%= news.get(i).getType()%>
-                        </td>
+                        <td>★</td>
                         <td height="40">
                             <a href="http://localhost:8080/GetNewsAction.action!getOneResult.action?newsid=<%=news.get(i).getId()%>"> <%= news.get(i).getTopic()%></a>
                         </td>
