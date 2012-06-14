@@ -76,7 +76,7 @@ public class SiteUserDaoImpl implements SiteUserDao {
 
     @Override
     public void updateSiteUser(SiteUser siteUser) {
-        this.getTemplate().saveOrUpdate(siteUser);
+        this.getTemplate().update(siteUser);
     }
 
     @Override
@@ -119,8 +119,8 @@ public class SiteUserDaoImpl implements SiteUserDao {
 
     @Override
     public int getSiteUserTotalPage(int pageSize) {
-        int totalCount=this.getSiteUserTotalCount();
-        int totalPage=((totalCount+pageSize)-1)/pageSize;
+        int totalCount = this.getSiteUserTotalCount();
+        int totalPage = ((totalCount + pageSize) - 1) / pageSize;
         return totalPage;
     }
 
@@ -129,9 +129,9 @@ public class SiteUserDaoImpl implements SiteUserDao {
         List users = this.getTemplate().executeFind(new HibernateCallback<Object>() {
             @Override
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                Query query = session.createQuery("from SiteUser as s where s.banned= :banned").setBoolean("banned",false);
+                Query query = session.createQuery("from SiteUser as s where s.banned= :banned").setBoolean("banned", false);
                 query.setMaxResults(pageSize);
-                query.setFirstResult(pageSize*(currentPage-1));
+                query.setFirstResult(pageSize * (currentPage - 1));
                 return query.list();
             }
         });

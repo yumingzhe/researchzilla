@@ -9,21 +9,25 @@
                 <param name="property">siteUser</param>
             </generator>
         </id>
-
         <property name="age" column="age" type="int"/>
         <property name="birthday" column="birthday" type="java.util.Date"/>
         <property name="country" column="country" type="java.lang.String" length="15"/>
         <property name="description" column="description" type="text" length="150"/>
-        <property name="portrait" column="portrait" type="blob"/>
         <property name="gender" column="gender" type="char"/>
         <property name="realName" column="realName" type="java.lang.String" length="20"/>
         <property name="personalWebsite" column="personalWebsite" length="50" type="java.lang.String"/>
         <property name="mobilePhone" column="mobilePhone" type="long"/>
         <property name="qq" column="qq" type="long"/>
         <property name="registerDate" column="registerDate" type="timestamp"/>
-        <property name="groupId" column="groupId" type="int"/>
         <property name="userType" column="userType" type="int"/>
-        <property name="lastActionId" column="lastActionId" type="long"/>
-        <one-to-one name="siteUser" class="pojo.SiteUser" cascade="all"/>
+        <property name="hobby" column="hobby" type="java.lang.String"/>
+        <property name="education" column="education" type="java.lang.String"/>
+        <property name="personalprofile" column="personalprofile" type="java.lang.String"/>
+        <property name="personaldetail" column="personaldetail" type="java.lang.String"/>
+        <property name="researchinterest" column="researchinterest" type="java.lang.String"/>
+        <property name="researchprojects" column="researchprojects" type="java.lang.String"/>
+        <property name="personalhonor" column="personalhonor" type="text"/>
+        <property name="professionaltitle" column="professionaltitle" type="java.lang.String"/>
+        <one-to-one name="siteUser" class="pojo.SiteUser" cascade="none"/>
     </class>
 </hibernate-mapping>

@@ -78,6 +78,9 @@
             <result name="success">getUserAllActivitiesAction.action</result>
             <result name="input">/accountsetting.jsp</result>
         </action>
+        <action name="updatePersonalProfileAction" class="updatePersonalProfileAction">
+            <result name="success" type="redirect">/personalinfostatistics.jsp</result>
+        </action>
 
         <!--File Action Group-->
         <action name="uploadfileAction" class="uploadfileAction">

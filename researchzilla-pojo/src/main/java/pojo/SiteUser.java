@@ -13,8 +13,10 @@ public class SiteUser implements Serializable {
     private Boolean active;
     private Boolean banned;
     private String email;
+    private Boolean admin;
     private String instituteId;
     private String portrait;
+    private String usertype;
     private UserEntity userEntity;
     private Register register;
     private Set<Activity> activities;
@@ -22,6 +24,22 @@ public class SiteUser implements Serializable {
     private Set<File> files;
     private Set<Group> groups;
     private Group group;
+
+    public String getUsertype() {
+        return usertype;
+    }
+
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
+    }
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
 
     public String getPortrait() {
         return portrait;

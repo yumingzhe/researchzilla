@@ -46,7 +46,7 @@
                 <li class="elgg-menu-item-profile">
                     <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
                        class="elgg-topbar-avatar">
-                        <img src="<%=siteUser.getPortrait()%> "
+                        <img src="http://localhost:8080/<%=siteUser.getPortrait()%> "
                              alt="elgg"
                              title="Profile" class="elgg-border-plain elgg-transition"
                              height="16" width="16"/>

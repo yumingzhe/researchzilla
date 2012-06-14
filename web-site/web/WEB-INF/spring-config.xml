@@ -54,7 +54,20 @@
         <property name="siteUserService" ref="siteUserService"/>
     </bean>
 
+    <!--UserEntity Bean group-->
+    <bean id="userentityDao" class="dao.impl.UserEntityDaoImpl">
+        <property name="factory" ref="sessionFactory"/>
+    </bean>
+    <bean id="userentityService" class="service.impl.UserEntityServiceImpl">
+        <property name="userEntityDao" ref="userentityDao"/>
+    </bean>
+    <bean id="updatePersonalProfileAction" class="action.UpdatePersonalProfileAction">
+        <property name="userEntityService" ref="userentityService"/>
+        <property name="siteUserService" ref="siteUserService"/>
+    </bean>
 
+
+    <!--LoginAction Bean group-->
     <bean id="loginAction" class="action.LoginAction">
         <property name="siteUserService" ref="siteUserService"/>
         <property name="websiteMessageService" ref="websiteMessageService"/>

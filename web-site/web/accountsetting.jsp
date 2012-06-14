@@ -1,7 +1,4 @@
 <%@ page import="pojo.SiteUser" %>
-<%@ page import="com.opensymphony.xwork2.ActionContext" %>
-<%@ page import="com.opensymphony.xwork2.util.ValueStack" %>
-<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -35,23 +32,21 @@
                 <li class="elgg-menu-item-usersettings elgg-state-selected"><a
                         href="http://localhost:8080/personalsetting.jsp"><span
                         class="elgg-icon elgg-icon-settings "></span>个人设置</a></li>
-                <li class="elgg-menu-item-logout"><a
-                        href="http://elgg-yumingzhe.rhcloud.com/action/logout?__elgg_ts=1338531088&amp;__elgg_token=97bb23aef67918894673a41a20cdaba2">Log
-                    out</a></li>
+                <li class="elgg-menu-item-logout">
+                    <a href="http://elgg-yumingzhe.rhcloud.com/action/logout?__elgg_ts=1338531088&amp;__elgg_token=97bb23aef67918894673a41a20cdaba2">
+                        Log out
+                    </a>
+                </li>
             </ul>
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-default">
-                <li class="elgg-menu-item-elgg-logo"><a
-                        href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=((SiteUser)session.getAttribute("user")).getUid()%>"
-                        class="elgg-topbar-logo"><img
-                        src="img/elgg_toolbar_logo.gif" alt="Elgg logo"
-                        width="38" height="20"/></a></li>
-                <li class="elgg-menu-item-profile"><a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
-                                                      class="elgg-topbar-avatar"><img
-                        src="http://elgg-yumingzhe.rhcloud.com/mod/profile/icondirect.php?lastcache=1335068576&amp;joindate=1333026415&amp;guid=35&amp;size=topbar"
-                        alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/></a></li>
-                <li class="elgg-menu-item-messages"><a
-                        href="http://elgg-yumingzhe.rhcloud.com/messages/inbox/yumingzhe"><span
-                        class='elgg-icon elgg-icon-mail'></span></a></li>
+                <li class="elgg-menu-item-profile">
+                    <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>"
+                       class="elgg-topbar-avatar">
+                        <img src="http://localhost:8080/<%=siteUser.getPortrait()%>"
+                             alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition" height="16"
+                             width="16"/>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -61,22 +56,31 @@
             <h1>
                 <a class="elgg-heading-site"
                    href="http://localhost:8080/getUserAllActivities.action?uid=<%=siteUser.getUid()%>">
-                    Researchzilla </a>
+                    Researchzilla
+                </a>
             </h1>
             <ul class="elgg-menu elgg-menu-site elgg-menu-site-default clearfix">
-                <li class="elgg-menu-item-activity"><a
-                        href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>">最近活动</a>
+                <li class="elgg-menu-item-activity">
+                    <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=siteUser.getUid()%>">
+                        最近活动
+                    </a>
                 </li>
-                <li class="elgg-menu-item-blog"><a
-                        href="http://localhost:8080/getUserAllBlogs.action?uid=<%=siteUser.getUid()%>">日志</a></li>
-                <li class="elgg-menu-item-file"><a href="http://elgg-yumingzhe.rhcloud.com/file/all#">文件</a></li>
-                <li class="elgg-menu-item-groups"><a href="http://elgg-yumingzhe.rhcloud.com/groups/all#">组</a>
+                <li class="elgg-menu-item-blog">
+                    <a href="http://localhost:8080/getUserAllBlogs.action?uid=<%=siteUser.getUid()%>">
+                        日志
+                    </a>
+                </li>
+                <li class="elgg-menu-item-file">
+                    <a href="http://elgg-yumingzhe.rhcloud.com/file/all#">
+                        文件
+                    </a>
+                </li>
+                <li class="elgg-menu-item-groups">
+                    <a href="http://elgg-yumingzhe.rhcloud.com/groups/all#">
+                        组
+                    </a>
                 </li>
             </ul>
-            <form class="elgg-search elgg-search-header" action="http://elgg-yumingzhe.rhcloud.com/search" method="get">
-                <fieldset>
-                </fieldset>
-            </form>
         </div>
     </div>
     <div class="elgg-page-body">
@@ -93,12 +97,12 @@
                             </a>
                         </li>
                         <li class="elgg-menu-item-1-plugins">
-                            <a href="http://elgg-yumingzhe.rhcloud.com/settings/plugins/yumingzhe">
+                            <a href="http://localhost:8080/personalinfosetting.jsp">
                                 个人信息设置
                             </a>
                         </li>
                         <li class="elgg-menu-item-1-statistics">
-                            <a href="http://elgg-yumingzhe.rhcloud.com/settings/statistics/yumingzhe">
+                            <a href="http://localhost:8080/personalinfostatistics.jsp">
                                 账户统计信息
                             </a>
                         </li>
@@ -108,8 +112,8 @@
                 <div class="elgg-main elgg-body">
                     <ul class="elgg-menu elgg-breadcrumbs">
                         <li>
-                            <a href="http://elgg-yumingzhe.rhcloud.com/settings/user/yumingzhe">
-                                Settings
+                            <a href="http://localhost:8080/accountsetting.jsp">
+                                个人设置
                             </a>
                         </li>
                     </ul>

@@ -50,6 +50,9 @@
     </script>
 </head>
 <body>
+<%
+    SiteUser siteUser = (SiteUser) session.getAttribute("user");
+%>
 <div class="elgg-page elgg-page-default">
     <div class="elgg-page-messages">
         <ul class="elgg-system-messages">
@@ -60,25 +63,29 @@
     <div class="elgg-page-topbar">
         <div class="elgg-inner">
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-alt">
-                <li class="elgg-menu-item-usersettings"><a
-                        href="http://elgg-yumingzhe.rhcloud.com/settings/user/yumingzhe"><span
-                        class="elgg-icon elgg-icon-settings "></span>个人设置</a></li>
-                <li class="elgg-menu-item-logout"><a
-                        href="http://elgg-yumingzhe.rhcloud.com/action/logout?__elgg_ts=1338342665&amp;__elgg_token=90d8a27be2b1181b4fda28b2659d46d2">Log
-                    out</a></li>
+                <li class="elgg-menu-item-usersettings">
+                    <a href="http://localhost:8080/accountsetting.jsp">
+                        <span class="elgg-icon elgg-icon-settings "></span>
+                        个人设置
+                    </a>
+                </li>
+                <li class="elgg-menu-item-logout">
+                    <a href="http://localhost:8080/ExitAction.action">
+                        Log out
+                    </a>
+                </li>
             </ul>
             <ul class="elgg-menu elgg-menu-topbar elgg-menu-topbar-default">
                 <%--<li class="elgg-menu-item-elgg-logo"><a href="http://www.elgg.org/" class="elgg-topbar-logo"><img
                         src="http://elgg-yumingzhe.rhcloud.com/_graphics/elgg_toolbar_logo.gif" alt="Elgg logo"
                         width="38" height="20"/></a></li>--%>
-                <li class="elgg-menu-item-profile"><a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
-                                                      class="elgg-topbar-avatar"><img
-                        src="http://elgg-yumingzhe.rhcloud.com/mod/profile/icondirect.php?lastcache=1335068576&amp;joindate=1333026415&amp;guid=35&amp;size=topbar"
-                        alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/></a></li>
-
-                <li class="elgg-menu-item-messages"><a
-                        href="http://elgg-yumingzhe.rhcloud.com/messages/inbox/yumingzhe"><span
-                        class='elgg-icon elgg-icon-mail'></span></a></li>
+                <li class="elgg-menu-item-profile">
+                    <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
+                       class="elgg-topbar-avatar">
+                        <img src="http://localhost:8080/<%=siteUser.getPortrait()%>"
+                             alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -136,6 +143,7 @@
                           cssClass="elgg_form elgg-form-alt elgg-form-blog-save">
                         <fieldset>
                             <input type="hidden" name="groupid" value="<%=request.getParameter("groupid")%>"/>
+
                             <div>
                                 <label for="blog_title">标题</label>
                                 <input type="text" name="title" id="blog_title" class="elgg-input-text"/>

@@ -13,8 +13,10 @@
         <property name="banned" column="banned" type="boolean"/>
         <property name="portrait" column="portrait" type="java.lang.String"/>
         <property name="email" column="email" type="java.lang.String" length="50"/>
+        <property name="admin" column="admin" type="java.lang.Boolean"/>
+        <property name="usertype" column="usertype" type="java.lang.String"/>
         <property name="instituteId" column="instituteId" type="java.lang.String"/>
-        <one-to-one name="userEntity" class="pojo.UserEntity" cascade="all"/>
+        <one-to-one name="userEntity" class="pojo.UserEntity" cascade="save-update" constrained="true" lazy="false"/>
         <one-to-one name="register" class="pojo.Register" lazy="false" cascade="all"/>
         <set name="activities" table="researchzilla_activity" inverse="false" cascade="persist" lazy="false">
             <key column="personId"/>

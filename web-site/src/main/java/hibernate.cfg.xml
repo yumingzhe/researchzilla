@@ -7,7 +7,7 @@
         <property name="connection.url">jdbc:mysql://localhost/test</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">123456</property>
+        <property name="connection.password"></property>
         <property name="show_sql">true</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="connection.useUnicode">true</property>
@@ -19,15 +19,15 @@
         <mapping resource="pojo/Register.hbm.xml"/>
         <mapping resource="pojo/CommentEntity.hbm.xml"/>
         <mapping resource="pojo/File.hbm.xml"/>
-        <mapping resource="pojo/WebsiteMessage.hbm.xml"/>
+        <!--<mapping resource="pojo/WebsiteMessage.hbm.xml"/>-->
         <mapping resource="pojo/Group.hbm.xml"/>
-        <mapping resource="pojo/Feedback.hbm.xml"/>
-        <mapping resource="pojo/SiteLetter.hbm.xml"/>
-        <mapping resource="pojo/LetterEntity.hbm.xml"/>
-        <mapping resource="pojo/Message.hbm.xml"/>
-        <mapping resource="pojo/PictureNews.hbm.xml"/>
+        <!--<mapping resource="pojo/Feedback.hbm.xml"/>-->
+        <!--<mapping resource="pojo/SiteLetter.hbm.xml"/>-->
+        <!--<mapping resource="pojo/LetterEntity.hbm.xml"/>-->
+        <!--<mapping resource="pojo/Message.hbm.xml"/>-->
+        <!--<mapping resource="pojo/PictureNews.hbm.xml"/>
         <mapping resource="pojo/Subject.hbm.xml"/>
         <mapping resource="pojo/Link.hbm.xml"/>
-
+-->
     </session-factory>
 </hibernate-configuration>

@@ -1,36 +1,94 @@
 package pojo;
 
-import java.io.File;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
 public class UserEntity implements Serializable {
     private int uid;
-    private File portrait;
-    private String realName;
+    private String realName;//真实姓名
     private int age;
     private Date birthday;
     private Timestamp registerDate;
     private int userType;
-    private char gender;
+    private String gender;
     private String personalWebsite;
-    private String country;
+    private String country;//国籍
     private long qq;
     private long mobilePhone;
     private String description;
-    private long lastActionId;
-    private long prev_lastActionId;
-
-    private int groupId;
+    private String hobby;//爱好
+    private String education;//学历
     private SiteUser siteUser;
+    private String personalprofile;//个人简介
+    private String personaldetail;//个人详细介绍
+    private String researchinterest;//研究兴趣
+    private String researchprojects;//科研项目
+    private String personalhonor;//个人荣誉
+    private String professionaltitle;//职称
 
-    public long getPrev_lastActionId() {
-        return prev_lastActionId;
+    public String getProfessionaltitle() {
+        return professionaltitle;
     }
 
-    public void setPrev_lastActionId(long prev_lastActionId) {
-        this.prev_lastActionId = prev_lastActionId;
+    public void setProfessionaltitle(String professionaltitle) {
+        this.professionaltitle = professionaltitle;
+    }
+
+    public String getPersonalhonor() {
+        return personalhonor;
+    }
+
+    public void setPersonalhonor(String personalhonor) {
+        this.personalhonor = personalhonor;
+    }
+
+    public String getResearchprojects() {
+        return researchprojects;
+    }
+
+    public void setResearchprojects(String researchprojects) {
+        this.researchprojects = researchprojects;
+    }
+
+    public String getResearchinterest() {
+        return researchinterest;
+    }
+
+    public void setResearchinterest(String researchinterest) {
+        this.researchinterest = researchinterest;
+    }
+
+    public String getPersonaldetail() {
+        return personaldetail;
+    }
+
+    public void setPersonaldetail(String personaldetail) {
+        this.personaldetail = personaldetail;
+    }
+
+    public String getPersonalprofile() {
+        return personalprofile;
+    }
+
+    public void setPersonalprofile(String personalprofile) {
+        this.personalprofile = personalprofile;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
     }
 
     public SiteUser getSiteUser() {
@@ -55,14 +113,6 @@ public class UserEntity implements Serializable {
 
     public void setUid(int uid) {
         this.uid = uid;
-    }
-
-    public File getPortrait() {
-        return portrait;
-    }
-
-    public void setPortrait(File portrait) {
-        this.portrait = portrait;
     }
 
     public String getRealName() {
@@ -105,11 +155,11 @@ public class UserEntity implements Serializable {
         this.userType = userType;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -143,21 +193,5 @@ public class UserEntity implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public long getLastActionId() {
-        return lastActionId;
-    }
-
-    public void setLastActionId(long lastActionId) {
-        this.lastActionId = lastActionId;
-    }
-
-    public int getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(int groupId) {
-        this.groupId = groupId;
     }
 }
