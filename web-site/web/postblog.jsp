@@ -83,7 +83,8 @@
                     <a href="http://elgg-yumingzhe.rhcloud.com/profile/yumingzhe"
                        class="elgg-topbar-avatar">
                         <img src="http://localhost:8080/<%=siteUser.getPortrait()%>"
-                             alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition"/>
+                             alt="yumingzhe" title="Profile" class="elgg-border-plain elgg-transition" height="16"
+                             width="16"/>
                     </a>
                 </li>
             </ul>
@@ -156,7 +157,7 @@
                             </div>
 
                             <label for="blog_description">内容</label>
-                            <textarea id="blog_description" name="content" class="elgg-input-longtext">
+                            <textarea id="blog_description" name="content" class="elgg-input-longtext" cols="50" rows="50">
                             </textarea>
                             <br/>
 

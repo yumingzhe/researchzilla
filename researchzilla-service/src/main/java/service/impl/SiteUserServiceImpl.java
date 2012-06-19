@@ -65,7 +65,12 @@ public class SiteUserServiceImpl implements SiteUserService {
 
     @Override
     public List<SiteUser> getSomeSiteUser(int pageSize, int currentPage) {
-        return siteUserDao.getSomeSiteUser(pageSize,currentPage);
+        return siteUserDao.getSomeSiteUser(pageSize, currentPage);
+    }
+
+    @Override
+    public List<SiteUser> getSiteUserByType(String type) {
+        return siteUserDao.getSiteUserByType(type);
     }
 
 }

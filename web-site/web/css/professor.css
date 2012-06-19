@@ -1,0 +1,166 @@
+
+/*--professor.html-----begin-----*/
+h2{ text-align:center; font-size:18px; margin-top:4px; margin-bottom:4px;}
+.professor_msg, .professor_img{ height:192px; float:left;}
+.professor_img{ width:270px; float:left; }
+.professor_img img{ margin-top:2px; margin-left:3px;}
+.professor_msg{ width:400px;}
+.professor_msg tr{height:20px; line-height:20px; border-width:0;}
+.professor_msg td{ font-size:12px;}
+.professor_msg .professor_column1{ width:70px; text-align:right; padding-right:5px;}
+.professor_msg .professor_column2{ text-align:left; width:90px; padding-left:10px;}
+.professor_msg .professor_column3{ text-align:right; width:80px;}
+.professor_msg .professor_column4{ width:135px; padding-left:15px;}
+.professor_msg .professor_column5{ padding-left:10px;}
+
+.professor_det{
+    width:630px;
+    clear:both;
+    padding:10px;
+    background:#f1f6ff;
+}
+.professor_det div{ margin-top:2px; margin-bottom:2px;}
+.professor_det h3{ font-size:14px; font-weight:bolder; width:97%;padding-left:3%; *padding-left:15px;float:left; height:20px; line-height:20px;	margin-bottom:4px;margin-top:4px;border-bottom:solid 1px #cccccc;}
+
+.professor_det div ul{margin-left:22px;	float:left;}
+.professor_det div ul li{height:20px;}
+.professor_det div ul a{ color:Black;}
+.professor_det div ul a:visited{color:Black;}
+.professor_det div ul a:hover{ text-decoration:underline; color:Blue;}
+#content{margin:0 auto;	width:670px;padding-top:10px;}
+
+/*--------professor.html-----end-----*/
+
+/*--------teachers.html------begin---*/
+
+.teacherscontent
+{
+    background-color:#EBF3FB;
+    margin:0 auto;
+    overflow:auto;
+    height:100%;
+}
+
+/*-----left-------*/
+#teachersLeft
+{
+    width:180px;
+    float:left;
+    margin:0 5px;
+}
+
+
+#teachersLeft .father
+{
+    width:100%;
+    overflow:hidden;
+    border:1px solid #87CEFF;
+    background-color:#ffffff;
+}
+
+#teachersLeft .father .left
+{
+    font-size:14px;
+    font-weight:bold;
+    color:#146FA2;
+    text-align:left;
+    padding:6px 0 3px 10px;
+    background-color:#87CEFF;
+    width:100%;
+}
+
+#teachersLeft .father .right
+{
+    list-style:none;
+    float:left;
+    font-size:14px;
+    text-align:left;
+    margin:2px 0px;
+    padding:1px;
+    width:170px;
+}
+
+#teachersLeft .father .right li
+{
+    margin:0px;
+    margin-left:5px;
+    clear:both;
+    border:1px solid #87CEFF;
+    padding:2px 1px;
+    margin-bottom:4px;
+    width:auto
+}
+
+.actlihover
+{
+    border:1px solid #87CEFF;
+    background:#146FA2;
+    color:#ffffff;
+}
+
+#teachersLeft .father .right li a
+{
+    margin:0;
+    padding:1px;
+    padding-top:6px;
+}
+
+#teachersLeft .father .right li a:hover
+{
+    font-weight:bold;
+    color:#ffffff;
+}
+
+#teacher
+{
+    width:680px;
+    margin-left:16px;
+    height:auto;
+    float:left;
+}
+
+#teacher img
+{
+    height:70px;
+    width:100px;
+    min-height:70px;
+    min-width:100px;
+}
+
+#teacher td
+{
+    background-color:#EEEEEE;
+    min-width:100px;
+}
+
+#teacher a
+{
+    text-align:center;
+    text-decoration:none;
+    margin:7px 15px 7px 15px;
+    color:Black;
+    font-size:14px;
+}
+#teacher a:hover
+{
+    color:Red;
+    text-decoration:underline;
+}
+
+#teacher #name
+{
+    margin:0 auto;
+    text-align:center;
+}
+
+#teacher tr
+{
+    height:90px;
+}
+
+#teacher table
+{
+    margin-bottom:7px;
+}
+
+/*--------teachers.html---background-color:;---end---*/

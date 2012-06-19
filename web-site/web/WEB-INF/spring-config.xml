@@ -65,6 +65,9 @@
         <property name="userEntityService" ref="userentityService"/>
         <property name="siteUserService" ref="siteUserService"/>
     </bean>
+    <bean id="getSiteUserByTypeAction" class="action.GetUserByTypeAction">
+        <property name="siteUserService" ref="siteUserService"/>
+    </bean>
 
 
     <!--LoginAction Bean group-->

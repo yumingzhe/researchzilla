@@ -1,0 +1,38 @@
+#main_left
+{
+    width:670px;
+    border:none;
+}
+
+#main_down
+{
+    border-top:none;
+    margin-top:20px;
+    padding-top:0;
+}
+
+#con_a .up_right
+{
+    width:225px;
+}
+
+#con_a .up_center
+{
+    width:316px;
+    margin-left:0;
+}
+
+#con_a .up_left
+{
+    width:316px;
+    margin-right:15px;
+}
+
+#con_a
+{
+    height:220px;
+}
+#con_right
+{
+    height:400px;
+}

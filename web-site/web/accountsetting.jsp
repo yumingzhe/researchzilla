@@ -96,6 +96,11 @@
                                 账户设置
                             </a>
                         </li>
+                        <li class="elgg-menu-item-1-account">
+                            <a href="http://localhost:8080/editportrait.jsp">
+                                更改头像
+                            </a>
+                        </li>
                         <li class="elgg-menu-item-1-plugins">
                             <a href="http://localhost:8080/personalinfosetting.jsp">
                                 个人信息设置

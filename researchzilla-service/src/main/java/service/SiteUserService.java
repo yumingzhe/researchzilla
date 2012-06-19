@@ -29,5 +29,6 @@ public interface SiteUserService {
 
     public List<SiteUser> getSomeSiteUser(final int pageSize, final int currentPage);
 
+    public List<SiteUser> getSiteUserByType(String type);
 }
 

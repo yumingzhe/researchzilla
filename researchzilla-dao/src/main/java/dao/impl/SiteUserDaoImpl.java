@@ -137,4 +137,15 @@ public class SiteUserDaoImpl implements SiteUserDao {
         });
         return users;
     }
+
+    @Override
+    public List<SiteUser> getSiteUserByType(final String type) {
+        return this.getTemplate().executeFind(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery("from SiteUser as s where s.usertype= :type").setString("type", type);
+                return query.list();
+            }
+        });
+    }
 }

@@ -1,8 +1,7 @@
-<%@ page import="java.util.Set" %>
-<%@ page import="java.util.Iterator" %>
+<%@ page import="pojo.*" %>
 <%@ page import="util.DateFormat" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="pojo.*" %>
+<%@ page import="java.util.Set" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -111,11 +110,12 @@
 <div class="groups-profile clearfix elgg-image-block">
     <div class="elgg-image">
         <div class="groups-profile-icon">
-            <img src="<%=group.getGroupOwner().getPortrait()%>" alt="<%=group.getGroupName()%>" class=""/>
+            <img src="<%=group.getGroupOwner().getPortrait()%>" alt="<%=group.getGroupName()%>" height="128" width="128"
+                 class=""/>
         </div>
         <div class="groups-stats">
             <p>
-                <b>组创建者: </b>
+                <span style="font-weight: bold;">组创建者: </span>
                 <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=group.getGroupOwner().getUid()%>">
                     <%=group.getGroupOwner().getUsername()%>
                 </a>
@@ -128,14 +128,14 @@
     </div>
 
     <div class="groups-profile-fields elgg-body">
-        <div class="odd"><b>描述: </b>
+        <div class="odd"><span style="font-weight: bold;">描述: </span>
 
             <div class="elgg-output">
                 <p><%=group.getDescription()%>
                 </p>
             </div>
         </div>
-        <div class="odd"><b>标签: </b>
+        <div class="odd"><span style="font-weight: bold;">标签: </span>
 
             <div><span class="elgg-icon elgg-icon-tag "></span>
                 <ul class="elgg-tags">
@@ -165,9 +165,7 @@
                 <%
                     Set<Blog> blogs = group.getBlogs();
                     if (blogs.size() > 0) {
-                        Iterator iterator = blogs.iterator();
-                        while (iterator.hasNext()) {
-                            Blog blog = (Blog) iterator.next();
+                        for (Blog blog : blogs) {
                 %>
                 <li id="elgg-object-90" class="elgg-item">
                     <div class="elgg-image-block clearfix">
@@ -237,27 +235,18 @@
                 href="http://#">查看所有</a></span>
 
             <h3>组文件</h3></div>
-        <%-- <div class="elgg-body">
-            <p>No files.</p><span class='elgg-widget-more'><a
-                href="http://elgg-yumingzhe.rhcloud.com/file/add/78">上传文件</a></span>
-        </div>--%>
-
-
         <div class="elgg-body">
             <ul class="elgg-list elgg-list-entity">
                 <%
                     Set<File> files = group.getFiles();
                     if (files.size() > 0) {
-                        Iterator iterator = files.iterator();
-                        while (iterator.hasNext()) {
-                            File file = (File) iterator.next();
-
+                        for (File file : files) {
                 %>
                 <li id="elgg-object-91" class="elgg-item">
                     <div class="elgg-image-block clearfix">
                         <div class="elgg-image">
                             <a href="http://elgg-yumingzhe.rhcloud.com/file/view/91/abc">
-                                <img src="img/text.gif"
+                                <img src="img/word.gif"
                                      alt="<%=file.getFileName()%>"/>
                             </a>
                         </div>
@@ -321,9 +310,7 @@
             <ul class="elgg-list elgg-list-river elgg-river">
                 <%
                     Set<Activity> activities = group.getActivities();
-                    Iterator activityIterator = activities.iterator();
-                    while (activityIterator.hasNext()) {
-                        Activity activity = (Activity) activityIterator.next();
+                    for (Activity activity : activities) {
                 %>
                 <li id="item-river-21" class="elgg-item">
                     <div class="elgg-image-block elgg-river-item clearfix">
@@ -380,7 +367,7 @@
                                 <%
                                     }
                                 %>
-                                <%-- <span class="elgg-river-timestamp">
+                                <%--     <span class="elgg-river-timestamp">
                             <%=DateFormat.formatPeriod(activity.getBlog().getPostDate().getTime(), new Date().getTime())%>
                                 </span>前--%>
                             </div>
@@ -418,9 +405,7 @@
             <ul class="elgg-list elgg-list-entity">
                 <%
                     Set<SiteUser> siteUsers = group.getMembers();
-                    Iterator siteUserIterator = siteUsers.iterator();
-                    while (siteUserIterator.hasNext()) {
-                        SiteUser member = (SiteUser) siteUserIterator.next();
+                    for (SiteUser member : siteUsers) {
                 %>
                 <li id="elgg-object-81" class="elgg-item">
                     <div class="elgg-image-block clearfix">
@@ -429,7 +414,8 @@
                                 <span class="elgg-icon elgg-icon-hover-menu "></span>
                                 <a href="http://localhost:8080/getUserAllActivitiesAction.action?uid=<%=member.getUid()%>"
                                    class="">
-                                    <img src="<%=member.getPortrait()%>" alt="<%=member.getUsername()%>"
+                                    <img src="<%=member.getPortrait()!=null&&!member.getPortrait().equals("")?member.getPortrait():"http://localhost:8080/img/defaultavatar.gif"%>"
+                                         alt="<%=member.getUsername()%>"
                                          title="<%=member.getUsername()%>"
                                          class=""/>
                                 </a>

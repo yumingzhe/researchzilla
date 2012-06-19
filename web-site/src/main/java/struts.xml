@@ -5,30 +5,37 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <!--<constant name="struts.multipart.saveDir"
-              value="D:\workspace\researchzilla\classes\artifacts\web_site_war_exploded\img"/>-->
-    <!--<constant name="struts.i18n.encoding" value="GB18030"/>-->
-    <!--<constant name="struts.multipart.saveDir" value="D:\workspace\researchzilla\classes\artifacts\web_site_war_exploded\"/>-->
+    <package name="mypkg" extends="json-default">
+        <action name="getSiteUserByTypeAction" class="getSiteUserByTypeAction">
+            <result name="result" type="json">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">false</param>
+            </result>
+        </action>
+    </package>
     <package name="pkg" extends="struts-default">
         <action name="RegisterAction" class="registerAction">
             <result name="success">/homepageone.jsp</result>
             <result name="input">/register.jsp</result>
             <result name="resource">/resource.jsp</result>
             <result name="error">/login.jsp</result>
-            <!--  <result name="resource">/resource.jsp</result>
-          <result name="error">/login.jsp</result> -->
         </action>
         <action name="LoginAction" class="loginAction">
             <result name="success">/homepageone.jsp</result>
             <result name="input">/login.jsp</result>
         </action>
 
+
+        <!--Avatar Action Group-->
         <action name="uploadAvatarAction" class="uploadAvatarAction">
             <result name="success" type="redirect">/editportrait.jsp?picturename=${fileFileName}</result>
         </action>
         <action name="cropAvatarAction" class="cropAvatarAction">
             <result name="success" type="redirect">/editportrait.jsp</result>
         </action>
+
+        <!--SiteUser Action Group-->
+
 
         <!--Group action group-->
         <action name="getUserAllGroupsAction" class="getUserAllGroupsAction">
@@ -45,16 +52,10 @@
             <result name="success" type="redirectAction">getSpecifiedGroupAction?groupid=${groupid}</result>
         </action>
 
-        <action name="getUserAllBlogs" class="getUserAllBlogs">
-            <result name="success">/allblogs.jsp</result>
-        </action>
         <action name="getUserAllFilesAction" class="getUserAllFilesAction">
             <result name="success">/allfiles.jsp</result>
         </action>
 
-        <action name="searchBlogByTag" class="searchBlogByTag">
-            <result name="success">/searchtags.jsp</result>
-        </action>
 
         <action name="accountconfirmAction" class="accountConfirmAction">
             <result name="input">/error.jsp</result>
@@ -117,6 +118,12 @@
         </action>
         <action name="updateBlogAction" class="updateBlogAction">
             <result name="success" type="redirectAction">getSpecifiedBlogAction?blogid=${blogid}</result>
+        </action>
+        <action name="getUserAllBlogs" class="getUserAllBlogs">
+            <result name="success">/allblogs.jsp</result>
+        </action>
+        <action name="searchBlogByTag" class="searchBlogByTag">
+            <result name="success">/searchtags.jsp</result>
         </action>
 
         <!--Comment Action group-->
