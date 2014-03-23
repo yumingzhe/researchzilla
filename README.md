@@ -10,7 +10,7 @@ wangyan(wangyan_megan@yeah.net)
 
 Screenshots
 --------
-!(https://github.com/yumingzhe/researchzilla/raw/master/Picture1.png)
+![screenshot1](https://github.com/yumingzhe/researchzilla/raw/master/Picture1.png)
 
 Wiki
 ----
