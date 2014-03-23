@@ -8,6 +8,10 @@ Developers
 yumingzhe(yumingzhe@live.cn)
 wangyan(wangyan_megan@yeah.net)
 
+Screenshots
+--------
+!(https://github.com/yumingzhe/researchzilla/raw/master/Picture1.png)
+
 Wiki
 ----
 http://projectmanage-yumingzhe.rhcloud.com     
